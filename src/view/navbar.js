@@ -5,17 +5,17 @@ import Config from 'config';
 
 
 class Navbar extends React.Component {
-  render(){
-    let k = [];
-    for(let [name, url] of Config.nav){
-      k.push(<li><NavLink to={url} activeClassName="active">{name}</NavLink></li>);
+    render(){
+        let k = [];
+        for(let [name, url] of Config.nav){
+            k.push(<li><NavLink to={url} activeClassName="active">{name}</NavLink></li>);
+        }
+        return <div>
+            <ul>
+                {k}
+            </ul>
+        </div>;
     }
-    return <div>
-      <ul>
-        {k}
-      </ul>
-    </div>;
-  }
 }
 
 

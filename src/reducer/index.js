@@ -9,14 +9,14 @@ const history = createHistory();
 const middleware = routerMiddleware(history);
 
 const store = createStore(
-  combineReducers({
-    // ...reducers,
-    router: routerReducer,
-  }),
-  applyMiddleware(middleware)
+    combineReducers({
+        // ...reducers,
+        router: routerReducer,
+    }),
+    applyMiddleware(middleware)
 );
 
 
 export {
-  store, history,
+    store, history,
 }

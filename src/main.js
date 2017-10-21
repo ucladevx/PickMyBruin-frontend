@@ -16,16 +16,16 @@ import About from 'container/about';
 class App extends React.Component {
 	render() {
 		return(
-		    <Provider store={store}>
+            <Provider store={store}>
                 <ConnectedRouter history={history}>
-                <div>
-                    <Navbar/>
-                    <Switch>
-                        <Route exact path="/" component={Home}/>
-                        <Route path="/about" component={About}/>
-                        <Redirect to="/"/>
-                    </Switch>
-                </div>
+                    <div>
+                        <Navbar/>
+                        <Switch>
+                            <Route exact path="/" component={Home}/>
+                            <Route path="/about" component={About}/>
+                            <Redirect to="/"/>
+                        </Switch>
+                    </div>
                 </ConnectedRouter>
             </Provider>
         )
