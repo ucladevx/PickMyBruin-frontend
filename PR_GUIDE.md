@@ -21,5 +21,17 @@ This will elminate any pains later. Read on to see how to do that
 Once you are done developing the feature for this branch, you are ready to submit a Pull Request (PR)
 
 ## Create a PR
+Navigate to github.com after pushing your commits on your branch. You should see an icon like this  
+
+![Create Pr](https://raw.githubusercontent.com/ucladevx/PickMyBruin-frontend/master/RepoImages/create_pr.png)  
+
+Click the green button. You will be navigated to a screen like this  
+
+![Submit Pr](https://raw.githubusercontent.com/ucladevx/PickMyBruin-frontend/master/RepoImages/submit_pr.png)  
+
+Give your PR a title and give it a good description so that whoever reviews your PR doesn't have to think too hard about what you're modifying in it. If there is any code you think is confusing, make sure to explain it. Click the green button when you're done
+
+## Congrats!
+You've created a PR. Someone on your team will review it and merge to master. Once it gets merged, make sure to checkout to master and run `git pull` again to get all the changes!
 
 
