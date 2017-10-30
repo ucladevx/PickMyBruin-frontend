@@ -1,6 +1,9 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import createHistory from 'history/createBrowserHistory';
 import {routerReducer, routerMiddleware, push} from 'react-router-redux';
+import thunk from 'redux-thunk';
+
+import { Auth } from './auth';
 
 // import reducers from './reducers';
 
@@ -10,7 +13,7 @@ const middleware = routerMiddleware(history);
 
 const store = createStore(
     combineReducers({
-        // ...reducers,
+        Auth,
         router: routerReducer,
     }),
     applyMiddleware(middleware)
