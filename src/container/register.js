@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-class Register extends React.Component {
+import Register from '../components/register';
+
+class RegisterContainer extends React.Component {
     render() {
         return(
-            <div>Hello Register</div>
+            <Register />
         )
     }
 };
@@ -15,4 +17,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps)(Register);
+export default connect(mapStateToProps)(RegisterContainer);

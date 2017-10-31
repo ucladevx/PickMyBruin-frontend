@@ -1,10 +1,11 @@
 @import "../../style/vars";
 
-.container {
+.container-register {
     width: 350px;
     min-height: 100vh;
+    padding: 20px;
 
-    text-align: center;
+    text-align: left;
 
     display: flex;
     flex-direction: column;
