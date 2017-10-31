@@ -1,5 +1,3 @@
-import 'main.scss';
-
 import React from 'react';
 import {Provider} from 'react-redux';
 import {Route, Switch, Redirect} from 'react-router-dom';
@@ -9,9 +7,12 @@ import {render} from 'react-dom';
 import {store, history} from './reducer';
 
 import Navbar from 'view/navbar';
-import Home from 'container/home';
+import Home from './components/home';
 import About from 'container/about';
+import RegisterContainer from 'container/register';
 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'main.scss';
 
 class App extends React.Component {
 	render() {
@@ -19,10 +20,9 @@ class App extends React.Component {
             <Provider store={store}>
                 <ConnectedRouter history={history}>
                     <div>
-                        <Navbar/>
                         <Switch>
                             <Route exact path="/" component={Home}/>
-                            <Route path="/about" component={About}/>
+                            <Route path="/register" component={RegisterContainer}/>
                             <Redirect to="/"/>
                         </Switch>
                     </div>

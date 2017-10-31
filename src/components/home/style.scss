@@ -1,0 +1,23 @@
+@import "../../style/vars";
+
+.container {
+    width: 350px;
+    min-height: 100vh;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        color: $main-text;
+        font-size: 2em;
+    }
+
+    .info {
+        width: 250px;
+        margin: 0 auto;
+    }
+}

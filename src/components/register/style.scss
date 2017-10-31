@@ -1,0 +1,36 @@
+@import "../../style/vars";
+
+.container-register {
+    width: 350px;
+    min-height: 100vh;
+    padding: 20px;
+
+    text-align: left;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        color: $main-text;
+        font-size: 2em;
+    }
+
+    .info {
+        width: 250px;
+        margin: 0 auto;
+    }
+    .email-color{
+        color: $primary-color;
+    }
+}
+
+.email-form {
+    display: flex;
+    flex-direction: row;
+
+    * {
+        margin: 10px;
+    }
+}

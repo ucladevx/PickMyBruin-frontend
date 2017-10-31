@@ -4,6 +4,7 @@ import {routerReducer, routerMiddleware, push} from 'react-router-redux';
 import thunk from 'redux-thunk';
 
 import { Auth } from './auth';
+import { Register, sendVerificationLink } from './register';
 
 // import reducers from './reducers';
 
@@ -14,12 +15,18 @@ const middleware = routerMiddleware(history);
 const store = createStore(
     combineReducers({
         Auth,
+        Register,
         router: routerReducer,
     }),
-    applyMiddleware(middleware)
+    applyMiddleware(middleware, thunk)
 );
 
+const Actions = {
+    registerActions: {
+        sendVerificationLink
+    }
+}
 
 export {
-    store, history,
+    store, history, Actions
 }
