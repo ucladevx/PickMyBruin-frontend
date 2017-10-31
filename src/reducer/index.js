@@ -4,6 +4,7 @@ import {routerReducer, routerMiddleware, push} from 'react-router-redux';
 import thunk from 'redux-thunk';
 
 import { Auth } from './auth';
+import { Register } from './register';
 
 // import reducers from './reducers';
 
