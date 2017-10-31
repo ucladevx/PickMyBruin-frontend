@@ -34,3 +34,25 @@
         margin: 10px;
     }
 }
+
+.container-pending {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .pending-text {
+        margin: 20px;
+    }
+
+    .pending-registration-btns {
+        display: flex;
+        flex-direction: row;
+
+        * {
+            margin: 5px;
+        }
+    }
+}

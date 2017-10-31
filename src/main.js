@@ -8,6 +8,7 @@ import {store, history} from './reducer';
 
 import Navbar from 'view/navbar';
 import Home from './components/home';
+import RegisterPendingContainer from './components/register/registerPending';
 import About from 'container/about';
 import RegisterContainer from 'container/register';
 
@@ -22,7 +23,8 @@ class App extends React.Component {
                     <div>
                         <Switch>
                             <Route exact path="/" component={Home}/>
-                            <Route path="/register" component={RegisterContainer}/>
+                            <Route exact path="/register" component={RegisterContainer}/>
+                            <Route path="/register/pending" component={RegisterPendingContainer} />
                             <Redirect to="/"/>
                         </Switch>
                     </div>

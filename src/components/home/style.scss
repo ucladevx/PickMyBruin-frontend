@@ -19,5 +19,9 @@
     .info {
         width: 250px;
         margin: 0 auto;
+
+        * {
+            margin: 10px;
+        }
     }
 }
