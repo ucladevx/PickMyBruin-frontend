@@ -21,4 +21,16 @@
         width: 250px;
         margin: 0 auto;
     }
+    .email-color{
+        color: $primary-color;
+    }
+}
+
+.email-form {
+    display: flex;
+    flex-direction: row;
+
+    * {
+        margin: 10px;
+    }
 }

@@ -9,7 +9,7 @@ import {store, history} from './reducer';
 import Navbar from 'view/navbar';
 import Home from './components/home';
 import About from 'container/about';
-import Register from 'container/register';
+import RegisterContainer from 'container/register';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'main.scss';
@@ -22,7 +22,7 @@ class App extends React.Component {
                     <div>
                         <Switch>
                             <Route exact path="/" component={Home}/>
-                            <Route path="/register" component={Register}/>
+                            <Route path="/register" component={RegisterContainer}/>
                             <Redirect to="/"/>
                         </Switch>
                     </div>
