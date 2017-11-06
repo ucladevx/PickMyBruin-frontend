@@ -43,6 +43,6 @@ module.exports = {
     contentBase: [path.join(__dirname, 'pages')],
     compress: true,
     historyApiFallback: true,
-    port: 8000,
+    port: 8080,
   },
 };

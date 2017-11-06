@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
 import { Auth } from './auth';
-import { Register, sendVerificationLink } from './register';
+import { Register, sendVerificationLink, confirmCode } from './register';
 
 // import reducers from './reducers';
 
@@ -28,7 +28,7 @@ const store = createStore(
 
 const Actions = {
     registerActions: {
-        sendVerificationLink
+        sendVerificationLink, confirmCode
     }
 }
 

@@ -1,3 +1,5 @@
+import 'whatwg-fetch';
+
 import React from 'react';
 import {Provider} from 'react-redux';
 import {Route, Switch, Redirect} from 'react-router-dom';
@@ -9,6 +11,8 @@ import {store, history} from './reducer';
 import Navbar from 'view/navbar';
 import Home from './components/home';
 import RegisterPendingContainer from './components/register/registerPending';
+import VerifyUserContainer from './container/verify';
+import CompleteRegistrationContainer from './container/completeRegistration';
 import About from 'container/about';
 import RegisterContainer from 'container/register';
 
@@ -25,6 +29,8 @@ class App extends React.Component {
                             <Route exact path="/" component={Home}/>
                             <Route exact path="/register" component={RegisterContainer}/>
                             <Route path="/register/pending" component={RegisterPendingContainer} />
+                            <Route path="/verify_user" component={VerifyUserContainer} />
+                            <Route path="/completeRegistration" component={CompleteRegistrationContainer} />
                             <Redirect to="/"/>
                         </Switch>
                     </div>

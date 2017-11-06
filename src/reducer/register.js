@@ -1,10 +1,15 @@
 import Immutable from 'immutable';
+import Config from '../config';
 
 const SEND_VERIFICATION_LINK = 'send_verification_link';
 
 const START_SEND_VERIFICATION_LINK = 'start_send_verification_link';
 const SEND_VERIFICATION_LINK_SUCCESS = 'send_verification_link_success';
 const SEND_VERIFICATION_LINK_FAILURE = 'send_verification_link_failure';
+
+const VERIFY_CODE_START = 'verify_code_start';
+const VERIFY_CODE_SUCCESS = 'verify_code_success';
+const VERIFY_CODE_FAILURE = 'verify_code_failure';
 
 /////////////
 // ACTIONS //
@@ -15,6 +20,14 @@ const startSendVerificationLink = (email) => {
         email
     }
 }
+
+const verifyCodeSuccess = profile_id => {
+    return {
+        type: VERIFY_CODE_SUCCESS,
+        profile_id
+    }
+}
+
 const sendVerificationLink = (email) => {
     return (dispatch) => {
         const fullEmail = email + '@ucla.edu';
@@ -23,6 +36,24 @@ const sendVerificationLink = (email) => {
         // Just for testing
         setTimeout(() => {
             dispatch({type: SEND_VERIFICATION_LINK_SUCCESS});
+        }, 1000);
+    }
+}
+
+
+const confirmCode = (profile_id, verification_code) => {
+    return dispatch => {
+        dispatch({type: VERIFY_CODE_START});
+
+        // fetch(Config.API_URL + `/users/${profile_id}/verify`, {
+        //     method: 'POST',
+        //     body: JSON.stringify({
+        //         code: verification_code
+        //     })
+        // })
+
+        setTimeout(() => {
+            dispatch(verifyCodeSuccess("78987"));
         }, 1000);
     }
 }
@@ -48,7 +79,13 @@ const Register = (state = defaultState, action) => {
             return state.withMutations(val => {
                 val.set('sendingEmail', false);
                 val.set('sentEmail', true);
-            })
+            });
+        }
+        case VERIFY_CODE_SUCCESS: {
+            return state.withMutations(val => {
+                val.set('registerSuccess', true);
+                val.setIn(['user', 'profile_id'], action.profile_id);
+            });
         }
         default: {
             return state;
@@ -57,5 +94,5 @@ const Register = (state = defaultState, action) => {
 }
 
 export {
-    Register, sendVerificationLink
+    Register, sendVerificationLink, confirmCode
 };
