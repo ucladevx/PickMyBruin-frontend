@@ -18,11 +18,11 @@ const startSendVerificationLink = (email) => {
 const sendVerificationLink = (email) => {
     return (dispatch) => {
         const fullEmail = email + '@ucla.edu';
-        dispatch(startSendVerificationLink(fullEmail));
+        dispatch(startSendVerificationLink(fullEmail));  //start
 
-        // Just for testing
+        // Just for testing //in between going to send things to backend 
         setTimeout(() => {
-            dispatch({type: SEND_VERIFICATION_LINK_SUCCESS});
+            dispatch({type: SEND_VERIFICATION_LINK_SUCCESS}); //end
         }, 1000);
     }
 }

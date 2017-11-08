@@ -11,6 +11,7 @@ import Home from './components/home';
 import RegisterPendingContainer from './components/register/registerPending';
 import About from 'container/about';
 import RegisterContainer from 'container/register';
+import LoginContainer from 'container/login';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'main.scss';
@@ -23,6 +24,7 @@ class App extends React.Component {
                     <div>
                         <Switch>
                             <Route exact path="/" component={Home}/>
+                            <Route exact path="/login" component={LoginContainer}/>
                             <Route exact path="/register" component={RegisterContainer}/>
                             <Route path="/register/pending" component={RegisterPendingContainer} />
                             <Redirect to="/"/>

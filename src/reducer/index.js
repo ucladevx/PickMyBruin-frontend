@@ -6,6 +6,7 @@ import { createLogger } from 'redux-logger';
 
 import { Auth } from './auth';
 import { Register, sendVerificationLink } from './register';
+import { Login, sendUsernamePassword } from './login';
 
 // import reducers from './reducers';
 
@@ -17,6 +18,7 @@ const store = createStore(
     combineReducers({
         Auth,
         Register,
+        Login,
         router: routerReducer,
     }),
     applyMiddleware(
@@ -29,6 +31,9 @@ const store = createStore(
 const Actions = {
     registerActions: {
         sendVerificationLink
+    },
+    loginActions: {
+        sendUsernamePassword //use Actions.loginActions. in login container 
     }
 }
 
