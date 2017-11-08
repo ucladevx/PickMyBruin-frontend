@@ -1,7 +1,11 @@
 import Immutable from 'immutable';
 import Config from '../config';
 
-const SEND_VERIFICATION_LINK = 'send_verification_link';
+
+////////////
+// TYPES  //
+////////////
+
 
 const START_SEND_VERIFICATION_LINK = 'start_send_verification_link';
 const SEND_VERIFICATION_LINK_SUCCESS = 'send_verification_link_success';
@@ -50,8 +54,8 @@ const confirmCode = (profile_id, verification_code) => {
         //     body: JSON.stringify({
         //         code: verification_code
         //     })
-        // })
-
+        // }).then(resp => resp.json())
+            
         setTimeout(() => {
             dispatch(verifyCodeSuccess("78987"));
         }, 1000);

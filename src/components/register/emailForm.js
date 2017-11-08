@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import { Button, Input, InputGroupAddon, InputGroup } from 'reactstrap';
 
 class EmailForm extends React.Component {
     state = {
@@ -18,8 +18,11 @@ class EmailForm extends React.Component {
         return(
             <div>
                 <div className="email-form">
-                    <input type="text" value={this.state.email} onChange={this.handleChange} placeholder="joebruin"/>
-                    <div>@ucla.edu</div>
+                    <InputGroup>
+                        <Input placeholder="email" />
+                        <InputGroupAddon>@ucla.edu</InputGroupAddon>
+                    </InputGroup>
+                    <Input type="password" name="password" id="password" placeholder="password" />
                 </div>
                 <Button color="primary" onClick={this.sendVerificationLink} block>Send Verification Link</Button>
             </div>

@@ -31,7 +31,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        sendVerificationLink: bindActionCreators(Actions.registerActions.sendVerificationLink, dispatch),
+        sendVerificationLink: () => {
+            dispatch(Actions.registerActions.sendVerificationLink);
+        },
+        
+        // bindActionCreators(Actions.registerActions.sendVerificationLink, dispatch),
         redirectToPending: () => {
             dispatch(push('/register/pending'));
         }
