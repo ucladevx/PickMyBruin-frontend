@@ -3,15 +3,17 @@ import { Button, Input, InputGroupAddon, InputGroup } from 'reactstrap';
 
 class EmailForm extends React.Component {
     state = {
-        email: ''
+        email: '',
+        password: ''
     }
 
     handleChange = e => {
-        this.setState({email: e.target.value})
+        this.setState({[e.target.name]: e.target.value})
     }
 
     sendVerificationLink = () => {
-        this.props.sendVerificationLink(this.state.email);
+        console.log('here');
+        this.props.sendVerificationLink(this.state.email, this.state.password);
     }
 
     render() {
@@ -19,7 +21,7 @@ class EmailForm extends React.Component {
             <div>
                 <div className="email-form">
                     <InputGroup>
-                        <Input placeholder="email" />
+                        <Input placeholder="email" name="email" onChange={this.handleChange}/>
                         <InputGroupAddon>@ucla.edu</InputGroupAddon>
                     </InputGroup>
                     <Input type="password" name="password" id="password" placeholder="password" />

@@ -31,8 +31,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        sendVerificationLink: () => {
-            dispatch(Actions.registerActions.sendVerificationLink);
+        sendVerificationLink: (email, password) => {
+            dispatch(Actions.registerActions.sendVerificationLink(email, password));
         },
         
         // bindActionCreators(Actions.registerActions.sendVerificationLink, dispatch),

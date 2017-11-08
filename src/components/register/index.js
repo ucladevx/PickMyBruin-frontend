@@ -4,10 +4,6 @@ import EmailForm from './emailForm';
 import Loader from '../loader';
 
 class Register extends React.Component {
-    componentWillMount() {
-
-    }
-
     componentWillReceiveProps(nextProps) {
         if (!this.props.sentEmail && nextProps.sentEmail) {
             this.props.redirectToPending();
