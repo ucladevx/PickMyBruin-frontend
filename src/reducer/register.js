@@ -33,18 +33,22 @@ const verifyCodeSuccess = profile_id => {
 }
 
 const sendVerificationLink = (email, password) => {
-    return async dispatch => {
+    return dispatch => {
         const fullEmail = email + '@ucla.edu';
         dispatch(startSendVerificationLink(fullEmail));
 
-        const response = await fetch(Config.API_URL + '/users/', {
-            method: 'POST',
-            body: JSON.stringify({
-                email,
-                password
-            })
-        })
-        const status = response.status;
+        // try {
+        //     const response = await fetch(Config.API_URL + '/users/', {
+        //         method: 'POST',
+        //         body: JSON.stringify({
+        //             email,
+        //             password
+        //         })
+        //     })
+        //     const status = response.status;
+        // } catch (error) {
+        //     // handle errors here
+        // }
 
         // Just for testing
         setTimeout(() => {
@@ -58,13 +62,14 @@ const confirmCode = (profile_id, verification_code) => {
     return dispatch => {
         dispatch({type: VERIFY_CODE_START});
 
-        fetch(Config.API_URL + `/users/${profile_id}/verify`, {
-            method: 'POST',
-            body: JSON.stringify({
-                code: verification_code
-            })
-        }).then(resp => resp.json())
+        // fetch(Config.API_URL + `/users/${profile_id}/verify`, {
+        //     method: 'POST',
+        //     body: JSON.stringify({
+        //         code: verification_code
+        //     })
+        // }).then(resp => resp.json())
             
+        // For testing
         setTimeout(() => {
             dispatch(verifyCodeSuccess("78987"));
         }, 1000);
