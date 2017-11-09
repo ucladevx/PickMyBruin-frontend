@@ -3,7 +3,7 @@ import React from 'react';
 class ProfileBody extends React.Component {
     render() {
         return(
-            <div>
+            <div className="top">
                 <h1>Wandi Liu</h1>
             </div>
         );
