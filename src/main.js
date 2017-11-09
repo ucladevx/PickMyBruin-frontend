@@ -12,9 +12,10 @@ import Navbar from 'view/navbar';
 import Home from './components/home';
 import RegisterPendingContainer from './components/register/registerPending';
 import VerifyUserContainer from './container/verify';
+import RegisterContainer from './container/register';
+import ProfileContainer from './container/profile';
 import CompleteRegistrationContainer from './container/completeRegistration';
 import About from 'container/about';
-import RegisterContainer from 'container/register';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'main.scss';
@@ -27,6 +28,7 @@ class App extends React.Component {
                     <div>
                         <Switch>
                             <Route exact path="/" component={Home}/>
+                            <Route exact path="/profile" component={ProfileContainer} />
                             <Route exact path="/register" component={RegisterContainer}/>
                             <Route path="/register/pending" component={RegisterPendingContainer} />
                             <Route path="/verify_user" component={VerifyUserContainer} />

@@ -60,4 +60,4 @@ const Profile = (state = defaultState, action) => {
     }
 }
 
-export { fetchProfile, Profile };
+export { Profile, fetchProfile, updateProfile };

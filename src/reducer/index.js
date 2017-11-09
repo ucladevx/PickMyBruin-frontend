@@ -6,6 +6,7 @@ import { createLogger } from 'redux-logger';
 
 import { Auth } from './auth';
 import { Register, sendVerificationLink, confirmCode } from './register';
+import { Profile, fetchProfile, updateProfile } from './profile';
 
 // import reducers from './reducers';
 
@@ -17,6 +18,7 @@ const store = createStore(
     combineReducers({
         Auth,
         Register,
+        Profile,
         router: routerReducer,
     }),
     applyMiddleware(
@@ -29,6 +31,9 @@ const store = createStore(
 const Actions = {
     registerActions: {
         sendVerificationLink, confirmCode
+    },
+    profileActions: {
+        fetchProfile, updateProfile
     }
 }
 

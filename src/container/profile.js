@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Profile from '../components/profile';
+
 class ProfileContainer extends React.Component {
     render() {
         return (
-            <div>
-                Profile Container
-            </div>
+            <Profile />
         )
     }
 }
