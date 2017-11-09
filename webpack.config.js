@@ -35,13 +35,11 @@ module.exports = {
     new ExtractTextPlugin('build/[name].css'),
   ],
   watchOptions: {
-    aggregateTimeout: 500,
     poll: 2000,
     ignored: /node_modules/,
   },
   devServer: {
     contentBase: [path.join(__dirname, 'pages')],
-    compress: true,
     historyApiFallback: true,
     port: 8080,
   },
