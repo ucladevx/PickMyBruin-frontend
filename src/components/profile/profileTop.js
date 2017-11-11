@@ -40,7 +40,7 @@ class ProfileTop extends React.Component {
             <div className="top">
                 <SearchBar 
                     placeholder="Search by major..."
-                    suggestions={['Computer Science', 'Linguistics']}
+                    suggestions={this.state.suggestions}
                     onChange={this.handleChange}
                     onClear={this.handleClear}
                     suggestionRenderer={this.suggestionRenderer}
