@@ -1,4 +1,7 @@
 import Immutable from 'immutable';
+import Config from '../config';
+import Storage from '../storage';
+import { replace } from 'react-router-redux';
 
 /////////////
 /// TYPES ///
@@ -17,9 +20,22 @@ const UPDATE_PROFILE_ERROR = 'update_profile_error';
 /////////////
 
 const fetchProfile = () => {
-    return dispatch => {
-        // fetch profile from backend
+    const token = Storage.get('token');
 
+    return dispatch => {
+        if (!token) {
+            // we need them to login
+            dispatch(push('/login'));
+        }
+
+        // Django will figure out which user to return from the token
+        let headers = new Headers({
+            "Authorization": `Bearer ${token}`
+        });
+        fetch(Config.API_URL + '/users/me/', {
+            method: 'GET',
+            headers
+        })
         
     }
 }
@@ -34,15 +50,25 @@ const updateProfile = () => {
 // STATE //
 ///////////
 
-const defaultState = Immutable.fromJS({
-    error: null,
-    loading: false,
-    user: {
+const defaultState = () => {
+    const token = Storage.get('token');
+    
+    return Immutable.fromJS({
+        error: null,
+        loading: false,
+        authenticated: !!token,
+        user: {
+            id: null,
+            first_name: '',
+            las_name: '',
+            email: '',
+            year: '',
+            verified: false,
+        }
+    });
+}
 
-    }
-})
-
-const Profile = (state = defaultState, action) => {
+const Profile = (state = defaultState(), action) => {
     switch (action.type) {
         case FETCH_PROFILE_START: {
             return state.withMutations(val => {
