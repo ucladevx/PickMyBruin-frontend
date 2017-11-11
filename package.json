@@ -1,7 +1,7 @@
 {
-  "name": "reactant",
+  "name": "PickMyBruin",
   "version": "0.1.0",
-  "description": "boilerplate for react",
+  "description": "DevX Fall 2017 - PickMyBruin",
   "private": true,
   "main": "index.js",
   "scripts": {
@@ -11,18 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xorkevin/reactant.git"
+    "url": "git+https://github.com/ucladevx/pickmybruin-frontend.git"
   },
-  "author": "xorkevin",
+  "author": "ramsgoli",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/xorkevin/reactant/issues"
+    "url": "https://github.com/ucladevx/pickmybruin-frontend/issues"
   },
-  "homepage": "https://github.com/xorkevin/reactant#readme",
+  "homepage": "https://github.com/ucladevx/pickmybruin-front-end#readme",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.1",
     "babel-loader": "^6.4.1",
+    "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
@@ -40,6 +41,7 @@
     "webpack-dev-server": "^2.9.3"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "bootstrap": "4.0.0-beta",
     "immutable": "^3.8.2",
     "qs": "^6.5.1",

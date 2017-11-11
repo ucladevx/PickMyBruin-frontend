@@ -33,27 +33,29 @@ const verifyCodeSuccess = profile_id => {
 }
 
 const sendVerificationLink = (email, password) => {
-    return dispatch => {
-        const fullEmail = email + '@ucla.edu';
-        dispatch(startSendVerificationLink(fullEmail));
+    return async (dispatch) => {
+        try {
+            const fullEmail = email + '@ucla.edu';
+            dispatch(startSendVerificationLink(fullEmail));
 
-        // try {
-        //     const response = await fetch(Config.API_URL + '/users/', {
-        //         method: 'POST',
-        //         body: JSON.stringify({
-        //             email,
-        //             password
-        //         })
-        //     })
-        //     const status = response.status;
-        // } catch (error) {
-        //     // handle errors here
-        // }
-
-        // Just for testing
-        setTimeout(() => {
-            dispatch({type: SEND_VERIFICATION_LINK_SUCCESS});
-        }, 1000);
+            const response = await fetch(Config.API_URL + '/users/users/', {
+                method: 'POST',
+                body: JSON.stringify({
+                    email: fullEmail,
+                    password
+                })
+            })
+            const status = await response.status;
+            if (status > 299 || status < 200) {
+                console.log('error!');
+                throw new Error("Error registering");
+            } else {
+                dispatch({type: SEND_VERIFICATION_LINK_SUCCESS});
+            }
+        } catch (error) {
+            // handle errors here
+            dispatch({type: SEND_VERIFICATION_LINK_FAILURE, message: error.message});
+        }
     }
 }
 
@@ -98,6 +100,13 @@ const Register = (state = defaultState, action) => {
                 val.set('sendingEmail', false);
                 val.set('sentEmail', true);
             });
+        }
+        case SEND_VERIFICATION_LINK_FAILURE: {
+            return state.withMutations(val => {
+                val.set('error', action.message);
+                val.set('sendingEmail', false);
+                val.set('sentEmail', false);
+            })
         }
         case VERIFY_CODE_SUCCESS: {
             return state.withMutations(val => {

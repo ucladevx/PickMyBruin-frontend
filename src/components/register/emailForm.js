@@ -12,7 +12,6 @@ class EmailForm extends React.Component {
     }
 
     sendVerificationLink = () => {
-        console.log('here');
         this.props.sendVerificationLink(this.state.email, this.state.password);
     }
 
