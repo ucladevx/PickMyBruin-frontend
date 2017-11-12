@@ -28,6 +28,7 @@ module.exports = {
       },
     ],
   },
+  devtool: 'eval-source-map',
   resolve: {
     modules: [path.resolve(__dirname, "src"), "node_modules"],
   },
