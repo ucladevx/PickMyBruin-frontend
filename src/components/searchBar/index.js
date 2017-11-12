@@ -20,18 +20,13 @@ class Search extends React.Component {
     render() {
         return (
             <MuiThemeProvider>
-                <div>
+                <div className="search-bar">
                     <AutoComplete
-                        hintText="Type anything"
+                        hintText="Search by major..."
                         dataSource={this.majors}
-                        filter={AutoComplete.caseInsensitiveFilter}
-                    />
-                    <AutoComplete
-                        hintText="Type anything"
-                        dataSource={this.state.dataSource}
-                        onUpdateInput={this.handleUpdateInput}
-                        floatingLabelText="Full width"
                         fullWidth={true}
+                        filter={AutoComplete.caseInsensitiveFilter}
+                        maxSearchResults={5}
                     />
                 </div>
             </ MuiThemeProvider>
