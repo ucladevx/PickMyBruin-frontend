@@ -1,11 +1,10 @@
 import Immutable from 'immutable';
+import { addNotification as notify } from 'reapop';
 import Config from '../config';
-
 
 ////////////
 // TYPES  //
 ////////////
-
 
 const START_SEND_VERIFICATION_LINK = 'start_send_verification_link';
 const SEND_VERIFICATION_LINK_SUCCESS = 'send_verification_link_success';
@@ -40,20 +39,24 @@ const sendVerificationLink = (email, password) => {
 
             const response = await fetch(Config.API_URL + '/users/users/', {
                 method: 'POST',
+                headers: new Headers({
+                "Content-Type": "application/json"
+                }),
                 body: JSON.stringify({
                     email: fullEmail,
                     password
                 })
-            })
+            });
+
             const status = await response.status;
             if (status > 299 || status < 200) {
-                console.log('error!');
                 throw new Error("Error registering");
             } else {
                 dispatch({type: SEND_VERIFICATION_LINK_SUCCESS});
             }
         } catch (error) {
             // handle errors here
+            dispatch(notify({title: 'Error!', status: 'error', message: 'Try again or contact us', position: 'tc'}));
             dispatch({type: SEND_VERIFICATION_LINK_FAILURE, message: error.message});
         }
     }

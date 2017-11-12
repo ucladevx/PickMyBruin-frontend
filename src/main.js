@@ -5,6 +5,8 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import {ConnectedRouter} from 'react-router-redux';
+import NotificationsSystem from 'reapop';
+import theme from 'reapop-theme-wybo';
 import {render} from 'react-dom';
 
 import {store, history} from './reducer';
@@ -27,6 +29,7 @@ class App extends React.Component {
             <Provider store={store}>
                 <ConnectedRouter history={history}>
                     <div>
+                        <NotificationsSystem theme={theme} />
                         <Switch>
                             <Route exact path="/" component={Home}/>
                             <Route exact path="/profile" component={ProfileContainer} />

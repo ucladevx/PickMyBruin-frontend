@@ -3,6 +3,7 @@ import createHistory from 'history/createBrowserHistory';
 import {routerReducer, routerMiddleware, push} from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
+import { reducer as notificationsReducer } from 'reapop';
 
 import { Auth } from './auth';
 import { Register, sendVerificationLink, confirmCode } from './register';
@@ -20,6 +21,7 @@ const store = createStore(
         Register,
         Profile,
         router: routerReducer,
+        notifications: notificationsReducer()
     }),
     applyMiddleware(
         middleware, 

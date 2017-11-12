@@ -17,7 +17,7 @@ module.exports = {
         test: /\.s?css$/,
         use: ExtractTextPlugin.extract({
           use: [
-            {loader: "css-loader", options: {minimize: true}},
+            {loader: "css-loader"},
             {loader: "sass-loader"},
           ]
         }),
@@ -33,6 +33,11 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('build/[name].css'),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'WEBPACK': JSON.stringify(process.env.WEBPACK || '')
+      }
+    })
   ],
   watchOptions: {
     poll: 2000,
