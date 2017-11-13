@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    background-color: $profile-canvas-color;
     min-height: 100vh;
 
     h1 {
@@ -24,15 +25,45 @@
         }
     }
 
-    .middle {
-        flex: 2;
-        padding: 15px;
+    .profile-detail-container {
+        flex: 4;
+
+        display: flex;
+        flex-flow: column;
+
+        .middle {
+            flex: 1;
+        }
+
+        .mentorship {
+            flex: 2;
+            padding: 10px;
+            background-color: $mentorship-off-color;
+
+            .heading {
+                display: flex;
+                flex-flow: row;
+                * {
+                    margin: 5px;
+                }
+            }
+
+            @media (min-width: 440px) {
+                flex: 0 0 50%;
+                padding: 50px;
+            }
+        }
+
+        @media (min-width: 440px) {
+            flex-flow: row;
+        }
     }
 
-    .bottom {
-        flex: 3;
-        padding: 15px;
-
-        background-color: $mentorship-off-color;
+    @media (min-width: 440px) {
+        margin: 80px 30px 0 30px;
+        border-radius: 25px 25px 0px 0px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
     }
+    
 }

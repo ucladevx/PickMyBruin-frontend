@@ -1,16 +1,19 @@
 import React from 'react';
 
 import ProfileTop from './profileTop';
-import ProfileMiddle from './profileMiddle';
-import ProfileBottom from './profileBottom';
+import General from './general';
+import Mentorship from './mentorship';
+import Search from '../searchBar';
 
 class Profile extends React.Component {
     render() {
         return(
             <div className="container-profile">
-               <ProfileTop /> 
-               <ProfileMiddle />
-               <ProfileBottom />
+                <ProfileTop /> 
+                <div className="profile-detail-container">
+                    <General />
+                    <Mentorship />
+                </div>
             </div>
         );
     }
