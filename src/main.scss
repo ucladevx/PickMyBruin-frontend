@@ -27,4 +27,4 @@ html, body, h1, h2, p {
   height: 100%;
 }
 
-[data-reactroot] { height: 100% }
+#mount > [data-reactroot] { height: 100% }
