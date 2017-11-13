@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ProfileMiddle extends React.Component {
+class General extends React.Component {
     render() {
         return(
             <div className="middle">
@@ -10,4 +10,4 @@ class ProfileMiddle extends React.Component {
     }
 }
 
-export default ProfileMiddle;
+export default General;

@@ -9,10 +9,12 @@ class Profile extends React.Component {
     render() {
         return(
             <div className="container-profile">
-                <ProfileTop /> 
-                <div className="profile-detail-container">
-                    <General />
-                    <Mentorship />
+                <div className="profile-wrapper">
+                    <ProfileTop /> 
+                    <div className="profile-detail-container">
+                        <General />
+                        <Mentorship />
+                    </div>
                 </div>
             </div>
         );
