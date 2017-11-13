@@ -9,6 +9,9 @@ class Profile extends React.Component {
     render() {
         return(
             <div className="container-profile">
+                <div className="profile-search">
+                    <Search />
+                </div>
                 <div className="profile-wrapper">
                     <ProfileTop /> 
                     <div className="profile-detail-container">
