@@ -43,6 +43,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "bootstrap": "4.0.0-beta",
+    "classnames": "^2.2.5",
     "immutable": "^3.8.2",
     "material-ui": "^0.19.4",
     "qs": "^6.5.1",

@@ -1,11 +1,5 @@
 import React from 'react';
-import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import FontIcon from 'material-ui/FontIcon';
-import Paper from 'material-ui/Paper';
-
-const searchIcon = <FontIcon className="material-icons">search</FontIcon>;
-const profileIcon = <FontIcon className="material-icons">face</FontIcon>;
+import classNames from 'classnames';
 
 
 class NavBar extends React.Component {
@@ -20,17 +14,18 @@ class NavBar extends React.Component {
     }
 
     render() {
+        const { selectedIndex } = this.state;
         return(
             <div className="navbar-container">
-                <div className="navigation-item search">
+                <div className={classNames("navigation-item", {selected: selectedIndex == 0})} onClick={() => this.navigate(0)}>
                     <i className="fa fa-search fa-lg" aria-hidden="true"></i>
                     <p>Search</p>
                 </div>
-                <div className="navigation-item profile">
+                <div className={classNames("navigation-item", {selected: selectedIndex == 1})} onClick={() => this.navigate(1)}>
                     <i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
                     <p>My Profile</p>
                 </div>
-                <div className="navigation-item requests">
+                <div className={classNames("navigation-item", {selected: selectedIndex == 2})} onClick={() => this.navigate(2)}>
                     <i className="fa fa-comment-o" aria-hidden="true"></i>
                     <p>Requests</p>
                 </div>
