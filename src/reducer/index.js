@@ -8,6 +8,7 @@ import { reducer as notificationsReducer } from 'reapop';
 import { Auth } from './auth';
 import { Register, sendVerificationLink, confirmCode } from './register';
 import { Profile, fetchProfile, updateProfile } from './profile';
+import { SearchMentors, handleSearch } from './searchMentors'
 
 // import reducers from './reducers';
 
@@ -20,6 +21,7 @@ const store = createStore(
         Auth,
         Register,
         Profile,
+        SearchMentors,
         router: routerReducer,
         notifications: notificationsReducer()
     }),
@@ -36,6 +38,9 @@ const Actions = {
     },
     profileActions: {
         fetchProfile, updateProfile
+    },
+    searchMentorsActions: {
+        handleSearch
     }
 }
 

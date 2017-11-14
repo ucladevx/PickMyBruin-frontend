@@ -24,6 +24,14 @@ const startSendVerificationLink = (email) => {
     }
 }
 
+const registerEmailSuccess = (email, profileId) => {
+    return {
+        type: SEND_VERIFICATION_LINK_SUCCESS,
+        email,
+        profileId
+    };
+}
+
 const verifyCodeSuccess = profile_id => {
     return {
         type: VERIFY_CODE_SUCCESS,
@@ -49,10 +57,12 @@ const sendVerificationLink = (email, password) => {
             });
 
             const status = await response.status;
+            const data = await response.json();
+
             if (status > 299 || status < 200) {
                 throw new Error("Error registering");
             } else {
-                dispatch({type: SEND_VERIFICATION_LINK_SUCCESS});
+                dispatch(registerEmailSuccess(data.user.email, data.id));
             }
         } catch (error) {
             // handle errors here
@@ -95,13 +105,14 @@ const Register = (state = defaultState, action) => {
         case START_SEND_VERIFICATION_LINK: {
             return state.withMutations(val => {
                 val.set('sendingEmail', true);
-                val.setIn(['user', 'email'], action.email);
             });
         }
         case SEND_VERIFICATION_LINK_SUCCESS: {
             return state.withMutations(val => {
                 val.set('sendingEmail', false);
                 val.set('sentEmail', true);
+                val.setIn(['user, email'], action.email);
+                val.setIn(['user', 'profileId'], action.profileId);
             });
         }
         case SEND_VERIFICATION_LINK_FAILURE: {

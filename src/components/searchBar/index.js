@@ -17,6 +17,10 @@ class Search extends React.Component {
         dataSource: [],
     };
 
+    onNewRequest = (searchText, dataSource, params) => {
+        this.props.handleSearch(searchText);
+    }
+
     render() {
         return (
             <MuiThemeProvider>
@@ -27,6 +31,7 @@ class Search extends React.Component {
                         fullWidth={true}
                         filter={AutoComplete.caseInsensitiveFilter}
                         maxSearchResults={5}
+                        onNewRequest={this.onNewRequest}
                     />
                 </div>
             </ MuiThemeProvider>
