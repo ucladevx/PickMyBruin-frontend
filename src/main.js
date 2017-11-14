@@ -17,6 +17,7 @@ import RegisterPendingContainer from './components/register/registerPending';
 import VerifyUserContainer from './container/verify';
 import RegisterContainer from './container/register';
 import ProfileContainer from './container/profile';
+import SearchContainer from './container/search';
 import CompleteRegistrationContainer from './container/completeRegistration';
 import About from 'container/about';
 
@@ -33,6 +34,7 @@ class App extends React.Component {
                         <Switch>
                             <Route exact path="/" component={Home}/>
                             <Route exact path="/profile" component={ProfileContainer} />
+                            <Route exact path="/search" component={SearchContainer} />
                             <Route exact path="/register" component={RegisterContainer}/>
                             <Route path="/register/pending" component={RegisterPendingContainer} />
                             <Route path="/verify_user" component={VerifyUserContainer} />

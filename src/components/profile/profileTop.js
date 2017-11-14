@@ -13,9 +13,6 @@ class ProfileTop extends React.Component {
     render() {
         return(
             <div className="top">
-                <Search 
-                    handleSearch={this.props.handleSearch}                
-                />
                 <div className="user-info">
                     <ProfilePic />
                     <h1>Wandi Liu</h1>
