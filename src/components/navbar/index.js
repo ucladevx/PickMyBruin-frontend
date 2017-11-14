@@ -1,31 +1,31 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+
 
 class NavBar extends React.Component {
 
-    state = {
-        selectedIndex: 0
-    }
-
-    navigate = idx => {
-        this.setState({selectedIndex: idx});
-        console.log(idx);
+    navigate = location => {
+        if (location != this.props.location) {
+            this.props.goTo(location);
+        }
     }
 
     render() {
-        const { selectedIndex } = this.state;
+        const { location } = this.props
         return(
             <div className="navbar-container">
-                <div className={classNames("navigation-item", {selected: selectedIndex == 0})} onClick={() => this.navigate(0)}>
+                <div className={classNames("navigation-item", {selected: location == "search"})} onClick={() => this.navigate("search")}>
                     <i className="fa fa-search fa-lg" aria-hidden="true"></i>
                     <p>Search</p>
                 </div>
-                <div className={classNames("navigation-item", {selected: selectedIndex == 1})} onClick={() => this.navigate(1)}>
+                <div className={classNames("navigation-item", {selected: location == "profile"})} onClick={() => this.navigate("profile")}>
                     <i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
                     <p>My Profile</p>
                 </div>
-                <div className={classNames("navigation-item", {selected: selectedIndex == 2})} onClick={() => this.navigate(2)}>
+                <div className={classNames("navigation-item", {selected: location == "requests"})} onClick={() => this.navigate("requests")}>
                     <i className="fa fa-comment-o" aria-hidden="true"></i>
                     <p>Requests</p>
                 </div>
@@ -34,5 +34,19 @@ class NavBar extends React.Component {
     }
 }
 
-export default NavBar;
+const mapStateToProps = state => {
+    return {
+        location: state.router.location.pathname.substr(1)
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        goTo: (location) => {
+            dispatch(push("/" + location));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
 
