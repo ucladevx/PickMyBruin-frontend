@@ -8,9 +8,20 @@
     display: flex;
     flex-flow: row;
     justify-content: center;
+    order: 10;
+
+    @media (min-width: 440px) {
+        justify-content: flex-end;
+        order: 0;
+    }
 
     .navigation-item {
         flex: 1 1 0;
+
+        @media (min-width: 440px) {
+            width: 80px;
+            flex: 0 1 auto;
+        }
 
         display: flex;
         flex-flow: column;
