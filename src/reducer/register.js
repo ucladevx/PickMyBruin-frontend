@@ -111,7 +111,7 @@ const Register = (state = defaultState, action) => {
             return state.withMutations(val => {
                 val.set('sendingEmail', false);
                 val.set('sentEmail', true);
-                val.setIn(['user, email'], action.email);
+                val.setIn(['user', 'email'], action.email);
                 val.setIn(['user', 'profileId'], action.profileId);
             });
         }
