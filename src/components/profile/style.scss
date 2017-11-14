@@ -79,6 +79,10 @@
                 h1 {
                     color: $white;
                 }
+
+                @media (min-width: 440px) {
+                    padding-left: 60px;
+                }
             }
         }
 
@@ -97,10 +101,6 @@
                     margin-bottom: 5px;
                 }
 
-                .notifications {
-                    color: $primary-color;  
-                }
-
                 .heading {
                     display: flex;
                     flex-flow: row;
@@ -111,6 +111,21 @@
                 }
 
                 .body {
+                    display: flex;
+                    flex-flow: column;
+
+                    .notifications {
+                        display: flex;
+                        flex-flow: row;
+                        justify-content: space-between;
+                    }
+
+                    .preferred-email {
+                        display: flex;
+                        flex-flow: row;
+                        justify-content: space-between;
+                    }
+
                     @media (min-width: 440px) {
                         * {
                             margin-bottom: 20px;

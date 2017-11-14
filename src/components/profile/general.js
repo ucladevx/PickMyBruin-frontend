@@ -11,8 +11,14 @@ class General extends React.Component {
                     <h1>General</h1>
                 </div>
                 <div className="body">
-                    <h2>Notifications: <span className="notifications">{notifications}</span></h2>
-                    <h2>Preferred Email: <span className="preferred-email">{preferredEmail}</span></h2>
+                    <div className="notifications">
+                        <h2>Notifications:</h2>
+                        <h2>{notifications}</h2>
+                    </div>
+                    <div className="preferred-email">
+                        <h2>Preferred Email:</h2>
+                        <h2>{preferredEmail}</h2>
+                    </div>
                 </div>
             </div>
         );
