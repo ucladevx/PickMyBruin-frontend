@@ -6,6 +6,7 @@ const START_LOGIN = 'start_login';
 const LOGIN_SUCCESS = 'login_success';
 const LOGIN_FAILURE = 'login_failure';
 
+// action!!
 const startLogin = () => {
     return {
         type: START_LOGIN
@@ -14,9 +15,11 @@ const startLogin = () => {
 
 const sendUsernamePassword = (email, password) => {
     return (dispatch) => {
+        console.log("in action creation")
         dispatch(startLogin());  //start
 
         // Just for testing //in between going to send things to backend 
+        // in between add a loader 
         setTimeout(() => {
             dispatch({type: LOGIN_SUCCESS}); //end
         }, 1000);

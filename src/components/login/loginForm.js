@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 
+// https://reactstrap.github.io/components/form/
+
 class LoginForm extends React.Component {
 
     state = {
@@ -14,6 +16,10 @@ class LoginForm extends React.Component {
         });
     }
 
+    _sendUsernamePassword = () => {
+        this.props.sendUsernamePassword(this.state.email, this.state.password);
+    }
+
     render() {
         return(
             <div>
@@ -23,7 +29,7 @@ class LoginForm extends React.Component {
                 <div className="password-login">
                     Password: <input name="password" type="text" label="password" onChange={this.handleChange} />
                 </div>
-                <Button color="primary" onClick={this.props.sendUsernamePassword} block>Login</Button>
+                <Button color="primary" onClick={this._sendUsernamePassword } block>Login</Button>
             </div>
         );
     }

@@ -8,12 +8,13 @@ import Login from '../components/login';
 
 class LoginContainer extends React.Component {
     render() {
+            console.log(this.props.loginSuccess);
         return(
             <Login
                 sendUsernamePassword={this.props.sendUsernamePassword}
                 loginSuccess={this.props.loginSuccess}
             />
-        )
+        ) 
     }
 };
 
@@ -28,11 +29,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        sendUsernamePassword: () => {
-        	dispatch(Actions.loginActions.sendUsernamePassword)
+        sendUsernamePassword: (email, password) => {
+            console.log('in dispatch');
+        	dispatch(Actions.loginActions.sendUsernamePassword(email, password));
         }
         // redirectToPending: () => {
-        //     dispatch(push('/register/pending'));      redirect to profile page
+        //     dispatch(push('/register/pending'));      
         // }
     };
 };
