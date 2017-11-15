@@ -7,8 +7,10 @@ class Search extends React.Component {
     render() {
         return(
             <div className="search-container">
-                <SearchBar />
                 <NavBar />
+                <div className="search">
+                    <SearchBar />
+                </div>
             </div>
         );
     }

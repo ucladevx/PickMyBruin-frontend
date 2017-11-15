@@ -8,7 +8,6 @@ class ProfileContainer extends React.Component {
     render() {
         return (
             <Profile 
-                handleSearch={this.props.handleSearch}
             />
         )
     }
