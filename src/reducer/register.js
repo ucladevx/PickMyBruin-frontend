@@ -24,15 +24,6 @@ const startSendVerificationLink = (email) => {
     }
 }
 
-const sendVerificationLink = (email) => {
-    return (dispatch) => {
-        const fullEmail = email + '@ucla.edu';
-        dispatch(startSendVerificationLink(fullEmail));  //start
-
-        // Just for testing //in between going to send things to backend 
-        setTimeout(() => {
-            dispatch({type: SEND_VERIFICATION_LINK_SUCCESS}); //end
-
 
 const registerEmailSuccess = (email, profileId) => {
     return {
@@ -131,7 +122,7 @@ const Register = (state = defaultState, action) => {
                 val.set('error', action.message);
                 val.set('sendingEmail', false);
                 val.set('sentEmail', false);
-            })
+            });
         }
         case VERIFY_CODE_SUCCESS: {
             return state.withMutations(val => {

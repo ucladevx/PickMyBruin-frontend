@@ -21,7 +21,7 @@ import SearchContainer from './container/search';
 import CompleteRegistrationContainer from './container/completeRegistration';
 import About from 'container/about';
 
-import RegisterContainer from 'container/register';
+// import RegisterContainer from 'container/register';
 import LoginContainer from 'container/login';
 
 

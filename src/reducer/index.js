@@ -7,7 +7,7 @@ import { reducer as notificationsReducer } from 'reapop';
 
 import { Auth } from './auth';
 
-import { Register, sendVerificationLink } from './register';
+
 import { Login, sendUsernamePassword } from './login';
 
 import { Register, sendVerificationLink, confirmCode } from './register';
@@ -47,7 +47,7 @@ const Actions = {
         sendVerificationLink
     },
     loginActions: {
-        sendUsernamePassword //use Actions.loginActions. in login container 
+        sendUsernamePassword, //use Actions.loginActions. in login container 
 
         sendVerificationLink, confirmCode
     },

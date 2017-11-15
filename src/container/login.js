@@ -7,6 +7,14 @@ import { Actions } from '../reducer';
 import Login from '../components/login';
 
 class LoginContainer extends React.Component {
+
+    componentDidMount() {
+        console.log("PROPS -- ", this.props);
+        if (this.props.loginSuccess) {
+            this.props.redirectToProfile()
+        };
+    }
+
     render() {
             console.log(this.props.loginSuccess);
         return(
@@ -16,7 +24,7 @@ class LoginContainer extends React.Component {
             />
         ) 
     }
-};
+}
 
 const mapStateToProps = state => {
     const LoginState = state.Login;
@@ -32,10 +40,10 @@ const mapDispatchToProps = dispatch => {
         sendUsernamePassword: (email, password) => {
             console.log('in dispatch');
         	dispatch(Actions.loginActions.sendUsernamePassword(email, password));
+        },
+        redirectToProfile: () => {
+            dispatch(push('/profile'));      
         }
-        // redirectToPending: () => {
-        //     dispatch(push('/register/pending'));      
-        // }
     };
 };
 
