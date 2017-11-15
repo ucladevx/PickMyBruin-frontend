@@ -1,0 +1,41 @@
+@import "../../style/vars";
+
+.navbar-container {
+    width: 100%;
+    height: 60px;
+    background-color: $white;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+
+    .navigation-item {
+        flex: 1 1 0;
+
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 100ms ease-in;
+
+        color: $primary-color;
+
+        p {
+            margin-top: 4px;
+            font-size: .7em;
+        }
+        
+        &.selected {
+            border-top: 2px solid $primary-color;
+        }
+
+        &:hover {
+            background-color: $mentorship-off-color;
+        }
+
+        &:active {
+            background-color: $white;
+        }
+    }
+    
+}

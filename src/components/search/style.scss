@@ -1,0 +1,16 @@
+@import "../../style/vars";
+
+.search-container {
+    width: 100%;
+    height: 100%;
+    background-color: $profile-canvas-color;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+
+    .navbar-container {
+        display: flex;
+        order: 10;
+    }
+}

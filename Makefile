@@ -1,13 +1,10 @@
-.RECIPEPREFIX +=
-
-
 all: build
 
 build:
 	npm run build
 
 dev:
-	npm run build-dev
+	WEBPACK=1 NODE_ENV=development npm run build-dev
 
 gen: build
 	mkdir -p public

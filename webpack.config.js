@@ -17,7 +17,7 @@ module.exports = {
         test: /\.s?css$/,
         use: ExtractTextPlugin.extract({
           use: [
-            {loader: "css-loader", options: {minimize: true}},
+            {loader: "css-loader"},
             {loader: "sass-loader"},
           ]
         }),
@@ -28,21 +28,25 @@ module.exports = {
       },
     ],
   },
+  devtool: 'eval-source-map',
   resolve: {
     modules: [path.resolve(__dirname, "src"), "node_modules"],
   },
   plugins: [
     new ExtractTextPlugin('build/[name].css'),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'WEBPACK': JSON.stringify(process.env.WEBPACK || '')
+      }
+    })
   ],
   watchOptions: {
-    aggregateTimeout: 500,
     poll: 2000,
     ignored: /node_modules/,
   },
   devServer: {
     contentBase: [path.join(__dirname, 'pages')],
-    compress: true,
     historyApiFallback: true,
-    port: 8000,
+    port: 8080,
   },
 };

@@ -15,6 +15,7 @@ class RegisterContainer extends React.Component {
                 sendVerificationLink={this.props.sendVerificationLink}
                 redirectToPending={this.props.redirectToPending}
                 email={this.props.email}
+                error={this.props.error}
             />
         )
     }
@@ -25,13 +26,18 @@ const mapStateToProps = state => {
     return {
         sendingEmail: RegisterState.get('sendingEmail'),
         email: RegisterState.getIn(['user', 'email'], ''),
-        sentEmail: RegisterState.get('sentEmail')
+        sentEmail: RegisterState.get('sentEmail'),
+        error: RegisterState.get('error')
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        sendVerificationLink: bindActionCreators(Actions.registerActions.sendVerificationLink, dispatch),
+        sendVerificationLink: (email, password) => {
+            dispatch(Actions.registerActions.sendVerificationLink(email, password));
+        },
+        
+        // bindActionCreators(Actions.registerActions.sendVerificationLink, dispatch),
         redirectToPending: () => {
             dispatch(push('/register/pending'));
         }
