@@ -4,9 +4,6 @@ import {push} from 'react-router-redux';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-import Config from 'config';
-
-
 class Home extends React.Component {
     render(){
         return(
@@ -22,20 +19,4 @@ class Home extends React.Component {
     }
 }
 
-const mapStateToProps = (state)=>{
-    return {
-        urlPath: state.router.location.pathname,
-    };
-};
-
-const mapDispatchToProps = (dispatch)=>{
-    return {
-        signUp: () => {
-            dispatch(push('/register'))
-        }
-    };
-};
-
-
-Home = connect(mapStateToProps, mapDispatchToProps)(Home);
 export default Home

@@ -11,15 +11,13 @@ import {render} from 'react-dom';
 
 import {store, history} from './reducer';
 
-import Navbar from 'view/navbar';
-import Home from './components/home';
-import RegisterPendingContainer from './components/register/registerPending';
+import HomeContainer from './container/home';
+import RegisterPendingContainer from './components/pages/register/registerPending';
 import VerifyUserContainer from './container/verify';
 import RegisterContainer from './container/register';
 import ProfileContainer from './container/profile';
 import SearchContainer from './container/search';
 import CompleteRegistrationContainer from './container/completeRegistration';
-import About from 'container/about';
 
 // import RegisterContainer from 'container/register';
 import LoginContainer from 'container/login';
@@ -37,10 +35,8 @@ class App extends React.Component {
                     <div>
                         <NotificationsSystem theme={theme} />
                         <Switch>
-                            <Route exact path="/" component={Home}/>
-
                             <Route exact path="/login" component={LoginContainer}/>
-
+                            <Route exact path="/" component={HomeContainer}/>
                             <Route exact path="/profile" component={ProfileContainer} />
                             <Route exact path="/search" component={SearchContainer} />
 

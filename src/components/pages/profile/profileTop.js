@@ -1,7 +1,6 @@
 import React from 'react';
-import majors from '../../majors.json';
 
-import Search from '../searchBar';
+import Search from '../../searchBar';
 import ProfilePic from './profilePicture';
 
 class ProfileTop extends React.Component {

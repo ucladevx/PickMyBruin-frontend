@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {push} from 'react-router-redux';
 
 import { Actions } from '../reducer';
-import Register from '../components/register';
+import Register from '../components/pages/register';
 
 class RegisterContainer extends React.Component {
     render() {

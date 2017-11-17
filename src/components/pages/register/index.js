@@ -1,7 +1,7 @@
 import React from 'react';
 import EmailForm from './emailForm';
 
-import Loader from '../loader';
+import Loader from '../../loader';
 
 class Register extends React.Component {
     componentWillReceiveProps(nextProps) {
