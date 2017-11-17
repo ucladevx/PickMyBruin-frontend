@@ -6,7 +6,6 @@ import ProfilePic from './profilePicture';
 class ProfileTop extends React.Component {
     constructor(props) {
         super(props);
-        this.words = majors;
     }
 
     render() {
