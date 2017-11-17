@@ -11,8 +11,7 @@ import {render} from 'react-dom';
 
 import {store, history} from './reducer';
 
-import Navbar from 'view/navbar';
-import Home from './components/home';
+import HomeContainer from './container/home';
 import RegisterPendingContainer from './components/register/registerPending';
 import VerifyUserContainer from './container/verify';
 import RegisterContainer from './container/register';
@@ -32,7 +31,7 @@ class App extends React.Component {
                     <div>
                         <NotificationsSystem theme={theme} />
                         <Switch>
-                            <Route exact path="/" component={Home}/>
+                            <Route exact path="/" component={HomeContainer}/>
                             <Route exact path="/profile" component={ProfileContainer} />
                             <Route exact path="/search" component={SearchContainer} />
                             <Route exact path="/register" component={RegisterContainer}/>
