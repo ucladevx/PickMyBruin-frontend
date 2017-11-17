@@ -42,7 +42,6 @@ const verifyCodeSuccess = profile_id => {
 const sendVerificationLink = (email, password) => {
     return async (dispatch) => {
         try {
-            console.log(password);
             const fullEmail = email + '@ucla.edu';
             dispatch(startSendVerificationLink(fullEmail));
 
