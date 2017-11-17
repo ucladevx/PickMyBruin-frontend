@@ -7,7 +7,7 @@ class General extends React.Component {
         return(
             <div className="general">
                 <div className="heading">
-                    <i className="fa fa-cog fa-lg" aria-hidden="true"></i>
+                    <i className="fa fa-cog fa-2x" aria-hidden="true"></i>
                     <h1>General</h1>
                 </div>
                 <div className="body">

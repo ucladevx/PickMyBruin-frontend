@@ -43,6 +43,7 @@ const verifyCodeSuccess = profile_id => {
 const sendVerificationLink = (email, password) => {
     return async (dispatch) => {
         try {
+            console.log(password);
             const fullEmail = email + '@ucla.edu';
             dispatch(startSendVerificationLink(fullEmail));
 
@@ -61,13 +62,13 @@ const sendVerificationLink = (email, password) => {
             const data = await response.json();
 
             if (status > 299 || status < 200) {
-                throw new Error("Error registering");
+                throw new Error(data.error);
             } else {
                 dispatch(registerEmailSuccess(data.user.email, data.id));
             }
         } catch (error) {
             // handle errors here
-            dispatch(notify({title: 'Error!', status: 'error', message: 'Try again or contact us', position: 'tc'}));
+            dispatch(notify({title: 'Error!', status: 'error', message: error.message, position: 'tc'}));
             dispatch({type: SEND_VERIFICATION_LINK_FAILURE, message: error.message});
         }
     }
@@ -75,21 +76,28 @@ const sendVerificationLink = (email, password) => {
 
 
 const confirmCode = (profile_id, verification_code) => {
-    return dispatch => {
-        dispatch({type: VERIFY_CODE_START});
+    return async dispatch => {
+        try {
+            dispatch({type: VERIFY_CODE_START});
 
-        // fetch(Config.API_URL + `/users/${profile_id}/verify`, {
-        //     method: 'POST',
-        //     body: JSON.stringify({
-        //         code: verification_code
-        //     })
-        // }).then(resp => resp.json())
-            
-        // For testing
-        setTimeout(() => {
-            dispatch(verifyCodeSuccess("78987"));
+            const response = await fetch(Config.API_URL + `/users/${profile_id}/verify`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    code: verification_code
+                })
+            })
 
-        }, 1000);
+            const status = await response.status;
+            const data = await response.json();
+
+            if (status > 299 || status < 200) {
+                throw new Error(data.error);
+            } else {
+
+            }
+        } catch (error) {
+
+        }
     }
 }
 

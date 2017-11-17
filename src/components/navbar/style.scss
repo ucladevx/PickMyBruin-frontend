@@ -8,9 +8,27 @@
     display: flex;
     flex-flow: row;
     justify-content: center;
+    order: 10;
+
+    @media (min-width: 440px) {
+        justify-content: flex-end;
+        order: 0;
+    }
+
+    .searchbar {
+        display: none;
+
+        @media (min-width: 440px) {
+        }
+    }
 
     .navigation-item {
         flex: 1 1 0;
+
+        @media (min-width: 440px) {
+            width: 100px;
+            flex: 0 1 auto;
+        }
 
         display: flex;
         flex-flow: column;
@@ -27,6 +45,12 @@
         
         &.selected {
             border-top: 2px solid $primary-color;
+            border-bottom: none;
+
+            @media (min-width: 440px) {
+                border-top: none;
+                border-bottom: 2px solid $primary-color;
+            }
         }
 
         &:hover {

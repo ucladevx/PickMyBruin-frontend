@@ -12,14 +12,6 @@
     align-items: stretch; /* align items in Cross Axis */
     align-content: stretch; /* Extra space in Cross Axis */
 
-    .navbar-container {
-        order: 10;
-
-        @media (min-width: 440px) {
-            order: 0;
-        }
-    }
-
     .profile-search {
         display: none;
 
@@ -81,12 +73,13 @@
                 }
                 
                 h1 {
+                    margin-left: 10px;
                     color: $white;
                     font-size: 1.5em;
                 }
 
                 @media (min-width: 440px) {
-                    padding-left: 60px;
+                    padding-left: 30px;
                 }
             }
         }
@@ -103,13 +96,17 @@
                 padding: 20px;
 
                 * {
-                    margin-bottom: 5px;
+                    margin-bottom: 8px;
                 }
 
                 .heading {
                     display: flex;
                     flex-flow: row;
                     margin-top: 50px;
+
+                    h1 {
+                        font-size: 1.7em
+                    }
                     * {
                         margin: 0 5px 10px 0;
                     }
@@ -133,7 +130,7 @@
 
                     @media (min-width: 440px) {
                         * {
-                            margin-bottom: 20px;
+                            margin-bottom: 15px;
                         }
                     }
                 }
@@ -157,8 +154,31 @@
                     }
                 }
 
-                .mentorship-status {
-                    color: $primary-color;
+                .body {
+                    display: flex;
+                    flex-flow: column;
+
+                    * {
+                        margin-bottom: 8px;
+                    }
+
+                    .mentorship-status {
+                        display: flex;
+                        flex-flow: row;
+                        justify-content: space-between;
+                    }
+
+                    .major {
+                        display: flex;
+                        flex-flow: row;
+                        justify-content: space-between;
+                    }
+
+                    .classes-taken {
+                        display: flex;
+                        flex-flow: row;
+                        justify-content: space-between;
+                    }
                 }
 
                 @media (min-width: 440px) {

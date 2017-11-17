@@ -4,6 +4,8 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
+import SearchBar from '../searchBar';
+
 
 class NavBar extends React.Component {
 

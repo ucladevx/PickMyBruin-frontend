@@ -7,6 +7,11 @@ import majors from '../../majors';
 /**
  * The input is used to create the `dataSource`, so the input always matches three entries.
  */
+
+const styles = {
+    borderColor: "#007bff"
+}
+
 class Search extends React.Component {
     constructor(props) {
         super(props);
@@ -32,6 +37,8 @@ class Search extends React.Component {
                         filter={AutoComplete.caseInsensitiveFilter}
                         maxSearchResults={5}
                         onNewRequest={this.onNewRequest}
+                        underlineFocusStyle={styles}
+                        ref='searchInputField'
                     />
                 </div>
             </ MuiThemeProvider>

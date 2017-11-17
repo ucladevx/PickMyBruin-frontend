@@ -9,8 +9,13 @@
     flex-flow: column;
     justify-content: space-between;
 
-    .navbar-container {
-        display: flex;
-        order: 10;
+    @media (min-width: 440px) {
+        justify-content: flex-start;
+    }
+
+    .search {
+        @media (min-width: 440px) {
+            order: 0;
+        }
     }
 }
