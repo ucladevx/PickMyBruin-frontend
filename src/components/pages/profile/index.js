@@ -4,7 +4,7 @@ import ProfileTop from './profileTop';
 import General from './general';
 import Mentorship from './mentorship';
 
-import NavBar from '../navbar';
+import NavBar from '../../navbar';
 
 class Profile extends React.Component {
     componentDidMount() {

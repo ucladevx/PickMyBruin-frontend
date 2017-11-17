@@ -1,10 +1,12 @@
 @import "./style/vars";
-@import "./components/home/style";
-@import "./components/register/style";
+
+@import "./components/pages/home/style";
+@import "./components/pages/register/style";
+@import "./components/pages/completeRegistration/style";
+@import "./components/pages/profile/style";
+@import "./components/pages/search/style";
+
 @import "./components/loader/style";
-@import "./components/completeRegistration/style";
-@import "./components/profile/style";
-@import "./components/search/style";
 @import "./components/searchBar/style";
 @import "./components/navbar/style";
 

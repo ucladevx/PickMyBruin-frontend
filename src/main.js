@@ -12,13 +12,12 @@ import {render} from 'react-dom';
 import {store, history} from './reducer';
 
 import HomeContainer from './container/home';
-import RegisterPendingContainer from './components/register/registerPending';
+import RegisterPendingContainer from './components/pages/register/registerPending';
 import VerifyUserContainer from './container/verify';
 import RegisterContainer from './container/register';
 import ProfileContainer from './container/profile';
 import SearchContainer from './container/search';
 import CompleteRegistrationContainer from './container/completeRegistration';
-import About from 'container/about';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'main.scss';

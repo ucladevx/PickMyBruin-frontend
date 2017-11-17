@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CompleteRegistration from '../components/completeRegistration';
+import CompleteRegistration from '../components/pages/completeRegistration';
 
 class CompleteRegistrationContainer extends React.Component {
     render() {
