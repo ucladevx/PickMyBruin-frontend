@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button } from 'reactstrap';
-import { Field, reduxForm } from 'redux-form'
+import { Button, Input, InputGroupAddon, InputGroup } from 'reactstrap';
 
 // https://reactstrap.github.io/components/form/
 
@@ -20,22 +19,18 @@ class LoginForm extends React.Component {
     _sendUsernamePassword = () => {
         this.props.sendUsernamePassword(this.state.email, this.state.password);
     }
-
+ 
     render() {
         return(
             <div>
-                <div className="email-login">
-                    Email: <input name="email" type="text" onChange={this.handleChange} label="email"/>
+                <div className="login-form">                    
+                    <Input type="text" placeholder="email" name="email" onChange={this.handleChange}/>    
+                    <Input type="password" name="password" id="password" placeholder="password" onChange={this.handleChange} />
                 </div>
-                <div className="password-login">
-                    Password: <input name="password" type="password" label="password" onChange={this.handleChange} />
-                </div>
-                <Button color="primary" onClick={this._sendUsernamePassword } block>Login</Button>
+                <Button color="primary" onClick={this._sendUsernamePassword} block>Login</Button>
             </div>
         );
-    
-    } 
+    }
 }
-
 
 export default LoginForm;

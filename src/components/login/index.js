@@ -1,19 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import LoginForm from './loginForm';
+
 
 class Login extends React.Component {
 
     render() {
 
         return(
-            <div className="container-login">
-            	<h1>Hello! Login here!!</h1>
-            	<LoginForm
-            		sendUsernamePassword={this.props.sendUsernamePassword}
-            	/>
+            <div className="container-login">                
+                <div className="container-loginform">
+                    Create an account <Link className="register-color" to="/register">here</Link> if you do not have one
+                    <LoginForm sendUsernamePassword={this.props.sendUsernamePassword}/> 
+                </div>
+                
             </div>
         )
     }
 };
 
 export default Login;
+
+// <Link className="btn btn-primary" to="/login"> Login </Link>
+
+//                 <div className="container-loginform">
+//                     Create an account <span className="register-color">here</span> if you do not have one
+//                     <LoginForm sendUsernamePassword={this.props.sendUsernamePassword}/> 
+//                 </div>

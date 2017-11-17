@@ -1,8 +1,10 @@
 import Immutable from 'immutable';
-import Config from '../config';
 var formurlencoded = require('form-urlencoded');
-import Storage from '../storage';
 import {push} from "react-router-redux"
+
+import Config from '../config';
+import Storage from '../storage';
+
 
 // create function that sends username and password
 
@@ -57,7 +59,7 @@ const sendUsernamePassword = (email, password) => {
                     client_secret: Config.CLIENT_SECRET
                 })
             });
-            console.log('here');
+            
 
             const status = await response.status;
             const data = await response.json();
