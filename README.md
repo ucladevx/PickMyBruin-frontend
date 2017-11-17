@@ -5,13 +5,14 @@ built with:
 * Webpack
 * scss
 
-#### confirm webpack and react setup
+## setup (development)
 
-- `make dev` will start a webpack-dev-server
-- navigate to `localhost:8000` and the page should have a background with a value of `#000000` and there should be links to `/` and `/about`
+- clone the repository and `cd` in
+- `npm install` or `yarn` to install node modules
+- `make dev` to launch webpack-dev-server
+    - visit `localhost:8080`
 
+## run inside a docker container
 
-#### confirm redux setup
-
-- clicking the `Print` button on the page `/` should print `Hello World!` to the console
-- the current path should be visible next to `Path: `
+- `make build_image` to build the latest bundle inside a baked image
+- `make run` to start nginx inside of a docker container
