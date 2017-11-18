@@ -1,6 +1,7 @@
 import Immutable from 'immutable';
-var formurlencoded = require('form-urlencoded');
-import {push} from "react-router-redux"
+import formurlencoded from "form-urlencoded";
+import {push} from "react-router-redux";
+import { addNotification as notify } from 'reapop';
 
 import Config from '../config';
 import Storage from '../storage';
@@ -25,20 +26,12 @@ const loginSuccess = () => {
     }
 }
 
-// const sendUsernamePassword = (email, password) => {
-//     return (dispatch) => {
-//         console.log("in action creation")
-//         dispatch(startLogin());  //start
+const loginFailure = () => {
+    return {
+        type: LOGIN_FAILURE
+    }
+}
 
-//         // Just for testing //in between going to send things to backend 
-//         // in between add a loader 
-//         setTimeout(() => {
-//             dispatch({type: LOGIN_SUCCESS}); //end
-//         }, 1000);
-//     }
-// }
-
-// 
 const sendUsernamePassword = (email, password) => {
     return async (dispatch) => {
         try {
@@ -65,19 +58,18 @@ const sendUsernamePassword = (email, password) => {
             const data = await response.json();
             
             Storage.set("token", data.access_token)  
-            dispatch(loginSuccess()) 
+            // dispatch(loginSuccess()) 
 
-        //     if (status > 299 || status < 200) {
-        //         throw new Error("Error login");
-        //     } else {
-        //         dispatch(registerEmailSuccess(data.user.email, data.id));
-        //     }
+            if (status > 299 || status < 200) {
+                throw new Error("Error login");
+            } else {
+                dispatch(loginSuccess());
+            }
         } catch (error) {
             console.log(error);
-
             // handle errors here
-            // dispatch(notify({title: 'Error!', status: 'error', message: 'Try again or contact us', position: 'tc'}));
-            // dispatch({type: SEND_VERIFICATION_LINK_FAILURE, message: error.message});
+            dispatch(notify({title: 'Error!', status: 'error', message: 'There was an error logging in', position: 'tc'}));
+            dispatch(loginFailure());
         }
     }
 }
@@ -100,7 +92,14 @@ const Login = (state = defaultState, action) => {
             return state.withMutations(val => {
                 val.set('loginSuccess', true);
                 val.set('loading', false);
-                val.set('error',null)
+                val.set('error',null);
+            })
+        }
+        case LOGIN_FAILURE: {
+            return state.withMutations(val => {
+                val.set('loginSuccess',false);
+                val.set('loading', false);
+                val.set('error', true);
             })
         }
         default: {

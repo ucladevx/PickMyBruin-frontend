@@ -9,7 +9,7 @@ import Login from '../components/login';
 class LoginContainer extends React.Component {
 
     componentDidUpdate(prevProps,prevState){
-        if (prevProps.loginSuccess !==this.props.loginSuccess){
+        if (!prevProps.loginSuccess && this.props.loginSuccess && !this.props.error){
             this.props.redirectToProfile()
         };
     }
@@ -17,12 +17,10 @@ class LoginContainer extends React.Component {
     render() {
         return(
             <Login
-                sendUsernamePassword={this.props.sendUsernamePassword}
-                loginSuccess={this.props.loginSuccess}
+                sendUsernamePassword={this.props.sendUsernamePassword} // what is this for?
+                loginSuccess={this.props.loginSuccess} // why do you need this here?
             />
         ) 
-        
-
     }
 }
 
