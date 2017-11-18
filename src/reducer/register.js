@@ -24,6 +24,7 @@ const startSendVerificationLink = (email) => {
     }
 }
 
+
 const registerEmailSuccess = (email, profileId) => {
     return {
         type: SEND_VERIFICATION_LINK_SUCCESS,
@@ -128,7 +129,7 @@ const Register = (state = defaultState, action) => {
                 val.set('error', action.message);
                 val.set('sendingEmail', false);
                 val.set('sentEmail', false);
-            })
+            });
         }
         case VERIFY_CODE_SUCCESS: {
             return state.withMutations(val => {

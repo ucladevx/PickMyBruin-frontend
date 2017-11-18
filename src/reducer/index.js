@@ -6,9 +6,14 @@ import { createLogger } from 'redux-logger';
 import { reducer as notificationsReducer } from 'reapop';
 
 import { Auth } from './auth';
+
+
+import { Login, sendUsernamePassword } from './login';
+
 import { Register, sendVerificationLink, confirmCode } from './register';
 import { Profile, fetchProfile, updateProfile } from './profile';
 import { SearchMentors, handleSearch } from './searchMentors'
+
 
 // import reducers from './reducers';
 
@@ -20,8 +25,12 @@ const store = createStore(
     combineReducers({
         Auth,
         Register,
+
+        Login,
+
         Profile,
         SearchMentors,
+
         router: routerReducer,
         notifications: notificationsReducer()
     }),
@@ -34,6 +43,12 @@ const store = createStore(
 
 const Actions = {
     registerActions: {
+
+        sendVerificationLink
+    },
+    loginActions: {
+        sendUsernamePassword, //use Actions.loginActions. in login container 
+
         sendVerificationLink, confirmCode
     },
     profileActions: {
@@ -41,6 +56,7 @@ const Actions = {
     },
     searchMentorsActions: {
         handleSearch
+
     }
 }
 

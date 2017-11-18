@@ -19,6 +19,11 @@ import ProfileContainer from './container/profile';
 import SearchContainer from './container/search';
 import CompleteRegistrationContainer from './container/completeRegistration';
 
+// import RegisterContainer from 'container/register';
+import LoginContainer from 'container/login';
+
+
+
 import 'bootstrap/dist/css/bootstrap.css';
 import 'main.scss';
 
@@ -30,9 +35,11 @@ class App extends React.Component {
                     <div>
                         <NotificationsSystem theme={theme} />
                         <Switch>
+                            <Route exact path="/login" component={LoginContainer}/>
                             <Route exact path="/" component={HomeContainer}/>
                             <Route exact path="/profile" component={ProfileContainer} />
                             <Route exact path="/search" component={SearchContainer} />
+
                             <Route exact path="/register" component={RegisterContainer}/>
                             <Route path="/register/pending" component={RegisterPendingContainer} />
                             <Route path="/verify_user" component={VerifyUserContainer} />
