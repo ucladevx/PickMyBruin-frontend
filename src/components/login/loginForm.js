@@ -1,8 +1,6 @@
 import React from 'react';
 import { Button, Input, InputGroupAddon, InputGroup } from 'reactstrap';
 
-// https://reactstrap.github.io/components/form/
-
 class LoginForm extends React.Component {
 
     state = {

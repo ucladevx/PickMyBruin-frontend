@@ -2,12 +2,8 @@ import Immutable from 'immutable';
 import formurlencoded from "form-urlencoded";
 import {push} from "react-router-redux";
 import { addNotification as notify } from 'reapop';
-
 import Config from '../config';
 import Storage from '../storage';
-
-
-// create function that sends username and password
 
 const START_LOGIN = 'start_login';
 const LOGIN_SUCCESS = 'login_success';
@@ -35,8 +31,6 @@ const loginFailure = () => {
 const sendUsernamePassword = (email, password) => {
     return async (dispatch) => {
         try {
-            const fullEmail = email;
-            const fullPassword = password
             dispatch(startLogin());
 
             const response = await fetch(Config.API_URL + '/o/token/', {
@@ -45,35 +39,30 @@ const sendUsernamePassword = (email, password) => {
                 "Content-Type": "application/x-www-form-urlencoded"
                 }),
                 body: formurlencoded({
-                    username: fullEmail,
-                    password: fullPassword,
+                    username: email,
+                    password: password,
                     grant_type: "password",
                     client_id: "web",
                     client_secret: Config.CLIENT_SECRET
                 })
             });
             
-
             const status = await response.status;
             const data = await response.json();
             
-            Storage.set("token", data.access_token)  
-            // dispatch(loginSuccess()) 
-
             if (status > 299 || status < 200) {
                 throw new Error("Error login");
             } else {
+                Storage.set("token", data.access_token)
                 dispatch(loginSuccess());
             }
         } catch (error) {
-            console.log(error);
             // handle errors here
             dispatch(notify({title: 'Error!', status: 'error', message: 'There was an error logging in', position: 'tc'}));
             dispatch(loginFailure());
         }
     }
 }
-// 
 
 const defaultState = Immutable.fromJS({
     loginSuccess: false,
