@@ -1,4 +1,4 @@
-import Immutable from 'immutable';
+import Immutable, { List } from 'immutable';
 import Config from '../config';
 import Storage from '../storage';
 
@@ -16,6 +16,47 @@ const SEARCH_MAJOR_ERROR = 'search_major_finish';
 // ACTIONS //
 /////////////
 
+const dummyMentors = Immutable.fromJS([
+    {
+        name: "Mary Smith",
+        major: "Linguistics and Computer Science",
+        year: 4,
+        bio: "I love Linguistics and Computer Science because it gave me the blah blah blah"
+    },
+    {
+        name: "Mark Song",
+        major: "Linguistics and Computer Science",
+        year: 2,
+        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
+              me"
+
+    },
+    {
+        name: "Mark Song",
+        major: "Linguistics and Computer Science",
+        year: 2,
+        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
+              me"
+
+    },
+    {
+        name: "Mark Song",
+        major: "Linguistics and Computer Science",
+        year: 2,
+        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
+              me"
+
+    },
+    {
+        name: "Mark Song",
+        major: "Linguistics and Computer Science",
+        year: 2,
+        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
+              me"
+
+    },
+])
+
 const searchMajorsSuccess = (mentors) => {
     return {
         type: SEARCH_MAJOR_SUCCESS,
@@ -25,12 +66,11 @@ const searchMajorsSuccess = (mentors) => {
 
 const handleSearch = (searchTerm) => {
     return dispatch => {
-        console.log(searchTerm);
         dispatch({type: SEARCH_MAJOR_START, major: searchTerm});
 
         setTimeout(() => {
-            dispatch(searchMajorsSuccess(['Wandi', 'Helen']));
-        }, 1000);
+            dispatch(searchMajorsSuccess(dummyMentors));
+        }, 1);
     };
 }
 
@@ -43,7 +83,7 @@ const defaultState = Immutable.fromJS({
     error: null,
     loading: false,
     searchedMajor: '',
-    mentors: []  
+    mentors: dummyMentors
 });
 
 const SearchMentors = (state=defaultState, action) => {
@@ -64,7 +104,7 @@ const SearchMentors = (state=defaultState, action) => {
             return state.withMutations(val => {
                 val.set('loading', false);
                 val.set('error', null);
-                val.set('mentors', action.mentors);
+                val.setIn(['mentors'], action.mentors);
             })
         }
         default: {
