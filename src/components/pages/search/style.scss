@@ -21,6 +21,7 @@
 
     .search-results-container {
         flex-grow: 2;
+        flex-shrink: 100;
         display: flex;
         flex-flow: column;
         overflow: scroll;
