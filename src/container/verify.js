@@ -13,7 +13,7 @@ class VerifyUserContainer extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.registerSuccess) {
+        if (nextProps.verifiedEmail) {
             this.props.finishRegistration();
         }   
     }
@@ -28,7 +28,7 @@ class VerifyUserContainer extends React.Component {
 const mapStateToProps = state => {
     const Register = state.Register;
     return {
-        registerSuccess: Register.get('registerSuccess')
+        verifiedEmail: Register.get('verifiedEmail')
     };
 }
 
