@@ -7,9 +7,6 @@ import Mentorship from './mentorship';
 import NavBar from '../../navbar';
 
 class Profile extends React.Component {
-    componentDidMount() {
-        console.log(this.props);
-    }
     render() {
         return(
             <div className="container-profile">

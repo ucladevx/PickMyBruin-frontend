@@ -9,7 +9,7 @@ import { Actions } from '../reducer';
 class VerifyUserContainer extends React.Component {
     componentWillMount() {
         const query = parse(this.props.location.search.substr(1));
-        this.props.confirmVerificationCode(query.user_id, query.code);
+        this.props.confirmVerificationCode(query.code);
     }
 
     componentWillReceiveProps(nextProps) {
