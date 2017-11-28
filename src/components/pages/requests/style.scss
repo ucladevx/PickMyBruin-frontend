@@ -1,0 +1,41 @@
+@import "../../../style/vars";
+
+.requests-container {
+    width: 100%;
+    height: 100%;
+    background-color: $profile-canvas-color;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+
+    @media (min-width: 440px) {
+        justify-content: flex-start;
+    }
+
+
+    .requests-results-container {
+        flex-grow: 2;
+        display: flex;
+        flex-flow: column;
+        overflow: scroll;
+
+        .request-result-container {
+            flex-flow: column;
+            width: 95%;
+            margin: 10px;
+            padding: 20px;
+            background-color: $white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+
+            h1 {
+                font-size: 1em;
+            }
+            h2 {
+                font-size: 1em;
+                color: #aeb2b9;
+            }
+        }
+    }
+}

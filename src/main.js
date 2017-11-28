@@ -15,7 +15,8 @@ import RegisterContainer from './container/register';
 import ProfileContainer from './container/profile';
 import SearchContainer from './container/search';
 import CompleteRegistrationContainer from './container/completeRegistration';
-import LoginContainer from 'container/login';
+import LoginContainer from './container/login';
+import RequestsContainer from './container/requests';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'main.scss';
 
@@ -32,6 +33,7 @@ class App extends React.Component {
                             <Route exact path="/profile" component={ProfileContainer} />
                             <Route exact path="/search" component={SearchContainer} />
                             <Route exact path="/register" component={RegisterContainer}/>
+                            <Route exact path="/requests" component={RequestsContainer}/>
                             <Route path="/register/pending" component={RegisterPendingContainer} />
                             <Route path="/verify_user" component={VerifyUserContainer} />
                             <Route path="/completeRegistration" component={CompleteRegistrationContainer} />
