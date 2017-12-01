@@ -27,20 +27,42 @@
         overflow: scroll;
 
         .search-result-container {
-            flex-flow: column;
+            display: flex;
+            flex-flow: row;
+            justify-content: flex-end;
+
             width: 95%;
+            min-height: 200px;
+            max-height: 200px;
             margin: 10px;
             padding: 20px;
             background-color: $white;
             border-radius: 15px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 
-            h1 {
-                font-size: 1em;
-            }
-            h2 {
-                font-size: 1em;
-                color: $mentor-bio-color;
+            .mentor-details {
+                display: flex;
+                flex-flow: column;
+                width: 60%;
+
+                .mentor-name {
+                    font-size: 1.3em;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    margin-bottom: 5px;
+                }
+                .mentor-major {
+                    color: $mentor-bio-color;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    margin-bottom: 5px;
+                }
+                .mentor-bio > p {
+                    // target the p inside our shaved-off mentor bio
+                    line-height: 1.3;
+                }
             }
         }
     }

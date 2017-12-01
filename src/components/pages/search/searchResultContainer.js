@@ -1,12 +1,17 @@
 import React from 'react';
+import Shave from 'react-shave';
 
 class SearchResultContainer extends React.Component {
     render() {
         return (
             <div className="search-result-container">
-                <h1>{this.props.mentor.get('name')}</h1>
-                <h2>{this.props.mentor.get('major')}</h2>
-                <p>{this.props.mentor.get('bio')}</p>
+                <div className="mentor-details">
+                    <div className="mentor-name">{this.props.mentor.get('name')}</div>
+                    <div className="mentor-major">{this.props.mentor.get('major')}</div>
+                    <div className="mentor-bio">
+                        <Shave maxHeight={100}>{this.props.mentor.get('bio')}</Shave>
+                    </div>
+                </div>
             </div>
         );
     }

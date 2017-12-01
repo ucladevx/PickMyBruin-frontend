@@ -9,7 +9,7 @@ import Storage from '../storage';
 
 const SEARCH_MAJOR_START = 'search_major_start';
 const SEARCH_MAJOR_SUCCESS = 'search_major_success';
-const SEARCH_MAJOR_ERROR = 'search_major_finish';
+const SEARCH_MAJOR_ERROR = 'search_major_error';
 
 
 /////////////
@@ -18,12 +18,24 @@ const SEARCH_MAJOR_ERROR = 'search_major_finish';
 
 const dummyMentors = Immutable.fromJS([
     {
+        id: 1,
         name: "Mary Smith",
-        major: "Linguistics and Computer Science",
+        major: "Linguistics ",
         year: 4,
         bio: "I love Linguistics and Computer Science because it gave me the blah blah blah"
     },
     {
+        id: 2,
+        name: "Mark Song",
+        major: "Linguistics and Computer Science and Linguistics and super long",
+        year: 2,
+        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
+              me how to be the best person that i can and I absolutely love it here i want to marry jean block he is the greates \
+              human being alive!!"
+
+    },
+    {
+        id: 3,
         name: "Mark Song",
         major: "Linguistics and Computer Science",
         year: 2,
@@ -32,6 +44,7 @@ const dummyMentors = Immutable.fromJS([
 
     },
     {
+        id: 4,
         name: "Mark Song",
         major: "Linguistics and Computer Science",
         year: 2,
@@ -40,14 +53,7 @@ const dummyMentors = Immutable.fromJS([
 
     },
     {
-        name: "Mark Song",
-        major: "Linguistics and Computer Science",
-        year: 2,
-        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
-              me"
-
-    },
-    {
+        id: 5,
         name: "Mark Song",
         major: "Linguistics and Computer Science",
         year: 2,

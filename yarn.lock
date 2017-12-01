@@ -4642,6 +4642,10 @@ react-router@^4.2.0:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
+react-shave@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-shave/-/react-shave-1.0.1.tgz#a7ef7162e11cd42a52778c93e57a3398df60ce8e"
+
 react-transition-group@^1.1.2, react-transition-group@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.2.1.tgz#e11f72b257f921b213229a774df46612346c7ca6"

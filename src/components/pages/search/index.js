@@ -16,7 +16,10 @@ class Search extends React.Component {
                 </div>
                 <div className="search-results-container">
                     {this.props.mentors.map(mentor => 
-                        <SearchResultContainer mentor={mentor} />
+                        <SearchResultContainer 
+                            key={mentor.get('id')} 
+                            mentor={mentor} 
+                        />
                     )}
                 </div>
                 <NavBar />
