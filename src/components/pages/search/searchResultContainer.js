@@ -2,11 +2,14 @@ import React from 'react';
 import Shave from 'react-shave';
 import { Link } from 'react-router-dom';
 
+import ProfilePic from '../profile/profilePicture';
+
 class SearchResultContainer extends React.Component {
     render() {
         return (
             <Link to={`/mentors/${this.props.mentor.get('id')}`}>
             <div className="search-result-container">
+                <ProfilePic />
                 <div className="mentor-details">
                     <div className="mentor-name">{this.props.mentor.get('name')}</div>
                     <div className="mentor-major">{this.props.mentor.get('major')}</div>

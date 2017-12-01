@@ -36,7 +36,7 @@ const dummyMentors = Immutable.fromJS([
     },
     {
         id: 3,
-        name: "Mark Song",
+        name: "Gene Block",
         major: "Linguistics and Computer Science",
         year: 2,
         bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
@@ -45,7 +45,7 @@ const dummyMentors = Immutable.fromJS([
     },
     {
         id: 4,
-        name: "Mark Song",
+        name: "Ram Goli",
         major: "Linguistics and Computer Science",
         year: 2,
         bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
@@ -54,7 +54,7 @@ const dummyMentors = Immutable.fromJS([
     },
     {
         id: 5,
-        name: "Mark Song",
+        name: "David Chen",
         major: "Linguistics and Computer Science",
         year: 2,
         bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
@@ -89,7 +89,7 @@ const defaultState = Immutable.fromJS({
     error: null,
     loading: false,
     searchedMajor: '',
-    mentors: dummyMentors
+    mentors: null
 });
 
 const SearchMentors = (state=defaultState, action) => {
