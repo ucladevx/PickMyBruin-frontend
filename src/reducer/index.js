@@ -36,7 +36,7 @@ const store = createStore(
 
 const Actions = {
     registerActions: {
-        sendVerificationLink, completeRegistration
+        sendVerificationLink, completeRegistration, confirmCode
     },
     loginActions: {
         sendUsernamePassword, //use Actions.loginActions. in login container 

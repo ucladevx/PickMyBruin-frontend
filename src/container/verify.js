@@ -34,7 +34,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        confirmVerificationCode: bindActionCreators(Actions.registerActions.confirmCode, dispatch),
+        confirmVerificationCode: code => {
+            dispatch(Actions.registerActions.confirmCode(code))
+        },
         finishRegistration: () => {
             dispatch(replace('/completeRegistration'));
         }

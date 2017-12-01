@@ -88,10 +88,11 @@ const confirmCode = (verification_code) => {
             const response = await fetch(Config.API_URL + '/verify/', {
                 method: 'POST',
                 headers: new Headers({
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${Storage.get("token")}`
                 }),
                 body: JSON.stringify({
-                    code: verification_code
+                    verification_code
                 })
             })
 
@@ -101,10 +102,10 @@ const confirmCode = (verification_code) => {
             if (status > 299 || status < 200) {
                 throw new Error(data.error);
             } else {
-
+                dispatch(verifyCodeSuccess(data.user_id));
             }
         } catch (error) {
-
+            dispatch(notify({title: "Error!", status: 'error', message: "Please try again... :(", position: 'tc'}));
         }
     }
 }
@@ -124,10 +125,8 @@ const completeRegistration = (fullName, year) => {
                 }),
                 body: JSON.stringify({
                     year,
-                    user: {
-                        first_name: nameArray.slice(0, nameArray.length-1).join(' '),
-                        last_name: nameArray[nameArray.length-1]  // last name
-                    }
+                    first_name: nameArray.slice(0, nameArray.length-1).join(' '),
+                    last_name: nameArray[nameArray.length-1]  // last name
                 })
             })
 
@@ -137,7 +136,7 @@ const completeRegistration = (fullName, year) => {
             if (status > 299 || status < 200) {
                 throw new Error(data.error);
             } else {
-                setProfile(data);
+                dispatch(setProfile(data));
                 dispatch({type: COMPLETE_REGISTRATION_SUCCESS});
             }
         } catch (error) {

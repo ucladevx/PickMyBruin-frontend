@@ -66,13 +66,11 @@ const defaultState = () => {
         error: null,
         loading: false,
         authenticated: !!token,
-        profile: {
+        user: {
             id: null,
-            user: {
-                first_name: '',
-                last_name: '',
-                email: '',
-            },
+            first_name: '',
+            last_name: '',
+            email: '',
             year: '',
             verified: false,
         }
@@ -93,7 +91,7 @@ const Profile = (state = defaultState(), action) => {
         }
         case SET_PROFILE: {
             return state.withMutations(val => {
-                val.set('profile', fromJS(action.profile))
+                val.set('user', fromJS(action.profile))
             })
         }
         default: {

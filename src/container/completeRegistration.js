@@ -6,8 +6,8 @@ import { Actions } from '../reducer';
 import CompleteRegistration from '../components/pages/completeRegistration';
 
 class CompleteRegistrationContainer extends React.Component {
-    componentDidMount() {
-        if (this.props.registerSuccess) {
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.registerSuccess) {
             this.props.redirectToProfile();
         }
     }
