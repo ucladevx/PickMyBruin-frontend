@@ -2,6 +2,7 @@ import Immutable, { fromJS } from 'immutable';
 import Config from '../config';
 import Storage from '../storage';
 import { replace } from 'react-router-redux';
+import { addNotification as notify } from 'reapop';
 
 /////////////
 /// TYPES ///
@@ -22,23 +23,34 @@ const SET_PROFILE = 'set_profile';
 /////////////
 
 const fetchProfile = () => {
-    const token = Storage.get('token');
+    return async dispatch => {
+        try {
+            const token = Storage.get('token');
+            if (!token) {
+                // we need them to login
+                dispatch(push('/login'));
+            }
 
-    return dispatch => {
-        if (!token) {
-            // we need them to login
-            dispatch(push('/login'));
+            // Django will figure out which user to return from the token
+            const response = await fetch(Config.API_URL + '/users/me/', {
+                method: 'GET',
+                headers: new Headers({
+                    "Authorization": `Bearer ${token}`
+                })
+            })
+
+            const status = await response.status;
+            const data = await response.json();
+            
+            if (status > 299 || status < 200) {
+                throw new Error("Error fetching profile");
+            } else {
+                dispatch(setProfile(data))
+            }
+        } catch (error) {
+            // handle errors here
+            dispatch(notify({title: 'Error!', status: 'error', message: 'There was an error fetching your profile', position: 'tc'}));
         }
-
-        // Django will figure out which user to return from the token
-        let headers = new Headers({
-            "Authorization": `Bearer ${token}`
-        });
-        fetch(Config.API_URL + '/users/me/', {
-            method: 'GET',
-            headers
-        })
-        
     }
 }
 

@@ -53,7 +53,7 @@ const sendVerificationLink = (email, password) => {
             const fullEmail = email + '@ucla.edu';
             dispatch(startSendVerificationLink(fullEmail));
 
-            const response = await fetch(Config.API_URL + '/users/users/', {
+            const response = await fetch(Config.API_URL + '/users/', {
                 method: 'POST',
                 headers: new Headers({
                     "Content-Type": "application/json",
@@ -70,7 +70,7 @@ const sendVerificationLink = (email, password) => {
             if (status > 299 || status < 200) {
                 throw new Error(data.error);
             } else {
-                dispatch(registerEmailSuccess(data.user.email, data.id));
+                dispatch(registerEmailSuccess(data.email, data.id));
             }
         } catch (error) {
             // handle errors here
