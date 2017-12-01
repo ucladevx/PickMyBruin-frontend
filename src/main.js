@@ -8,6 +8,7 @@ import NotificationsSystem from 'reapop';
 import theme from 'reapop-theme-wybo';
 import {render} from 'react-dom';
 import {store, history} from './reducer';
+
 import HomeContainer from './container/home';
 import RegisterPendingContainer from './components/pages/register/registerPending';
 import VerifyUserContainer from './container/verify';
@@ -15,9 +16,13 @@ import RegisterContainer from './container/register';
 import ProfileContainer from './container/profile';
 import SearchContainer from './container/search';
 import CompleteRegistrationContainer from './container/completeRegistration';
-import LoginContainer from 'container/login';
+import LoginContainer from './container/login';
+
+import Authentication from './container/requireAuthentication';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'main.scss';
+
+
 
 class App extends React.Component {
 	render() {
@@ -27,14 +32,16 @@ class App extends React.Component {
                     <div>
                         <NotificationsSystem theme={theme} />
                         <Switch>
-                            <Route exact path="/login" component={LoginContainer}/>
                             <Route exact path="/" component={HomeContainer}/>
-                            <Route exact path="/profile" component={ProfileContainer} />
-                            <Route exact path="/search" component={SearchContainer} />
+                            <Route exact path="/login" component={LoginContainer}/>
                             <Route exact path="/register" component={RegisterContainer}/>
                             <Route path="/register/pending" component={RegisterPendingContainer} />
-                            <Route path="/verify_user" component={VerifyUserContainer} />
-                            <Route path="/completeRegistration" component={CompleteRegistrationContainer} />
+
+                            <Route path="/completeRegistration" component={Authentication(CompleteRegistrationContainer)} />
+                            <Route exact path="/profile" component={Authentication(ProfileContainer)} />
+                            <Route exact path="/search" component={Authentication(SearchContainer)} />
+                            <Route path="/verify" component={Authentication(VerifyUserContainer)} />
+
                             <Redirect to="/"/>
                         </Switch>
                     </div>

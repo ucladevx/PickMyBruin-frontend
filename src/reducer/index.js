@@ -6,7 +6,7 @@ import { createLogger } from 'redux-logger';
 import { reducer as notificationsReducer } from 'reapop';
 import { Auth } from './auth';
 import { Login, sendUsernamePassword } from './login';
-import { Register, sendVerificationLink, confirmCode } from './register';
+import { Register, sendVerificationLink, confirmCode, completeRegistration } from './register';
 import { Profile, fetchProfile, updateProfile } from './profile';
 import { SearchMentors, handleSearch } from './searchMentors'
 
@@ -32,7 +32,7 @@ const store = createStore(
 
 const Actions = {
     registerActions: {
-        sendVerificationLink
+        sendVerificationLink, completeRegistration
     },
     loginActions: {
         sendUsernamePassword, //use Actions.loginActions. in login container 

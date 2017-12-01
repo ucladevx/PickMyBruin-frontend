@@ -64,13 +64,17 @@ const sendUsernamePassword = (email, password) => {
     }
 }
 
-const defaultState = Immutable.fromJS({
-    loginSuccess: false,
-    loading: false,
-    error: null
-});
+const defaultState = () => {
+    const token = Storage.get('token');
 
-const Login = (state = defaultState, action) => {
+    return Immutable.fromJS({
+        loginSuccess: token,
+        loading: false,
+        error: null
+    });
+}
+
+const Login = (state = defaultState(), action) => {
     switch (action.type) {
         case START_LOGIN: {
             return state.withMutations(val => {
