@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { goBack } from 'react-router-redux';
 import { Actions } from '../reducer';
-import Login from '../components/login';
+import Login from '../components/pages/login';
 
 class LoginContainer extends React.Component {
 

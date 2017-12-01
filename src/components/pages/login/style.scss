@@ -1,4 +1,4 @@
-@import "../../style/vars";
+@import "../../../style/vars";
 
 .container-login {
     min-height: 100vh;
@@ -20,6 +20,7 @@
         width: 250px;
         margin: 0 auto;
     }
+
     .register-color{
         color: $primary-color;
     }
