@@ -2,17 +2,35 @@ import React from 'react';
 import { Button } from 'reactstrap';
 
 import ProfileTop from '../profile/profileTop';
+import NewRequestField from './newRequestField';
 
 class MentorDetail extends React.Component {
+    state = {
+        renderTextField: false
+    }
 
-    onRequest = () => {
-        alert("dope!");
+    handleOpen = () => {
+        this.setState({
+            renderTextField: true
+        });
+    }
+
+    handleClose = () => {
+        this.setState({
+            renderTextField: false
+        });
     }
 
     render() {
         const {
             mentor
         } = this.props;
+
+        const {
+            renderTextField
+        } = this.state;
+
+        let key = 1;
 
         return (
             <div className="mentor-detail-container">
@@ -22,7 +40,7 @@ class MentorDetail extends React.Component {
                 <div className="mentor-details">
                     <div className="about-major-heading heading">
                         <i className="fa fa-user-o" aria-hidden="true"></i>
-                        <h1>About My Major</h1>
+                        <h1>About Me</h1>
                     </div>
                     <div className="about-major">
                         <p>{mentor.get('bio')}</p>
@@ -33,10 +51,21 @@ class MentorDetail extends React.Component {
                     </div>
                     <div className="my-classes">
                         <ul>
-                            {mentor.get('classes').map(className => <li>{className}</li>)}
+                            {
+                                mentor.get('classes').map(className => {
+                                    key += 1;
+                                    return <li key={key}>{className}</li>
+                                })
+                            }
                         </ul>
                     </div>
-                    <Button color="primary" onClick={this.onRequest}>Request</Button>
+                    {renderTextField && 
+                        <NewRequestField 
+                            mentorName={mentor.get('name')}
+                            cancel={this.handleClose}
+                        />
+                    }
+                    {!renderTextField && <Button color="primary" onClick={this.handleOpen}>Request</Button>}
                 </div>
             </div>
         );
