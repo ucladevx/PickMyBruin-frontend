@@ -1,0 +1,39 @@
+@import '../../../style/vars';
+
+.mentor-detail-container {
+
+    .mentor-details {
+        display: flex;
+        flex-flow: column;
+        padding: 20px;
+
+        .heading {
+            display: flex;
+            flex-flow: row;
+            color: $subheading-text-color;
+
+            * {
+                margin-right: 5px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+        }
+
+        .about-major-heading {
+            margin-top: 50px;
+        }
+
+        .my-classes-heading {
+            margin-top: 10px;
+        }
+
+        .about-major {
+            margin-top: 5px;
+            p {
+                line-height: 1.5;
+            }
+        }
+    }
+}

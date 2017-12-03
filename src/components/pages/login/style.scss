@@ -1,0 +1,58 @@
+@import "../../../style/vars";
+
+.container-login {
+    min-height: 100vh;
+    padding: 20px;
+    margin: 0 auto;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        color: $main-text;
+        font-size: 2em;
+    }
+
+    .info {
+        width: 250px;
+        margin: 0 auto;
+    }
+
+    .register-color{
+        color: $primary-color;
+    }
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+// .container-pending {
+//     min-height: 100vh;
+
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+
+//     .pending-text {
+//         margin: 20px;
+//     }
+
+//     .pending-registration-btns {
+//         display: flex;
+//         flex-direction: row;
+
+//         * {
+//             margin: 5px;
+//         }
+//     }
+// }

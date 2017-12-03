@@ -1,5 +1,8 @@
 import Immutable from 'immutable';
 import { addNotification as notify } from 'reapop';
+
+import { setProfile } from './profile';
+import Storage from '../storage';
 import Config from '../config';
 
 ////////////
@@ -13,6 +16,10 @@ const SEND_VERIFICATION_LINK_FAILURE = 'send_verification_link_failure';
 const VERIFY_CODE_START = 'verify_code_start';
 const VERIFY_CODE_SUCCESS = 'verify_code_success';
 const VERIFY_CODE_FAILURE = 'verify_code_failure';
+
+const COMPLETE_REGISTRATION_START = 'complete_registration_start';
+const COMPLETE_REGISTRATION_SUCCESS = 'complete_registration_success';
+const COMPLETE_REGISTRATION_FAILURE = 'complete_registration_failure';
 
 /////////////
 // ACTIONS //
@@ -46,10 +53,10 @@ const sendVerificationLink = (email, password) => {
             const fullEmail = email + '@ucla.edu';
             dispatch(startSendVerificationLink(fullEmail));
 
-            const response = await fetch(Config.API_URL + '/users/users/', {
+            const response = await fetch(Config.API_URL + '/users/', {
                 method: 'POST',
                 headers: new Headers({
-                "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 }),
                 body: JSON.stringify({
                     email: fullEmail,
@@ -63,7 +70,7 @@ const sendVerificationLink = (email, password) => {
             if (status > 299 || status < 200) {
                 throw new Error(data.error);
             } else {
-                dispatch(registerEmailSuccess(data.user.email, data.id));
+                dispatch(registerEmailSuccess(data.email, data.id));
             }
         } catch (error) {
             // handle errors here
@@ -73,16 +80,19 @@ const sendVerificationLink = (email, password) => {
     }
 }
 
-
-const confirmCode = (profile_id, verification_code) => {
+const confirmCode = (verification_code) => {
     return async dispatch => {
         try {
             dispatch({type: VERIFY_CODE_START});
 
-            const response = await fetch(Config.API_URL + `/users/${profile_id}/verify`, {
+            const response = await fetch(Config.API_URL + '/verify/', {
                 method: 'POST',
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${Storage.get("token")}`
+                }),
                 body: JSON.stringify({
-                    code: verification_code
+                    verification_code
                 })
             })
 
@@ -92,10 +102,45 @@ const confirmCode = (profile_id, verification_code) => {
             if (status > 299 || status < 200) {
                 throw new Error(data.error);
             } else {
-
+                dispatch(verifyCodeSuccess(data.user_id));
             }
         } catch (error) {
+            dispatch(notify({title: "Error!", status: 'error', message: "Please try again... :(", position: 'tc'}));
+        }
+    }
+}
 
+const completeRegistration = (fullName, year) => {
+    return async dispatch => {
+        try {
+            dispatch({type: COMPLETE_REGISTRATION_START});
+
+            const nameArray = fullName.split(' ');
+
+            const response = await fetch(Config.API_URL + '/users/me/', {
+                method: 'PATCH',
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${Storage.get("token")}`
+                }),
+                body: JSON.stringify({
+                    year,
+                    first_name: nameArray.slice(0, nameArray.length-1).join(' '),
+                    last_name: nameArray[nameArray.length-1]  // last name
+                })
+            })
+
+            const status = await response.status;
+            const data = await response.json();
+
+            if (status > 299 || status < 200) {
+                throw new Error(data.error);
+            } else {
+                dispatch(setProfile(data));
+                dispatch({type: COMPLETE_REGISTRATION_SUCCESS});
+            }
+        } catch (error) {
+            dispatch(notify({title: 'Error!', status: 'error', message: error.message, position: 'tc'})); 
         }
     }
 }
@@ -133,9 +178,14 @@ const Register = (state = defaultState, action) => {
         }
         case VERIFY_CODE_SUCCESS: {
             return state.withMutations(val => {
-                val.set('registerSuccess', true);
+                val.set('verifiedEmail', true);
                 val.setIn(['user', 'profile_id'], action.profile_id);
             });
+        }
+        case COMPLETE_REGISTRATION_SUCCESS: {
+            return state.withMutations(val => {
+                val.set('registerSuccess', true);
+            })
         }
         default: {
             return state;
@@ -144,5 +194,5 @@ const Register = (state = defaultState, action) => {
 }
 
 export {
-    Register, sendVerificationLink, confirmCode
+    Register, sendVerificationLink, confirmCode, completeRegistration
 };

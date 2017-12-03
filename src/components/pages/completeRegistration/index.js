@@ -1,71 +1,92 @@
 import React from 'react';
-import { Form, Input, Button, FormGroup, Label } from 'reactstrap'
+
+import TextField from 'material-ui/TextField';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import RaisedButton from 'material-ui/RaisedButton';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+
+const styles = {
+    radioStyles: {
+        fill: "#007bff"
+    },
+    fieldStyles: {
+        borderColor: "#007bff"
+    },
+    buttonStyles: {
+        color: "#007bff",
+        labelColor: "#FFFFFF"
+    }
+}
 
 class CompleteRegistration extends React.Component {
-    state = {
-        fullName: '',
-        password: '',
-        verifyPassword: ''
-    }
 
+    state = {
+        fullName: null,
+        year: null
+    }
     onClick = e => {
         e.preventDefault();
-        console.log(e);
-        console.log(this.state)
+        this.props.completeRegistration(this.state.fullName, this.state.year);
     }
     
-    onChange = e => {
+    onChange = (e, v) => {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: v
         });
     }
 
     render() {
+        const buttonDisabled = !!this.state.fullName && !!this.state.year;
         return(
             <div className="container-complete-registration">
-                <h1 className="welcome">Thanks for verifying! Let's get you set up.</h1>
-                <Form>
-                    <FormGroup>
-                        <Label for="fullName">Full Name</Label>
-                        <Input type="text" name="fullName" id="fullName" onChange={this.onChange}/>
-                    </FormGroup>
-                    <Label>Year</Label>
-                    <FormGroup onChange={this.onChange}>
-                        <FormGroup check>
-                            <Label check>
-                                <Input type="radio" name="freshman" />{' '}
-                                Freshman
-                            </Label>
-                        </FormGroup>
-                        <FormGroup check>
-                            <Label check>
-                                <Input type="radio" name="sophomore" />{' '}
-                                Sophomore
-                            </Label>
-                        </FormGroup>
-                        <FormGroup check>
-                            <Label check>
-                                <Input type="radio" name="junior" />{' '}
-                                Junior
-                            </Label>
-                        </FormGroup>
-                        <FormGroup check>
-                            <Label check>
-                                <Input type="radio" name="senior" />{' '}
-                                Senior
-                            </Label>
-                        </FormGroup>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="password">Password</Label>
-                        <Input type="password" name="password" id="password" onChange={this.onChange}/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="verifyPassword">Verify Password</Label>
-                        <Input type="password" name="verifyPassword" id="verifyPassword" onChange={this.onChange}/>
-                    </FormGroup>
-                    <Button color="primary" onClick={this.props.onClick} block>Continue</Button>
-                </Form>
+                <div className="verify-card">
+                    <h1 className="welcome">Thanks for verifying! Let's get you set up.</h1>
+                    <MuiThemeProvider>
+                        <TextField
+                            name="fullName"
+                            hintText="Full name"
+                            value={this.state.fullName}
+                            onChange={this.onChange}
+                            fullWidth={true}
+                            underlineFocusStyle={styles.fieldStyles}
+                        />
+                    </MuiThemeProvider>
+                    <MuiThemeProvider>
+                        <RadioButtonGroup name="year" onChange={this.onChange}>
+                            <RadioButton
+                                value="freshman"
+                                label="freshman"
+                                iconStyle={styles.radioStyles}
+                            />
+                            <RadioButton
+                                value="sophomore"
+                                label="sophomore"
+                                iconStyle={styles.radioStyles}
+                            />
+                            <RadioButton
+                                value="junior"
+                                label="junior"
+                                iconStyle={styles.radioStyles}
+                            />
+                            <RadioButton
+                                value="senior"
+                                label="senior"
+                                iconStyle={styles.radioStyles}
+                            />
+                        </RadioButtonGroup>
+                    </MuiThemeProvider>
+                    <MuiThemeProvider>
+                        <RaisedButton 
+                            label="Continue"
+                            fullWidth={true} 
+                            disabled={!buttonDisabled} 
+                            backgroundColor={styles.buttonStyles.color} 
+                            labelColor={styles.buttonStyles.labelColor} 
+                            onClick={this.onClick} 
+                        />
+                    </MuiThemeProvider>
+                </div>
             </div>
         );
     }

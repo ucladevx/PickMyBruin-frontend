@@ -6,7 +6,8 @@
 @import "./components/pages/profile/style";
 @import "./components/pages/search/style";
 @import "./components/pages/requests/style";
-
+@import "./components/pages/mentorDetail/style";
+@import "./components/pages/login/style";
 @import "./components/loader/style";
 @import "./components/searchBar/style";
 @import "./components/navbar/style";
@@ -26,7 +27,11 @@ html, body {
 html, body, h1, h2, p {
   margin: 0px;
   padding: 0px;
+  line-height: 1.15;
 }
+
+// Global override of the blue link color
+a { color: inherit; } 
 
 #mount {
   width: 100%;

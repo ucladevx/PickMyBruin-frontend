@@ -14,11 +14,15 @@ import VerifyUserContainer from './container/verify';
 import RegisterContainer from './container/register';
 import ProfileContainer from './container/profile';
 import SearchContainer from './container/search';
+import MentorDetailContainer from './container/mentorDetail';
 import CompleteRegistrationContainer from './container/completeRegistration';
 import LoginContainer from './container/login';
 import RequestsContainer from './container/requests';
+import Authentication from './container/requireAuthentication';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'main.scss';
+
+
 
 class App extends React.Component {
 	render() {
@@ -30,13 +34,21 @@ class App extends React.Component {
                         <Switch>
                             <Route exact path="/login" component={LoginContainer}/>
                             <Route exact path="/" component={HomeContainer}/>
-                            <Route exact path="/profile" component={ProfileContainer} />
-                            <Route exact path="/search" component={SearchContainer} />
+                            <Route exact path="/login" component={LoginContainer}/>
                             <Route exact path="/register" component={RegisterContainer}/>
                             <Route exact path="/requests" component={RequestsContainer}/>
                             <Route path="/register/pending" component={RegisterPendingContainer} />
-                            <Route path="/verify_user" component={VerifyUserContainer} />
+
+                            <Route path="/completeRegistration" component={Authentication(CompleteRegistrationContainer)} />
+                            <Route exact path="/profile" component={Authentication(ProfileContainer)} />
+                            <Route exact path="/search" component={Authentication(SearchContainer)} />
+                            <Route path="/verify" component={Authentication(VerifyUserContainer)} />
+
                             <Route path="/completeRegistration" component={CompleteRegistrationContainer} />
+
+                            <Route exact path="/profile" component={ProfileContainer} />
+                            <Route exact path="/search" component={SearchContainer} />
+                            <Route exact path="/mentors/:mentorId" component={MentorDetailContainer} />
                             <Redirect to="/"/>
                         </Switch>
                     </div>

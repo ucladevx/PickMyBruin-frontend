@@ -9,11 +9,11 @@ import { Actions } from '../reducer';
 class VerifyUserContainer extends React.Component {
     componentWillMount() {
         const query = parse(this.props.location.search.substr(1));
-        this.props.confirmVerificationCode(query.user_id, query.code);
+        this.props.confirmVerificationCode(query.code);
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.registerSuccess) {
+        if (nextProps.verifiedEmail) {
             this.props.finishRegistration();
         }   
     }
@@ -28,13 +28,15 @@ class VerifyUserContainer extends React.Component {
 const mapStateToProps = state => {
     const Register = state.Register;
     return {
-        registerSuccess: Register.get('registerSuccess')
+        verifiedEmail: Register.get('verifiedEmail')
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        confirmVerificationCode: bindActionCreators(Actions.registerActions.confirmCode, dispatch),
+        confirmVerificationCode: code => {
+            dispatch(Actions.registerActions.confirmCode(code))
+        },
         finishRegistration: () => {
             dispatch(replace('/completeRegistration'));
         }

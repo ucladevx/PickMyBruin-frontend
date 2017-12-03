@@ -7,13 +7,9 @@ import Mentorship from './mentorship';
 import NavBar from '../../navbar';
 
 class Profile extends React.Component {
-    componentDidMount() {
-        console.log(this.props);
-    }
     render() {
         return(
             <div className="container-profile">
-                <NavBar />
                 <div className="profile-wrapper">
                     <ProfileTop 
                         handleSearch={this.props.handleSearch}
@@ -23,6 +19,7 @@ class Profile extends React.Component {
                         <Mentorship />
                     </div>
                 </div>
+                <NavBar />
             </div>
         );
     }

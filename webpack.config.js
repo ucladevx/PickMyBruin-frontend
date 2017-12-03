@@ -1,3 +1,5 @@
+// Development config
+
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -5,7 +7,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    main: 'main.js',
+    main: [
+      'main.js'
+    ],
   },
   output: {
     path: path.resolve(__dirname, 'lib'),
@@ -33,12 +37,13 @@ module.exports = {
     modules: [path.resolve(__dirname, "src"), "node_modules"],
   },
   plugins: [
-    new ExtractTextPlugin('build/[name].css'),
     new webpack.DefinePlugin({
       'process.env': {
-        'WEBPACK': JSON.stringify(process.env.WEBPACK || '')
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+        'WEBPACK': JSON.stringify(process.env.WEBPACK || ''),
       }
-    })
+    }),
+    new ExtractTextPlugin('build/[name].css'),
   ],
   watchOptions: {
     poll: 2000,

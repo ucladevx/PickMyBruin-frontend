@@ -23,6 +23,10 @@
     .email-color{
         color: $primary-color;
     }
+
+    a {
+        color: $primary-color;
+    }
 }
 
 .email-form {
@@ -32,6 +36,13 @@
     margin-top: 20px;
     margin-bottom: 20px;
 
+}
+
+.container-emailform {
+    p {
+        margin-top: 20px;
+        text-align: center;
+    }
 }
 
 .container-pending {

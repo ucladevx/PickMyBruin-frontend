@@ -1,18 +1,24 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import createHistory from 'history/createBrowserHistory';
-import {routerReducer, routerMiddleware, push} from 'react-router-redux';
+import {routerReducer, routerMiddleware, push, routerActions} from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { reducer as notificationsReducer } from 'reapop';
 import { Auth } from './auth';
 import { Login, sendUsernamePassword } from './login';
-import { Register, sendVerificationLink, confirmCode } from './register';
+import { Register, sendVerificationLink, confirmCode, completeRegistration } from './register';
 import { Profile, fetchProfile, updateProfile } from './profile';
-import { SearchMentors, handleSearch } from './searchMentors';
+import { SearchMentors, handleSearch } from './searchMentors'
 import { Requests, handleRequests } from './requests'
 
 const history = createHistory();
-const middleware = routerMiddleware(history);
+const reactRouterMiddleware = routerMiddleware(history);
+
+let middleware = [reactRouterMiddleware, thunk];
+
+if (process.env.NODE_ENV !== 'production') {
+    middleware = [...middleware, createLogger({collapsed: true})];
+}
 
 const store = createStore(
     combineReducers({
@@ -26,15 +32,13 @@ const store = createStore(
         notifications: notificationsReducer()
     }),
     applyMiddleware(
-        middleware, 
-        thunk,
-        createLogger({collapsed: true})
+        ...middleware
     )
 );
 
 const Actions = {
     registerActions: {
-        sendVerificationLink
+        sendVerificationLink, completeRegistration, confirmCode
     },
     loginActions: {
         sendUsernamePassword, //use Actions.loginActions. in login container 

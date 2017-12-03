@@ -4,16 +4,13 @@ import Search from '../../searchBar';
 import ProfilePic from './profilePicture';
 
 class ProfileTop extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
+        const name = this.props.name || "Joe Bruin";
         return(
             <div className="top">
                 <div className="user-info">
                     <ProfilePic />
-                    <h1>Wandi Liu</h1>
+                    <h1>{name}</h1>
                 </div>
             </div>
         );
