@@ -22,7 +22,8 @@ const dummyMentors = Immutable.fromJS([
         name: "Mary Smith",
         major: "Linguistics ",
         year: 4,
-        bio: "I love Linguistics and Computer Science because it gave me the blah blah blah"
+        bio: "I love Linguistics and Computer Science because it gave me the blah blah blah",
+        classes: ["cs180", "cs111", "csm51a", "cs188", "lol"]
     },
     {
         id: 2,
@@ -31,7 +32,8 @@ const dummyMentors = Immutable.fromJS([
         year: 2,
         bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
               me how to be the best person that i can and I absolutely love it here i want to marry jean block he is the greates \
-              human being alive!!"
+              human being alive!!",
+        classes: ["cs180", "cs111", "csm51a", "cs188", "lol"]
 
     },
     {
@@ -40,7 +42,8 @@ const dummyMentors = Immutable.fromJS([
         major: "Linguistics and Computer Science",
         year: 2,
         bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
-              me"
+              me",
+        classes: ["cs180", "cs111", "csm51a", "cs188", "lol"]
 
     },
     {
@@ -49,7 +52,9 @@ const dummyMentors = Immutable.fromJS([
         major: "Linguistics and Computer Science",
         year: 2,
         bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
-              me"
+              me",
+
+        classes: ["cs180", "cs111", "csm51a", "cs188", "lol"]
 
     },
     {
@@ -58,7 +63,8 @@ const dummyMentors = Immutable.fromJS([
         major: "Linguistics and Computer Science",
         year: 2,
         bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
-              me"
+              me",
+        classes: ["cs180", "cs111", "csm51a", "cs188", "lol"]
 
     },
 ])
@@ -89,7 +95,7 @@ const defaultState = Immutable.fromJS({
     error: null,
     loading: false,
     searchedMajor: '',
-    mentors: null
+    mentors: dummyMentors
 });
 
 const SearchMentors = (state=defaultState, action) => {

@@ -35,5 +35,15 @@
                 line-height: 1.5;
             }
         }
+
+        ul {
+            columns: 2;
+            list-style-position: inside;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+        }
     }
 }
