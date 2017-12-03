@@ -44,11 +44,7 @@ class App extends React.Component {
                             <Route exact path="/profile" component={Authentication(ProfileContainer)} />
                             <Route exact path="/search" component={Authentication(SearchContainer)} />
                             <Route path="/verify" component={Authentication(VerifyUserContainer)} />
-
-                            <Route path="/completeRegistration" component={CompleteRegistrationContainer} />
-
-                            <Route exact path="/profile" component={ProfileContainer} />
-                            <Route exact path="/search" component={SearchContainer} />
+                            <Route path="/completeRegistration" component={Authentication(CompleteRegistrationContainer)} />
                             <Route exact path="/mentors/:mentorId" component={MentorDetailContainer} />
                             <Redirect to="/"/>
                         </Switch>

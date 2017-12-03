@@ -1,4 +1,6 @@
 import Immutable, { List } from 'immutable';
+import { addNotification as notify } from 'reapop';
+
 import Config from '../config';
 import Storage from '../storage';
 
@@ -10,6 +12,10 @@ import Storage from '../storage';
 const SEARCH_MAJOR_START = 'search_major_start';
 const SEARCH_MAJOR_SUCCESS = 'search_major_success';
 const SEARCH_MAJOR_ERROR = 'search_major_error';
+
+const SEND_REQUEST_START = 'send_request_start';
+const SEND_REQUEST_SUCCESS = 'send_request_success';
+const SEND_REQUEST_ERROR = 'send_request_error';
 
 
 /////////////
@@ -84,6 +90,42 @@ const handleSearch = (searchTerm) => {
             dispatch(searchMajorsSuccess(dummyMentors));
         }, 1);
     };
+}
+
+const sendRequest = (message, mentorId) => {
+    return async (dispatch, getState) => {
+        try {
+            const profile = getState().Profile;
+
+            dispatch({type: SEND_REQUEST_START});
+
+            const response = await fetch(Config.API_URL + `/mentors/${mentorId}`, {
+                method: 'POST',
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${Storage.get("token")}`
+                }),
+                body: JSON.stringify({
+                    phone: '',
+                    preferred_mentee_email: profile.getIn(['user', 'email']),
+                    message
+                })
+            });
+
+            const status = await response.status;
+            const data = await response.json();
+
+            if (status > 299 || status < 200) {
+                throw new Error(data.error);
+            } else {
+                dispatch({type: SEND_REQUEST_SUCCESS});
+            }
+        }
+        catch (err) {
+            dispatch(notify({title: 'Error!', status: 'error', message: err.message, position: 'tc'}));
+            dispatch({type: SEND_REQUEST_ERROR});
+        }
+    }
 }
 
 

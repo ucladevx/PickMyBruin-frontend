@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 
 const styles = {
     textareaStyle: {
-        "background-color": "#f5f4f6",
+        "backgroundColor": "#f5f4f6",
         "padding": "10px"
     },
     underlineStyle: {
