@@ -21,9 +21,13 @@ class MentorDetail extends React.Component {
         });
     }
 
+    _sendRequest = (message) => {
+        this.props.sendRequest(message, this.props.mentor.get('id'));
+    }
+
     render() {
         const {
-            mentor
+            mentor,
         } = this.props;
 
         const {
@@ -63,6 +67,7 @@ class MentorDetail extends React.Component {
                         <NewRequestField 
                             mentorName={mentor.get('name')}
                             cancel={this.handleClose}
+                            sendRequest={this._sendRequest}
                         />
                     }
                     {!renderTextField && <Button color="primary" onClick={this.handleOpen}>Request</Button>}

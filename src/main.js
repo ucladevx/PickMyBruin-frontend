@@ -36,19 +36,17 @@ class App extends React.Component {
                     <div>
                         <NotificationsSystem theme={theme} />
                         <Switch>
-                            <Route exact path="/login" component={LoginContainer}/>
                             <Route exact path="/" component={HomeContainer}/>
                             <Route exact path="/login" component={LoginContainer}/>
                             <Route exact path="/register" component={RegisterContainer}/>
-                            <Route exact path="/requests" component={RequestsContainer}/>
                             <Route path="/register/pending" component={RegisterPendingContainer} />
 
                             <Route path="/completeRegistration" component={Authentication(CompleteRegistrationContainer)} />
+                            <Route path="/verify" component={Authentication(VerifyUserContainer)} />
                             <Route exact path="/profile" component={Authentication(ProfileContainer)} />
                             <Route exact path="/search" component={Authentication(SearchContainer)} />
-                            <Route path="/verify" component={Authentication(VerifyUserContainer)} />
-                            <Route path="/completeRegistration" component={Authentication(CompleteRegistrationContainer)} />
-                            <Route exact path="/mentors/:mentorId" component={MentorDetailContainer} />
+                            <Route exact path="/requests" component={Authentication(RequestsContainer)}/>
+                            <Route exact path="/mentors/:mentorId" component={Authentication(MentorDetailContainer)} />
                             <Redirect to="/"/>
                         </Switch>
                     </div>

@@ -88,15 +88,15 @@ const handleRequests = () => {
 const sendRequest = (message, mentorId) => {
     return async (dispatch, getState) => {
         try {
-            const profile = getState().Profile;
+            const profile = getState().Profile
 
             dispatch({type: SEND_REQUEST_START});
 
-            const response = await fetch(Config.API_URL + `/mentors/${mentorId}`, {
+            const response = await fetch(Config.API_URL + `/requests/${mentorId}/`, {
                 method: 'POST',
                 headers: new Headers({
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${Storage.get("token")}`
+                    Authorization: `Bearer ${Storage.get("token")}`
                 }),
                 body: JSON.stringify({
                     phone: '',
@@ -115,7 +115,8 @@ const sendRequest = (message, mentorId) => {
             }
         }
         catch (err) {
-            dispatch(notify({title: 'Error!', status: 'error', message: err.message, position: 'tc'}));
+            const message = "We couldn't send your request :( Try again or contact us";
+            dispatch(notify({title: 'Error!', status: 'error', message, position: 'tc'}));
             dispatch({type: SEND_REQUEST_ERROR, error: err.message});
         }
     }
