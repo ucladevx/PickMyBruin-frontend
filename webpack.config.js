@@ -19,16 +19,28 @@ module.exports = {
     rules: [
       {
         test: /\.s?css$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {loader: "css-loader"},
-            {loader: "sass-loader"},
-          ]
-        }),
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader'
+        }, {
+          loader: 'sass-loader'
+        }] 
       },
       {
         test: /\.js$/,
         use: [{loader: "babel-loader"}],
+      },
+      {
+        test: /\.(pdf|jpg|png|gif|svg|ico)$/,
+        use: [
+            {
+                loader: 'url-loader',
+                options: {
+                  limit: 100000
+                }
+            },
+        ]
       },
     ],
   },

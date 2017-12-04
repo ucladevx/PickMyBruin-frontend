@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../../../../images/landingPage/logo.png';
 
 class Home extends React.Component {
     render() {
@@ -6,10 +7,12 @@ class Home extends React.Component {
             <div className="home-container">
                 <div className="landing-screen">
                     <section className="top-bar">
-                        <div className="logo">BQuest</div>
+                        <div className="logo">
+                            <img src={logo} id="logo" alt="logo" />
+                        </div>
                         <div className="nav-buttons">
-                            <div>About DevX</div>
-                            <div>How It Works</div>
+                            <div id="about">About DevX</div>
+                            <div id="how">How It Works</div>
                         </div>
                     </section>
                 </div>

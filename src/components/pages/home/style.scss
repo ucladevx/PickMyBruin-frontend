@@ -7,11 +7,15 @@
 
         .top-bar {
             height: 100px;
-            border-bottom: 2px solid $black;
+            border-bottom: 2px solid $mentor-bio-color;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            img#logo {
+                width: 200px;
+            }
 
             .nav-buttons {
                 display: flex;
@@ -19,7 +23,10 @@
 
                 * {
                     padding: 20px;
+                }
+                #how {
                     border: 1px solid $black;
+                    border-radius: 10%;
                 }
             }
         }
