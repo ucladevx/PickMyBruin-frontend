@@ -99,8 +99,34 @@
         align-items: center;
 
         img {
-            height: 100%;
+            width: 90%;
+            height: auto;
             overflow: visible;
+        }
+    }
+
+    .get-involved {
+
+        .prompt {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+
+            margin: 100px 0 100px 0;
+
+            button {
+                width: 25%;
+            }
+
+            & > * {
+                margin-bottom: 30px;
+            }
+
+        }
+
+        img {
+            width: 100%;
+            height: auto;
         }
     }
 }

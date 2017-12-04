@@ -6,6 +6,7 @@ import TopBar from './topBar';
 
 import messages from '../../../../images/landingPage/messages.svg';
 import explanation from '../../../../images/landingPage/explanation.svg';
+import bottom from '../../../../images/landingPage/bottom.svg';
 
 class Home extends React.Component {
     render() {
@@ -25,6 +26,13 @@ class Home extends React.Component {
                 </div>
                 <div className="explanation">
                     <img src={explanation} alt="explanation" />
+                </div>
+                <div className="get-involved">
+                    <div className="prompt">
+                        <h1>It's the perfect time to get involved</h1>
+                        <Button color="primary" onClick={this.props.signUp}>Sign Up Now</Button>
+                    </div>
+                    <img src={bottom} alt="bottom" />
                 </div>
             </div>
         );
