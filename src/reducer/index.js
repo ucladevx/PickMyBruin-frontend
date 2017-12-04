@@ -9,6 +9,7 @@ import { Login, sendUsernamePassword } from './login';
 import { Register, sendVerificationLink, confirmCode, completeRegistration } from './register';
 import { Profile, fetchProfile, updateProfile } from './profile';
 import { SearchMentors, handleSearch } from './searchMentors'
+import { Requests, handleRequests } from './requests'
 
 const history = createHistory();
 const reactRouterMiddleware = routerMiddleware(history);
@@ -26,6 +27,7 @@ const store = createStore(
         Login,
         Profile,
         SearchMentors,
+        Requests,
         router: routerReducer,
         notifications: notificationsReducer()
     }),
@@ -47,6 +49,9 @@ const Actions = {
     },
     searchMentorsActions: {
         handleSearch
+    },
+    requestsActions: {
+        handleRequests
     }
 }
 
