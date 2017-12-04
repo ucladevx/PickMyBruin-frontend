@@ -2,8 +2,10 @@ import Immutable from 'immutable';
 import formurlencoded from "form-urlencoded";
 import {push} from "react-router-redux";
 import { addNotification as notify } from 'reapop';
+
 import Config from '../config';
 import Storage from '../storage';
+import { fetchProfile } from './profile';
 
 const START_LOGIN = 'start_login';
 const LOGIN_SUCCESS = 'login_success';
@@ -54,6 +56,9 @@ const sendUsernamePassword = (email, password) => {
                 throw new Error("Error login");
             } else {
                 Storage.set("token", data.access_token)
+
+                // we need to fetch their profile as well
+                dispatch(fetchProfile());
                 dispatch(loginSuccess());
             }
         } catch (error) {
@@ -68,7 +73,7 @@ const defaultState = () => {
     const token = Storage.get('token');
 
     return Immutable.fromJS({
-        loginSuccess: token,
+        authenticated: !!token,
         loading: false,
         error: null
     });
@@ -83,14 +88,14 @@ const Login = (state = defaultState(), action) => {
         }
         case LOGIN_SUCCESS: {
             return state.withMutations(val => {
-                val.set('loginSuccess', true);
+                val.set('authenticated', true);
                 val.set('loading', false);
                 val.set('error',null);
             })
         }
         case LOGIN_FAILURE: {
             return state.withMutations(val => {
-                val.set('loginSuccess',false);
+                val.set('authenticated',false);
                 val.set('loading', false);
                 val.set('error', true);
             })

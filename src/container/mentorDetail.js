@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { Actions } from '../reducer';
+import { getMentorAndIfRequested } from '../selectors/requests';
+
 import MentorDetail from '../components/pages/mentorDetail';
 
 class MentorDetailContainer extends React.Component {
@@ -8,16 +11,24 @@ class MentorDetailContainer extends React.Component {
         return (
             <MentorDetail 
                 mentor={this.props.mentor}
+                sendRequest={this.props.sendRequest}
             />
         )
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
-    const mentors = state.SearchMentors.get('mentors');
     return {
-         mentor: mentors.filter(mentor => mentor.get('id') == ownProps.match.params.mentorId).get(0)
+         mentor: getMentorAndIfRequested(state, ownProps)
     }
 }
 
-export default connect(mapStateToProps, null)(MentorDetailContainer);
+const mapDispatchToProps = dispatch => {
+    return {
+        sendRequest: (message, mentorId) => {
+            dispatch(Actions.requestsActions.sendRequest(message, mentorId));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MentorDetailContainer);

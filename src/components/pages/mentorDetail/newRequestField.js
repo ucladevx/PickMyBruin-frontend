@@ -14,6 +14,20 @@ const styles = {
 }
 
 class NewRequestField extends React.Component {
+    state = {
+        text: ''
+    }
+
+    _sendRequest = () => {
+        this.props.sendRequest(this.state.text);        
+    }
+
+    handleChange = e => {
+        this.setState({
+            text: e.target.value
+        })
+    }
+
     render() {
         const {
             mentorName 
@@ -26,14 +40,17 @@ class NewRequestField extends React.Component {
                 <MuiThemeProvider>
                     <TextField
                         fullWidth={true}
+                        id={"request-text-field"}
                         multiLine={true}
                         rows={4}
                         textareaStyle={styles.textareaStyle}
                         underlineFocusStyle={styles.underlineStyle}
+                        onChange={this.handleChange}
+                        value={this.state.text}
                     />
                 </MuiThemeProvider>
                 <div className="buttons">
-                    <Button color="success" block>Send Request</Button>
+                    <Button color="success" onClick={this._sendRequest} block>Send Request</Button>
                     <Button color="secondary" onClick={this.props.cancel} block>Cancel</Button>
                 </div>
             </div>

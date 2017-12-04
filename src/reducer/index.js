@@ -4,12 +4,13 @@ import {routerReducer, routerMiddleware, push, routerActions} from 'react-router
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { reducer as notificationsReducer } from 'reapop';
+
 import { Auth } from './auth';
 import { Login, sendUsernamePassword } from './login';
 import { Register, sendVerificationLink, confirmCode, completeRegistration } from './register';
 import { Profile, fetchProfile, updateProfile } from './profile';
 import { SearchMentors, handleSearch } from './searchMentors'
-import { Requests, handleRequests } from './requests'
+import { Requests, handleRequests, sendRequest } from './requests'
 
 const history = createHistory();
 const reactRouterMiddleware = routerMiddleware(history);
@@ -51,7 +52,7 @@ const Actions = {
         handleSearch
     },
     requestsActions: {
-        handleRequests
+        handleRequests, sendRequest
     }
 }
 

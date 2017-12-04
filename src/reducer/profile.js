@@ -77,7 +77,6 @@ const defaultState = () => {
     return Immutable.fromJS({
         error: null,
         loading: false,
-        authenticated: !!token,
         user: {
             id: null,
             first_name: '',
