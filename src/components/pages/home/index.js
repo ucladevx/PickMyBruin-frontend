@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import TopBar from './topBar';
 
 import messages from '../../../../images/landingPage/messages.svg';
+import explanation from '../../../../images/landingPage/explanation.svg';
+
 class Home extends React.Component {
     render() {
         return (
@@ -22,7 +24,7 @@ class Home extends React.Component {
                     </div>
                 </div>
                 <div className="explanation">
-                    How it works
+                    <img src={explanation} alt="explanation" />
                 </div>
             </div>
         );
