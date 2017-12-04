@@ -26,7 +26,9 @@ import RegisterPendingContainer from './components/pages/register/registerPendin
 import 'bootstrap/dist/css/bootstrap.css';
 import 'main.scss';
 
-
+if (module.hot) {
+    module.hot.accept();
+}
 
 class App extends React.Component {
 	render() {

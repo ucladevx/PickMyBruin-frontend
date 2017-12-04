@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="555px" viewBox="0 0 1440 555" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(0.000000, -3557.000000)">
+            <g id="Group-2" transform="translate(-179.000000, 3372.000000)">
+                <g transform="translate(-21.000000, 184.000000)">
+                    <path d="M64.6324355,272.75677 C-36.4416386,135.725549 -17.3191171,47.1399593 122,7 C330.978676,-53.2099389 625.564534,305.571611 915,240.5 C1021.20556,216.622598 1331.41467,108.001566 1515,142 C1614.97145,160.513859 1735.63812,245.485991 1877,396.916396 L1742.20875,546.880281 L38.510101,640 L15,297.06513 L64.6324355,272.75677 Z" id="Path-3" fill="#B1C8FF" opacity="0.102581522"></path>
+                    <path d="M0,246.22512 C145.037381,286.716274 293.909083,331.660707 446.615107,381.058418 C675.674143,455.154985 818.322019,314.393628 1110.78629,227.178037 C1305.76246,169.03431 1582.16703,250.373176 1940,471.194633 L1803.79823,672.191483 L82.2712039,797 L9.50244908,366.021247 L0,246.22512 Z" id="Path-3" fill="#719AFF" opacity="0.766417572"></path>
+                    <text id="Created-for-UCLA-stu" font-family="'Lato', sans-serif" font-size="12" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="732.162109" y="510">C</tspan>
+                        <tspan x="740.751953" y="510">reated for UCLA students, by UCLA students. ©2017 UCLA DevX </tspan>
+                    </text>
+                    <text id="Got-any-questions-or" font-family="'Lato', sans-serif" font-size="18" font-weight="normal" line-spacing="24" fill="#FFFFFF">
+                        <tspan x="707.888184" y="428">Got any questions or comments? We’d love to know. </tspan>
+                        <tspan x="758.350586" y="452">Just email us at bquest.ucla@gmail.com</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
