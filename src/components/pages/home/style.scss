@@ -8,6 +8,7 @@
         .top-bar {
             height: 100px;
             border-bottom: 2px solid $mentor-bio-color;
+            padding: 0 20px 0 20px;
 
             display: flex;
             align-items: center;
@@ -26,7 +27,7 @@
                 }
                 #how {
                     border: 1px solid $black;
-                    border-radius: 10%;
+                    border-radius: 10px;
                 }
             }
         }
