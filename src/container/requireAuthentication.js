@@ -9,7 +9,6 @@ export default function(ComposedComponent) {
     class Authentication extends React.Component {
         componentDidMount() {
             if (!this.props.isLoggedIn) {
-                console.log('not logged in');
                 this.props.login();
             }
             if (!this.props.isProfileFetched) {

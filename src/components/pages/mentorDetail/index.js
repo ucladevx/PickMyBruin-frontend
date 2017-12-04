@@ -29,7 +29,6 @@ class MentorDetail extends React.Component {
             );
         } 
         if (this.state.renderTextField) {
-            console.log(1);
             return (
                 <NewRequestField 
                     mentorName={this.props.mentor.profile.get('name')}
