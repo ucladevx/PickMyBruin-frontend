@@ -4,10 +4,12 @@
 
     .landing-screen {
         min-height: 100vh;
+        display: flex;
+        flex-flow: column;
 
         .top-bar {
             height: 100px;
-            border-bottom: 2px solid $mentor-bio-color;
+            border-bottom: 1px solid $mentor-bio-color;
             padding: 0 20px 0 20px;
 
             display: flex;
@@ -29,6 +31,40 @@
                     border: 1px solid $black;
                     border-radius: 10px;
                 }
+            }
+        }
+
+        .splash {
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            align-items: center;
+            
+            flex-grow: 1;
+            padding: 0 100px 0 100px;
+
+            .main-prompt {
+                display: flex;
+                flex-flow: column;
+                align-items: flex-start;
+
+                width: 50%;
+
+                button {
+                    width: 50%;
+                }
+
+                &>* {
+                    margin-bottom: 20px;
+                }
+
+                .login-link {
+                    color: $login-link-color;
+                }
+            }
+
+            h1 {
+                font-size: 3em;
             }
         }
     }
