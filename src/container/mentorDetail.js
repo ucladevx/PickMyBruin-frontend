@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Actions } from '../reducer';
+import { getMentorAndIfRequested } from '../selectors/requests';
+
 import MentorDetail from '../components/pages/mentorDetail';
 
 class MentorDetailContainer extends React.Component {
@@ -16,9 +18,8 @@ class MentorDetailContainer extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    const mentors = state.SearchMentors.get('mentors');
     return {
-         mentor: mentors.filter(mentor => mentor.get('id') == ownProps.match.params.mentorId).get(0)
+         mentor: getMentorAndIfRequested(state, ownProps)
     }
 }
 

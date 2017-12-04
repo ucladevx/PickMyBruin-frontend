@@ -23,43 +23,55 @@ const SEND_REQUEST_ERROR = 'send_request_error';
 
 const dummyRequests = Immutable.fromJS([
     {
-        name: "Mary Smith",
-        major: "Linguistics and Computer Science",
-        year: 4,
-        bio: "I love Linguistics and Computer Science because it gave me the blah blah blah"
+        mentee: {
+            id: 1,
+            first_name: "Test",
+            last_name: "Test",
+            email: "test@marktai.com",
+            verified: false,
+            picture: null
+        },
+        mentor: {
+            id: 3,
+            profile: {
+                id: 2,
+                first_name: "Alex",
+                last_name: "Longerbeam",
+                email: "longerbeamalex@gmail.com",
+                verified: true,
+                picture: null
+            }
+        },
+        email_body: "Hey whats up hello",
+        preferred_mentee_email: "longerbeamalex@gmail.com",
+        phone: "",
+        date_created: "2017-12-03T22:36:17.422868Z"
     },
     {
-        name: "Mark Song",
-        major: "Linguistics and Computer Science",
-        year: 2,
-        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
-              me"
-
-    },
-    {
-        name: "Mark Song",
-        major: "Linguistics and Computer Science",
-        year: 2,
-        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
-              me"
-
-    },
-    {
-        name: "Mark Song",
-        major: "Linguistics and Computer Science",
-        year: 2,
-        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
-              me"
-
-    },
-    {
-        name: "Mark Song",
-        major: "Linguistics and Computer Science",
-        year: 2,
-        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
-              me"
-
-    },
+        mentee: {
+            id: 1,
+            first_name: "Test",
+            last_name: "Test",
+            email: "test@marktai.com",
+            verified: false,
+            picture: null
+        },
+        mentor: {
+            id: 2,
+            profile: {
+                id: 2,
+                first_name: "Alex",
+                last_name: "Longerbeam",
+                email: "longerbeamalex@gmail.com",
+                verified: true,
+                picture: null
+            }
+        },
+        email_body: "Hey whats up hello",
+        preferred_mentee_email: "longerbeamalex@gmail.com",
+        phone: "",
+        date_created: "2017-12-03T22:36:17.422868Z"
+    }
 ])
 
 const requestsStart = () => {
@@ -99,7 +111,7 @@ const sendRequest = (message, mentorId) => {
                     Authorization: `Bearer ${Storage.get("token")}`
                 }),
                 body: JSON.stringify({
-                    phone: '',
+                    phone: '', // FOR NOW
                     preferred_mentee_email: profile.getIn(['user', 'email']),
                     message
                 })

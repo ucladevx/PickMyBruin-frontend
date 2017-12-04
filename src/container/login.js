@@ -27,7 +27,7 @@ const mapStateToProps = state => {
     const LoginState = state.Login;
     return {
         loading: LoginState.get('loading'),
-        loginSuccess: LoginState.get('loginSuccess'),
+        loginSuccess: LoginState.get('authenticated'),
         error: LoginState.get('error')
     }
 };

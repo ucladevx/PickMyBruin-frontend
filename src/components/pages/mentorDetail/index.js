@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import { Button, Alert } from 'reactstrap';
 
 import ProfileTop from '../profile/profileTop';
 import NewRequestField from './newRequestField';
@@ -21,14 +21,35 @@ class MentorDetail extends React.Component {
         });
     }
 
+    _renderForm = () => {
+        // checks that we have not already tried to request this mentor
+        if (this.props.mentor.hasRequested) {
+            return (
+                <Alert color="warning">You have already requested this ambassador</Alert>
+            );
+        } 
+        if (this.state.renderTextField) {
+            console.log(1);
+            return (
+                <NewRequestField 
+                    mentorName={this.props.mentor.profile.get('name')}
+                    cancel={this.handleClose}
+                    sendRequest={this._sendRequest}
+                />
+            );
+        } else {
+            return <Button color="primary" onClick={this.handleOpen}>Request</Button>;
+        }
+    }
+
     _sendRequest = (message) => {
-        this.props.sendRequest(message, this.props.mentor.get('id'));
+        this.props.sendRequest(message, this.props.mentor.profile.get('id'));
     }
 
     render() {
         const {
-            mentor,
-        } = this.props;
+            profile,
+        } = this.props.mentor;
 
         const {
             renderTextField
@@ -39,7 +60,7 @@ class MentorDetail extends React.Component {
         return (
             <div className="mentor-detail-container">
                 <ProfileTop 
-                    name={mentor.get('name')}
+                    name={profile.get('name')}
                 />
                 <div className="mentor-details">
                     <div className="about-major-heading heading">
@@ -47,7 +68,7 @@ class MentorDetail extends React.Component {
                         <h1>About Me</h1>
                     </div>
                     <div className="about-major">
-                        <p>{mentor.get('bio')}</p>
+                        <p>{profile.get('bio')}</p>
                     </div>
                     <div className="heading my-classes-heading">
                         <i className="fa fa-book" aria-hidden="true"></i>
@@ -56,21 +77,14 @@ class MentorDetail extends React.Component {
                     <div className="my-classes">
                         <ul>
                             {
-                                mentor.get('classes').map(className => {
+                                profile.get('classes').map(className => {
                                     key += 1;
                                     return <li key={key}>{className}</li>
                                 })
                             }
                         </ul>
                     </div>
-                    {renderTextField && 
-                        <NewRequestField 
-                            mentorName={mentor.get('name')}
-                            cancel={this.handleClose}
-                            sendRequest={this._sendRequest}
-                        />
-                    }
-                    {!renderTextField && <Button color="primary" onClick={this.handleOpen}>Request</Button>}
+                    {this._renderForm()}
                 </div>
             </div>
         );
