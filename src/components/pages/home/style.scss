@@ -1,27 +1,27 @@
 @import "../../../style/vars";
 
-.container {
-    width: 350px;
-    min-height: 100vh;
+.home-container {
 
-    text-align: center;
+    .landing-screen {
+        min-height: 100vh;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+        .top-bar {
+            height: 100px;
+            border-bottom: 2px solid $black;
 
-    h1 {
-        color: $main-text;
-        font-size: 2em;
-    }
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-    .info {
-        width: 250px;
-        margin: 0 auto;
+            .nav-buttons {
+                display: flex;
+                flex-flow: row;
 
-        * {
-            margin: 10px;
+                * {
+                    padding: 20px;
+                    border: 1px solid $black;
+                }
+            }
         }
     }
 }

@@ -1,22 +1,24 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
-import { Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
-    render(){
-        return(
-            <div className="container home">
-                <h1>One-sentence catchline to onboard new users.</h1> 
-                <div className="info">
-                    <Button color="primary" onClick={this.props.signUp} block>Sign Up</Button>
-                    <p>Already have an account?</p>
-                    <Link className="btn btn-primary" to="/login"> Login </Link>
+    render() {
+        return (
+            <div className="home-container">
+                <div className="landing-screen">
+                    <section className="top-bar">
+                        <div className="logo">BQuest</div>
+                        <div className="nav-buttons">
+                            <div>About DevX</div>
+                            <div>How It Works</div>
+                        </div>
+                    </section>
+                </div>
+                <div className="explanation">
+                    How it works
                 </div>
             </div>
-        )    
+        );
     }
 }
 
-export default Home
+export default Home;
