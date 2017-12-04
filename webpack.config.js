@@ -44,6 +44,7 @@ module.exports = {
       }
     }),
     new ExtractTextPlugin('build/[name].css'),
+    new webpack.HotModuleReplacementPlugin()
   ],
   watchOptions: {
     poll: 2000,
@@ -51,6 +52,7 @@ module.exports = {
   },
   devServer: {
     contentBase: [path.join(__dirname, 'pages')],
+    hot: true,
     historyApiFallback: true,
     port: 8080,
   },
