@@ -12,6 +12,10 @@ import Storage from '../storage';
 const REQUESTS_START = 'requests_start';
 const REQUESTS_SUCCESS = 'requests_success';
 
+const SEND_REQUEST_START = 'send_request_start';
+const SEND_REQUEST_SUCCESS = 'send_request_success';
+const SEND_REQUEST_ERROR = 'send_request_error';
+
 
 /////////////
 // ACTIONS //
@@ -81,6 +85,43 @@ const handleRequests = () => {
 	};
 }
 
+const sendRequest = (message, mentorId) => {
+    return async (dispatch, getState) => {
+        try {
+            const profile = getState().Profile;
+
+            dispatch({type: SEND_REQUEST_START});
+
+            const response = await fetch(Config.API_URL + `/mentors/${mentorId}`, {
+                method: 'POST',
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${Storage.get("token")}`
+                }),
+                body: JSON.stringify({
+                    phone: '',
+                    preferred_mentee_email: profile.getIn(['user', 'email']),
+                    message
+                })
+            });
+
+            const status = await response.status;
+            const data = await response.json();
+
+            if (status > 299 || status < 200) {
+                throw new Error(data.error);
+            } else {
+                dispatch({type: SEND_REQUEST_SUCCESS, request: data});
+            }
+        }
+        catch (err) {
+            dispatch(notify({title: 'Error!', status: 'error', message: err.message, position: 'tc'}));
+            dispatch({type: SEND_REQUEST_ERROR, error: err.message});
+        }
+    }
+}
+
+
 ///////////
 // STATE //
 ///////////
@@ -104,6 +145,22 @@ const Requests = (state=defaultState, action) => {
                 val.setIn(['requests'], action.requests);
             })
         }
+        case SEND_REQUEST_START: {
+            return state.withMutations(val => {
+                val.set('loading', true);
+            });
+        }
+        case SEND_REQUEST_SUCCESS: {
+            return state.withMutations(val => {
+                const requests = val.get('requests');
+                val.set('requests', requests.push(action.request));
+            });
+        }
+        case SEND_REQUEST_ERROR: {
+            return state.withMutations(val => {
+                val.set('error', action.error);
+            });
+        }
         default: {
             return state;
         }
@@ -111,4 +168,4 @@ const Requests = (state=defaultState, action) => {
 }
 
 
-export { handleRequests, Requests }
+export { Requests, handleRequests, sendRequest }
