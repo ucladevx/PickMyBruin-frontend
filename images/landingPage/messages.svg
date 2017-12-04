@@ -9,27 +9,27 @@
             <g id="Group-18" transform="translate(969.000000, 234.000000)">
                 <g id="Group-16">
                     <path d="M338.787227,25 C337.06193,10.9110201 325.055168,-2.67374094e-15 310.5,0 L28.5,0 L28.5,7.10542736e-15 C12.7598846,9.99683964e-15 -1.92760819e-15,12.7598846 0,28.5 L0,28.5 L0,28.5 C1.92760819e-15,44.2401154 12.7598846,57 28.5,57 L28.5,57 L247.75,57 L339,57 L339,25 L338.787227,25 Z" id="Combined-Shape" fill="#5C86EE"></path>
-                    <text id="What-do-you-think-yo" font-family=".AppleSystemUIFont" font-size="16" font-weight="normal" fill="#FFFFFF">
+                    <text id="What-do-you-think-yo" font-family="Lato" font-size="16" font-weight="normal" fill="#FFFFFF">
                         <tspan x="23" y="24">What do you think you’ll do with your </tspan>
                         <tspan x="23" y="42">degree?</tspan>
                     </text>
                 </g>
                 <g id="Group-16" opacity="0.68" transform="translate(34.000000, 218.000000)">
                     <path d="M304.802159,23.245614 C303.197935,10.1453345 292.033752,-2.48611e-15 278.5,0 L26.5,0 L26.5,0 C11.8644541,2.68850616e-15 -1.79233744e-15,11.8644541 0,26.5 L0,26.5 L0,26.5 C1.79233744e-15,41.1355459 11.8644541,53 26.5,53 L222.472714,53 L305,53 L305,23.245614 L304.802159,23.245614 Z" id="Combined-Shape" fill="#5C86EE"></path>
-                    <text id="How-do-you-connect-w" font-family=".AppleSystemUIFont" font-size="16" font-weight="normal" fill="#FFFFFF">
+                    <text id="How-do-you-connect-w" font-family="Lato" font-size="16" font-weight="normal" fill="#FFFFFF">
                         <tspan x="20" y="31">How do you connect with faculty?</tspan>
                     </text>
                 </g>
                 <g id="Group-17" opacity="0.78" transform="translate(37.000000, 149.000000)">
                     <path d="M301.82185,22 C300.339783,9.60732004 289.791847,-2.34982409e-15 277,0 L25,0 L25,-3.55271368e-15 C11.1928813,-1.01638711e-15 -1.69088438e-15,11.1928813 0,25 L0,25 L0,25 C1.69088438e-15,38.8071187 11.1928813,50 25,50 L222.168852,50 L302,50 L302,22 L301.82185,22 Z" id="Combined-Shape" fill="#5C86EE"></path>
-                    <text id="What’s-a-typical-day" font-family=".AppleSystemUIFont" font-size="16" font-weight="normal" fill="#FFFFFF">
+                    <text id="What’s-a-typical-day" font-family="Lato" font-size="16" font-weight="normal" fill="#FFFFFF">
                         <tspan x="24" y="30">What’s a typical day like for you?</tspan>
                     </text>
                 </g>
                 <g id="Group-17" opacity="0.6" transform="translate(52.000000, 288.000000)">
                     <path d="M286.82185,22 C285.339783,9.60732004 274.791847,-2.34982409e-15 262,0 L25,0 L25,0 C11.1928813,2.53632657e-15 -1.69088438e-15,11.1928813 0,25 L0,25 L0,25 C1.69088438e-15,38.8071187 11.1928813,50 25,50 L210.5,50 L287,50 L287,22 L286.82185,22 Z" id="Combined-Shape" fill="#5C86EE"></path>
                     <path d="M286.82185,85 C285.339783,72.60732 274.791847,63 262,63 L262,63 L245,63 L245,63 C231.192881,63 220,74.1928813 220,88 L220,88 L220,88 C220,101.807119 231.192881,113 245,113 L259.5,113 L287,113 L287,85 L286.82185,85 Z" id="Combined-Shape" fill="#5C86EE"></path>
-                    <text id="Why-did-you-chose-yo" font-family=".AppleSystemUIFont" font-size="16" font-weight="normal" fill="#FFFFFF">
+                    <text id="Why-did-you-chose-yo" font-family="Lato" font-size="16" font-weight="normal" fill="#FFFFFF">
                         <tspan x="20" y="30">Why did you chose your major?</tspan>
                     </text>
                     <text id="…" fill="#FFFFFF" font-family=".SFNSDisplay, .SF NS Display" font-size="21" font-weight="normal">
@@ -39,7 +39,7 @@
                 <g id="Group-14" transform="translate(3.000000, 74.000000)" opacity="0.92">
                     <g id="Group-16">
                         <path d="M334.787227,25 C333.06193,10.9110201 321.055168,-2.67374094e-15 306.5,0 L28.5,0 L28.5,0 C12.7598846,2.89141229e-15 -1.92760819e-15,12.7598846 0,28.5 L0,28.5 L0,28.5 C1.92760819e-15,44.2401154 12.7598846,57 28.5,57 L244.75,57 L335,57 L335,25 L334.787227,25 Z" id="Combined-Shape" fill="#5C86EE"></path>
-                        <text id="What-does-it-take-to" font-family=".AppleSystemUIFont" font-size="16" font-weight="normal" fill="#FFFFFF">
+                        <text id="What-does-it-take-to" font-family="Lato" font-size="16" font-weight="normal" fill="#FFFFFF">
                             <tspan x="23" y="24">What does it take to be successful in your </tspan>
                             <tspan x="23" y="42">major?</tspan>
                         </text>
