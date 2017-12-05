@@ -7,7 +7,7 @@ import { join } from 'path';
 
 class SearchResultContainer extends React.Component {
     state = {
-        maxHeight: 100
+        maxHeight: 70
     }
 
     commponentDidMount() {
