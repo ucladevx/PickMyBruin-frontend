@@ -3,57 +3,75 @@
 .mentor-detail-container {
     display: flex;
     flex-flow: row;
+    max-height: 100vh;
 
     .results {
         display: none;
 
+        .search-results-container {
+            @media(min-width: 440px) {
+                flex-shrink: default;
+                width: 100%;
+            }
+        }
+
         @media(min-width: 440px) {
-            display: inherit;
+            display: flex;
+            flex: 1;
+            overflow: scroll;
         }
     }
 
-    .mentor-details {
-        display: flex;
-        flex-flow: column;
-        padding: 20px;
-
-        .heading {
+    .profile {
+        
+        .mentor-details {
             display: flex;
-            flex-flow: row;
-            color: $subheading-text-color;
+            flex-flow: column;
+            padding: 20px;
 
-            * {
-                margin-right: 5px;
+            .heading {
+                display: flex;
+                flex-flow: row;
+                color: $subheading-text-color;
+
+                * {
+                    margin-right: 5px;
+                }
+
+                h1 {
+                    font-size: 1.3em;
+                }
             }
 
-            h1 {
-                font-size: 1.3em;
+            .about-major-heading {
+                margin-top: 50px;
+            }
+
+            .my-classes-heading {
+                margin-top: 20px;
+            }
+
+            .about-major {
+                margin-top: 5px;
+                p {
+                    line-height: 1.5;
+                }
+            }
+
+            ul {
+                columns: 2;
+                list-style-position: inside;
+                margin-top: 10px;
+            }
+
+            button {
+                margin-top: 10px;
             }
         }
 
-        .about-major-heading {
-            margin-top: 50px;
-        }
-
-        .my-classes-heading {
-            margin-top: 20px;
-        }
-
-        .about-major {
-            margin-top: 5px;
-            p {
-                line-height: 1.5;
-            }
-        }
-
-        ul {
-            columns: 2;
-            list-style-position: inside;
-            margin-top: 10px;
-        }
-
-        button {
-            margin-top: 10px;
+        @media(min-width: 440px) {
+            flex: 2;
+            align-self: center;
         }
     }
 
