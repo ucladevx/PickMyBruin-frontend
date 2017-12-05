@@ -24,7 +24,7 @@ import Authentication from './container/requireAuthentication';
 import RegisterPendingContainer from './components/pages/register/registerPending';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import 'main.scss';
+import './main.scss';
 
 if (module.hot) {
     module.hot.accept();

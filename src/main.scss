@@ -32,7 +32,10 @@ html, body, h1, h2, p {
 }
 
 // Global override of the blue link color
-a { color: inherit; } 
+a { 
+  color: inherit; 
+  text-decoration: none;
+} 
 
 #mount {
   width: 100%;
