@@ -3,6 +3,7 @@ import { Button, Alert } from 'reactstrap';
 
 import ProfileTop from '../profile/profileTop';
 import NewRequestField from './newRequestField';
+import Results from '../search/results';
 
 class MentorDetail extends React.Component {
     state = {
@@ -58,32 +59,37 @@ class MentorDetail extends React.Component {
 
         return (
             <div className="mentor-detail-container">
-                <ProfileTop 
-                    name={profile.get('name')}
-                />
-                <div className="mentor-details">
-                    <div className="about-major-heading heading">
-                        <i className="fa fa-user-o" aria-hidden="true"></i>
-                        <h1>About Me</h1>
+                <div className="results">
+                    <Results mentors={this.props.mentors} />
+                </div>
+                <div className="profile">
+                    <ProfileTop 
+                        name={profile.get('name')}
+                    />
+                    <div className="mentor-details">
+                        <div className="about-major-heading heading">
+                            <i className="fa fa-user-o" aria-hidden="true"></i>
+                            <h1>About Me</h1>
+                        </div>
+                        <div className="about-major">
+                            <p>{profile.get('bio')}</p>
+                        </div>
+                        <div className="heading my-classes-heading">
+                            <i className="fa fa-book" aria-hidden="true"></i>
+                            <h1>My Classes</h1>
+                        </div>
+                        <div className="my-classes">
+                            <ul>
+                                {
+                                    profile.get('classes').map(className => {
+                                        key += 1;
+                                        return <li key={key}>{className}</li>
+                                    })
+                                }
+                            </ul>
+                        </div>
+                        {this._renderForm()}
                     </div>
-                    <div className="about-major">
-                        <p>{profile.get('bio')}</p>
-                    </div>
-                    <div className="heading my-classes-heading">
-                        <i className="fa fa-book" aria-hidden="true"></i>
-                        <h1>My Classes</h1>
-                    </div>
-                    <div className="my-classes">
-                        <ul>
-                            {
-                                profile.get('classes').map(className => {
-                                    key += 1;
-                                    return <li key={key}>{className}</li>
-                                })
-                            }
-                        </ul>
-                    </div>
-                    {this._renderForm()}
                 </div>
             </div>
         );

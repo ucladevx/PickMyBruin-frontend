@@ -26,49 +26,65 @@
         flex-flow: column;
         overflow: scroll;
 
-        .search-result-container {
-            display: flex;
-            flex-flow: row;
-            justify-content: space-between;
-            align-items: center;
+        @media(min-width: 440px) {
+            padding: 20px 150px 20px 150px;
+        }
 
-            width: 95%;
-            min-height: 200px;
-            max-height: 200px;
-            margin: 10px;
-            padding: 20px;
-            background-color: $white;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    }
+}
+.search-result-container {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
 
-            .profile-pic {
-                top: 0;
-            }
+    min-height: 200px;
+    max-height: 200px;
+    margin: 10px;
+    padding: 20px;
+    background-color: $white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 
-            .mentor-details {
-                display: flex;
-                flex-flow: column;
-                width: 60%;
+    .profile-pic-container {
+        flex-grow: 1;
+        display: flex;
+        flex-flow: row;
 
-                .mentor-name {
-                    font-size: 1.3em;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    white-space: nowrap;
-                    margin-bottom: 5px;
-                }
-                .mentor-major {
-                    color: $mentor-bio-color;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    white-space: nowrap;
-                    margin-bottom: 5px;
-                }
-                .mentor-bio > p {
-                    // target the p inside our shaved-off mentor bio
-                    line-height: 1.3;
-                }
-            }
+        @media(min-width: 440px) {
+            justify-content: center;
+        }
+        .profile-pic {
+            top: 0;
+        }
+    }
+
+    .mentor-details {
+        display: flex;
+        flex-flow: column;
+        width: 60%;
+
+        @media(min-width: 440px) {
+            width: 70%;
+        }
+
+        .mentor-name {
+            font-size: 1.3em;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-bottom: 5px;
+        }
+        .mentor-major {
+            color: $mentor-bio-color;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-bottom: 5px;
+        }
+        .mentor-bio > p {
+            // target the p inside our shaved-off mentor bio
+            line-height: 1.3;
         }
     }
 }

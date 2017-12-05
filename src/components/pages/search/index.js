@@ -4,6 +4,7 @@ import NavBar from '../../navbar';
 import SearchBar from '../../searchBar';
 
 import SearchResultContainer from './searchResultContainer';
+import Results from './results';
 
 class Search extends React.Component {
     render() {
@@ -14,14 +15,7 @@ class Search extends React.Component {
                         handleSearch={this.props.handleSearch}
                     />
                 </div>
-                <div className="search-results-container">
-                    {this.props.mentors ? this.props.mentors.map(mentor => 
-                        <SearchResultContainer 
-                            key={mentor.get('id')} 
-                            mentor={mentor} 
-                        />
-                    ) : null}
-                </div>
+                <Results mentors={this.props.mentors}/>
                 <NavBar />
             </div>
         );

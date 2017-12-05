@@ -30,7 +30,9 @@ class SearchResultContainer extends React.Component {
         return (
             <Link to={`/mentors/${this.props.mentor.get('id')}`}>
             <div className="search-result-container">
-                <ProfilePic />
+                <div className="profile-pic-container">
+                    <ProfilePic />
+                </div>
                 <div className="mentor-details">
                     <div className="mentor-name">{this.props.mentor.get('name')}</div>
                     <div className="mentor-major">{this.props.mentor.get('major')}</div>

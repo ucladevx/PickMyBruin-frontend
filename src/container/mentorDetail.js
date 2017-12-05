@@ -11,6 +11,7 @@ class MentorDetailContainer extends React.Component {
         return (
             <MentorDetail 
                 mentor={this.props.mentor}
+                mentors = {this.props.mentors}
                 sendRequest={this.props.sendRequest}
             />
         )
@@ -19,7 +20,8 @@ class MentorDetailContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-         mentor: getMentorAndIfRequested(state, ownProps)
+        mentors: state.SearchMentors.get('mentors'),
+        mentor: getMentorAndIfRequested(state, ownProps)
     }
 }
 
