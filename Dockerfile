@@ -23,6 +23,7 @@ RUN /usr/bin/node --max_semi_space_size=8 \
 # Copy the source files
 COPY pages/ /var/www/pickmybruin/working/pages/
 COPY src/ /var/www/pickmybruin/working/src/
+COPY images/ /var/www/pickmybruin/working/images/
 COPY .babelrc *.js Makefile /var/www/pickmybruin/working/
 
 # build and copy files to server root

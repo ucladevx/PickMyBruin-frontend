@@ -33,12 +33,12 @@ const config = {
       {
         test: /\.(pdf|jpg|png|gif|svg|ico)$/,
         use: [
-            {
-                loader: 'url-loader',
-                options: {
-                  limit: 100000
-                }
-            },
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name]-[hash:8].[ext]'
+            }
+          }
         ]
       },
       {
