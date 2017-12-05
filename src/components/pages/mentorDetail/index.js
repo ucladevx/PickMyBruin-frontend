@@ -60,7 +60,7 @@ class MentorDetail extends React.Component {
         return (
             <div className="mentor-detail-container">
                 <div className="results">
-                    <Results mentors={this.props.mentors} />
+                    <Results mentors={this.props.mentors.filter(mentor => mentor.get('id') !== profile.get('id'))} />
                 </div>
                 <div className="profile">
                     <ProfileTop 

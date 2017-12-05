@@ -3,12 +3,16 @@
 .mentor-detail-container {
     display: flex;
     flex-flow: row;
+    background-color: $mentor-detail-canvas-color;
+    min-height: 100vh;
     max-height: 100vh;
 
     .results {
         display: none;
+        margin-right: 20px;
 
         .search-results-container {
+            background-color: $mentor-detail-canvas-color;
             @media(min-width: 440px) {
                 flex-shrink: default;
                 width: 100%;
@@ -23,6 +27,7 @@
     }
 
     .profile {
+        background-color: $white;
         
         .mentor-details {
             display: flex;
@@ -45,6 +50,10 @@
 
             .about-major-heading {
                 margin-top: 50px;
+
+                @media(min-width: 440px) {
+                    margin-top: 70px;
+                }
             }
 
             .my-classes-heading {
@@ -72,6 +81,9 @@
         @media(min-width: 440px) {
             flex: 2;
             align-self: center;
+            border-radius: 5px 5px 5px 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+            overflow: hidden;  // to see the border-radius
         }
     }
 
