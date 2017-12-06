@@ -37,7 +37,7 @@ class Profile extends React.Component {
             <div className="container-profile">
                 <div className="profile-wrapper">
                     <ProfileTop 
-                        user={this.state.user}
+                        name={`${this.state.user.first_name} ${this.state.user.last_name}`}
                     /> 
                     <div className="profile-detail-container">
                         <General 
