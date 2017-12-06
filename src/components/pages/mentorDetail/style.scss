@@ -17,7 +17,6 @@
     .content {
         display: flex;
         flex-flow: row;
-        flex-shrink: 100;
 
         .results {
             display: none;
@@ -40,6 +39,8 @@
 
         .profile {
             background-color: $white;
+            display: flex;
+            flex-flow: column;
             
             .mentor-details {
                 display: flex;
@@ -101,6 +102,7 @@
 
         @media(min-width: 440px) {
             padding: 20px 100px 20px 100px;
+            flex-shrink: 100;
         }
     }
 }
