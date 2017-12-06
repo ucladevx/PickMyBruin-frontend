@@ -193,10 +193,17 @@
     background-color: $white;
     border-radius: 50%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    overflow-y: hidden;
 
     @media (min-width: 440px) {
         width: 150px;
         height: 150px;
         top: 75px;
+    }
+
+    img {
+        height: 100%;
+        width:auto;
     }
 }
