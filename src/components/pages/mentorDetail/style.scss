@@ -2,93 +2,106 @@
 
 .mentor-detail-container {
     display: flex;
-    flex-flow: row;
+    flex-flow: column;
     background-color: $mentor-detail-canvas-color;
     min-height: 100vh;
     max-height: 100vh;
 
-    .results {
+    .navbar-container {
         display: none;
-        margin-right: 20px;
-
-        .search-results-container {
-            background-color: $mentor-detail-canvas-color;
-            @media(min-width: 440px) {
-                flex-shrink: default;
-                width: 100%;
-            }
-        }
-
         @media(min-width: 440px) {
-            display: flex;
-            flex: 1;
-            overflow: scroll;
+            display: inherit;
         }
     }
 
-    .profile {
-        background-color: $white;
-        
-        .mentor-details {
-            display: flex;
-            flex-flow: column;
-            padding: 20px;
+    .content {
+        display: flex;
+        flex-flow: row;
+        flex-shrink: 100;
 
-            .heading {
-                display: flex;
-                flex-flow: row;
-                color: $subheading-text-color;
+        .results {
+            display: none;
+            margin-right: 20px;
 
-                * {
-                    margin-right: 5px;
-                }
-
-                h1 {
-                    font-size: 1.3em;
-                }
-            }
-
-            .about-major-heading {
-                margin-top: 50px;
-
+            .search-results-container {
+                background-color: $mentor-detail-canvas-color;
                 @media(min-width: 440px) {
-                    margin-top: 70px;
+                    flex-shrink: default;
+                    width: 100%;
                 }
             }
 
-            .my-classes-heading {
-                margin-top: 20px;
+            @media(min-width: 440px) {
+                display: flex;
+                flex: 1;
+                overflow: scroll;
             }
+        }
 
-            .about-major {
-                margin-top: 5px;
-                p {
-                    line-height: 1.5;
+        .profile {
+            background-color: $white;
+            
+            .mentor-details {
+                display: flex;
+                flex-flow: column;
+                padding: 20px;
+
+                .heading {
+                    display: flex;
+                    flex-flow: row;
+                    color: $subheading-text-color;
+
+                    * {
+                        margin-right: 5px;
+                    }
+
+                    h1 {
+                        font-size: 1.3em;
+                    }
+                }
+
+                .about-major-heading {
+                    margin-top: 50px;
+
+                    @media(min-width: 440px) {
+                        margin-top: 70px;
+                    }
+                }
+
+                .my-classes-heading {
+                    margin-top: 20px;
+                }
+
+                .about-major {
+                    margin-top: 5px;
+                    p {
+                        line-height: 1.5;
+                    }
+                }
+
+                ul {
+                    columns: 2;
+                    list-style-position: inside;
+                    margin-top: 10px;
+                }
+
+                button {
+                    margin-top: 10px;
                 }
             }
 
-            ul {
-                columns: 2;
-                list-style-position: inside;
-                margin-top: 10px;
-            }
-
-            button {
-                margin-top: 10px;
+            @media(min-width: 440px) {
+                flex: 2;
+                align-self: center;
+                border-radius: 5px 5px 5px 5px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+                overflow: hidden;  // to see the border-radius
             }
         }
 
         @media(min-width: 440px) {
-            flex: 2;
-            align-self: center;
-            border-radius: 5px 5px 5px 5px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-            overflow: hidden;  // to see the border-radius
+            padding: 20px 100px 20px 100px;
         }
-    }
-
-    @media(min-width: 440px) {
-        padding: 20px 100px 20px 100px;
     }
 }
 
