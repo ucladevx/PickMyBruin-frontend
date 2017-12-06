@@ -44,7 +44,7 @@ class General extends React.Component {
 
     render() {
         const notifications = this.props.notifications || 'ON';
-        const preferredEmail = this.props.profile.user.email;
+        const preferredEmail = this.props.user.email;
     
         return(
 			<MuiThemeProvider>

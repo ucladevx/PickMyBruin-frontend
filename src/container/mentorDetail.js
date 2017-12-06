@@ -8,6 +8,7 @@ import MentorDetail from '../components/pages/mentorDetail';
 
 class MentorDetailContainer extends React.Component {
     render() {
+        console.log(this.props);
         return (
             <MentorDetail 
                 mentor={this.props.mentor}

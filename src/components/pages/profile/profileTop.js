@@ -5,7 +5,7 @@ import ProfilePic from './profilePicture';
 
 class ProfileTop extends React.Component {
     render() {
-        const name = `${this.props.profile.user.first_name} ${this.props.profile.user.last_name}`;
+        const name = `${this.props.user.first_name} ${this.props.user.last_name}`;
         return(
             <div className="top">
                 <div className="user-info">

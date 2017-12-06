@@ -61,7 +61,7 @@ class Mentorship extends React.Component {
 
     render() {
 
-        const isActive = this.props.profile.mentor.active;
+        const isActive = this.props.mentor.active;
         const major = null;
         const classesTaken = null;
 
@@ -75,7 +75,7 @@ class Mentorship extends React.Component {
                 	<div className="body">
                     	<div className="mentorship-status">
                         	<h2>Mentorship Status:</h2>
-							<Toggle label="" toggled={isActive} style={styles.toggle} />
+							<Toggle id="status" toggled={isActive} onToggle={this.props.createMentor} style={styles.toggle} />
                     	</div>
 						<div className={classNames({'disabled': !isActive}, 'mentor-fields')}>
 							<div className="major">

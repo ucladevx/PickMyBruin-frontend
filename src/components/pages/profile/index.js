@@ -12,37 +12,42 @@ class Profile extends React.Component {
         super(props);
 
         this.state = {
-            profile: props.profile.toJS()
+            user: props.profile.get('user').toJS(),
+            mentor: props.profile.get('mentor').toJS()
         }
     }
 
     componentWillReceiveProps(props) {
         this.setState({
-            profile: props.profile.toJS()
+            user: props.profile.get('user').toJS(),
+            mentor: props.profile.get('mentor').toJS()
         });
     }
 
-    _handleToggleMentorship = (status) => {
-
+    _handleChangeStatus = (_, value) => {
+        console.log(event, value);
     }
 
     render() {
-        if (!this.state.profile.user.id) {
+        if (!this.state.user.id) {
             return null;
         } else {
-            console.log('here');
+
         return(
             <div className="container-profile">
                 <div className="profile-wrapper">
                     <ProfileTop 
-                        profile={this.state.profile}
+                        user={this.state.user}
                     /> 
                     <div className="profile-detail-container">
                         <General 
-                            profile={this.state.profile}
+                            user={this.state.user}
+                            mentor={this.state.mentor}
                         />
                         <Mentorship 
-                            profile={this.state.profile}
+                            user={this.state.user}
+                            mentor={this.state.mentor}
+                            createMentor={this.props.createMentor}
                         />
                     </div>
                 </div>

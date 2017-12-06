@@ -15,6 +15,7 @@ class ProfileContainer extends React.Component {
         return (
             <Profile 
                 profile={this.props.profile}
+                createMentor={this.props.createMentor}
             />
         )
     }
@@ -31,6 +32,9 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchProfileData: () => {
             dispatch(Actions.profileActions.fetchProfile());
+        },
+        createMentor: () => {
+            dispatch(Actions.profileActions.createMentor());
         }
     }
 }

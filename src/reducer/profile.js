@@ -23,6 +23,37 @@ const SET_MENTOR_PROFILE = 'set_mentor_profile';
 // ACTIONS //
 /////////////
 
+const createMentor = () => {
+    return async dispatch => {
+        try {
+            const token = Storage.get('token');
+            if (!token) {
+                // we need them to login
+                dispatch(push('/login'));
+            }
+
+            // get regular profile info
+            const response = await fetch(Config.API_URL + '/mentors/me/', {
+                method: 'POST',
+                headers: new Headers({
+                    "Authorization": `Bearer ${token}`
+                })
+            })
+
+            const status = await response.status;
+            const data = await response.json();
+
+            if (status > 299 || status < 200) {
+                throw new Error("Error creating a mentor profile");
+            } else {
+                dispatch(setMentorProfile(data));
+            }
+        } catch (error) {
+            // handle errors here
+            dispatch(notify({title: 'Error!', status: 'error', message: error.message, position: 'tc'}));
+        }
+    }
+}
 
 const fetchProfile = () => {
     return async dispatch => {
@@ -152,4 +183,4 @@ const Profile = (state = defaultState(), action) => {
     }
 }
 
-export { Profile, fetchProfile, updateProfile, setProfile };
+export { Profile, fetchProfile, updateProfile, setProfile, createMentor };
