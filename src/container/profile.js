@@ -14,6 +14,7 @@ class ProfileContainer extends React.Component {
     render() {
         return (
             <Profile 
+                profile={this.props.profile}
             />
         )
     }
@@ -22,7 +23,7 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = state => {
     const Profile = state.Profile
     return {
-        profile: Profile.get('user')
+        profile: Profile
     }
 }
 

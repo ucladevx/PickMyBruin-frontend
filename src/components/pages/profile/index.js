@@ -12,11 +12,15 @@ class Profile extends React.Component {
             <div className="container-profile">
                 <div className="profile-wrapper">
                     <ProfileTop 
-                        handleSearch={this.props.handleSearch}
+                        profile={this.props.profile}
                     /> 
                     <div className="profile-detail-container">
-                        <General />
-                        <Mentorship />
+                        <General 
+                            profile={this.props.profile}
+                        />
+                        <Mentorship 
+                            profile={this.props.profile}
+                        />
                     </div>
                 </div>
                 <NavBar />
