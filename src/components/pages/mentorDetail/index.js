@@ -64,7 +64,10 @@ class MentorDetail extends React.Component {
                 <Navbar />
                 <div className="content">
                     <div className="results">
-                        <Results mentors={this.props.mentors.filter(mentor => mentor.get('id') !== profile.get('id'))} />
+                        <Results mentors={this.props.mentors.filter((mentorProfile) => {
+                                return mentorProfile.getIn(['mentor', 'id']) != profile.getIn(['mentor', 'id'])
+                            })
+                            } />
                     </div>
                     <div className="profile">
                         <ProfileTop 

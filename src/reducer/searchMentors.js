@@ -33,13 +33,33 @@ const dummyMentors = Immutable.fromJS([
             verified: true,
         },
         mentor: {
-            id: 2,
+            id: 1,
             active: true,
             major: "Computer Science",
             bio: "I LOVE MY MAJOR SO MUCH!",
             gpa: "0.00",
             clubs: null,
             classes: ['cs111', 'cs31', 'cs32', 'cs333']
+        }
+    },
+    {
+        user: { 
+            id: 2,
+            first_name: 'Mark',
+            last_name: 'Tai',
+            email: 'mark@smith.cmo',
+            year: '2nd',
+            verified: true,
+        },
+        mentor: {
+            id: 2,
+            active: true,
+            major: "Computer Science",
+            bio: "I LOVE MY MAJOR SO MUCH! It's the best thing in the world and I have learned so much \
+                and I can't wat to share that info with others come talk to me!!",
+            gpa: "0.00",
+            clubs: null,
+            classes: ['cs111', 'cs31', 'cs32', 'cs333', 'cs111']
         }
     }
 ])

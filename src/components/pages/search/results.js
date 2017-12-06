@@ -2,7 +2,6 @@ import React from 'react';
 import SearchResultContainer from './searchResultContainer';
 
 export default (props) => {
-    console.log(props);
     return (
         <div className="search-results-container">
             {props.mentors ? props.mentors.map(mentorProfile => 
