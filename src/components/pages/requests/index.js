@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 import NavBar from '../../navbar';
@@ -8,9 +9,9 @@ class Requests extends React.Component {
         let key = 0;
         return(
             <div className="requests-container">
-	            <div className="requests-results-container">
+                <div className="requests-results-container">
                     <h1>Request History</h1>
-		            {this.props.requests.map(request => {
+                    {this.props.requests.map(request => {
                         key += 1;
                         return <RequestsResultContainer 
                             profile={this.props.profile}
@@ -18,9 +19,9 @@ class Requests extends React.Component {
                             key={key}
                         />
                     })}
-	            </div>
+                </div>
                 <NavBar />
-	        </div>
+            </div>
         );
     }
 }

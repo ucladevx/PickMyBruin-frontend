@@ -88,13 +88,13 @@ const requestsSuccess = (requests) => {
 }
 
 const getRequests = () => {
-	return dispatch => {
-		dispatch(requestsStart())
-		
-		setTimeout(() => {
-			dispatch(requestsSuccess(dummyRequests));
-		},1);
-	};
+    return dispatch => {
+        dispatch(requestsStart())
+        
+        setTimeout(() => {
+            dispatch(requestsSuccess(dummyRequests));
+        },1);
+    };
 }
 
 const sendRequest = (message, mentorId) => {
