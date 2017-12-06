@@ -3,6 +3,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
+import classNames from 'classnames';
+import { isatty } from 'tty';
 
 const styles = {
 	toggle: {
@@ -59,7 +61,7 @@ class Mentorship extends React.Component {
 
     render() {
 
-        const mentorshipStatus = this.props.mentorshipStatus || 'OFF';
+        const isActive = this.props.profile.mentor.active;
         const major = null;
         const classesTaken = null;
 
@@ -73,34 +75,33 @@ class Mentorship extends React.Component {
                 	<div className="body">
                     	<div className="mentorship-status">
                         	<h2>Mentorship Status:</h2>
-							{ mentorshipStatus=='OFF'
-								? <Toggle label="" style={styles.toggle} />
-								: <Toggle label="" defaultToggled={true} style={styles.toggle} />
-							}
+							<Toggle label="" toggled={isActive} style={styles.toggle} />
                     	</div>
-                    	<div className="major">
-                        	<h2>Major:</h2>
-                        	{major ? <h2>major</h2> : this.renderAddMajor()}
-                    	</div>
-						<div className="Bio">
-                        	<CreateField name="Bio" />
-                    	</div>
-                    	<div className="classes-taken">
-                        	<h2>Classes Taken:</h2>
-                        	{classesTaken ? <h2>classesTaken</h2> : this.renderAddClasses()}
-                    	</div>
-						<div className="GPA">
-                        	<CreateField name="GPA" />
-                    	</div>
-						<div className="Pros">
-							<CreateField name="Pros" />
-                    	</div>
-						<div className="Cons">
-							<CreateField name="Cons" />
-                    	</div>
-						<div className="Clubs">
-							<CreateField name="Clubs" />
-                    	</div>
+						<div className={classNames({'disabled': !isActive}, 'mentor-fields')}>
+							<div className="major">
+								<h2>Major:</h2>
+								{major ? <h2>major</h2> : this.renderAddMajor()}
+							</div>
+							<div className="Bio">
+								<CreateField name="Bio" />
+							</div>
+							<div className="classes-taken">
+								<h2>Classes Taken:</h2>
+								{classesTaken ? <h2>classesTaken</h2> : this.renderAddClasses()}
+							</div>
+							<div className="GPA">
+								<CreateField name="GPA" />
+							</div>
+							<div className="Pros">
+								<CreateField name="Pros" />
+							</div>
+							<div className="Cons">
+								<CreateField name="Cons" />
+							</div>
+							<div className="Clubs">
+								<CreateField name="Clubs" />
+							</div>
+						</div>
                 	</div>
                 	{/*
                 	<div className="banner">

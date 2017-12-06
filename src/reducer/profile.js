@@ -23,6 +23,7 @@ const SET_MENTOR_PROFILE = 'set_mentor_profile';
 // ACTIONS //
 /////////////
 
+
 const fetchProfile = () => {
     return async dispatch => {
         try {
@@ -68,7 +69,7 @@ const fetchProfile = () => {
             // if mentorStatus is 404, they have no mentor profile
         } catch (error) {
             // handle errors here
-            dispatch(notify({title: 'Error!', status: 'error', message: 'There was an error fetching your profile', position: 'tc'}));
+            dispatch(notify({title: 'Error!', status: 'error', message: error.message, position: 'tc'}));
         }
     }
 }
@@ -103,7 +104,7 @@ const defaultState = () => {
     return Immutable.fromJS({
         error: null,
         loading: false,
-        user: {
+        user: { 
             id: null,
             first_name: '',
             last_name: '',
@@ -111,7 +112,14 @@ const defaultState = () => {
             year: '',
             verified: false,
         },
-        mentor: null
+        mentor: {
+            id: null,
+            active: false,
+            major: null,
+            bio: null,
+            gpa: "0.00",
+            clubs: null,
+        }
     });
 }
 
