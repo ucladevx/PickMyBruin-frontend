@@ -28,7 +28,9 @@ class RequestsResultContainer extends React.Component {
 
         return (
             <div className="request-result-container">
-            	<ProfilePic />
+                <div className="profile-pic-container">
+                    <ProfilePic />
+                </div>
             	<div className="request-details">
             		<div className="wrapping">
 		        		<div className="request-kind">{this.props.request.get('kind')}</div>
