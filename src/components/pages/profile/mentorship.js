@@ -1,4 +1,51 @@
 import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import Toggle from 'material-ui/Toggle';
+
+const styles = {
+  toggle: {
+    width: 44,
+	height: 23,
+  },
+  thumbOff: {
+    backgroundColor: '#ffcccc',
+  },
+  trackOff: {
+    backgroundColor: '#ff9d9d',
+  },
+  thumbSwitched: {
+    backgroundColor: 'red',
+  },
+  trackSwitched: {
+    backgroundColor: '#ff9d9d',
+  },
+  labelStyle: {
+    color: 'red',
+  },
+  update_button: {
+	margin: "0px"
+  },
+  textfield: {
+	  width: 140,
+	  height: 31,
+	  textAlign: "center",
+  },
+  textfield_input: {
+	  textAlign: "center",
+	  height: "50%"
+  }
+};
+
+function createField(props) {
+	return (
+			<div>
+			<h2>{props.name}</h2>
+			<TextField defaultValue={props.name} multiLine={true} rows={1} rowsMax={4} />
+			</div>
+		);
+}
 
 class Mentorship extends React.Component {
 
@@ -17,31 +64,51 @@ class Mentorship extends React.Component {
         const classesTaken = null;
 
         return(
-            <div className="mentorship">
-                <div className="heading">
-                    <i className="fa fa-users fa-lg" aria-hidden="true"></i>
-                    <h1>Mentorship</h1>
-                </div>
-                <div className="body">
-                    <div className="mentorship-status">
-                        <h2>Mentorship Status:</h2>
-                        <h2>{mentorshipStatus}</h2>
-                    </div>
-                    <div className="major">
-                        <h2>Major:</h2>
-                        {major ? <h2>major</h2> : this.renderAddMajor()}
-                    </div>
-                    <div className="classes-taken">
-                        <h2>Classes Taken:</h2>
-                        {classesTaken ? <h2>classesTaken</h2> : this.renderAddClasses()}
-                    </div>
-                </div>
-                {/*
-                <div className="banner">
-                    <p>Are you an upperclassman who's passionate about your major? Become a mentor and spread your wisdom!</p>
-                </div>
-                */}
-            </div>
+			<MuiThemeProvider>
+            	<div className="mentorship">
+                	<div className="heading">
+                    	<i className="fa fa-users fa-lg" aria-hidden="true"></i>
+                    	<h1>Mentorship</h1>
+                	</div>
+                	<div className="body">
+                    	<div className="mentorship-status">
+                        	<h2>Mentorship Status:</h2>
+							{ mentorshipStatus=='OFF'
+								? <Toggle label="" style={styles.toggle} />
+								: <Toggle label="" defaultToggled={true} style={styles.toggle} />
+							}
+                    	</div>
+                    	<div className="major">
+                        	<h2>Major:</h2>
+                        	{major ? <h2>major</h2> : this.renderAddMajor()}
+                    	</div>
+						<div className="Bio">
+                        	<createField name="Bio" />
+                    	</div>
+                    	<div className="classes-taken">
+                        	<h2>Classes Taken:</h2>
+                        	{classesTaken ? <h2>classesTaken</h2> : this.renderAddClasses()}
+                    	</div>
+						<div className="GPA">
+                        	<createField name="GPA" />
+                    	</div>
+						<div className="Pros">
+							<createField name="Pros" />
+                    	</div>
+						<div className="Cons">
+							<createField name="Cons" />
+                    	</div>
+						<div className="Clubs">
+							<createField name="Clubs" />
+                    	</div>
+                	</div>
+                	{/*
+                	<div className="banner">
+                    	<p>Are you an upperclassman who's passionate about your major? Become a mentor and spread your wisdom!</p>
+                	</div>
+                	*/}
+            	</div>
+			</MuiThemeProvider>
         );
     }
 }
