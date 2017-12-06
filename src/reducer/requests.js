@@ -9,8 +9,8 @@ import Storage from '../storage';
 /// TYPES ///
 /////////////
 
-const REQUESTS_START = 'requests_start';
-const REQUESTS_SUCCESS = 'requests_success';
+const START_GETTING_REQUESTS = 'start_getting_requests';
+const FINISH_GETTING_REQUESTS = 'finish_getting_requests';
 
 const SEND_REQUEST_START = 'send_request_start';
 const SEND_REQUEST_SUCCESS = 'send_request_success';
@@ -23,76 +23,127 @@ const SEND_REQUEST_ERROR = 'send_request_error';
 
 const dummyRequests = Immutable.fromJS([
     {
-        mentee: {
-            id: 1,
-            first_name: "Test",
-            last_name: "Test",
-            email: "test@marktai.com",
-            verified: false,
-            picture: null
-        },
-        mentor: {
-            id: 3,
-            profile: {
-                id: 2,
-                first_name: "Alex",
-                last_name: "Longerbeam",
-                email: "longerbeamalex@gmail.com",
-                verified: true,
-                picture: null
-            }
-        },
-        email_body: "Hey whats up hello",
-        preferred_mentee_email: "longerbeamalex@gmail.com",
-        phone: "",
-        date_created: "2017-12-03T22:36:17.422868Z"
+// <<<<<<< HEAD
+//         mentee: {
+//             id: 1,
+//             first_name: "Test",
+//             last_name: "Test",
+//             email: "test@marktai.com",
+//             verified: false,
+//             picture: null
+//         },
+//         mentor: {
+//             id: 3,
+//             profile: {
+//                 id: 2,
+//                 first_name: "Alex",
+//                 last_name: "Longerbeam",
+//                 email: "longerbeamalex@gmail.com",
+//                 verified: true,
+//                 picture: null
+//             }
+//         },
+//         email_body: "Hey whats up hello",
+//         preferred_mentee_email: "longerbeamalex@gmail.com",
+//         phone: "",
+//         date_created: "2017-12-03T22:36:17.422868Z"
+//     },
+//     {
+//         mentee: {
+//             id: 1,
+//             first_name: "Test",
+//             last_name: "Test",
+//             email: "test@marktai.com",
+//             verified: false,
+//             picture: null
+//         },
+//         mentor: {
+//             id: 2,
+//             profile: {
+//                 id: 2,
+//                 first_name: "Alex",
+//                 last_name: "Longerbeam",
+//                 email: "longerbeamalex@gmail.com",
+//                 verified: true,
+//                 picture: null
+//             }
+//         },
+//         email_body: "Hey whats up hello",
+//         preferred_mentee_email: "longerbeamalex@gmail.com",
+//         phone: "",
+//         date_created: "2017-12-03T22:36:17.422868Z"
+//     }
+// =======
+        name: "Krystal Xu",
+        major: "Linguistics and Computer Science",
+        year: 4,
+        message: "\"I am currently confused about whether to be a South Campus Major or a North Campus Major. I feel that I do better in Humanities classes but I also like CS. I need help\"",
+        role: 1,
+        date: "1 Nov 2017",
+        kind: "Received"
     },
     {
-        mentee: {
-            id: 1,
-            first_name: "Test",
-            last_name: "Test",
-            email: "test@marktai.com",
-            verified: false,
-            picture: null
-        },
-        mentor: {
-            id: 2,
-            profile: {
-                id: 2,
-                first_name: "Alex",
-                last_name: "Longerbeam",
-                email: "longerbeamalex@gmail.com",
-                verified: true,
-                picture: null
-            }
-        },
-        email_body: "Hey whats up hello",
-        preferred_mentee_email: "longerbeamalex@gmail.com",
-        phone: "",
-        date_created: "2017-12-03T22:36:17.422868Z"
-    }
+        name: "Michael Chen",
+        major: "Linguistics and Computer Science",
+        year: 2,
+        message: "\"I realised I'm really bad at my classes and I'm thinking of switching major\"",
+        role: 0,
+        date: "30 Aug 2017",
+        kind: "Received" 
+
+    },
+    {
+        name: "Ram Goli",
+        major: "Linguistics and Computer Science",
+        year: 2,
+        message: "\"I need help\"",
+        role: 1,
+        date: "26 Jun 2017",
+        kind: "Sent"
+
+    },
+    {
+        name: "Mark Song",
+        major: "Linguistics and Computer Science",
+        year: 2,
+        message: "\"I need help\"",
+        role:1,
+        date: "20 Jun 2017",
+        kind: "Sent"
+
+    },
+    {
+        name: "Mark Song",
+        major: "Linguistics and Computer Science",
+        year: 2,
+        message: "\"I need help\"",
+        role: 0,
+        date: "5 May 2017",
+        kind: "Sent"
+
+    },
+// >>>>>>> done UI designing for requests. but stil need to hook up with backend API.
 ])
 
-const requestsStart = () => {
+const startGettingRequests = () => {
     return {
-        type: REQUESTS_START
+        type: START_GETTING_REQUESTS
     }
 }
 
-const requestsSuccess = (requests) => {
+const finishGettingRequests = (requests) => {
     return {
-        type: REQUESTS_SUCCESS,
+        type: FINISH_GETTING_REQUESTS,
         requests
     };
 }
 
-const handleRequests = () => {
+const getRequests = () => {
 	return dispatch => {
-		dispatch(requestsStart())
+		dispatch(startGettingRequests())
 		
 		setTimeout(() => {
-			dispatch(requestsSuccess(dummyRequests));
+			dispatch(finishGettingRequests(dummyRequests));
 		},1);
 	};
 }
@@ -147,12 +198,12 @@ const defaultState = Immutable.fromJS({
 
 const Requests = (state=defaultState, action) => {
     switch(action.type) {
-        case REQUESTS_START: {
+        case START_GETTING_REQUESTS: {
             return state.withMutations(val => {
                 val.set('loading', true);
             })
         }
-        case REQUESTS_SUCCESS: {
+        case FINISH_GETTING_REQUESTS: {
             return state.withMutations(val => {
                 val.set('loading', false);
                 val.setIn(['requests'], action.requests);
@@ -181,4 +232,6 @@ const Requests = (state=defaultState, action) => {
 }
 
 
-export { Requests, handleRequests, sendRequest }
+
+export { Requests, getRequests, sendRequest }
+
