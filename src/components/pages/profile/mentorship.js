@@ -5,46 +5,46 @@ import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
 
 const styles = {
-  toggle: {
-    width: 44,
-	height: 23,
-  },
-  thumbOff: {
-    backgroundColor: '#ffcccc',
-  },
-  trackOff: {
-    backgroundColor: '#ff9d9d',
-  },
-  thumbSwitched: {
-    backgroundColor: 'red',
-  },
-  trackSwitched: {
-    backgroundColor: '#ff9d9d',
-  },
-  labelStyle: {
-    color: 'red',
-  },
-  update_button: {
-	margin: "0px"
-  },
-  textfield: {
-	  width: 140,
-	  height: 31,
-	  textAlign: "center",
-  },
-  textfield_input: {
-	  textAlign: "center",
-	  height: "50%"
-  }
+	toggle: {
+		width: 44,
+		height: 23,
+	},
+	thumbOff: {
+		backgroundColor: '#ffcccc',
+	},
+	trackOff: {
+		backgroundColor: '#ff9d9d',
+	},
+	thumbSwitched: {
+		backgroundColor: 'red',
+	},
+	trackSwitched: {
+		backgroundColor: '#ff9d9d',
+	},
+	labelStyle: {
+		color: 'red',
+	},
+	update_button: {
+		margin: "0px"
+	},
+	textfield: {
+		width: 140,
+		height: 31,
+		textAlign: "center",
+	},
+	textfield_input: {
+		textAlign: "center",
+		height: "50%"
+	}
 };
 
-function createField(props) {
+function CreateField(props) {
 	return (
-			<div>
+		<div>
 			<h2>{props.name}</h2>
 			<TextField defaultValue={props.name} multiLine={true} rows={1} rowsMax={4} />
-			</div>
-		);
+		</div>
+	);
 }
 
 class Mentorship extends React.Component {
@@ -83,23 +83,23 @@ class Mentorship extends React.Component {
                         	{major ? <h2>major</h2> : this.renderAddMajor()}
                     	</div>
 						<div className="Bio">
-                        	<createField name="Bio" />
+                        	<CreateField name="Bio" />
                     	</div>
                     	<div className="classes-taken">
                         	<h2>Classes Taken:</h2>
                         	{classesTaken ? <h2>classesTaken</h2> : this.renderAddClasses()}
                     	</div>
 						<div className="GPA">
-                        	<createField name="GPA" />
+                        	<CreateField name="GPA" />
                     	</div>
 						<div className="Pros">
-							<createField name="Pros" />
+							<CreateField name="Pros" />
                     	</div>
 						<div className="Cons">
-							<createField name="Cons" />
+							<CreateField name="Cons" />
                     	</div>
 						<div className="Clubs">
-							<createField name="Clubs" />
+							<CreateField name="Clubs" />
                     	</div>
                 	</div>
                 	{/*
