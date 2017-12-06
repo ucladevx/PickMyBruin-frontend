@@ -73,6 +73,17 @@ const dummyMentors = Immutable.fromJS([
         classes: ["cs180", "cs111", "csm51a", "cs188", "lol"]
 
     },
+    {
+        id: 6,
+        name: "Linea Anderson",
+        major: "Linguistics and Computer Science",
+        year: 2,
+        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
+              me everything I could possible know. Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
+              me",
+        classes: ["cs180", "cs111", "csm51a", "cs188", "lol"]
+
+    },
 ])
 
 const searchMajorsSuccess = (mentors) => {
