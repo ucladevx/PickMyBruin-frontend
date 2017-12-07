@@ -27,17 +27,22 @@ class SearchResultContainer extends React.Component {
             maxHeight
         } = this.state;
 
+        const {
+            mentorProfile
+        } = this.props;
+
+        const name = `${mentorProfile.getIn(['user', 'first_name'])} ${mentorProfile.getIn(['user', 'last_name'])}`
         return (
-            <Link to={`/mentors/${this.props.mentor.get('id')}`}>
+            <Link to={`/mentors/${this.props.mentorProfile.getIn(['mentor','id'])}`}>
             <div className="search-result-container">
                 <div className="profile-pic-container">
                     <ProfilePic />
                 </div>
                 <div className="mentor-details">
-                    <div className="mentor-name">{this.props.mentor.get('name')}</div>
-                    <div className="mentor-major">{this.props.mentor.get('major')}</div>
+                    <div className="mentor-name">{name}</div>
+                    <div className="mentor-major">{this.props.mentorProfile.getIn(['mentor', 'major'])}</div>
                     <div className="mentor-bio">
-                        <Shave maxHeight={maxHeight}>{this.props.mentor.get('bio')}</Shave>
+                        <Shave maxHeight={maxHeight}>{this.props.mentorProfile.getIn(['mentor','bio'])}</Shave>
                     </div>
                 </div>
             </div>

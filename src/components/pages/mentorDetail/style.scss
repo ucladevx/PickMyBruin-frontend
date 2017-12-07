@@ -17,6 +17,7 @@
     .content {
         display: flex;
         flex-flow: row;
+        flex-grow: 100;
 
         .results {
             display: none;
@@ -41,11 +42,14 @@
             background-color: $white;
             display: flex;
             flex-flow: column;
+            flex: 1;
+
             
             .mentor-details {
                 display: flex;
                 flex-flow: column;
                 padding: 20px;
+                flex-grow: 2;
 
                 .heading {
                     display: flex;

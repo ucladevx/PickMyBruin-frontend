@@ -46,7 +46,13 @@
                 .heading {
                     display: flex;
                     flex-flow: row;
+                    justify-content: space-between;
                     margin-top: 50px;
+
+                    .icon-and-title{
+                      display: flex;
+                      flex-flow: row;
+                    }
 
                     h1 {
                         font-size: 1.7em
@@ -74,7 +80,7 @@
 
                     @media (min-width: 440px) {
                         * {
-                            margin-bottom: 15px;
+                            margin-bottom: 5px;
                         }
                     }
                 }
@@ -119,6 +125,12 @@
                     }
 
                     .classes-taken {
+                        display: flex;
+                        flex-flow: row;
+                        justify-content: space-between;
+                    }
+
+                    .gpa {
                         display: flex;
                         flex-flow: row;
                         justify-content: space-between;
@@ -172,7 +184,7 @@
         align-items: flex-end;
         padding-left: 20px;
 
-        
+
         h1 {
             margin-left: 10px;
             color: $white;
@@ -206,4 +218,8 @@
         height: 100%;
         width:auto;
     }
+}
+
+.disabled {
+    display: none;
 }

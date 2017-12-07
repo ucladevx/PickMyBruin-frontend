@@ -14,6 +14,8 @@ class ProfileContainer extends React.Component {
     render() {
         return (
             <Profile 
+                profile={this.props.profile}
+                updateMentorStatus={this.props.updateMentorStatus}
             />
         )
     }
@@ -22,7 +24,7 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = state => {
     const Profile = state.Profile
     return {
-        profile: Profile.get('user')
+        profile: Profile
     }
 }
 
@@ -30,6 +32,9 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchProfileData: () => {
             dispatch(Actions.profileActions.fetchProfile());
+        },
+        updateMentorStatus: (status) => {
+            dispatch(Actions.profileActions.updateMentorStatus(status));
         }
     }
 }

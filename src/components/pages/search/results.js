@@ -4,10 +4,10 @@ import SearchResultContainer from './searchResultContainer';
 export default (props) => {
     return (
         <div className="search-results-container">
-            {props.mentors ? props.mentors.map(mentor => 
+            {props.mentors ? props.mentors.map(mentorProfile => 
                 <SearchResultContainer 
-                    key={mentor.get('id')} 
-                    mentor={mentor} 
+                    key={mentorProfile.getIn(['mentor', 'id'])} 
+                    mentorProfile={mentorProfile} 
                 />
             ) : null}
         </div>

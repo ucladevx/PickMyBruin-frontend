@@ -64,11 +64,14 @@ class MentorDetail extends React.Component {
                 <Navbar />
                 <div className="content">
                     <div className="results">
-                        <Results mentors={this.props.mentors.filter(mentor => mentor.get('id') !== profile.get('id'))} />
+                        <Results mentors={this.props.mentors.filter((mentorProfile) => {
+                                return mentorProfile.getIn(['mentor', 'id']) != profile.getIn(['mentor', 'id'])
+                            })
+                            } />
                     </div>
                     <div className="profile">
                         <ProfileTop 
-                            name={profile.get('name')}
+                            name={`${profile.getIn(['user', 'first_name'])} ${profile.getIn(['user', 'last_name'])}`}
                         />
                         <div className="mentor-details">
                             <div className="about-major-heading heading">
@@ -76,7 +79,7 @@ class MentorDetail extends React.Component {
                                 <h1>About Me</h1>
                             </div>
                             <div className="about-major">
-                                <p>{profile.get('bio')}</p>
+                                <p>{profile.getIn(['mentor','bio'])}</p>
                             </div>
                             <div className="heading my-classes-heading">
                                 <i className="fa fa-book" aria-hidden="true"></i>
@@ -85,7 +88,7 @@ class MentorDetail extends React.Component {
                             <div className="my-classes">
                                 <ul>
                                     {
-                                        profile.get('classes').map(className => {
+                                        profile.getIn(['mentor', 'classes']).map(className => {
                                             key += 1;
                                             return <li key={key}>{className}</li>
                                         })

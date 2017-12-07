@@ -5,12 +5,11 @@ import ProfilePic from './profilePicture';
 
 class ProfileTop extends React.Component {
     render() {
-        const name = this.props.name || "Joe Bruin";
         return(
             <div className="top">
                 <div className="user-info">
                     <ProfilePic />
-                    <h1>{name}</h1>
+                    <h1>{this.props.name}</h1>
                 </div>
             </div>
         );

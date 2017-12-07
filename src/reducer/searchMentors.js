@@ -24,66 +24,44 @@ const SEND_REQUEST_ERROR = 'send_request_error';
 
 const dummyMentors = Immutable.fromJS([
     {
-        id: 1,
-        name: "Mary Smith",
-        major: "Linguistics ",
-        year: 4,
-        bio: "I love Linguistics and Computer Science because it gave me the blah blah blah",
-        classes: ["cs180", "cs111", "csm51a", "cs188", "lol"]
+        user: { 
+            id: 1,
+            first_name: 'Mary',
+            last_name: 'Smith',
+            email: 'mary@smith.cmo',
+            year: '2nd',
+            verified: true,
+        },
+        mentor: {
+            id: 1,
+            active: true,
+            major: "Computer Science",
+            bio: "I LOVE MY MAJOR SO MUCH!",
+            gpa: "0.00",
+            clubs: null,
+            classes: ['cs111', 'cs31', 'cs32', 'cs333']
+        }
     },
     {
-        id: 2,
-        name: "Mark Song",
-        major: "Linguistics and Computer Science and Linguistics and super long",
-        year: 2,
-        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
-              me how to be the best person that i can and I absolutely love it here i want to marry jean block he is the greates \
-              human being alive!!",
-        classes: ["cs180", "cs111", "csm51a", "cs188", "lol"]
-
-    },
-    {
-        id: 3,
-        name: "Gene Block",
-        major: "Linguistics and Computer Science",
-        year: 2,
-        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
-              me",
-        classes: ["cs180", "cs111", "csm51a", "cs188", "lol"]
-
-    },
-    {
-        id: 4,
-        name: "Ram Goli",
-        major: "Linguistics and Computer Science",
-        year: 2,
-        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
-              me",
-
-        classes: ["cs180", "cs111", "csm51a", "cs188", "lol"]
-
-    },
-    {
-        id: 5,
-        name: "David Chen",
-        major: "Linguistics and Computer Science",
-        year: 2,
-        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
-              me",
-        classes: ["cs180", "cs111", "csm51a", "cs188", "lol"]
-
-    },
-    {
-        id: 6,
-        name: "Linea Anderson",
-        major: "Linguistics and Computer Science",
-        year: 2,
-        bio: "Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
-              me everything I could possible know. Coming to UCLA as an undeclared student, I knew that I wanted an interdisciplinary education that taught \
-              me",
-        classes: ["cs180", "cs111", "csm51a", "cs188", "lol"]
-
-    },
+        user: { 
+            id: 2,
+            first_name: 'Mark',
+            last_name: 'Tai',
+            email: 'mark@smith.cmo',
+            year: '2nd',
+            verified: true,
+        },
+        mentor: {
+            id: 2,
+            active: true,
+            major: "Computer Science",
+            bio: "I LOVE MY MAJOR SO MUCH! It's the best thing in the world and I have learned so much \
+                and I can't wat to share that info with others come talk to me!!",
+            gpa: "0.00",
+            clubs: null,
+            classes: ['cs111', 'cs31', 'cs32', 'cs333', 'cs111']
+        }
+    }
 ])
 
 const searchMajorsSuccess = (mentors) => {
