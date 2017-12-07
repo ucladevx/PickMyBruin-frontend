@@ -23,7 +23,7 @@ const SET_MENTOR_PROFILE = 'set_mentor_profile';
 // ACTIONS //
 /////////////
 
-const createMentor = () => {
+const updateMentorStatus = wantToBeActive => {
     return async dispatch => {
         try {
             const token = Storage.get('token');
@@ -34,10 +34,14 @@ const createMentor = () => {
 
             // get regular profile info
             const response = await fetch(Config.API_URL + '/mentors/me/', {
-                method: 'POST',
+                method: wantToBeActive ? 'POST' : 'PATCH',
                 headers: new Headers({
-                    "Authorization": `Bearer ${token}`
-                })
+                    "Authorization": `Bearer ${token}`,
+                    "content-type": "application/json"
+                }),
+                body: !wantToBeActive ? JSON.stringify({
+                    active: false
+                    }) : null
             })
 
             const status = await response.status;
@@ -135,22 +139,8 @@ const defaultState = () => {
     return Immutable.fromJS({
         error: null,
         loading: false,
-        user: { 
-            id: null,
-            first_name: '',
-            last_name: '',
-            email: '',
-            year: '',
-            verified: false,
-        },
-        mentor: {
-            id: null,
-            active: false,
-            major: null,
-            bio: null,
-            gpa: "0.00",
-            clubs: null,
-        }
+        user: {},
+        mentor: {}
     });
 }
 
@@ -183,4 +173,4 @@ const Profile = (state = defaultState(), action) => {
     }
 }
 
-export { Profile, fetchProfile, updateProfile, setProfile, createMentor };
+export { Profile, fetchProfile, updateProfile, setProfile, updateMentorStatus };

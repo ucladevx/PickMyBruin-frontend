@@ -23,9 +23,9 @@ class Profile extends React.Component {
             mentor: props.profile.get('mentor').toJS()
         });
     }
-
+    
     _handleChangeStatus = (_, value) => {
-        console.log(event, value);
+        this.props.updateMentorStatus(value);
     }
 
     render() {
@@ -47,7 +47,7 @@ class Profile extends React.Component {
                         <Mentorship 
                             user={this.state.user}
                             mentor={this.state.mentor}
-                            createMentor={this.props.createMentor}
+                            updateMentorStatus={this._handleChangeStatus}
                         />
                     </div>
                 </div>

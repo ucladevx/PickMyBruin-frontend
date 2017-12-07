@@ -75,7 +75,7 @@ class Mentorship extends React.Component {
                 	<div className="body">
                     	<div className="mentorship-status">
                         	<h2>Mentorship Status:</h2>
-							<Toggle id="status" toggled={isActive} onToggle={this.props.createMentor} style={styles.toggle} />
+							<Toggle id="status" toggled={isActive} onToggle={this.props.updateMentorStatus} style={styles.toggle} />
                     	</div>
 						<div className={classNames({'disabled': !isActive}, 'mentor-fields')}>
 							<div className="major">
