@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { parse } from 'qs';
 
 import { Actions } from '../reducer';
+import Loader from '../components/Loader';
 
 class VerifyUserContainer extends React.Component {
     componentWillMount() {
@@ -20,7 +21,7 @@ class VerifyUserContainer extends React.Component {
 
     render() {
         return (
-            <div></div>
+            <Loader />
         );
     }
 }
