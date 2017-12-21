@@ -1,10 +1,16 @@
 import React from 'react';
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+
 import classNames from 'classnames';
 import { isatty } from 'tty';
+
+import majors from '../../../majors.json';
 
 const styles = {
 	toggle: {
@@ -44,7 +50,13 @@ function CreateField(props) {
 	return (
 		<div>
 			<h2>{props.name}</h2>
-			<TextField defaultValue={props.name} multiLine={true} rows={1} rowsMax={4} />
+			<TextField 
+                id={props.name} 
+                defaultValue={props.name} 
+                multiLine={true} 
+                rows={1} 
+                rowsMax={4}
+            />
 		</div>
 	);
 }
@@ -56,7 +68,21 @@ class Mentorship extends React.Component {
     }
 
     renderAddMajor = () => {
-        return <h2>Add Major <i className="fa fa-plus" aria-hidden="true"></i></h2>
+        let value = 1;
+        return ( 
+            <SelectField value={this.props.mentor.major}>
+                {majors.map(major => {
+                    value += 1;
+                    return (
+                        <MenuItem 
+                            value={value}
+                            primaryText={major}
+                        />
+                    );
+                })}
+            </SelectField>
+        );
+
     }
 
     render() {
@@ -75,7 +101,12 @@ class Mentorship extends React.Component {
                 	<div className="body">
                     	<div className="mentorship-status">
                         	<h2>Mentorship Status:</h2>
-							<Toggle id="status" toggled={isActive} onToggle={this.props.updateMentorStatus} style={styles.toggle} />
+							<Toggle 
+                                id="status" 
+                                toggled={isActive} 
+                                onToggle={this.props.updateMentorStatus} 
+                                style={styles.toggle} 
+                            />
                     	</div>
 						<div className={classNames({'disabled': !isActive}, 'mentor-fields')}>
 							<div className="major">
@@ -88,18 +119,6 @@ class Mentorship extends React.Component {
 							<div className="classes-taken">
 								<h2>Classes Taken:</h2>
 								{classesTaken ? <h2>classesTaken</h2> : this.renderAddClasses()}
-							</div>
-							<div className="GPA">
-								<CreateField name="GPA" />
-							</div>
-							<div className="Pros">
-								<CreateField name="Pros" />
-							</div>
-							<div className="Cons">
-								<CreateField name="Cons" />
-							</div>
-							<div className="Clubs">
-								<CreateField name="Clubs" />
 							</div>
 						</div>
                 	</div>

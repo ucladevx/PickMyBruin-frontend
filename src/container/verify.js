@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import { parse } from 'qs';
 
 import { Actions } from '../reducer';
-import Loader from '../components/Loader';
+import Loader from '../components/loading';
 
 class VerifyUserContainer extends React.Component {
     componentWillMount() {

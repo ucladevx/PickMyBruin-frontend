@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import EmailForm from './emailForm';
 
-import Loader from '../../loader';
+import Loader from '../../loading';
 
 class Register extends React.Component {
     componentWillReceiveProps(nextProps) {
