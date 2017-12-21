@@ -36,10 +36,10 @@ class Profile extends React.Component {
     }
 
     render() {
-        if (!this.state.user.id) {
+        if (!this.state.newUser.id) {
             return null;
         } else {
-            const name = `${this.state.user.first_name} ${this.state.user.last_name}`;
+            const name = `${this.state.newUser.first_name} ${this.state.newUser.last_name}`;
             return (
                 <div className="container-profile">
                     <div className="profile-wrapper">

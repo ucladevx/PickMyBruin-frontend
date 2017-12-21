@@ -10,7 +10,10 @@ import MenuItem from 'material-ui/MenuItem';
 import classNames from 'classnames';
 import { isatty } from 'tty';
 
+import Divider from '../../util/divider';
+
 import majors from '../../../majors.json';
+
 
 const styles = {
 	toggle: {
@@ -114,7 +117,8 @@ class Mentorship extends React.Component {
 								{major ? <h2>major</h2> : this.renderAddMajor()}
 							</div>
 							<div className="Bio">
-								<CreateField name="Bio" />
+                                <h2>Bio</h2>
+                                <Divider orientation={"horizontal"} />
 							</div>
 							<div className="classes-taken">
 								<h2>Classes Taken:</h2>
