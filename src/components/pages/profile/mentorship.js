@@ -6,6 +6,7 @@ import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import ChipInput from 'material-ui-chip-input';
 
 import { Button, Input } from 'reactstrap';
 
@@ -46,33 +47,20 @@ const styles = {
 		textAlign: "center",
 	},
 	textfield_input: {
-		textAlign: "center",
-		height: "50%"
-	}
+        borderColor: '#007bff'
+	},
+    
 };
 
-function CreateField(props) {
-	return (
-		<div>
-			<h2>{props.name}</h2>
-			<TextField 
-                id={props.name} 
-                defaultValue={props.name} 
-                multiLine={true} 
-                rows={1} 
-                rowsMax={4}
-            />
-		</div>
-	);
-}
 
 class Mentorship extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            addBioOpen: false,
-            bio: this.props.mentor.bio
+            bioOpen: false,
+            bio: this.props.mentor.bio,
+            classesOpen: false
         }
     }
 
@@ -103,15 +91,48 @@ class Mentorship extends React.Component {
         );
 
     }
+
+    renderEditClasses = () => {
+        return (
+            <div className="add-classes">
+                <ChipInput
+                    onChange={chips => console.log(chips)}
+                    fullWidth={true}
+                    hintText={'press Enter to confirm a choice'}
+                    underlineFocusStyle={styles.textfield_input}
+                />
+                <div className="buttons">
+                    <Button
+                        color="primary"
+                        onClick={() => this._updateBio()} 
+                        size="sm"
+                    >
+                        Save
+                    </Button>
+                    <Button 
+                        color="secondary" 
+                        onClick={() => this.openField("classesOpen")} 
+                        size="sm"
+                    >
+                        Cancel
+                    </Button>                        
+                </div>
+            </div>
+        ); 
+    }
     
     renderClasses = () => {
         if (!this.props.mentor.classes) {
-            return <p><i className="fa fa-plus" aria-hidden="true"></i> Add Classes</p>
-        }
+            if (!this.state.classesOpen) {
+                return <p onClick={() => this.openField("classesOpen")}><i className="fa fa-plus" aria-hidden="true"></i> Add Classes</p>
+            } else {
+                return this.renderEditClasses();            
+            }
+        } 
     }
 
     _updateBio = () => {
-        this.openField("addBioOpen");
+        this.openField("bioOpen");
         this.props.updateBio(this.state.bio);
     }
 
@@ -129,7 +150,7 @@ class Mentorship extends React.Component {
                     </Button>
                     <Button 
                         color="secondary" 
-                        onClick={() => this.openField("addBioOpen")} 
+                        onClick={() => this.openField("bioOpen")} 
                         size="sm"
                     >
                         Cancel
@@ -141,17 +162,17 @@ class Mentorship extends React.Component {
 
     renderBio = () => {
         if (!this.props.mentor.bio) {
-            if (!this.state.addBioOpen) {
-                return <p onClick={() => this.openField("addBioOpen")}><i className="fa fa-plus" aria-hidden="true"></i> Add a bio</p>;
+            if (!this.state.bioOpen) {
+                return <p onClick={() => this.openField("bioOpen")}><i className="fa fa-plus" aria-hidden="true"></i> Add a bio</p>;
             } else {
                 return this.renderEditBio();
             }
         } else {
-            if (!this.state.addBioOpen) {
+            if (!this.state.bioOpen) {
                 return (
                     <div className="text-and-edit">
                         <p>{this.props.mentor.bio}</p>
-                        <i className="fa fa-pencil-square-o" onClick={() => this.openField("addBioOpen")}></i>
+                        <i className="fa fa-pencil-square-o" onClick={() => this.openField("bioOpen")}></i>
                     </div>
                 );
             } else {
