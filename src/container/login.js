@@ -1,14 +1,14 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { goBack } from 'react-router-redux';
+import { push } from 'react-router-redux';
 import { Actions } from '../reducer';
 import Login from '../components/pages/login';
 
 class LoginContainer extends React.Component {
 
     componentDidUpdate(prevProps,prevState){
-        if (!prevProps.loginSuccess && this.props.loginSuccess && !this.props.error){
+        if (this.props.loginSuccess && !this.props.error){
             this.props.redirectToProfile()
         };
     }
@@ -38,7 +38,7 @@ const mapDispatchToProps = dispatch => {
         	dispatch(Actions.loginActions.sendUsernamePassword(email, password));
         },
         redirectToProfile: () => {
-            dispatch(goBack());      
+            dispatch(push("/profile"));      
         }
     };
 };

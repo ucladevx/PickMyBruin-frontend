@@ -7,6 +7,8 @@ import Toggle from 'material-ui/Toggle';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
+import { Button, Input } from 'reactstrap';
+
 import classNames from 'classnames';
 import { isatty } from 'tty';
 
@@ -65,9 +67,23 @@ function CreateField(props) {
 }
 
 class Mentorship extends React.Component {
+    constructor(props) {
+        super(props);
 
-    renderAddClasses = () => {
-        return <h2>Add Classes <i className="fa fa-plus" aria-hidden="true"></i></h2>
+        this.state = {
+            addBioOpen: false,
+            bio: this.props.mentor.bio
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({bio: nextProps.mentor.bio});
+    }
+
+    openField = field => {
+        this.setState({
+            [field]: !this.state[field]
+        });
     }
 
     renderAddMajor = () => {
@@ -86,6 +102,62 @@ class Mentorship extends React.Component {
             </SelectField>
         );
 
+    }
+    
+    renderClasses = () => {
+        if (!this.props.mentor.classes) {
+            return <p><i className="fa fa-plus" aria-hidden="true"></i> Add Classes</p>
+        }
+    }
+
+    _updateBio = () => {
+        this.openField("addBioOpen");
+        this.props.updateBio(this.state.bio);
+    }
+
+    renderEditBio = () => {
+        return (
+            <div className="add-bio">
+                <Input type="textarea" onChange={e => this.setState({bio: e.target.value})} value={this.state.bio} name="bio" id="bio" />
+                <div className="buttons">
+                    <Button
+                        color="primary"
+                        onClick={() => this._updateBio()} 
+                        size="sm"
+                    >
+                        Save
+                    </Button>
+                    <Button 
+                        color="secondary" 
+                        onClick={() => this.openField("addBioOpen")} 
+                        size="sm"
+                    >
+                        Cancel
+                    </Button>                        
+                </div>
+            </div>
+        );
+    }
+
+    renderBio = () => {
+        if (!this.props.mentor.bio) {
+            if (!this.state.addBioOpen) {
+                return <p onClick={() => this.openField("addBioOpen")}><i className="fa fa-plus" aria-hidden="true"></i> Add a bio</p>;
+            } else {
+                return this.renderEditBio();
+            }
+        } else {
+            if (!this.state.addBioOpen) {
+                return (
+                    <div className="text-and-edit">
+                        <p>{this.props.mentor.bio}</p>
+                        <i className="fa fa-pencil-square-o" onClick={() => this.openField("addBioOpen")}></i>
+                    </div>
+                );
+            } else {
+                return this.renderEditBio();
+            }
+        }
     }
 
     render() {
@@ -116,13 +188,15 @@ class Mentorship extends React.Component {
 								<h2>Major:</h2>
 								{major ? <h2>major</h2> : this.renderAddMajor()}
 							</div>
-							<div className="Bio">
+							<div className="bio">
                                 <h2>Bio</h2>
                                 <Divider orientation={"horizontal"} />
+                                {this.renderBio()}
 							</div>
 							<div className="classes-taken">
 								<h2>Classes Taken:</h2>
-								{classesTaken ? <h2>classesTaken</h2> : this.renderAddClasses()}
+                                <Divider orientation={"horizontal"} />
+								{this.renderClasses()}
 							</div>
 						</div>
                 	</div>

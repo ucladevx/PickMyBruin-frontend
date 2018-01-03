@@ -1,8 +1,9 @@
 import Immutable, { fromJS } from 'immutable';
+import { replace, push } from 'react-router-redux';
+import { addNotification as notify } from 'reapop';
+
 import Config from '../config';
 import Storage from '../storage';
-import { replace } from 'react-router-redux';
-import { addNotification as notify } from 'reapop';
 
 /////////////
 /// TYPES ///
@@ -59,6 +60,42 @@ const updateMentorStatus = wantToBeActive => {
     }
 }
 
+const updateBio = bio => {
+    return async dispatch => {
+        try {
+            const token = Storage.get('token');
+            if (!token) {
+                // we need them to login
+                dispatch(push('/login'));
+            }
+
+            // get regular profile info
+            const response = await fetch(Config.API_URL + '/mentors/me/', {
+                method: 'PATCH',
+                headers: new Headers({
+                    "Authorization": `Bearer ${token}`,
+                    "content-type": "application/json"
+                }),
+                body: JSON.stringify({
+                    bio
+                })
+            })
+
+            const status = await response.status;
+            const data = await response.json();
+
+            if (status > 299 || status < 200) {
+                throw new Error("We can't update your bio");
+            } else {
+                dispatch(setMentorProfile(data));
+            }
+        } catch (error) {
+            // handle errors here
+            dispatch(notify({title: 'Error!', status: 'error', message: error.message, position: 'tc'}));
+        }
+    }
+}
+
 const fetchProfile = () => {
     return async dispatch => {
         try {
@@ -104,7 +141,7 @@ const fetchProfile = () => {
             // if mentorStatus is 404, they have no mentor profile
         } catch (error) {
             // handle errors here
-            dispatch(notify({title: 'Error!', status: 'error', message: error.message, position: 'tc'}));
+            dispatch(push('/login'));
         }
     }
 }
@@ -173,4 +210,4 @@ const Profile = (state = defaultState(), action) => {
     }
 }
 
-export { Profile, fetchProfile, updateProfile, setProfile, updateMentorStatus };
+export { Profile, fetchProfile, updateProfile, setProfile, updateMentorStatus, updateBio };

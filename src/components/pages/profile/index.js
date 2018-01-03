@@ -55,6 +55,7 @@ class Profile extends React.Component {
                                 user={this.state.newUser}
                                 mentor={this.state.newMentor}
                                 updateMentorStatus={this._handleChangeStatus}
+                                updateBio={this.props.updateBio}
                                 handleChangeProfile={this._handleChangeProfile}
                             />
                         </div>
