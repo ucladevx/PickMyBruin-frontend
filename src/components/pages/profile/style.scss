@@ -110,12 +110,6 @@
                     display: flex;
                     flex-flow: column;
 
-
-                    p {
-                        color: $primary-color;
-                        cursor: pointer;
-                    }
-
                     .mentorship-status {
                         display: flex;
                         flex-flow: row;
@@ -123,6 +117,16 @@
                     }
 
                     .mentor-fields {
+
+                        & > div > p {
+                            color: $primary-color;
+                            cursor: pointer;
+                            margin-top: 10px;
+                        }
+
+                        & > div > div > i:before {
+                            cursor: pointer;
+                        }
 
                         .major {
                             display: flex;
