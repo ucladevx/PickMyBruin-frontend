@@ -48,8 +48,8 @@ class Profile extends React.Component {
                         /> 
                         <div className="profile-detail-container">
                             <General 
-                                user={this.state.user}
-                                mentor={this.state.mentor}
+                                user={this.state.newUser}
+                                mentor={this.state.newMentor}
                             />
                             <Mentorship 
                                 user={this.state.newUser}
