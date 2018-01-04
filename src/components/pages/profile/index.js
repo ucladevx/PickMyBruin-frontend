@@ -31,8 +31,16 @@ class Profile extends React.Component {
         this.props.updateMentorStatus(value);
     }
 
-    _handleChangeProfile = (key, value) => {
+    _handleChangeMentorProfile = (key, value) => {
+        let body = {};
+        body[key] = value;
+        this.props.updateMentorProfile(body);
+    }
 
+    _handleChangeUserProfile = (key, value) => {
+        let body = {};
+        body[ley] = value;
+        this.props.updateUserProfile(body);
     }
 
     render() {
@@ -50,13 +58,13 @@ class Profile extends React.Component {
                             <General 
                                 user={this.state.newUser}
                                 mentor={this.state.newMentor}
+                                updateProfile={this._handleChangeMentorProfile}
                             />
                             <Mentorship 
                                 user={this.state.newUser}
                                 mentor={this.state.newMentor}
                                 updateMentorStatus={this._handleChangeStatus}
-                                updateBio={this.props.updateBio}
-                                handleChangeProfile={this._handleChangeProfile}
+                                updateProfile={this._handleChangeMentorProfile}
                             />
                         </div>
                     </div>

@@ -12,16 +12,13 @@ class ProfileContainer extends React.Component {
         }
     }
 
-    _updateBio = (bio) => {
-        
-    }
-
     render() {
         return (
             <Profile 
                 profile={this.props.profile}
                 updateMentorStatus={this.props.updateMentorStatus}
-                updateBio={this.props.updateBio}
+                updateUserProfile={this.props.updateUserProfile}
+                updateMentorProfile={this.props.updateMentorProfile}
             />
         )
     }
@@ -42,9 +39,12 @@ const mapDispatchToProps = dispatch => {
         updateMentorStatus: (status) => {
             dispatch(Actions.profileActions.updateMentorStatus(status));
         },
-        updateBio: (bio) => {
-            dispatch(Actions.profileActions.updateBio(bio));
-        }
+        updateUserProfile: body => {
+            dispatch(Actions.profileActions.updateUserProfile(body));
+        }, 
+        updateMentorProfile: body => {
+            dispatch(Actions.profileActions.updateMentorProfile(body));
+        }, 
     }
 }
 

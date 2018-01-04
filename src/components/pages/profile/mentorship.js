@@ -42,8 +42,7 @@ const styles = {
 		margin: "0px"
 	},
 	textfield: {
-		width: 140,
-		height: 31,
+		height: 40,
 		textAlign: "center",
 	},
 	textfield_input: {
@@ -77,12 +76,17 @@ class Mentorship extends React.Component {
     renderAddMajor = () => {
         let value = 1;
         return ( 
-            <SelectField value={this.props.mentor.major}>
+            <SelectField 
+                value={this.props.mentor.major} 
+                style={styles.textfield}
+                onChange={(e, key, value) => this.props.updateProfile("major", value)}
+            >
                 {majors.map(major => {
                     value += 1;
                     return (
                         <MenuItem 
-                            value={value}
+                            key={value}
+                            value={major}
                             primaryText={major}
                         />
                     );
@@ -98,8 +102,8 @@ class Mentorship extends React.Component {
                 <ChipInput
                     onChange={chips => console.log(chips)}
                     fullWidth={true}
-                    hintText={'press Enter to confirm a choice'}
                     underlineFocusStyle={styles.textfield_input}
+                    newChipKeyCodes={[32]}
                 />
                 <div className="buttons">
                     <Button
@@ -124,7 +128,12 @@ class Mentorship extends React.Component {
     renderClasses = () => {
         if (!this.props.mentor.classes) {
             if (!this.state.classesOpen) {
-                return <p onClick={() => this.openField("classesOpen")}><i className="fa fa-plus" aria-hidden="true"></i> Add Classes</p>
+                return (
+                    <p onClick={() => this.openField("classesOpen")}>
+                        <i className="fa fa-plus" aria-hidden="true"></i>
+                        &nbsp;Add Classes
+                    </p>
+                );
             } else {
                 return this.renderEditClasses();            
             }
@@ -133,7 +142,7 @@ class Mentorship extends React.Component {
 
     _updateBio = () => {
         this.openField("bioOpen");
-        this.props.updateBio(this.state.bio);
+        this.props.updateProfile("bio", this.state.bio);
     }
 
     renderEditBio = () => {
@@ -163,7 +172,12 @@ class Mentorship extends React.Component {
     renderBio = () => {
         if (!this.props.mentor.bio) {
             if (!this.state.bioOpen) {
-                return <p onClick={() => this.openField("bioOpen")}><i className="fa fa-plus" aria-hidden="true"></i> Add a bio</p>;
+                return (
+                    <p onClick={() => this.openField("bioOpen")}>
+                        <i className="fa fa-plus" aria-hidden="true"></i> 
+                        &nbsp;Add a bio
+                    </p> 
+                );
             } else {
                 return this.renderEditBio();
             }

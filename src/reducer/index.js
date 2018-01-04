@@ -5,10 +5,9 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { reducer as notificationsReducer } from 'reapop';
 
-import { Auth } from './auth';
 import { Login, sendUsernamePassword } from './login';
 import { Register, sendVerificationLink, confirmCode, completeRegistration } from './register';
-import { Profile, fetchProfile, updateProfile, updateMentorStatus, updateBio } from './profile';
+import { Profile, fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile } from './profile';
 import { SearchMentors, handleSearch } from './searchMentors'
 import { Requests, handleRequests, sendRequest } from './requests'
 
@@ -23,7 +22,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 const store = createStore(
     combineReducers({
-        Auth,
         Register,
         Login,
         Profile,
@@ -46,7 +44,7 @@ const Actions = {
         sendVerificationLink, confirmCode
     },
     profileActions: {
-        fetchProfile, updateProfile, updateMentorStatus, updateBio
+        fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile,
     },
     searchMentorsActions: {
         handleSearch

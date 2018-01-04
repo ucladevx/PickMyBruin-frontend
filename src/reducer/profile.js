@@ -60,7 +60,7 @@ const updateMentorStatus = wantToBeActive => {
     }
 }
 
-const updateBio = bio => {
+const updateMentorProfile = body => {
     return async dispatch => {
         try {
             const token = Storage.get('token');
@@ -68,30 +68,58 @@ const updateBio = bio => {
                 // we need them to login
                 dispatch(push('/login'));
             }
-
-            // get regular profile info
             const response = await fetch(Config.API_URL + '/mentors/me/', {
                 method: 'PATCH',
                 headers: new Headers({
                     "Authorization": `Bearer ${token}`,
                     "content-type": "application/json"
                 }),
-                body: JSON.stringify({
-                    bio
-                })
+                body: JSON.stringify(body)
             })
 
             const status = await response.status;
             const data = await response.json();
 
             if (status > 299 || status < 200) {
-                throw new Error("We can't update your bio");
+                throw new Error("We couldn't update your mentor profile");
             } else {
+                dispatch(notify({message: "Your mentor profile is updated", position: 'tc', status: 'success'}));
                 dispatch(setMentorProfile(data));
             }
         } catch (error) {
-            // handle errors here
-            dispatch(notify({title: 'Error!', status: 'error', message: error.message, position: 'tc'}));
+            dispatch(notify({title: "Error", message: error.message, position: 'tc', status: 'error'}))
+        }
+    }
+}
+
+const updateUserProfile = body => {
+    return async dispatch => {
+        try {
+            const token = Storage.get('token');
+            if (!token) {
+                // we need them to login
+                dispatch(push('/login'));
+            }
+            const response = await fetch(Config.API_URL + '/users/me/', {
+                method: 'PATCH',
+                headers: new Headers({
+                    "Authorization": `Bearer ${token}`,
+                    "content-type": "application/json"
+                }),
+                body: JSON.stringify(body)
+            })
+
+            const status = await response.status;
+            const data = await response.json();
+
+            if (status > 299 || status < 200) {
+                throw new Error("We couldn't update your profile");
+            } else {
+                dispatch(notify({message: "Your profile is updated", position: 'tc', status: 'success'}));
+                dispatch(setProfile(data));
+            }
+        } catch (error) {
+            dispatch(notify({title: "Error", message: error.message, position: 'tc', status: 'error'}))
         }
     }
 }
@@ -143,12 +171,6 @@ const fetchProfile = () => {
             // handle errors here
             dispatch(push('/login'));
         }
-    }
-}
-
-const updateProfile = () => {
-    return dispatch => {
-        // update profile
     }
 }
 
@@ -210,4 +232,4 @@ const Profile = (state = defaultState(), action) => {
     }
 }
 
-export { Profile, fetchProfile, updateProfile, setProfile, updateMentorStatus, updateBio };
+export { Profile, fetchProfile, setProfile, updateMentorStatus, updateMentorProfile, updateUserProfile };
