@@ -4,8 +4,6 @@
     display: flex;
     flex-flow: column;
     background-color: $mentor-detail-canvas-color;
-    min-height: 100vh;
-    max-height: 100vh;
 
     .navbar-container {
         display: none;
@@ -49,7 +47,6 @@
                 display: flex;
                 flex-flow: column;
                 padding: 20px;
-                flex-grow: 2;
 
                 .heading {
                     display: flex;
@@ -100,7 +97,7 @@
                 align-self: center;
                 border-radius: 5px 5px 5px 5px;
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-                overflow: hidden;  // to see the border-radius
+                overflow: hidden;  /* to see the border-radius */
             }
         }
 
@@ -108,6 +105,11 @@
             padding: 20px 100px 20px 100px;
             flex-shrink: 100;
         }
+    }
+
+    @media(min-width: 440px) {
+        min-height: 100vh;
+        max-height: 100vh;
     }
 }
 

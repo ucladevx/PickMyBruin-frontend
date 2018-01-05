@@ -74,7 +74,7 @@ class MentorDetail extends React.Component {
                             name={`${profile.getIn(['user', 'first_name'])} ${profile.getIn(['user', 'last_name'])}`}
                         />
                         <div className="mentor-details">
-                            <div className="about-major-heading heading">
+                            <div className="heading about-major-heading">
                                 <i className="fa fa-user-o" aria-hidden="true"></i>
                                 <h1>About Me</h1>
                             </div>
