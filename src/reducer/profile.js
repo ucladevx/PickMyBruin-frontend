@@ -152,6 +152,11 @@ const fetchProfile = () => {
             const userStatus = await userResponse.status;
             const userData = await userResponse.json();
 
+            if (userStatus == 401) {
+                Storage.remove("token");
+                return dispatch(replace('/login'));
+            }
+
             if (userStatus > 299 || userStatus < 200) {
                 throw new Error("Error fetching profile");
             } else {
@@ -160,6 +165,11 @@ const fetchProfile = () => {
 
             const mentorStatus = await mentorResponse.status;
             const mentorData = await mentorResponse.json();
+
+            if (mentorStatus == 401) {
+                Storage.remove("token");
+                return dispatch(replace('/login'));
+            }
 
             if (mentorStatus < 299 && mentorStatus >= 200) {
                 // they are also a mentor!
