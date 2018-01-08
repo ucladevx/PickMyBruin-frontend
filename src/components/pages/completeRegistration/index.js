@@ -55,22 +55,22 @@ class CompleteRegistration extends React.Component {
                     <MuiThemeProvider>
                         <RadioButtonGroup name="year" onChange={this.onChange}>
                             <RadioButton
-                                value="freshman"
+                                value="1st"
                                 label="freshman"
                                 iconStyle={styles.radioStyles}
                             />
                             <RadioButton
-                                value="sophomore"
+                                value="2nd"
                                 label="sophomore"
                                 iconStyle={styles.radioStyles}
                             />
                             <RadioButton
-                                value="junior"
+                                value="3rd"
                                 label="junior"
                                 iconStyle={styles.radioStyles}
                             />
                             <RadioButton
-                                value="senior"
+                                value="4th"
                                 label="senior"
                                 iconStyle={styles.radioStyles}
                             />
