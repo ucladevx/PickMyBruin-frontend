@@ -5,11 +5,11 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { reducer as notificationsReducer } from 'reapop';
 
-import { Login, sendUsernamePassword } from './login';
+import { Login, sendUsernamePassword, logout } from './login';
 import { Register, sendVerificationLink, confirmCode, completeRegistration } from './register';
 import { Profile, fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile } from './profile';
 import { SearchMentors, handleSearch } from './searchMentors'
-import { Requests, handleRequests, sendRequest } from './requests'
+import { Requests, getRequests, sendRequest } from './requests'
 
 const history = createHistory();
 const reactRouterMiddleware = routerMiddleware(history);
@@ -40,8 +40,7 @@ const Actions = {
         sendVerificationLink, completeRegistration, confirmCode
     },
     loginActions: {
-        sendUsernamePassword, //use Actions.loginActions. in login container 
-        sendVerificationLink, confirmCode
+        sendUsernamePassword, logout
     },
     profileActions: {
         fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile,
@@ -50,7 +49,7 @@ const Actions = {
         handleSearch
     },
     requestsActions: {
-        handleRequests, sendRequest
+        getRequests, sendRequest
     }
 }
 

@@ -40,8 +40,8 @@
                 background-color: $white;
                 padding: 20px;
 
-                * {
-                    margin-bottom: 8px;
+                & > * {
+                    margin-bottom: 20px;
                 }
 
                 .heading {
@@ -58,14 +58,15 @@
                     h1 {
                         font-size: 1.7em
                     }
-                    * {
-                        margin: 0 5px 10px 0;
-                    }
                 }
 
                 .body {
                     display: flex;
                     flex-flow: column;
+
+                    & > * {
+                        margin-bottom: 20px;
+                    }
 
                     .notifications {
                         display: flex;

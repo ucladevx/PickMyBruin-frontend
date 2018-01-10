@@ -77,9 +77,9 @@ class Mentorship extends React.Component {
         let value = 1;
         return ( 
             <SelectField 
-                value={this.props.mentor.major} 
+                value={this.props.mentor.major ? this.props.mentor.major.name : null} 
                 style={styles.textfield}
-                onChange={(e, key, value) => this.props.updateProfile("major", value)}
+                onChange={(e, key, value) => this.props.updateProfile("major", {name: value})}
             >
                 {majors.map(major => {
                     value += 1;
@@ -221,7 +221,7 @@ class Mentorship extends React.Component {
 						<div className={classNames({'disabled': !isActive}, 'mentor-fields')}>
 							<div className="major">
 								<h2>Major:</h2>
-								{major ? <h2>major</h2> : this.renderAddMajor()}
+								{major ? <h2>{major}</h2> : this.renderAddMajor()}
 							</div>
 							<div className="bio">
                                 <h2>Bio</h2>

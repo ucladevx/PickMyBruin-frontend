@@ -14,6 +14,7 @@ class HomeContainer extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         return(
             <Home 
                 signUp={this.props.signUp}
@@ -25,7 +26,7 @@ class HomeContainer extends React.Component {
 const mapStateToProps = state => {
     const Login = state.Login;
     return {
-        loggedIn: !!Login.get('authenticated')
+        loggedIn: Login.get('authenticated')
     }
 }
 

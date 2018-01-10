@@ -38,7 +38,7 @@ const mapDispatchToProps = dispatch => {
         	dispatch(Actions.loginActions.sendUsernamePassword(email, password));
         },
         redirectToProfile: () => {
-            dispatch(goBack());      
+            dispatch(replace("/profile"));      
         }
     };
 };

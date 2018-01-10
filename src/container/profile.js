@@ -6,7 +6,7 @@ import Profile from '../components/pages/profile';
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        if (!this.props.profile.get('id')) {
+        if (!this.props.profile.getIn(['user', 'id'])) {
             // We need to fetch profile data
             this.props.fetchProfileData()
         }
@@ -16,6 +16,7 @@ class ProfileContainer extends React.Component {
         return (
             <Profile 
                 profile={this.props.profile}
+                logout={this.props.logout}
                 updateMentorStatus={this.props.updateMentorStatus}
                 updateUserProfile={this.props.updateUserProfile}
                 updateMentorProfile={this.props.updateMentorProfile}
@@ -45,6 +46,9 @@ const mapDispatchToProps = dispatch => {
         updateMentorProfile: body => {
             dispatch(Actions.profileActions.updateMentorProfile(body));
         }, 
+        logout: () => {
+            dispatch(Actions.loginActions.logout());
+        }
     }
 }
 

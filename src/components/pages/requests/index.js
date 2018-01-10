@@ -5,15 +5,20 @@ import RequestsResultContainer from './requestsResultContainer';
 
 class Requests extends React.Component {
     render() {
+        let key = 0;
         return(
             <div className="requests-container">
-                <NavBar />
-            
 	            <div className="requests-results-container">
-		            {this.props.requests.map(request => 
-		                <RequestsResultContainer request={request} />
-	                    )}
+		            {this.props.requests.map(request => {
+                        key += 1;
+                        return <RequestsResultContainer 
+                            profile={this.props.profile}
+                            request={request} 
+                            key={key}
+                        />
+                    })}
 	            </div>
+                <NavBar />
 	        </div>
         );
     }

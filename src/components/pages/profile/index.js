@@ -39,7 +39,7 @@ class Profile extends React.Component {
 
     _handleChangeUserProfile = (key, value) => {
         let body = {};
-        body[ley] = value;
+        body[key] = value;
         this.props.updateUserProfile(body);
     }
 
@@ -59,6 +59,7 @@ class Profile extends React.Component {
                                 user={this.state.newUser}
                                 mentor={this.state.newMentor}
                                 updateProfile={this._handleChangeMentorProfile}
+                                logout={this.props.logout}
                             />
                             <Mentorship 
                                 user={this.state.newUser}

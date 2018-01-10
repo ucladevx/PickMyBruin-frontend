@@ -5,11 +5,13 @@ import { addNotification as notify } from 'reapop';
 
 import Config from '../config';
 import Storage from '../storage';
-import { fetchProfile } from './profile';
+import { fetchProfile, removeProfileInfo } from './profile';
 
 const START_LOGIN = 'start_login';
 const LOGIN_SUCCESS = 'login_success';
 const LOGIN_FAILURE = 'login_failure';
+
+const LOGOUT = 'logout';
 
 // action!!
 const startLogin = () => {
@@ -27,6 +29,15 @@ const loginSuccess = () => {
 const loginFailure = () => {
     return {
         type: LOGIN_FAILURE
+    }
+}
+
+const logout = () => {
+    return dispatch => {
+        dispatch(removeProfileInfo());
+        dispatch({
+            type: LOGOUT
+        })
     }
 }
 
@@ -100,6 +111,12 @@ const Login = (state = defaultState(), action) => {
                 val.set('error', true);
             })
         }
+        case LOGOUT: {
+            Storage.remove("token");
+            return state.withMutations(val => {
+                val.set('authenticated', false);
+            })
+        }
         default: {
             return state;
         }
@@ -107,5 +124,5 @@ const Login = (state = defaultState(), action) => {
 }
 
 export {
-    Login, sendUsernamePassword
+    Login, sendUsernamePassword, logout
 };

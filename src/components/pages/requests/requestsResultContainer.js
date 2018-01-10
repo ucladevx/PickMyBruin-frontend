@@ -2,6 +2,7 @@ import React from 'react';
 
 class RequestsResultContainer extends React.Component {
     render() {
+        console.log(this.props);
         return (
             <div className="request-result-container">
                 <h1>{this.props.request.get('name')}</h1>

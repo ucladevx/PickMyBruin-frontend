@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
+import { push, replace } from 'react-router-redux';
 
 import { Actions } from '../reducer';
 
 export default function(ComposedComponent) {
 
     class Authentication extends React.Component {
-        componentDidMount() {
-            if (!this.props.isLoggedIn) {
+        componentWillReceiveProps(nextProps) {
+            if (!nextProps.isLoggedIn) {
                 this.props.login();
             }
-            if (!this.props.isProfileFetched) {
+            if (!nextProps.isProfileFetched) {
                 this.props.fetchProfile();
             }
         }
@@ -37,7 +37,7 @@ export default function(ComposedComponent) {
     const mapDispatchToProps = dispatch => {
         return {
             login: () => {
-                dispatch(push("/login"));
+                dispatch(replace("/"));
             },
             fetchProfile: () => {
                 dispatch(Actions.profileActions.fetchProfile());

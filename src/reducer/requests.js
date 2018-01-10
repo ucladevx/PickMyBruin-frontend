@@ -87,7 +87,7 @@ const requestsSuccess = (requests) => {
     };
 }
 
-const handleRequests = () => {
+const getRequests = () => {
 	return dispatch => {
 		dispatch(requestsStart())
 		
@@ -181,4 +181,4 @@ const Requests = (state=defaultState, action) => {
 }
 
 
-export { Requests, handleRequests, sendRequest }
+export { Requests, getRequests, sendRequest }

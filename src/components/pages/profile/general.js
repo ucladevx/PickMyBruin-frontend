@@ -35,6 +35,9 @@ const styles = {
   textfield_input: {
 	  textAlign: "center",
 	  height: "50%"
+  },
+  logoutButton: {
+    backgroundColor: "#007bff"
   }
 };
 
@@ -54,7 +57,7 @@ class General extends React.Component {
                     		<i className="fa fa-cog fa-2x" aria-hidden="true"></i>
                     		<h1>General</h1>
 						</div>
-						<RaisedButton label="Update Profile" disabled={true} style={styles.update_button} />
+						<RaisedButton onClick={this.props.logout} label="Logout" />
                 	</div>
                 	<div className="body">
                     	<div className="notifications">

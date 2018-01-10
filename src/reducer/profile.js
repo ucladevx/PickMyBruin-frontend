@@ -19,6 +19,7 @@ const UPDATE_PROFILE_ERROR = 'update_profile_error';
 
 const SET_PROFILE = 'set_profile';
 const SET_MENTOR_PROFILE = 'set_mentor_profile';
+const REMOVE_PROFILE_INFO = 'remove_profile_info';
 
 /////////////
 // ACTIONS //
@@ -153,8 +154,7 @@ const fetchProfile = () => {
             const userData = await userResponse.json();
 
             if (userStatus == 401) {
-                Storage.remove("token");
-                return dispatch(replace('/login'));
+                throw new Error("Error getting authentication");
             }
 
             if (userStatus > 299 || userStatus < 200) {
@@ -167,8 +167,7 @@ const fetchProfile = () => {
             const mentorData = await mentorResponse.json();
 
             if (mentorStatus == 401) {
-                Storage.remove("token");
-                return dispatch(replace('/login'));
+                throw new Error("Error getting authentication");
             }
 
             if (mentorStatus < 299 && mentorStatus >= 200) {
@@ -179,7 +178,8 @@ const fetchProfile = () => {
             // if mentorStatus is 404, they have no mentor profile
         } catch (error) {
             // handle errors here
-            dispatch(push('/login'));
+            Storage.remove('token');
+            dispatch(replace('/login'));
         }
     }
 }
@@ -195,6 +195,12 @@ const setMentorProfile = profile => {
     return {
         type: SET_MENTOR_PROFILE,
         profile
+    }
+}
+
+const removeProfileInfo = () => {
+    return {
+        type: REMOVE_PROFILE_INFO
     }
 }
 
@@ -236,10 +242,16 @@ const Profile = (state = defaultState(), action) => {
                 val.set('mentor', fromJS(action.profile));
             });
         }
+        case REMOVE_PROFILE_INFO: {
+            return state.withMutations(val => {
+                val.set('mentor', fromJS({}));
+                val.set('user', fromJS({}));
+            })
+        }
         default: {
             return state;
         }
     }
 }
 
-export { Profile, fetchProfile, setProfile, updateMentorStatus, updateMentorProfile, updateUserProfile };
+export { Profile, fetchProfile, setProfile, removeProfileInfo, updateMentorStatus, updateMentorProfile, updateUserProfile };

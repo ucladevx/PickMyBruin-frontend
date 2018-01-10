@@ -4,11 +4,15 @@ import { Actions } from '../reducer';
 import Requests from '../components/pages/requests';
 
 class RequestsContainer extends React.Component {
+    componentDidMount() {
+        this.props.getRequests();
+    }
+
     render() {
         return (
             <Requests 
     			requests={this.props.requests}
-    			handleRequests={this.props.handleRequests}
+                profile={this.props.profile}
             />
         );
     }
@@ -16,14 +20,15 @@ class RequestsContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        requests: state.Requests.get('requests')
+        requests: state.Requests.get('requests'),
+        profile: state.Profile.get('user')
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        handleRequests: () => {
-            dispatch(Actions.requestsActions.handleRequests());
+        getRequests: () => {
+            dispatch(Actions.requestsActions.getRequests());
         }
     }
 }
