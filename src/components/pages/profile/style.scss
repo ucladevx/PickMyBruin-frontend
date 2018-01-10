@@ -135,10 +135,11 @@
                             margin-bottom: 30px;
                         }
 
-                        .major {
+                        .text-and-edit {
                             display: flex;
                             flex-flow: row;
                             justify-content: space-between;
+                            margin-top: 10px;
                         }
 
                         .bio {
@@ -153,12 +154,6 @@
                                 }                             
                             }
 
-                            .text-and-edit {
-                                display: flex;
-                                flex-flow: row;
-                                justify-content: space-between;
-                                margin-top: 10px;
-                            }
                         }
 
                         .gpa {

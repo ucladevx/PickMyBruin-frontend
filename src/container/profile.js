@@ -5,7 +5,7 @@ import { Actions } from '../reducer';
 import Profile from '../components/pages/profile';
 
 class ProfileContainer extends React.Component {
-    componentDidMount() {
+    componentDidUpdate() {
         if (!this.props.profile.getIn(['user', 'id'])) {
             // We need to fetch profile data
             this.props.fetchProfileData()

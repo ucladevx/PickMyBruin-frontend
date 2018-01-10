@@ -7,11 +7,11 @@ import { Actions } from '../reducer';
 export default function(ComposedComponent) {
 
     class Authentication extends React.Component {
-        componentWillReceiveProps(nextProps) {
-            if (!nextProps.isLoggedIn) {
+        componentWillMount() {
+            if (!this.props.isLoggedIn) {
                 this.props.login();
             }
-            if (!nextProps.isProfileFetched) {
+            if (!this.props.isProfileFetched) {
                 this.props.fetchProfile();
             }
         }

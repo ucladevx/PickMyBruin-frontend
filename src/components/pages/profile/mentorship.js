@@ -58,8 +58,9 @@ class Mentorship extends React.Component {
 
         this.state = {
             bioOpen: false,
+            classesOpen: false,
+            majorOpen: false,
             bio: this.props.mentor.bio,
-            classesOpen: false
         }
     }
 
@@ -71,29 +72,6 @@ class Mentorship extends React.Component {
         this.setState({
             [field]: !this.state[field]
         });
-    }
-
-    renderAddMajor = () => {
-        let value = 1;
-        return ( 
-            <SelectField 
-                value={this.props.mentor.major ? this.props.mentor.major.name : null} 
-                style={styles.textfield}
-                onChange={(e, key, value) => this.props.updateProfile("major", {name: value})}
-            >
-                {majors.map(major => {
-                    value += 1;
-                    return (
-                        <MenuItem 
-                            key={value}
-                            value={major}
-                            primaryText={major}
-                        />
-                    );
-                })}
-            </SelectField>
-        );
-
     }
 
     renderEditClasses = () => {
@@ -195,11 +173,73 @@ class Mentorship extends React.Component {
         }
     }
 
-    render() {
+    _updateMajor = major => {
+        this.openField("majorOpen");
+        this.props.updateProfile("major", {name: major})
+    }
 
+    renderEditMajor = () => {
+        let value = 1;
+        return ( 
+            <div className="add-major">
+                <SelectField 
+                    value={this.props.mentor.major ? this.props.mentor.major.name : null} 
+                    style={styles.textfield}
+                    onChange={(e, key, value) => this._updateMajor(value)}
+                >
+                    {majors.map(major => {
+                        value += 1;
+                        return (
+                            <MenuItem 
+                                key={value}
+                                value={major}
+                                primaryText={major}
+                            />
+                        );
+                    })}
+                </SelectField>
+                <div className="buttons">
+                    <Button 
+                        color="secondary" 
+                        onClick={() => this.openField("majorOpen")} 
+                        size="sm"
+                    >
+                        Cancel
+                    </Button>                        
+                </div>
+            </div>
+        );
+
+    }
+
+    renderMajor = () => {
+        if (!this.props.mentor.major) {
+            if (!this.state.majorOpen) {
+                return (
+                    <p onClick={() => this.openField("majorOpen")}>
+                        <i className="fa fa-plus" aria-hidden="true"></i> 
+                        &nbsp;Add a bio
+                    </p> 
+                );
+            } else {
+                return this.renderEditMajor();
+            }
+        } else {
+            if (!this.state.majorOpen) {
+                return (
+                    <div className="text-and-edit">
+                        <p>{this.props.mentor.major.name}</p>
+                        <i className="fa fa-pencil-square-o" onClick={() => this.openField("majorOpen")}></i>
+                    </div>
+                );
+            } else {
+                return this.renderEditMajor();
+            }
+        }
+    }
+
+    render() {
         const isActive = this.props.mentor.active;
-        const major = null;
-        const classesTaken = null;
 
         return(
 			<MuiThemeProvider>
@@ -220,8 +260,9 @@ class Mentorship extends React.Component {
                     	</div>
 						<div className={classNames({'disabled': !isActive}, 'mentor-fields')}>
 							<div className="major">
-								<h2>Major:</h2>
-								{major ? <h2>{major}</h2> : this.renderAddMajor()}
+								<h2>Major</h2>
+                                <Divider orientation={"horizontal"} />
+                                {this.renderMajor()}
 							</div>
 							<div className="bio">
                                 <h2>Bio</h2>
