@@ -18,9 +18,13 @@
         flex-grow: 2;
         display: flex;
         flex-flow: column;
+        align-items: center;
         overflow: scroll;
+        @media(min-width: 440px) {
+            padding: 20px 300px 20px 300px;
+        }
 
-        .request-result-container {
+        .request-container {
             flex-flow: column;
             width: 95%;
             margin: 10px;
@@ -29,12 +33,42 @@
             border-radius: 15px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 
+            .heading {
+                #date {
+                    text-align: center;
+                    font-size: 1em;
+                }
+
+                h1 {
+                    font-size: 1.3em;
+                }
+
+                & > * {
+                    margin-bottom: 5px;
+                }
+
+            }
+
+            .body {
+                margin: 10px 0 10px 0;
+                .message-body {
+                    padding: 20px;
+                    font-style: italic;
+                    
+                }
+            }
+
             h1 {
                 font-size: 1em;
             }
+
             h2 {
-                font-size: 1em;
-                col: #aeb2b9;
+                font-size: .8em;
+                color: $subheading-text-color;
+            }
+
+            span {
+                font-style: italic;
             }
         }
     }

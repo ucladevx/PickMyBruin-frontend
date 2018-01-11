@@ -25,8 +25,8 @@ const dummyRequests = Immutable.fromJS([
     {
         mentee: {
             id: 1,
-            first_name: "Test",
-            last_name: "Test",
+            first_name: "Bob",
+            last_name: "Smith",
             email: "test@marktai.com",
             verified: false,
             picture: null
@@ -35,14 +35,14 @@ const dummyRequests = Immutable.fromJS([
             id: 3,
             profile: {
                 id: 2,
-                first_name: "Alex",
-                last_name: "Longerbeam",
+                first_name: "Jane",
+                last_name: "Doe",
                 email: "longerbeamalex@gmail.com",
                 verified: true,
                 picture: null
             }
         },
-        email_body: "Hey whats up hello",
+        email_body: "Hey I'd love to learn more about your major!",
         preferred_mentee_email: "longerbeamalex@gmail.com",
         phone: "",
         date_created: "2017-12-03T22:36:17.422868Z"
@@ -50,8 +50,8 @@ const dummyRequests = Immutable.fromJS([
     {
         mentee: {
             id: 1,
-            first_name: "Test",
-            last_name: "Test",
+            first_name: "Jane",
+            last_name: "Doe",
             email: "test@marktai.com",
             verified: false,
             picture: null
@@ -67,7 +67,7 @@ const dummyRequests = Immutable.fromJS([
                 picture: null
             }
         },
-        email_body: "Hey whats up hello",
+        email_body: "You sound really cool!",
         preferred_mentee_email: "longerbeamalex@gmail.com",
         phone: "",
         date_created: "2017-12-03T22:36:17.422868Z"

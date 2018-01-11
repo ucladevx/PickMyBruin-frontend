@@ -5,7 +5,9 @@ import Requests from '../components/pages/requests';
 
 class RequestsContainer extends React.Component {
     componentDidMount() {
-        this.props.getRequests();
+        if (!this.props.requests) {
+            this.props.getRequests();
+        }
     }
 
     render() {

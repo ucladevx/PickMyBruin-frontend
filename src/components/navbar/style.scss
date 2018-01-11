@@ -31,8 +31,10 @@
         overflow: hidden;
 
         img {
-            max-width: 100%;
-            max-height: 100%;
+            display: block;
+            height: auto;
+            width: auto;
+            max-height: 60px;
         }
 
         @media (min-width: 440px) {
