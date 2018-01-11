@@ -10,7 +10,8 @@ RUN apk add -U nginx make nodejs
 #   /static is the directory linked to nginx (serves static content)
 RUN mkdir -p /var/www/pickmybruin/working && \
     mkdir -p /var/www/pickmybruin/static && \
-    mkdir -p /var/www/pickmybruin/static/build
+    mkdir -p /var/www/pickmybruin/static/build && \
+    mkdir -p /var/www/pickmybruin/static/images
 
 # Install the required packages to build the frontend
 WORKDIR /var/www/pickmybruin/working
@@ -29,7 +30,8 @@ COPY .babelrc *.js Makefile /var/www/pickmybruin/working/
 # build and copy files to server root
 RUN make build && \
     cp -rv pages/* ../static/ && \
-    cp -rv lib/build/* ../static/build/
+    cp -rv lib/build/* ../static/build/ && \
+    cp -rv lib/images/* ../static/images/
 
 # Copy the configuration file
 RUN mkdir -p /run/nginx
