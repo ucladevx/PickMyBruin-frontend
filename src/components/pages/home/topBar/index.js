@@ -9,8 +9,8 @@ export default (props) => {
                 <img src={logo} id="logo" alt="logo" />
             </div>
             <div className="nav-buttons">
-                <div id="about" onClick={() => location.href="http://www.ucladevx.com"}>About DevX</div>
-                <div id="how">How It Works</div>
+                <div id="login" onClick={() => location.href="/login"}>Login</div>
+                <div id="signup" onClick={() => location.href="/register"}>Sign Up</div>
             </div>
         </section>
     );

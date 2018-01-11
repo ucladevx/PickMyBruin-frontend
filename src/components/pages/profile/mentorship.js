@@ -187,7 +187,7 @@ class Mentorship extends React.Component {
                     style={styles.textfield}
                     onChange={(e, key, value) => this._updateMajor(value)}
                 >
-                    {majors.map(major => {
+                    {majors.sort().map(major => {
                         value += 1;
                         return (
                             <MenuItem 

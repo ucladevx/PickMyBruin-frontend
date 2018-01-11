@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 import formurlencoded from "form-urlencoded";
-import {push} from "react-router-redux";
+import { push, replace } from "react-router-redux";
 import { addNotification as notify } from 'reapop';
 
 import Config from '../config';
@@ -37,7 +37,8 @@ const logout = () => {
         dispatch(removeProfileInfo());
         dispatch({
             type: LOGOUT
-        })
+        });
+        dispatch(replace("/"));
     }
 }
 
