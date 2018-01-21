@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import Shave from 'react-shave';
 
 import Divider from '../../util/divider';
 
@@ -18,7 +19,7 @@ class RequestsResultContainer extends React.Component {
         } else if (ownId === menteeId) {
             sentRequest = true;
         } else {
-            // invalid request!! this request is not associated with the current user
+            // invalid request!! this request is not associated with the current user. 
             valid = false;
         }
 
@@ -37,14 +38,14 @@ class RequestsResultContainer extends React.Component {
         if (this.state.sentRequest) {
             return (
                 <div className="heading">
+                    <h1><span>You</span> sent a request to <span>{this.state.mentorName}</span></h1>
                     {date}
-                    <h1>You sent a request to <span>{this.state.mentorName}</span></h1>
                 </div>
             ); 
         } else {
             return (
                 <div className="heading">
-                    <h1><span>{this.state.menteeName}</span> sent <span>you</span> a request!</h1>
+                    <h1><span>{this.state.menteeName}</span> sent <span>you</span> a request</h1>
                     {date}
                 </div>
             ); 
@@ -52,13 +53,11 @@ class RequestsResultContainer extends React.Component {
     }
 
     renderBody = () => {
-        if (!this.state.sentRequest) {
-            return (
-                <div className="body">
-                    <p>{this.props.request.get('email_body')}</p>
-                </div>
-            );
-        }
+        return (
+            <div className="body">
+                <Shave maxHeight={70}>{this.props.request.get('email_body')}</Shave>
+            </div>
+        );
     }
 
     render() {

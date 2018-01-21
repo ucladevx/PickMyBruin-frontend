@@ -42,7 +42,7 @@ const dummyRequests = Immutable.fromJS([
                 picture: null
             }
         },
-        email_body: "Hey I'd love to learn more about your major!",
+        email_body: "Lorem ipsum dolor sit amet, consectetur adipiscing elitsed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         preferred_mentee_email: "longerbeamalex@gmail.com",
         phone: "",
         date_created: "2017-12-03T22:36:17.422868Z"

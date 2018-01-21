@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Input, InputGroupAddon, InputGroup } from 'reactstrap';
+import { Input, InputGroupAddon, InputGroup } from 'reactstrap';
+import Button from '../../util/Button';
 
 class EmailForm extends React.Component {
     state = {
@@ -25,7 +26,7 @@ class EmailForm extends React.Component {
                     </InputGroup>
                     <Input type="password" name="password" id="password" placeholder="password" onChange={this.handleChange}/>
                 </div>
-                <Button color="primary" onClick={this.sendVerificationLink} block>Send Verification Link</Button>
+                <Button onClick={this.sendVerificationLink} block>Send Verification Link</Button>
             </div>
         );
     }
