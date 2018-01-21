@@ -30,10 +30,14 @@
             margin: 10px;
             padding: 20px;
             background-color: $white;
-            border-radius: 15px;
+            border-radius: 8px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 
             .heading {
+                display: flex;
+                flex-flow: row;
+                justify-content: space-between;
+
                 #date {
                     text-align: center;
                     font-size: 1em;
@@ -50,12 +54,7 @@
             }
 
             .body {
-                margin: 10px 0 10px 0;
-                .message-body {
-                    padding: 20px;
-                    font-style: italic;
-                    
-                }
+                margin-top: 20px;
             }
 
             h1 {
@@ -68,7 +67,7 @@
             }
 
             span {
-                font-style: italic;
+                font-weight: bold;
             }
         }
     }

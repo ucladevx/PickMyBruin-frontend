@@ -9,6 +9,7 @@ class Requests extends React.Component {
         return(
             <div className="requests-container">
 	            <div className="requests-results-container">
+                    <h1>Request History</h1>
 		            {this.props.requests.map(request => {
                         key += 1;
                         return <RequestsResultContainer 

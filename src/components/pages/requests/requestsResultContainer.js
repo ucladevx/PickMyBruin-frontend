@@ -32,7 +32,7 @@ class RequestsResultContainer extends React.Component {
     }
 
     renderHeading = () => {
-        const date = <h2 id="date"><i className="fa fa-calendar" aria-hidden="true"></i> {this.state.date}</h2>;
+        const date = <h2 id="date">{this.state.date}</h2>;
 
         if (this.state.sentRequest) {
             return (
@@ -44,8 +44,8 @@ class RequestsResultContainer extends React.Component {
         } else {
             return (
                 <div className="heading">
+                    <h1><span>{this.state.menteeName}</span> sent <span>you</span> a request!</h1>
                     {date}
-                    <h1>&#x1F680;<span>{this.state.menteeName}</span> sent you a request!</h1>
                 </div>
             ); 
         }
@@ -55,11 +55,7 @@ class RequestsResultContainer extends React.Component {
         if (!this.state.sentRequest) {
             return (
                 <div className="body">
-                    <h1>Here's what they said:</h1>
-                    <h2>We've sent you an email to repond from</h2>
-                    <div className="message-body">
-                        <p>{this.props.request.get('email_body')}</p>
-                    </div>
+                    <p>{this.props.request.get('email_body')}</p>
                 </div>
             );
         }
