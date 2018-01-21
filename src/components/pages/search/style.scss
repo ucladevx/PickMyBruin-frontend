@@ -11,6 +11,7 @@
 
     @media (min-width: 440px) {
         justify-content: flex-start;
+
     }
 
     .search {
@@ -31,6 +32,21 @@
         }
 
     }
+
+    .instructions {
+        flex: 5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        h1 {
+            font-size: 1.5em;
+            align-self: center;
+            color: $instruction-text-color;
+            text-align: center;
+        }
+    }
+
 }
 .search-result-container {
     display: flex;

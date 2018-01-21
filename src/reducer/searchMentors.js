@@ -94,7 +94,7 @@ const defaultState = Immutable.fromJS({
     error: null,
     loading: false,
     searchedMajor: '',
-    mentors: dummyMentors
+    mentors: []
 });
 
 const SearchMentors = (state=defaultState, action) => {
