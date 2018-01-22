@@ -9,12 +9,10 @@ class HomeContainer extends React.Component {
     componentDidMount() {
         if (this.props.loggedIn) {
             this.props.redirectToProfile();
-            this.props.fetchProfile();
         }
     }
 
     render() {
-        console.log(this.props);
         return(
             <Home 
                 signUp={this.props.signUp}

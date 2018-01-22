@@ -2,6 +2,8 @@ import Immutable, { fromJS } from 'immutable';
 import { replace, push } from 'react-router-redux';
 import { addNotification as notify } from 'reapop';
 
+import { logout } from './login';
+
 import Config from '../config';
 import Storage from '../storage';
 
@@ -178,8 +180,7 @@ const fetchProfile = () => {
             // if mentorStatus is 404, they have no mentor profile
         } catch (error) {
             // handle errors here
-            Storage.remove('token');
-            dispatch(replace('/login'));
+            dispatch(logout());
         }
     }
 }
@@ -209,8 +210,6 @@ const removeProfileInfo = () => {
 ///////////
 
 const defaultState = () => {
-    const token = Storage.get('token');
-    
     return Immutable.fromJS({
         error: null,
         loading: false,
@@ -243,6 +242,8 @@ const Profile = (state = defaultState(), action) => {
             });
         }
         case REMOVE_PROFILE_INFO: {
+            Storage.remove("token");
+
             return state.withMutations(val => {
                 val.set('mentor', fromJS({}));
                 val.set('user', fromJS({}));

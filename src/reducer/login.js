@@ -69,8 +69,6 @@ const sendUsernamePassword = (email, password) => {
             } else {
                 Storage.set("token", data.access_token)
 
-                // we need to fetch their profile as well
-                dispatch(fetchProfile());
                 dispatch(loginSuccess());
             }
         } catch (error) {

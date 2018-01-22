@@ -16,12 +16,14 @@ export default function(ComposedComponent) {
             }
         }
 
-        render() {
-            if (this.props.isLoggedIn) {
-                return <ComposedComponent {...this.props} />;
-            } else {
-                return null;
+        componentWillUpdate(nextProps) {
+            if (!nextProps.isLoggedIn) {
+                this.props.login();
             }
+        }
+
+        render() {
+            return <ComposedComponent {...this.props} />;
         }
     }
 
@@ -37,7 +39,7 @@ export default function(ComposedComponent) {
     const mapDispatchToProps = dispatch => {
         return {
             login: () => {
-                dispatch(replace("/"));
+                dispatch(replace("/login"));
             },
             fetchProfile: () => {
                 dispatch(Actions.profileActions.fetchProfile());
