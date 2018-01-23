@@ -43,7 +43,7 @@ const styles = {
 },
   info_card: {
 	  paddingLeft:"10%",
-	  fontSize: "80%",
+	  fontSize: "90%",
 	  color: '#5d636f'
   }
 };
