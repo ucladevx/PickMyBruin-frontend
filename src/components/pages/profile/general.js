@@ -4,6 +4,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
 
+import { Collapse, Button, CardBody, Card, Alert } from 'reactstrap';
+
 const styles = {
   toggle: {
     width: 44,
@@ -38,6 +40,11 @@ const styles = {
   },
   logoutButton: {
     backgroundColor: "#007bff"
+},
+  info_card: {
+	  paddingLeft:"10%",
+	  fontSize: "80%",
+	  color: '#5d636f'
   }
 };
 
@@ -45,10 +52,30 @@ var isActive = true
 
 class General extends React.Component {
 
+	constructor(props) {
+    	super(props);
+    	this.state = {
+			oldEmail: this.props.user.email,
+			collapse: false
+    	};
+		this.toggle_info = this.toggle.bind(this);
+  	};
+
+	onBlur(event) {
+		const newEmail = event.target.value
+		if (newEmail!=this.state.oldEmail) {
+			this.setState({oldEmail: newEmail})
+			this.props.updateProfile("email", newEmail);
+		}
+	};
+
+	toggle = () => {
+    	this.setState({ collapse: !this.state.collapse });
+  	};
+
     render() {
         const notifications = this.props.notifications || 'ON';
-        const preferredEmail = this.props.user.email;
-    
+
         return(
 			<MuiThemeProvider>
             	<div className="general">
@@ -60,17 +87,32 @@ class General extends React.Component {
 						<RaisedButton onClick={this.props.logout} label="Logout" />
                 	</div>
                 	<div className="body">
-                    	<div className="notifications">
+                    	{/*<div className="notifications">
                         	<h2>Notifications:</h2>
 							{ notifications=='OFF'
 								? <Toggle label="" style={styles.toggle} />
 								: <Toggle label="" defaultToggled={true} style={styles.toggle} />
 							}
-                    	</div>
+                    	</div>*/}
                     	<div className="preferred-email">
                         	<h2>Preferred Email:</h2>
-							<TextField id="email-field" defaultValue={preferredEmail} style={styles.textfield} inputStyle = {styles.textfield_input}/>
+							<TextField id="email-field" defaultValue={this.props.user.email} style={styles.textfield} inputStyle = {styles.textfield_input} onBlur={this.onBlur.bind(this)}/>
                     	</div>
+
+						<div className="info">
+							<Button color="primary" onClick={this.toggle_info} style={{ marginBottom: '1rem' }}>Help</Button>
+							<Collapse isOpen={this.state.collapse}>
+							<Alert color="secondary">
+								<p>How to use BQuest: </p>
+								<ul style={styles.info_card}>
+									<li> 1) Make sure you update your preferred email, if you don’t use your UCLA email </li>
+									<li> 2) If you signed up to be an ambassador, activate and fill out your profile to the right </li>
+									<li> 3) If you’re looking for an ambassador, click search up top, and send out a request to meet with an ambassador on campus. Please remember ambassadors are just students who wants to help you. You should buy them a cup of coffee as a thank you for their time. </li>
+									<li> 4) If you want to see the requests you have sent/received, click requests up top. These will also be send to your email </li>
+								</ul>
+      						</Alert>
+        					</Collapse>
+						</div>
                 	</div>
             	</div>
 			</MuiThemeProvider>

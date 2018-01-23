@@ -8,7 +8,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import ChipInput from 'material-ui-chip-input';
 
-import { Button, Input } from 'reactstrap';
+import { Button, Input, Alert} from 'reactstrap';
 
 import classNames from 'classnames';
 import { isatty } from 'tty';
@@ -48,9 +48,13 @@ const styles = {
 	textfield_input: {
         borderColor: '#007bff'
 	},
-    
-};
+	blurb: {
+		paddingLeft:"4%",
+		margin:"2%",
+		lineHeight:"1.5em"
+	},
 
+};
 
 class Mentorship extends React.Component {
     constructor(props) {
@@ -86,23 +90,23 @@ class Mentorship extends React.Component {
                 <div className="buttons">
                     <Button
                         color="primary"
-                        onClick={() => this._updateBio()} 
+                        onClick={() => this._updateBio()}
                         size="sm"
                     >
                         Save
                     </Button>
-                    <Button 
-                        color="secondary" 
-                        onClick={() => this.openField("classesOpen")} 
+                    <Button
+                        color="secondary"
+                        onClick={() => this.openField("classesOpen")}
                         size="sm"
                     >
                         Cancel
-                    </Button>                        
+                    </Button>
                 </div>
             </div>
-        ); 
+        );
     }
-    
+
     renderClasses = () => {
         if (!this.props.mentor.classes) {
             if (!this.state.classesOpen) {
@@ -113,9 +117,9 @@ class Mentorship extends React.Component {
                     </p>
                 );
             } else {
-                return this.renderEditClasses();            
+                return this.renderEditClasses();
             }
-        } 
+        }
     }
 
     _updateBio = () => {
@@ -130,18 +134,18 @@ class Mentorship extends React.Component {
                 <div className="buttons">
                     <Button
                         color="primary"
-                        onClick={() => this._updateBio()} 
+                        onClick={() => this._updateBio()}
                         size="sm"
                     >
                         Save
                     </Button>
-                    <Button 
-                        color="secondary" 
-                        onClick={() => this.openField("bioOpen")} 
+                    <Button
+                        color="secondary"
+                        onClick={() => this.openField("bioOpen")}
                         size="sm"
                     >
                         Cancel
-                    </Button>                        
+                    </Button>
                 </div>
             </div>
         );
@@ -152,9 +156,9 @@ class Mentorship extends React.Component {
             if (!this.state.bioOpen) {
                 return (
                     <p onClick={() => this.openField("bioOpen")}>
-                        <i className="fa fa-plus" aria-hidden="true"></i> 
+                        <i className="fa fa-plus" aria-hidden="true"></i>
                         &nbsp;Add a bio
-                    </p> 
+                    </p>
                 );
             } else {
                 return this.renderEditBio();
@@ -180,17 +184,17 @@ class Mentorship extends React.Component {
 
     renderEditMajor = () => {
         let value = 1;
-        return ( 
+        return (
             <div className="add-major">
-                <SelectField 
-                    value={this.props.mentor.major ? this.props.mentor.major.name : null} 
+                <SelectField
+                    value={this.props.mentor.major ? this.props.mentor.major.name : null}
                     style={styles.textfield}
                     onChange={(e, key, value) => this._updateMajor(value)}
                 >
                     {majors.sort().map(major => {
                         value += 1;
                         return (
-                            <MenuItem 
+                            <MenuItem
                                 key={value}
                                 value={major}
                                 primaryText={major}
@@ -199,13 +203,13 @@ class Mentorship extends React.Component {
                     })}
                 </SelectField>
                 <div className="buttons">
-                    <Button 
-                        color="secondary" 
-                        onClick={() => this.openField("majorOpen")} 
+                    <Button
+                        color="secondary"
+                        onClick={() => this.openField("majorOpen")}
                         size="sm"
                     >
                         Cancel
-                    </Button>                        
+                    </Button>
                 </div>
             </div>
         );
@@ -217,9 +221,9 @@ class Mentorship extends React.Component {
             if (!this.state.majorOpen) {
                 return (
                     <p onClick={() => this.openField("majorOpen")}>
-                        <i className="fa fa-plus" aria-hidden="true"></i> 
+                        <i className="fa fa-plus" aria-hidden="true"></i>
                         &nbsp;Add a bio
-                    </p> 
+                    </p>
                 );
             } else {
                 return this.renderEditMajor();
@@ -241,40 +245,62 @@ class Mentorship extends React.Component {
     render() {
         const isActive = this.props.mentor.active;
 
+		let notAmb =
+		<Alert color="secondary">
+			<ul style={styles.blurb}>
+				<li>If you have declared your major, you can become an ambassador, and help out fellow bruins.</li>
+				<li>As an ambassador you will meet with with undeclared or undecided students, who wants to hear about
+					your major over a cup of coffee/tea.</li>
+				<li>Meet with as many or as few students as you want. They will really
+					appreciate your help, when deciding on their major.</li>
+			</ul>
+		</Alert>
+
+	 	let isAmb =
+		<div className={classNames({'disabled': !isActive}, 'mentor-fields')}>
+			<div className="major">
+				<h2>Major</h2>
+				<Divider orientation={"horizontal"} />
+				{this.renderMajor()}
+			</div>
+			<div className="bio">
+				<h2>Bio</h2>
+				<Divider orientation={"horizontal"} />
+				{this.renderBio()}
+			</div>
+			<div className="classes-taken">
+				<h2>Classes Taken:</h2>
+				<Divider orientation={"horizontal"} />
+				{this.renderClasses()}
+			</div>
+		</div>
+
+
         return(
 			<MuiThemeProvider>
             	<div className="mentorship">
                 	<div className="heading">
                     	<i className="fa fa-users fa-lg" aria-hidden="true"></i>
-                    	<h1>Mentorship</h1>
+                    	<h1>Ambassador</h1>
                 	</div>
                 	<div className="body">
                     	<div className="mentorship-status">
-                        	<h2>Mentorship Status:</h2>
-							<Toggle 
-                                id="status" 
-                                toggled={isActive} 
-                                onToggle={this.props.updateMentorStatus} 
-                                style={styles.toggle} 
+                        	<h2>Ambassador Status:</h2>
+							<Toggle
+                                id="status"
+                                toggled={isActive}
+                                onToggle={this.props.updateMentorStatus}
+                                style={styles.toggle}
                             />
                     	</div>
-						<div className={classNames({'disabled': !isActive}, 'mentor-fields')}>
-							<div className="major">
-								<h2>Major</h2>
-                                <Divider orientation={"horizontal"} />
-                                {this.renderMajor()}
-							</div>
-							<div className="bio">
-                                <h2>Bio</h2>
-                                <Divider orientation={"horizontal"} />
-                                {this.renderBio()}
-							</div>
-							<div className="classes-taken">
-								<h2>Classes Taken:</h2>
-                                <Divider orientation={"horizontal"} />
-								{this.renderClasses()}
-							</div>
-						</div>
+
+						<div>
+            				{ !isActive
+                				? notAmb
+								: isAmb
+            				}
+        				</div>
+
                 	</div>
                 	{/*
                 	<div className="banner">
