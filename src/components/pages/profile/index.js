@@ -26,7 +26,7 @@ class Profile extends React.Component {
             newMentor: props.profile.get('mentor').toJS()
         });
     }
-    
+
     _handleChangeStatus = (_, value) => {
         this.props.updateMentorStatus(value);
     }
@@ -51,17 +51,17 @@ class Profile extends React.Component {
             return (
                 <div className="container-profile">
                     <div className="profile-wrapper">
-                        <ProfileTop 
+                        <ProfileTop
                             name={name}
-                        /> 
+                        />
                         <div className="profile-detail-container">
-                            <General 
+                            <General
                                 user={this.state.newUser}
                                 mentor={this.state.newMentor}
-                                updateProfile={this._handleChangeMentorProfile}
+                                updateProfile={this._handleChangeUserProfile}
                                 logout={this.props.logout}
                             />
-                            <Mentorship 
+                            <Mentorship
                                 user={this.state.newUser}
                                 mentor={this.state.newMentor}
                                 updateMentorStatus={this._handleChangeStatus}

@@ -84,6 +84,10 @@
                         justify-content: space-between;
                     }
 
+                    .info {
+                      padding-top: 40px;
+                    }
+
                     @media (min-width: 440px) {
                         * {
                             margin-bottom: 5px;
@@ -134,7 +138,7 @@
                             margin-top: 10px;
                         }
 
-                        & > div > div > i:before { 
+                        & > div > div > i:before {
                             /* edit icon */
                             cursor: pointer;
                         }
@@ -159,7 +163,7 @@
 
                                 textarea {
                                     height: 100px;
-                                }                             
+                                }
                             }
 
                         }
@@ -253,8 +257,4 @@
         height: 100%;
         width:auto;
     }
-}
-
-.disabled {
-    display: none;
 }
