@@ -7,7 +7,7 @@ import { reducer as notificationsReducer } from 'reapop';
 
 import { Login, login, logout, loginAndRedirect } from './login';
 import { Register, sendVerificationLink, confirmCode, completeRegistration } from './register';
-import { Profile, fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile } from './profile';
+import { Profile, fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile, setProfilePic } from './profile';
 import { SearchMentors, handleSearch } from './searchMentors'
 import { Requests, getRequests, sendRequest } from './requests'
 
@@ -43,7 +43,7 @@ const Actions = {
         login, logout, loginAndRedirect
     },
     profileActions: {
-        fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile,
+        fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile, setProfilePic
     },
     searchMentorsActions: {
         handleSearch
