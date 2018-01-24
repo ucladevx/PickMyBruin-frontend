@@ -30,7 +30,6 @@ const mapStateToProps = state => {
     const Profile = state.Profile;
     return {
         profile: Profile,
-        // profile_pic: Profile.get('profile_pic')
         
     }
 }
