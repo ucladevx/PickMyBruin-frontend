@@ -17,7 +17,6 @@ const SEND_REQUEST_START = 'send_request_start';
 const SEND_REQUEST_SUCCESS = 'send_request_success';
 const SEND_REQUEST_ERROR = 'send_request_error';
 
-
 /////////////
 // ACTIONS //
 /////////////
@@ -67,20 +66,47 @@ const dummyMentors = Immutable.fromJS([
     }
 ])
 
-const searchMajorsSuccess = (mentors) => {
+const searchMajorSuccess = (mentors) => {
     return {
         type: SEARCH_MAJOR_SUCCESS,
-        mentors
+        mentors,
+    };
+}
+
+const searchMajorFailure = (error) => {
+    return {
+        type: SEARCH_MAJOR_ERROR,
+        error,
     };
 }
 
 const handleSearch = (searchTerm) => {
-    return dispatch => {
+    return async dispatch => {
         dispatch({type: SEARCH_MAJOR_START, major: searchTerm});
 
-        setTimeout(() => {
-            dispatch(searchMajorsSuccess(dummyMentors));
-        }, 1);
+        try {
+            const token = Storage.get("token");
+
+            const response = await fetch(Config.API_URL + `/mentors?major=${searchTerm}/`, {
+                method: 'GET',
+                headers: new Headers({
+                    "Authorization": `Bearer ${token}`,
+                    "content-type": "application/json"
+                }),
+            });
+
+            const status = await response.status;
+            const data = await response.json();
+
+            if (status > 299 || status < 200) {
+                throw new Error("Error fetching mentors");
+            } else {
+                dispatch(searchMajorSuccess(data.results));
+            }
+        } catch (e) {
+            console.log(e);
+            dispatch(searchMajorFailure(e));
+        }
     };
 }
 
@@ -94,7 +120,10 @@ const defaultState = Immutable.fromJS({
     error: null,
     loading: false,
     searchedMajor: '',
-    mentors: []
+    _internal: {
+        searched: false,
+    },
+    mentors: [],
 });
 
 const SearchMentors = (state=defaultState, action) => {
@@ -109,13 +138,15 @@ const SearchMentors = (state=defaultState, action) => {
             return state.withMutations(val => {
                 val.set('loading', false);
                 val.set('error', action.error);
+                val.setIn(['_internal', 'searched'], true);
             })
         }
         case SEARCH_MAJOR_SUCCESS: {
             return state.withMutations(val => {
                 val.set('loading', false);
                 val.set('error', null);
-                val.setIn(['mentors'], action.mentors);
+                val.setIn(['_internal', 'searched'], true);
+                val.setIn(['mentors'], List(action.mentors));
             })
         }
         default: {

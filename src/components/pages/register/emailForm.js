@@ -22,7 +22,7 @@ class EmailForm extends React.Component {
                 <div className="email-form">
                     <InputGroup>
                         <Input placeholder="email" name="email" onChange={this.handleChange}/>
-                        <InputGroupAddon>@ucla.edu</InputGroupAddon>
+                        <InputGroupAddon>@g.ucla.edu</InputGroupAddon>
                     </InputGroup>
                     <Input type="password" name="password" id="password" placeholder="password" onChange={this.handleChange}/>
                 </div>

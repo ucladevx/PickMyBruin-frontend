@@ -9,7 +9,7 @@ export default function(ComposedComponent) {
     class Authentication extends React.Component {
         componentWillMount() {
             if (!this.props.isLoggedIn) {
-                this.props.login();
+                this.props.login(this.props.path);
             }
             if (!this.props.isProfileFetched) {
                 this.props.fetchProfile();
@@ -28,18 +28,21 @@ export default function(ComposedComponent) {
     }
 
     const mapStateToProps = state => {
-        const Login = state.Login
-        const Profile = state.Profile
+        const Login = state.Login;
+        const Profile = state.Profile;
+        const path = `${state.router.location.pathname}${state.router.location.search}`
+
         return {
             isLoggedIn: Login.get('authenticated'),
-            isProfileFetched: !!Profile.getIn(['user', 'id'])
+            isProfileFetched: !!Profile.getIn(['user', 'id']),
+            path: path
         }
     }
 
     const mapDispatchToProps = dispatch => {
         return {
-            login: () => {
-                dispatch(replace("/login"));
+            login: path => {
+                dispatch(Actions.loginActions.loginAndRedirect(path));
             },
             fetchProfile: () => {
                 dispatch(Actions.profileActions.fetchProfile());

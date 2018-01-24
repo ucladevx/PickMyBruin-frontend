@@ -2,6 +2,7 @@ import Immutable from 'immutable';
 import { addNotification as notify } from 'reapop';
 
 import { setProfile } from './profile';
+import { login } from './login';
 import Storage from '../storage';
 import Config from '../config';
 
@@ -50,7 +51,7 @@ const verifyCodeSuccess = profile_id => {
 const sendVerificationLink = (email, password) => {
     return async (dispatch) => {
         try {
-            const fullEmail = email + '@ucla.edu';
+            const fullEmail = email + '@g.ucla.edu';
             dispatch(startSendVerificationLink(fullEmail));
 
             const response = await fetch(Config.API_URL + '/users/', {
@@ -71,7 +72,12 @@ const sendVerificationLink = (email, password) => {
                 throw new Error(data.error);
             } else {
                 dispatch(registerEmailSuccess(data.email, data.id));
+
+                // also login to get the access token
+                dispatch(login(email, password));
             }
+
+
         } catch (error) {
             // handle errors here
             dispatch(notify({title: 'Error!', status: 'error', message: error.message, position: 'tc'}));

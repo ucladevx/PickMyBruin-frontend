@@ -15,18 +15,21 @@ class LoginForm extends React.Component {
         });
     }
 
-    _sendUsernamePassword = () => {
-        this.props.sendUsernamePassword(this.state.email, this.state.password);
+    _login = () => {
+        this.props.login(this.state.email, this.state.password);
     }
  
     render() {
         return(
             <div>
                 <div className="login-form">                    
-                    <Input type="text" placeholder="email" name="email" onChange={this.handleChange}/>    
+                    <InputGroup>
+                        <Input type="text" placeholder="email" name="email" onChange={this.handleChange}/>    
+                        <InputGroupAddon>@g.ucla.edu</InputGroupAddon>
+                    </InputGroup>
                     <Input type="password" name="password" id="password" placeholder="password" onChange={this.handleChange} />
                 </div>
-                <Button color="primary" onClick={this._sendUsernamePassword} block>Login</Button>
+                <Button color="primary" onClick={this._login} block>Login</Button>
             </div>
         );
     }

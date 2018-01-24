@@ -6,17 +6,22 @@ import { Actions } from '../reducer';
 import Login from '../components/pages/login';
 
 class LoginContainer extends React.Component {
-
-    componentDidUpdate(prevProps,prevState){
+    componentWillMount() {
         if (this.props.loginSuccess && !this.props.error){
-            this.props.redirectToProfile()
+            this.props.redirect()
+        };
+    }
+
+    componentWillReceiveProps(nextProps){
+        if (nextProps.loginSuccess && !nextProps.error){
+            nextProps.redirect()
         };
     }
 
     render() {
         return(
             <Login
-                sendUsernamePassword={this.props.sendUsernamePassword} // what is this for?
+                login={this.props.login} // what is this for?
                 loginSuccess={this.props.loginSuccess} // why do you need this here?
             />
         ) 
@@ -28,17 +33,22 @@ const mapStateToProps = state => {
     return {
         loading: LoginState.get('loading'),
         loginSuccess: LoginState.get('authenticated'),
+        redirectPath: LoginState.get('redirect'),
         error: LoginState.get('error')
     }
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        sendUsernamePassword: (email, password) => {
-        	dispatch(Actions.loginActions.sendUsernamePassword(email, password));
+        login: (email, password) => {
+        	dispatch(Actions.loginActions.login(email, password));
         },
-        redirectToProfile: () => {
-            dispatch(replace("/profile"));      
+        redirect: () => {
+            if (ownProps.redirectPath) {
+                dispatch(replace(redirectPath));
+            } else {
+                dispatch(replace("/profile"));      
+            }
         }
     };
 };

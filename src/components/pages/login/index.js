@@ -9,7 +9,7 @@ class Login extends React.Component {
             <div className="container-login">                
                 <div className="container-loginform">
                     Create an account <Link className="register-color" to="/register">here</Link> if you do not have one
-                    <LoginForm sendUsernamePassword={this.props.sendUsernamePassword}/> 
+                    <LoginForm login={this.props.login}/> 
                 </div>                
             </div>
         )

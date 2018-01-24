@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { reducer as notificationsReducer } from 'reapop';
 
-import { Login, sendUsernamePassword, logout } from './login';
+import { Login, login, logout, loginAndRedirect } from './login';
 import { Register, sendVerificationLink, confirmCode, completeRegistration } from './register';
 import { Profile, fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile } from './profile';
 import { SearchMentors, handleSearch } from './searchMentors'
@@ -40,7 +40,7 @@ const Actions = {
         sendVerificationLink, completeRegistration, confirmCode
     },
     loginActions: {
-        sendUsernamePassword, logout
+        login, logout, loginAndRedirect
     },
     profileActions: {
         fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile,

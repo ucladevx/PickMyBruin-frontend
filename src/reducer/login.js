@@ -11,6 +11,8 @@ const START_LOGIN = 'start_login';
 const LOGIN_SUCCESS = 'login_success';
 const LOGIN_FAILURE = 'login_failure';
 
+const SET_REDIRECT = 'set_redirect';
+
 const LOGOUT = 'logout';
 
 // action!!
@@ -42,10 +44,21 @@ const logout = () => {
     }
 }
 
-const sendUsernamePassword = (email, password) => {
+const loginAndRedirect = redirect => {
+    return dispatch => {
+        dispatch({
+            type: SET_REDIRECT,
+            redirect
+        });
+        dispatch(push("/login"));
+    }
+}
+
+const login = (email, password) => {
     return async (dispatch) => {
         try {
             dispatch(startLogin());
+            email = email + "@g.ucla.edu";
 
             const response = await fetch(Config.API_URL + '/o/token/', {
                 method: 'POST',
@@ -85,6 +98,7 @@ const defaultState = () => {
     return Immutable.fromJS({
         authenticated: !!token,
         loading: false,
+        redirect: null,
         error: null
     });
 }
@@ -116,6 +130,11 @@ const Login = (state = defaultState(), action) => {
                 val.set('authenticated', false);
             })
         }
+        case SET_REDIRECT: {
+            return state.withMutations(val => {
+                val.set('redirect', action.redirect);
+            })
+        }
         default: {
             return state;
         }
@@ -123,5 +142,5 @@ const Login = (state = defaultState(), action) => {
 }
 
 export {
-    Login, sendUsernamePassword, logout
+    Login, login, logout, loginAndRedirect
 };

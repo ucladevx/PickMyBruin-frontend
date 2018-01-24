@@ -15,7 +15,10 @@ class Search extends React.Component {
                         handleSearch={this.props.handleSearch}
                     />
                 </div>
-                <Results mentors={this.props.mentors}/>
+                <Results 
+                    mentors={this.props.mentors}
+                    _internal={this.props._internal} 
+                />
                 <NavBar />
             </div>
         );
