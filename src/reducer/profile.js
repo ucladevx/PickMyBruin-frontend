@@ -23,9 +23,47 @@ const SET_PROFILE = 'set_profile';
 const SET_MENTOR_PROFILE = 'set_mentor_profile';
 const REMOVE_PROFILE_INFO = 'remove_profile_info';
 
+const SET_PROFILE_PIC_START = 'set_profile_pic_start';
+const SET_PROFILE_PIC_SUCCESS = 'set_profile_pic_success';
+const SET_PROFILE_PIC_ERROR = 'set_profile_pic_error';
+
 /////////////
 // ACTIONS //
 /////////////
+
+const setProfilePic = pic => {
+    return async dispatch => {
+        try {
+            const token = Storage.get('token');
+            if (!token) {
+                // we need them to login
+                dispatch(push('/login'));
+            }
+            const response = await fetch(Config.API_URL + '/users/me/', {
+                method: 'PATCH',
+                headers: new Headers({
+                    "Authorization": `Bearer ${token}`,
+                }),
+                body: pic
+            })
+
+            const status = await response.status;
+            const data = await response.json();
+
+            if (status > 299 || status < 200) {
+                throw new Error("We couldn't set your profile picture");
+            } else {
+                dispatch(notify({message: "Your profile picture is updated", position: 'tc', status: 'success'}));
+                console.log(data);
+                dispatch(updateProfilePic(data));
+            }
+        } catch (error) {
+            dispatch(notify({title: "Error", message: error.message, position: 'tc', status: 'error'}))
+        }
+    }
+}
+
+
 
 const updateMentorStatus = wantToBeActive => {
     return async dispatch => {
@@ -87,7 +125,7 @@ const updateMentorProfile = body => {
                 throw new Error("We couldn't update your mentor profile");
             } else {
                 dispatch(notify({message: "Your mentor profile is updated", position: 'tc', status: 'success'}));
-                dispatch(setMentorProfile(data));
+                dispatch(setMentorProfile(data["picture"]));
             }
         } catch (error) {
             dispatch(notify({title: "Error", message: error.message, position: 'tc', status: 'error'}))
@@ -205,6 +243,13 @@ const removeProfileInfo = () => {
     }
 }
 
+const updateProfilePic = pic => {
+    return {
+        type: SET_PROFILE_PIC_SUCCESS,
+        pic
+    }
+}
+
 ///////////
 // STATE //
 ///////////
@@ -214,7 +259,8 @@ const defaultState = () => {
         error: null,
         loading: false,
         user: {},
-        mentor: {}
+        mentor: {},
+        profile_pic: null
     });
 }
 
@@ -249,10 +295,15 @@ const Profile = (state = defaultState(), action) => {
                 val.set('user', fromJS({}));
             })
         }
+        case SET_PROFILE_PIC_SUCCESS: {
+            return state.withMutations(val => {
+                val.set('profile_pic', fromJS(action.pic)); 
+            })
+        }
         default: {
             return state;
         }
     }
 }
 
-export { Profile, fetchProfile, setProfile, removeProfileInfo, updateMentorStatus, updateMentorProfile, updateUserProfile };
+export { Profile, fetchProfile, setProfile, removeProfileInfo, updateMentorStatus, updateMentorProfile, updateUserProfile, setProfilePic };

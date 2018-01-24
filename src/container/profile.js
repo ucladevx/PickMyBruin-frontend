@@ -20,17 +20,23 @@ class ProfileContainer extends React.Component {
                 updateMentorStatus={this.props.updateMentorStatus}
                 updateUserProfile={this.props.updateUserProfile}
                 updateMentorProfile={this.props.updateMentorProfile}
+                setProfilePic={this.props.setProfilePic}
             />
         )
     }
 }
 
+//setProfilePic={this.props.setProfilePic}
+
 const mapStateToProps = state => {
-    const Profile = state.Profile
+    const Profile = state.Profile;
     return {
-        profile: Profile
+        profile: Profile,
+        profile_pic: Profile.get('profile_pic')
+        
     }
 }
+
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -46,9 +52,12 @@ const mapDispatchToProps = dispatch => {
         updateMentorProfile: body => {
             dispatch(Actions.profileActions.updateMentorProfile(body));
         }, 
+        setProfilePic: () => {
+            dispatch(Actions.profileActions.setProfilePic(pic));
+        },
         logout: () => {
             dispatch(Actions.loginActions.logout());
-        }
+        },
     }
 }
 
