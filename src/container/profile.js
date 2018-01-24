@@ -52,7 +52,7 @@ const mapDispatchToProps = dispatch => {
         updateMentorProfile: body => {
             dispatch(Actions.profileActions.updateMentorProfile(body));
         }, 
-        setProfilePic: () => {
+        setProfilePic: pic => {
             dispatch(Actions.profileActions.setProfilePic(pic));
         },
         logout: () => {
