@@ -50,13 +50,6 @@ const setProfilePic = pic => {
                 body: formData                
             })
 
-      // var formData = new FormData();
-      // formData.append('photo', image);
-      // fetch('http://localhost:8080/uploadUserImage/', {
-      //   method:'POST',
-      //    body: formData
-      // });
-
             const status = await response.status;
             const data = await response.json();
 
@@ -269,7 +262,6 @@ const defaultState = () => {
         loading: false,
         user: {},
         mentor: {},
-        // profile_pic: null
     });
 }
 
@@ -304,11 +296,7 @@ const Profile = (state = defaultState(), action) => {
                 val.set('user', fromJS({}));
             })
         }
-        // case SET_PROFILE_PIC_SUCCESS: {
-        //     return state.withMutations(val => {
-        //         val.set('profile_pic', fromJS(action.pic)); 
-        //     })
-        // }
+
         default: {
             return state;
         }
