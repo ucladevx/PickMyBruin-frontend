@@ -26,13 +26,11 @@ class ProfileContainer extends React.Component {
     }
 }
 
-//setProfilePic={this.props.setProfilePic}
-
 const mapStateToProps = state => {
     const Profile = state.Profile;
     return {
         profile: Profile,
-        profile_pic: Profile.get('profile_pic')
+        // profile_pic: Profile.get('profile_pic')
         
     }
 }
