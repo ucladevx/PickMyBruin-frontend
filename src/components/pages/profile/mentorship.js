@@ -51,7 +51,8 @@ const styles = {
 	blurb: {
 		paddingLeft:"4%",
 		margin:"2%",
-		lineHeight:"1.5em"
+		lineHeight:"1.5em",
+		fontSize: "90%"
 	},
 
 };

@@ -42,9 +42,10 @@ const styles = {
     backgroundColor: "#007bff"
 },
   info_card: {
-	  paddingLeft:"10%",
+	  paddingLeft:"4%",
 	  fontSize: "90%",
-	  color: '#5d636f'
+	  color: '#5d636f',
+	  lineHeight:"1.5em"
   }
 };
 
@@ -105,10 +106,10 @@ class General extends React.Component {
 							<Alert color="secondary">
 								<p>How to use BQuest: </p>
 								<ul style={styles.info_card}>
-									<li> 1) Make sure you update your preferred email, if you don’t use your UCLA email </li>
-									<li> 2) If you signed up to be an ambassador, activate and fill out your profile to the right </li>
-									<li> 3) If you’re looking for an ambassador, click search up top, and send out a request to meet with an ambassador on campus. Please remember ambassadors are just students who wants to help you. You should buy them a cup of coffee as a thank you for their time. </li>
-									<li> 4) If you want to see the requests you have sent/received, click requests up top. These will also be send to your email </li>
+									<li>Make sure you update your preferred email, if you don’t use your UCLA email </li>
+									<li>If you signed up to be an ambassador, activate and fill out your profile to the right </li>
+									<li>If you’re looking for an ambassador, click search up top, and send out a request to meet with an ambassador on campus. Please remember ambassadors are just students who wants to help you. You should buy them a cup of coffee as a thank you for their time. </li>
+									<li>If you want to see the requests you have sent/received, click requests up top. These will also be send to your email </li>
 								</ul>
       						</Alert>
         					</Collapse>
