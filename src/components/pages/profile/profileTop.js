@@ -9,7 +9,7 @@ class ProfileTop extends React.Component {
             <div className="top">
                 <div className="user-info">
                     <ProfilePic 
-                        profile_pic = {this.props.profile_pic}
+                        profile={this.props.profile}
                         setProfilePic = {this.props.setProfilePic}
                     />
                     <h1>{this.props.name}</h1>

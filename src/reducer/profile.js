@@ -39,13 +39,23 @@ const setProfilePic = pic => {
                 // we need them to login
                 dispatch(push('/login'));
             }
+
+            const formData = new FormData();
+            formData.append('picture', pic)
             const response = await fetch(Config.API_URL + '/users/me/', {
                 method: 'PATCH',
                 headers: new Headers({
                     "Authorization": `Bearer ${token}`,
                 }),
-                body: pic
+                body: formData                
             })
+
+      // var formData = new FormData();
+      // formData.append('photo', image);
+      // fetch('http://localhost:8080/uploadUserImage/', {
+      //   method:'POST',
+      //    body: formData
+      // });
 
             const status = await response.status;
             const data = await response.json();
@@ -54,8 +64,7 @@ const setProfilePic = pic => {
                 throw new Error("We couldn't set your profile picture");
             } else {
                 dispatch(notify({message: "Your profile picture is updated", position: 'tc', status: 'success'}));
-                console.log(data);
-                dispatch(updateProfilePic(data['picture']));
+                dispatch(setProfile(data));
             }
         } catch (error) {
             dispatch(notify({title: "Error", message: error.message, position: 'tc', status: 'error'}))
@@ -260,7 +269,7 @@ const defaultState = () => {
         loading: false,
         user: {},
         mentor: {},
-        profile_pic: null
+        // profile_pic: null
     });
 }
 
@@ -295,11 +304,11 @@ const Profile = (state = defaultState(), action) => {
                 val.set('user', fromJS({}));
             })
         }
-        case SET_PROFILE_PIC_SUCCESS: {
-            return state.withMutations(val => {
-                val.set('profile_pic', fromJS(action.pic)); 
-            })
-        }
+        // case SET_PROFILE_PIC_SUCCESS: {
+        //     return state.withMutations(val => {
+        //         val.set('profile_pic', fromJS(action.pic)); 
+        //     })
+        // }
         default: {
             return state;
         }
