@@ -55,7 +55,7 @@ const setProfilePic = pic => {
             } else {
                 dispatch(notify({message: "Your profile picture is updated", position: 'tc', status: 'success'}));
                 console.log(data);
-                dispatch(updateProfilePic(data));
+                dispatch(updateProfilePic(data['picture']));
             }
         } catch (error) {
             dispatch(notify({title: "Error", message: error.message, position: 'tc', status: 'error'}))

@@ -24,7 +24,6 @@ class ProfilePic extends React.Component {
         	<ReactFileReader fileTypes={[".jpg",".png",".svg",".jif"]} multipleFiles={false} handleFiles={this._handleFiles(files[0]["name"])}>
 	            <div className="profile-pic">
 	                {this.renderProfilePic()}
-	                // <img src="http://www.iconninja.com/files/373/611/612/person-user-profile-male-man-avatar-account-icon.svg"/>
 	            </div>
 	        </ReactFileReader>
         )

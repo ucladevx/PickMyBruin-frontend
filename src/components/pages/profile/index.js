@@ -53,6 +53,7 @@ class Profile extends React.Component {
                     <div className="profile-wrapper">
                         <ProfileTop
                             name={name}
+                            profile_pic={this.props.profile_pic}
                         />
                         <div className="profile-detail-container">
                             <General
