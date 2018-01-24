@@ -54,6 +54,7 @@ class Profile extends React.Component {
                         <ProfileTop
                             name={name}
                             profile_pic={this.props.profile_pic}
+                            setProfilePic = {this.props.setProfilePic}
                         />
                         <div className="profile-detail-container">
                             <General
