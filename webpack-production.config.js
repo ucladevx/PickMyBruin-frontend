@@ -8,8 +8,6 @@ const config = {
       './src/main.js',
     ],
   },
-  // Render source-map file for final build
-  devtool: 'source-map',
   // output config
   output: {
     path: path.resolve(__dirname, 'lib'), // Path of output file
