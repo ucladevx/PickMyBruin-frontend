@@ -15,7 +15,7 @@ const styles = {
 class Search extends React.Component {
     constructor(props) {
         super(props);
-        this.majors = majors
+        this.majors = majors.sort()
     }
 
     state = {

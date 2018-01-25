@@ -2,14 +2,15 @@ import React from 'react';
 import SearchResultContainer from './searchResultContainer';
 
 export default (props) => {
-    console.log(props);
     if (!props.mentors) {
         return null;
     }
     
-    if (props._internal.get('searched') && props.mentors.size === 0) {
+    if (props._internal && props._internal.get('searched') && props.mentors.size === 0) {
         return (
-            <div>Oh NO!</div>
+            <div className="instructions">
+                <h1>We don't have ambassadors in that major at the moment. Check back soon!</h1>
+            </div>
         );
     }
 
@@ -24,11 +25,13 @@ export default (props) => {
                 )}
             </div>
         );
-    } else {
+    } else if (props._internal && !props._internal.get('searched')) {
         return(
             <div className="instructions">
                 <h1>&#x1F446; Try typing in the search bar above to find ambassadors in majors you're interested in</h1>
             </div>
         ); 
+    } else {
+        return null;
     }
 };

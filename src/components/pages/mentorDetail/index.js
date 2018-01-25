@@ -26,9 +26,9 @@ class MentorDetail extends React.Component {
 
     _renderForm = () => {
         // checks that we have not already tried to request this mentor
-        if (this.props.mentor.hasRequested) {
+        if (this.props.mentor.canNotRequest) {
             return (
-                <Alert color="warning">You have already requested this ambassador</Alert>
+                <Alert color="warning">You cannot request this ambassador</Alert>
             );
         } 
         if (this.state.renderTextField) {
@@ -64,10 +64,11 @@ class MentorDetail extends React.Component {
                 <Navbar />
                 <div className="content">
                     <div className="results">
-                        <Results mentors={this.props.mentors.filter((mentorProfile) => {
+                        <Results 
+                            mentors={this.props.mentors.filter((mentorProfile) => {
                                 return mentorProfile.getIn(['mentor', 'id']) != profile.getIn(['mentor', 'id'])
-                            })
-                            } />
+                            })} 
+                        />
                     </div>
                     <div className="profile">
                         <ProfileTop 
@@ -88,7 +89,7 @@ class MentorDetail extends React.Component {
                             <div className="my-classes">
                                 <ul>
                                     {
-                                        profile.getIn(['mentor', 'classes']).map(className => {
+                                        profile.getIn(['mentor', 'courses']).map(className => {
                                             key += 1;
                                             return <li key={key}>{className}</li>
                                         })

@@ -40,7 +40,7 @@ class SearchResultContainer extends React.Component {
                 </div>
                 <div className="mentor-details">
                     <div className="mentor-name">{name}</div>
-                    <div className="mentor-major">{this.props.mentorProfile.getIn(['mentor', 'major'])}</div>
+                    <div className="mentor-major">{this.props.mentorProfile.getIn(['mentor', 'major', 'name'])}</div>
                     <div className="mentor-bio">
                         <Shave maxHeight={maxHeight}>{this.props.mentorProfile.getIn(['mentor','bio'])}</Shave>
                     </div>

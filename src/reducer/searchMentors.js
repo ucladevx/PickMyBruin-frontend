@@ -1,4 +1,4 @@
-import Immutable, { List } from 'immutable';
+import Immutable, { List, fromJS } from 'immutable';
 import { addNotification as notify } from 'reapop';
 
 import Config from '../config';
@@ -87,7 +87,7 @@ const handleSearch = (searchTerm) => {
         try {
             const token = Storage.get("token");
 
-            const response = await fetch(Config.API_URL + `/mentors?major=${searchTerm}/`, {
+            const response = await fetch(Config.API_URL + `/mentors?major=${searchTerm}`, {
                 method: 'GET',
                 headers: new Headers({
                     "Authorization": `Bearer ${token}`,
@@ -104,7 +104,6 @@ const handleSearch = (searchTerm) => {
                 dispatch(searchMajorSuccess(data.results));
             }
         } catch (e) {
-            console.log(e);
             dispatch(searchMajorFailure(e));
         }
     };
@@ -146,7 +145,24 @@ const SearchMentors = (state=defaultState, action) => {
                 val.set('loading', false);
                 val.set('error', null);
                 val.setIn(['_internal', 'searched'], true);
-                val.setIn(['mentors'], List(action.mentors));
+
+                
+                /* 
+                 * turn the results from the API into our preferred object format:
+                 * { 
+                 *      user: {}
+                 *      mentor: {}
+                 * }
+                 *
+                 */
+                val.set('mentors', fromJS(action.mentors.map(mentor => {
+                    let formattedMentor = {};
+                    formattedMentor.user = mentor.profile;
+
+                    delete mentor.profile;
+                    formattedMentor.mentor = mentor;
+                    return formattedMentor;
+                })));
             })
         }
         default: {

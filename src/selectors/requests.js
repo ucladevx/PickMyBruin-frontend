@@ -2,16 +2,24 @@ import { createSelector } from 'reselect';
 
 const requestsSelector = state => state.Requests;
 const mentorSelector = (state, props) => {
+    if (!state.SearchMentors.get('mentors').size){
+        return null;
+    }
+
     return state.SearchMentors.get('mentors').filter(mentorProfile => mentorProfile.getIn(['mentor','id']) == props.match.params.mentorId).get(0)
 }
 
 export const getMentorAndIfRequested = createSelector(
     [requestsSelector, mentorSelector],
     (requests, mentorProfile) => {
-        const index = requests.get('requests').findIndex(request => Number(request.getIn(['mentor', 'id'])) === mentorProfile.getIn(['mentor','id']));
+        if (!requests && mentorProfile) {
+            return null;
+        }
+
+        const index = requests.get('requests').findIndex(request => Number(request.getIn(['mentor', 'id'])) === Number(mentorProfile.getIn(['mentor','id'])));
         return {
             profile: mentorProfile,
-            hasRequested: index !== -1
+            canNotRequest: index !== -1
         }
     }
 )
