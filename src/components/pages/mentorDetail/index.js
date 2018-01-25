@@ -91,7 +91,7 @@ class MentorDetail extends React.Component {
                                     {
                                         profile.getIn(['mentor', 'courses']).map(className => {
                                             key += 1;
-                                            return <li key={key}>{className}</li>
+                                            return <li key={key}>{className.get('name')}</li>
                                         })
                                     }
                                 </ul>

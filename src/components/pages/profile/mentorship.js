@@ -140,12 +140,6 @@ class Mentorship extends React.Component {
         );
     }
 
-	renderChip(obj) {
-    	return (
-      	<Chip style={styles.chip}>{obj.name}</Chip>
-    	);
-  	}
-
     renderClasses = () => {
         if (!this.props.mentor.courses) {
             if (!this.state.classesOpen) {
@@ -160,10 +154,16 @@ class Mentorship extends React.Component {
             }
 		} else {
 			if (!this.state.classesOpen) {
+                let key = 0;
 				return (
 					<div className="text-and-edit">
 						<div className="courses">
-                        	{this.props.mentor.courses.map(this.renderChip, this)}
+                            {this.props.mentor.courses.map(course => {
+                                key += 1;
+                                return (
+                                    <Chip style={styles.chip} key={key}>{course.name}</Chip>
+                                );
+                            })}
 						</div>
                         <i className="fa fa-pencil-square-o" style={{paddingTop:"3%"}} onClick={() => this.openField("classesOpen")}></i>
                     </div>
