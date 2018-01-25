@@ -148,6 +148,11 @@
                             flex-flow: row;
                             justify-content: space-between;
                             margin-top: 10px;
+
+                            .courses {
+                              display: flex;
+                              flex-flow: row;
+                            }
                         }
 
                         .bio {

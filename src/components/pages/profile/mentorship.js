@@ -7,6 +7,7 @@ import Toggle from 'material-ui/Toggle';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import ChipInput from 'material-ui-chip-input';
+import Chip from 'material-ui/Chip';
 
 import { Button, Input, Alert} from 'reactstrap';
 
@@ -54,23 +55,41 @@ const styles = {
 		lineHeight:"1.5em",
 		fontSize: "90%"
 	},
+	chip: {
+    	margin: 4,
+  	},
+  	wrapper: {
+    	display: 'flex',
+    	flexWrap: 'wrap',
+  	},
 
 };
+
+class course {
+  constructor(name) {
+    this.name = name;
+  }
+}
 
 class Mentorship extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             bioOpen: false,
             classesOpen: false,
             majorOpen: false,
-            bio: this.props.mentor.bio,
+            bio: "",
+			courses: []
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({bio: nextProps.mentor.bio});
+        this.setState({
+			bio: nextProps.mentor.bio,
+			courses: nextProps.mentor.courses.map(function(obj) {
+				return obj.name
+			}),
+		});
     }
 
     openField = field => {
@@ -79,19 +98,32 @@ class Mentorship extends React.Component {
         });
     }
 
+	handleRequestAdd (chip) {
+    	this.setState({
+      	courses: [...this.state.courses, chip]
+    	})
+  	}
+
+	handleRequestDelete (deletedChip) {
+      	this.setState({
+        	courses: this.state.courses.filter((c) => c !== deletedChip)
+      	})
+  	}
+
     renderEditClasses = () => {
         return (
             <div className="add-classes">
                 <ChipInput
-                    onChange={chips => console.log(chips)}
                     fullWidth={true}
                     underlineFocusStyle={styles.textfield_input}
-                    newChipKeyCodes={[32]}
+					value={this.state.courses}
+  					onRequestAdd={(chip) => this.handleRequestAdd(chip)}
+  					onRequestDelete={(deletedChip) => this.handleRequestDelete(deletedChip)}
                 />
                 <div className="buttons">
                     <Button
                         color="primary"
-                        onClick={() => this._updateBio()}
+                        onClick={() => this._updateClasses()}
                         size="sm"
                     >
                         Save
@@ -108,8 +140,14 @@ class Mentorship extends React.Component {
         );
     }
 
+	renderChip(obj) {
+    	return (
+      	<Chip style={styles.chip}>{obj.name}</Chip>
+    	);
+  	}
+
     renderClasses = () => {
-        if (!this.props.mentor.classes) {
+        if (!this.props.mentor.courses) {
             if (!this.state.classesOpen) {
                 return (
                     <p onClick={() => this.openField("classesOpen")}>
@@ -120,12 +158,32 @@ class Mentorship extends React.Component {
             } else {
                 return this.renderEditClasses();
             }
-        }
-    }
+		} else {
+			if (!this.state.classesOpen) {
+				return (
+					<div className="text-and-edit">
+						<div className="courses">
+                        	{this.props.mentor.courses.map(this.renderChip, this)}
+						</div>
+                        <i className="fa fa-pencil-square-o" style={{paddingTop:"3%"}} onClick={() => this.openField("classesOpen")}></i>
+                    </div>
+				);
+			} else {
+				return this.renderEditClasses();
+			}
+		}
+	}
 
     _updateBio = () => {
         this.openField("bioOpen");
         this.props.updateProfile("bio", this.state.bio);
+    }
+
+	_updateClasses = () => {
+        this.openField("classesOpen");
+        this.props.updateProfile("courses", this.state.courses.map(function(str){
+			return ({name: str})
+		}));
     }
 
     renderEditBio = () => {
@@ -223,7 +281,7 @@ class Mentorship extends React.Component {
                 return (
                     <p onClick={() => this.openField("majorOpen")}>
                         <i className="fa fa-plus" aria-hidden="true"></i>
-                        &nbsp;Add a bio
+                        &nbsp;Add Major
                     </p>
                 );
             } else {
