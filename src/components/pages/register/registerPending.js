@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
-import { replace } from 'react-router-redux';
+import { replace,push } from 'react-router-redux';
 
 class RegisterPending extends React.Component {
     componentWillMount() {
