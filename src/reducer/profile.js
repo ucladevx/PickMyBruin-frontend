@@ -127,7 +127,7 @@ const updateMentorProfile = body => {
                 throw new Error("We couldn't update your mentor profile");
             } else {
                 dispatch(notify({message: "Your mentor profile is updated", position: 'tc', status: 'success'}));
-                dispatch(setMentorProfile(data["picture"]));
+                dispatch(setMentorProfile(data));
             }
         } catch (error) {
             dispatch(notify({title: "Error", message: error.message, position: 'tc', status: 'error'}))
