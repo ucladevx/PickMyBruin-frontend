@@ -6,13 +6,38 @@ import { Actions } from '../reducer';
 import Home from '../components/pages/home';
 
 class HomeContainer extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            fetching: false
+        }
+    }
+
     componentDidMount() {
         if (this.props.loggedIn) {
+            this.setState({
+                fetching: true
+            });
+            this.props.fetchProfile();
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            fetching: false
+        });
+
+        if (nextProps.verified) {
             this.props.redirectToProfile();
         }
     }
 
     render() {
+        if (this.state.fetching) {
+            return <div></div>;
+        }
+
         return(
             <Home 
                 signUp={this.props.signUp}
@@ -23,8 +48,11 @@ class HomeContainer extends React.Component {
 
 const mapStateToProps = state => {
     const Login = state.Login;
+    const Profile = state.Profile;
+
     return {
-        loggedIn: Login.get('authenticated')
+        loggedIn: Login.get('authenticated'),
+        verified: Profile.getIn(['user', 'verified']),
     }
 }
 

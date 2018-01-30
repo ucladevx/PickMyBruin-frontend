@@ -42,9 +42,9 @@ class App extends React.Component {
                             <Route exact path="/login" component={LoginContainer}/>
                             <Route exact path="/register" component={RegisterContainer}/>
                             <Route path="/register/pending" component={RegisterPendingContainer} />
+                            <Route path="/completeRegistration" component={CompleteRegistrationContainer} />
+                            <Route path="/verify" component={VerifyUserContainer} />
 
-                            <Route path="/completeRegistration" component={Authentication(CompleteRegistrationContainer)} />
-                            <Route path="/verify" component={Authentication(VerifyUserContainer)} />
                             <Route exact path="/profile" component={Authentication(ProfileContainer)} />
                             <Route exact path="/search" component={Authentication(SearchContainer)} />
                             <Route exact path="/requests" component={Authentication(RequestsContainer)}/>

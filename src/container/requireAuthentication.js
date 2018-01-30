@@ -14,9 +14,12 @@ export default function(ComposedComponent) {
             if (!this.props.isProfileFetched) {
                 this.props.fetchProfile();
             }
+            if (!this.props.isProfileVerified) {
+                return this.props.redirectToPending();
+            }
         }
 
-        componentWillUpdate(nextProps) {
+        componentWillReceiveProps(nextProps) {
             if (!nextProps.isLoggedIn) {
                 this.props.login();
             }
@@ -35,7 +38,7 @@ export default function(ComposedComponent) {
         return {
             isLoggedIn: Login.get('authenticated'),
             isProfileFetched: !!Profile.getIn(['user', 'id']),
-            path: path
+            isProfileVerified: Profile.getIn(['user', 'verified']),
         }
     }
 
@@ -46,7 +49,10 @@ export default function(ComposedComponent) {
             },
             fetchProfile: () => {
                 dispatch(Actions.profileActions.fetchProfile());
-            }
+            },
+            redirectToPending: () => {
+                dispatch(replace("/register/pending"));
+            },
         };
     }
 

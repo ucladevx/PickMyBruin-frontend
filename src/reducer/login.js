@@ -81,7 +81,9 @@ const login = (email, password) => {
                 throw new Error("Error login");
             } else {
                 Storage.set("token", data.access_token)
-
+                
+                // get their profile
+                dispatch(fetchProfile());
                 dispatch(loginSuccess());
             }
         } catch (error) {
