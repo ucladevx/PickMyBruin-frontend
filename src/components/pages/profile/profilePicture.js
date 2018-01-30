@@ -5,7 +5,7 @@ import placeholder from '../../../../images/profile/placeholder_profile.png';
 class ProfilePic extends React.Component {
 
 	_handleFiles = files => {
-  		this.props.setProfilePic(files[0]) // put it in index.js profile 
+  		this.props.setProfilePic(files[0]) 
 	}	
 
 	_renderPic = () => {
