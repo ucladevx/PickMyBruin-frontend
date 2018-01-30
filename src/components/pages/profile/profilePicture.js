@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactFileReader from 'react-file-reader';
+import placeholder from '../../../../images/profile/placeholder_profile.png';
 
 class ProfilePic extends React.Component {
 
@@ -7,19 +8,28 @@ class ProfilePic extends React.Component {
   		this.props.setProfilePic(files[0]) // put it in index.js profile 
 	}	
 
+	_renderPic = () => {
+ 		const url = this.props.profile.getIn(['user','picture'])
+        if (url) {
+            return (
+                <div className="profile-pic" style={{backgroundImage: 'url('+url+')'}}>
+	            </div>
+            );
+        } else {
+            return <div className="profile-pic" src={placeholder} alt="placeholder">
+	            </div>;
+        }
+    }
+
     render() {
-    	const url = this.props.profile.getIn(['user','picture']) ? this.props.profile.getIn(['user','picture']) : 'http:\/\/www.iconninja.com/files/373/611/612/person-user-profile-male-man-avatar-account-icon.svg'
 
         return(
         	<ReactFileReader fileTypes={[".jpg",".png",".svg",".jif"]} multipleFiles={false} handleFiles={this._handleFiles}>
-	            <div className="profile-pic" style={{backgroundImage: 'url('+url+')'}}>
-	            </div>
+	            {this._renderPic()}
 	        </ReactFileReader>
         )
     }
 }
 
 export default ProfilePic;
-
-
 

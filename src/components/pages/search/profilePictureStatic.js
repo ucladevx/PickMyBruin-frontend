@@ -3,13 +3,29 @@ import React from 'react';
 
 class ProfilePicStatic extends React.Component {
 
-    render() {
-    	const url = this.props.profile_pic ? this.props.profile_pic : 'http:\/\/www.iconninja.com/files/373/611/612/person-user-profile-male-man-avatar-account-icon.svg'
+    _renderPic = () => {
+        const url = this.props.profile_pic
 
-        return(        	
-            <div className="profile-pic" style={{backgroundImage: 'url('+url+')'}}></div>	        
+        if (url) {
+            return (
+                <div className="profile-pic" style={{backgroundImage: 'url('+url+')'}}>
+                </div>
+            );
+        } else {
+            return <div className="profile-pic" src={placeholder} alt="placeholder">
+                </div>;
+        }
+    }
+
+    render() {
+
+        return( 
+            <div>       	
+                {this._renderPic()}	   
+            </div>     
         )
     }
 }
 
 export default ProfilePicStatic;
+
