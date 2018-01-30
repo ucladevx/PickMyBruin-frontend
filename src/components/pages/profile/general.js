@@ -30,7 +30,6 @@ const styles = {
 	margin: "0px"
   },
   textfield: {
-	  width: 140,
 	  height: 31,
 	  textAlign: "center",
   },

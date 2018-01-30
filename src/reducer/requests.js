@@ -1,4 +1,4 @@
-import Immutable, { List } from 'immutable';
+import Immutable, { fromJS } from 'immutable';
 import formurlencoded from "form-urlencoded";
 import {push} from "react-router-redux";
 import { addNotification as notify } from 'reapop';
@@ -88,12 +88,36 @@ const requestsSuccess = (requests) => {
 }
 
 const getRequests = () => {
-	return dispatch => {
-		dispatch(requestsStart())
-		
-		setTimeout(() => {
-			dispatch(requestsSuccess(dummyRequests));
-		},1);
+	return async dispatch => {
+		try {
+			console.log("Here")
+            const token = Storage.get('token');
+            if (!token) {
+                // we need them to login
+                dispatch(push('/login'));
+            }
+
+			dispatch({type: REQUESTS_START});
+
+            const requestResponse = await fetch(Config.API_URL + '/requests/list/me/', {
+                method: 'GET',
+                headers: new Headers({
+                    "Authorization": `Bearer ${token}`
+                })
+            })
+
+            const requestStatus = await requestResponse.status;
+            const requestData = await requestResponse.json();
+
+            if (requestStatus > 299 || requestStatus < 200) {
+                throw new Error("Error fetching profile");
+            } else {
+                dispatch({type: REQUESTS_SUCCESS, requests: requestData.results});
+            }
+
+        } catch (error) {
+            dispatch(notify({title: 'Error!', status: 'error', message: 'There was an error fetching requests', position: 'tc'}));
+        }
 	};
 }
 
@@ -134,7 +158,6 @@ const sendRequest = (message, mentorId) => {
     }
 }
 
-
 ///////////
 // STATE //
 ///////////
@@ -142,7 +165,7 @@ const sendRequest = (message, mentorId) => {
 const defaultState = Immutable.fromJS({
     error: null,
     loading: false,
-    requests: dummyRequests
+    requests: []
 });
 
 const Requests = (state=defaultState, action) => {
@@ -155,7 +178,7 @@ const Requests = (state=defaultState, action) => {
         case REQUESTS_SUCCESS: {
             return state.withMutations(val => {
                 val.set('loading', false);
-                val.setIn(['requests'], action.requests);
+                val.set('requests', fromJS(action.requests));
             })
         }
         case SEND_REQUEST_START: {
