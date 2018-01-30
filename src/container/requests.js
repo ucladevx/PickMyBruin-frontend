@@ -5,14 +5,14 @@ import Requests from '../components/pages/requests';
 
 class RequestsContainer extends React.Component {
     componentDidMount() {
-        if (!this.props.requests) {
+        if (!(this.props.requests.size)) {
             this.props.getRequests();
         }
     }
 
     render() {
         return (
-            <Requests 
+            <Requests
     			requests={this.props.requests}
                 profile={this.props.profile}
             />
