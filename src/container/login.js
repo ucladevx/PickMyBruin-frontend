@@ -13,7 +13,7 @@ class LoginContainer extends React.Component {
     }
 
     componentWillReceiveProps(nextProps){
-        if (nextProps.loginSuccess && !nextProps.error){
+        if (nextProps.loginSuccess && nextProps.profileFetched && !nextProps.error){
             nextProps.redirect()
         };
     }
@@ -21,8 +21,8 @@ class LoginContainer extends React.Component {
     render() {
         return(
             <Login
-                login={this.props.login} // what is this for?
-                loginSuccess={this.props.loginSuccess} // why do you need this here?
+                login={this.props.login}
+                loginSuccess={this.props.loginSuccess}
             />
         ) 
     }
@@ -30,10 +30,12 @@ class LoginContainer extends React.Component {
 
 const mapStateToProps = state => {
     const LoginState = state.Login;
+    const Profile = state.Profile;
+
     return {
         loading: LoginState.get('loading'),
         loginSuccess: LoginState.get('authenticated'),
-        redirectPath: LoginState.get('redirect'),
+        profileFetched: !!Profile.getIn(['user', 'id']),
         error: LoginState.get('error')
     }
 };
@@ -44,11 +46,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         	dispatch(Actions.loginActions.login(email, password));
         },
         redirect: () => {
-            if (ownProps.redirectPath) {
-                dispatch(replace(redirectPath));
-            } else {
-                dispatch(replace("/profile"));      
-            }
+            dispatch(replace("/profile"));      
         }
     };
 };

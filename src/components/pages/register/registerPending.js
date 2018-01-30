@@ -4,11 +4,6 @@ import { Button } from 'reactstrap';
 import { replace } from 'react-router-redux';
 
 class RegisterPending extends React.Component {
-    componentWillMount() {
-        if (!this.props.sentEmail) {
-            this.props.redirectHome();
-        }
-    }
     render() {
         return(
             <div className="container-pending">
