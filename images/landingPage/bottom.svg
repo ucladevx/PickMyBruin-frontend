@@ -14,10 +14,10 @@
                         <tspan x="732.162109" y="510">C</tspan>
                         <tspan x="740.751953" y="510">reated for UCLA students, by UCLA students. ©2017 UCLA DevX </tspan>
                     </text>
-                    <text id="Got-any-questions-or" font-family="'Lato', sans-serif" font-size="18" font-weight="normal" line-spacing="24" fill="#FFFFFF">
+                    <!-- <text id="Got-any-questions-or" font-family="'Lato', sans-serif" font-size="18" font-weight="normal" line-spacing="24" fill="#FFFFFF">
                         <tspan x="707.888184" y="428">Got any questions or comments? We’d love to know. </tspan>
                         <tspan x="758.350586" y="452">Just email us at bquest.ucla@gmail.com</tspan>
-                    </text>
+                    </text> -->
                 </g>
             </g>
         </g>

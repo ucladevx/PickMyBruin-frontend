@@ -9,6 +9,7 @@ import explanation from '../../../../images/landingPage/explanation.svg';
 import bottom from '../../../../images/landingPage/bottom.svg';
 
 class Home extends React.Component {
+
     render() {
         return (
             <div className="home-container">
@@ -32,7 +33,12 @@ class Home extends React.Component {
                         <h1>It's the perfect time to get involved</h1>
                         <Button color="primary" onClick={this.props.signUp}>Sign Up Now</Button>
                     </div>
-                    <img src={bottom} alt="bottom" />
+                    <div>
+                        <img src={bottom} alt="bottom" />
+                        <div className="style_div">
+                            <p className="style_p" > Got any questions or comments? Found a bug? We'd love to help you <a id="form" className="googleform" href="https://goo.gl/forms/1swwXqbqaXCqHVTL2">here</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
@@ -40,5 +46,9 @@ class Home extends React.Component {
 }
 
 export default Home;
+
+
+
+
 
                
