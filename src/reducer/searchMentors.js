@@ -103,10 +103,7 @@ const handleSearch = (searchTerm) => {
             } else {
                 dispatch(searchMajorSuccess(data.results));
             }
-
-
         } catch (e) {
-            console.log(e)
             dispatch(searchMajorFailure(e));
         }
     };
