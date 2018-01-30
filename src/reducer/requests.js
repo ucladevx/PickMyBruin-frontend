@@ -90,12 +90,7 @@ const requestsSuccess = (requests) => {
 const getRequests = () => {
 	return async dispatch => {
 		try {
-			console.log("Here")
             const token = Storage.get('token');
-            if (!token) {
-                // we need them to login
-                dispatch(push('/login'));
-            }
 
 			dispatch({type: REQUESTS_START});
 
