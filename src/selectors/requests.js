@@ -12,7 +12,7 @@ const mentorSelector = (state, props) => {
 export const getMentorAndIfRequested = createSelector(
     [requestsSelector, mentorSelector],
     (requests, mentorProfile) => {
-        if (!requests && mentorProfile) {
+        if (!requests.size && mentorProfile) {
             return null;
         }
 

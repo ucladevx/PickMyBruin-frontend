@@ -28,7 +28,7 @@ class MentorDetail extends React.Component {
         // checks that we have not already tried to request this mentor
         if (this.props.mentor.canNotRequest) {
             return (
-                <Alert color="warning">You cannot request this ambassador</Alert>
+                <Alert color="warning">You have already requested this ambassador</Alert>
             );
         } 
         if (this.state.renderTextField) {
@@ -45,7 +45,8 @@ class MentorDetail extends React.Component {
     }
 
     _sendRequest = (message) => {
-        this.props.sendRequest(message, this.props.mentor.profile.get('id'));
+        //TODO: fix this shit this ugly
+        this.props.sendRequest(message, this.props.mentor.profile.getIn(['mentor', 'id']));
     }
 
     render() {

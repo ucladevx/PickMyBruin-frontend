@@ -142,6 +142,7 @@ const sendRequest = (message, mentorId) => {
             if (status > 299 || status < 200) {
                 throw new Error(data.error);
             } else {
+                dispatch(notify({title: "Success!", status: 'success', message: "Your message is on the way", position: "tc"}));
                 dispatch({type: SEND_REQUEST_SUCCESS, request: data});
             }
         }
@@ -184,7 +185,8 @@ const Requests = (state=defaultState, action) => {
         case SEND_REQUEST_SUCCESS: {
             return state.withMutations(val => {
                 const requests = val.get('requests');
-                val.set('requests', requests.push(action.request));
+                const newRequests = requests.push(fromJS(action.request));
+                val.set('requests', newRequests);
             });
         }
         case SEND_REQUEST_ERROR: {
