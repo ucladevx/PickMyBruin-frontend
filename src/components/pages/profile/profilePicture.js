@@ -1,11 +1,22 @@
 import React from 'react';
 
+
 class ProfilePic extends React.Component {
+
+    _renderPic = () => {
+        const url = this.props.profile.getIn(['user','picture'])
+
+        return (
+            <div className="profile-pic" style={{backgroundImage: 'url('+url+')'}}></div>
+        );
+    }
+
     render() {
-        return(
-            <div className="profile-pic">
-                <img src="http://corgis.marktai.com/image"/>
-            </div>
+
+        return( 
+            <div>       	
+                {this._renderPic()}	   
+            </div>     
         )
     }
 }

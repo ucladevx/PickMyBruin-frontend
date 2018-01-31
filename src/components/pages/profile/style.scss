@@ -245,17 +245,19 @@
     background-color: $white;
     border-radius: 50%;
     border: 2px solid $white;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
 
     @media (min-width: 440px) {
         width: 150px;
         height: 150px;
         top: 75px;
     }
+}
 
-    img {
-        height: 100%;
-        width:auto;
-    }
+.editable {
+    @extend .profile-pic;
+    cursor: pointer;
 }

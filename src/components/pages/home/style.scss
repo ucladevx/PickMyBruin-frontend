@@ -153,5 +153,22 @@
             width: 100%;
             height: auto;
         }
+
+        .style_div {
+            display: inline-block; 
+            width: 100%; 
+            margin-top: 3rem; 
+            text-align:center;
+        }
+
+        .style_p {
+            display: inline-block; 
+            padding-bottom:1rem; 
+            font-size:1.25rem; 
+            font-weight:300;
+        }
+        .googleform {
+            color: #6284ea;
+        }
     }
 }
