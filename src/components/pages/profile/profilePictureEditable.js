@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactFileReader from 'react-file-reader';
-import placeholder from '../../../../images/profile/placeholder_profile.png';
 
 class ProfilePicEditable extends React.Component {
 
@@ -10,15 +9,9 @@ class ProfilePicEditable extends React.Component {
 
 	_renderPic = () => {
  		const url = this.props.profile.getIn(['user','picture'])
-        if (url) {
-            return (
-                <div className="profile-pic" style={{backgroundImage: 'url('+url+')'}}>
-	            </div>
-            );
-        } else {
-            return <div className="profile-pic" src={placeholder} alt="placeholder">
-	            </div>;
-        }
+        return (
+            <div className="profile-pic editable" style={{backgroundImage: 'url('+url+')'}}></div>
+        );
     }
 
     render() {

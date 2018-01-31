@@ -6,15 +6,9 @@ class ProfilePic extends React.Component {
     _renderPic = () => {
         const url = this.props.profile.getIn(['user','picture'])
 
-        if (url) {
-            return (
-                <div className="profile-pic" style={{backgroundImage: 'url('+url+')'}}>
-                </div>
-            );
-        } else {
-            return <div className="profile-pic" src={placeholder} alt="placeholder">
-                </div>;
-        }
+        return (
+            <div className="profile-pic" style={{backgroundImage: 'url('+url+')'}}></div>
+        );
     }
 
     render() {

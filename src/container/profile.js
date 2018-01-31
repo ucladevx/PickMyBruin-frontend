@@ -14,16 +14,14 @@ class ProfileContainer extends React.Component {
 
     render() {
         return (
-            <div>
-                <Profile 
-                    profile={this.props.profile}
-                    logout={this.props.logout}
-                    updateMentorStatus={this.props.updateMentorStatus}
-                    updateUserProfile={this.props.updateUserProfile}
-                    updateMentorProfile={this.props.updateMentorProfile}
-                    setProfilePic={this.props.setProfilePic}
-                />
-            </div>
+            <Profile 
+                profile={this.props.profile}
+                logout={this.props.logout}
+                updateMentorStatus={this.props.updateMentorStatus}
+                updateUserProfile={this.props.updateUserProfile}
+                updateMentorProfile={this.props.updateMentorProfile}
+                setProfilePic={this.props.setProfilePic}
+            />
         )
     }
 }
