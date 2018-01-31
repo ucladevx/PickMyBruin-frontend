@@ -16,7 +16,6 @@ class ProfileTop extends React.Component {
                         }
 
     render() {
-        console.log('here')
         return(
             <div className="top">
                 <div className="user-info">
