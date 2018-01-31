@@ -4,36 +4,59 @@ import { push, replace } from 'react-router-redux';
 
 import { Actions } from '../reducer';
 
+import Loading from '../components/loading';
+
 export default function(ComposedComponent) {
 
     class Authentication extends React.Component {
+        constructor(props) {
+            super(props);
+
+            this.state = {
+                fetching: false
+            }
+        }
+
         componentWillMount() {
             if (!this.props.isLoggedIn) {
-                this.props.login(this.props.path);
+                return this.props.login(this.props.path);
             }
-            if (!this.props.isProfileFetched) {
+        }
+
+        componentDidMount() {
+            if (this.props.isLoggedIn && !this.props.isProfileFetched) {
+                this.setState({
+                    fetching: true
+                });
                 this.props.fetchProfile();
-            }
-            if (!this.props.isProfileVerified) {
-                return this.props.redirectToPending();
             }
         }
 
         componentWillReceiveProps(nextProps) {
             if (!nextProps.isLoggedIn) {
-                this.props.login();
+                return this.props.login();
+            }
+            this.setState({
+                fetching: false
+            })
+
+            if (!nextProps.isProfileVerified) {
+                return this.props.redirectToPending();
             }
         }
 
         render() {
-            return <ComposedComponent {...this.props} />;
+            if (this.state.fetching) {
+                return <Loading />;
+            } else {
+                return <ComposedComponent {...this.props} />;
+            }
         }
     }
 
     const mapStateToProps = state => {
         const Login = state.Login;
         const Profile = state.Profile;
-        const path = `${state.router.location.pathname}${state.router.location.search}`
 
         return {
             isLoggedIn: Login.get('authenticated'),
