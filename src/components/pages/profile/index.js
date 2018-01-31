@@ -44,6 +44,7 @@ class Profile extends React.Component {
     }
 
     render() {
+
         if (!this.state.newUser.id) {
             return null;
         } else {
@@ -53,6 +54,8 @@ class Profile extends React.Component {
                     <div className="profile-wrapper">
                         <ProfileTop
                             name={name}
+                            profile={this.props.profile}
+                            setProfilePic = {this.props.setProfilePic}
                         />
                         <div className="profile-detail-container">
                             <General

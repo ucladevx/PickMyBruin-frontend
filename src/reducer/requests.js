@@ -88,11 +88,11 @@ const requestsSuccess = (requests) => {
 }
 
 const getRequests = () => {
-	return async dispatch => {
-		try {
+    return async dispatch => {
+        try {
             const token = Storage.get('token');
 
-			dispatch({type: REQUESTS_START});
+            dispatch({type: REQUESTS_START});
 
             const requestResponse = await fetch(Config.API_URL + '/requests/list/me/', {
                 method: 'GET',
@@ -113,7 +113,7 @@ const getRequests = () => {
         } catch (error) {
             dispatch(notify({title: 'Error!', status: 'error', message: 'There was an error fetching requests', position: 'tc'}));
         }
-	};
+    };
 }
 
 const sendRequest = (message, mentorId) => {

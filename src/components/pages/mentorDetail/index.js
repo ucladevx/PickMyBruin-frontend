@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Alert } from 'reactstrap';
 
-import ProfileTop from '../profile/profileTop';
+import ProfilePicStatic from '../search/profilePictureStatic';
 import NewRequestField from './newRequestField';
 import Results from '../search/results';
 
@@ -72,8 +72,9 @@ class MentorDetail extends React.Component {
                         />
                     </div>
                     <div className="profile">
-                        <ProfileTop 
-                            name={`${profile.getIn(['user', 'first_name'])} ${profile.getIn(['user', 'last_name'])}`}
+                        <h1>{`${profile.getIn(['user', 'first_name'])} ${profile.getIn(['user', 'last_name'])}`}</h1>
+                        <ProfilePicStatic 
+                            profile_pic={`${profile.getIn(['user', 'picture'])}`}
                         />
                         <div className="mentor-details">
                             <div className="heading about-major-heading">

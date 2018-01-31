@@ -13,7 +13,7 @@ class RequestsContainer extends React.Component {
     render() {
         return (
             <Requests
-    			requests={this.props.requests}
+                requests={this.props.requests}
                 profile={this.props.profile}
             />
         );

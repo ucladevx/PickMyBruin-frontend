@@ -8,7 +8,10 @@ class ProfileTop extends React.Component {
         return(
             <div className="top">
                 <div className="user-info">
-                    <ProfilePic />
+                    <ProfilePic 
+                        profile={this.props.profile}
+                        setProfilePic = {this.props.setProfilePic}
+                    />
                     <h1>{this.props.name}</h1>
                 </div>
             </div>
@@ -17,3 +20,4 @@ class ProfileTop extends React.Component {
 }
 
 export default ProfileTop;
+
