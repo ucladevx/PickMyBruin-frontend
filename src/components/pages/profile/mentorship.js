@@ -83,18 +83,6 @@ class Mentorship extends React.Component {
         }
     }
 
-	componentDidMount() {
-		if (this.props.mentor.courses)
-		{
-			let newbio = this.props.bio;
-			let newcourses = this.props.mentor.courses.map(obj => obj.name);
-			this.setState({
-				bio: newbio,
-				courses: newcourses
-			});
-		}
-	}
-
     componentWillReceiveProps(nextProps) {
         this.setState({
 			bio: nextProps.mentor.bio,
