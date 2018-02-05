@@ -83,11 +83,11 @@ class Mentorship extends React.Component {
         }
     }
 
-	componentWillMount() {
+	componentDidMount() {
 		if (this.props.mentor.courses)
 		{
 			let newbio = this.props.bio;
-			let newcourses = this.props.mentor.courses.map(obj=>{return obj.name});
+			let newcourses = this.props.mentor.courses.map(obj => obj.name);
 			this.setState({
 				bio: newbio,
 				courses: newcourses
@@ -98,7 +98,7 @@ class Mentorship extends React.Component {
     componentWillReceiveProps(nextProps) {
         this.setState({
 			bio: nextProps.mentor.bio,
-			courses: nextProps.mentor.courses.map(obj=>{return obj.name})
+			courses: nextProps.mentor.courses.map(obj => obj.name)
 		});
     }
 
