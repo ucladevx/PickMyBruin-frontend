@@ -65,12 +65,6 @@ const styles = {
 
 };
 
-class course {
-  constructor(name) {
-    this.name = name;
-  }
-}
-
 class Mentorship extends React.Component {
     constructor(props) {
         super(props);
@@ -78,19 +72,18 @@ class Mentorship extends React.Component {
             bioOpen: false,
             classesOpen: false,
             majorOpen: false,
-            bio: "",
-			courses: []
+            bio: props.mentor.bio,
+            courses: props.mentor.courses ? props.mentor.courses.map(obj => obj.name) : []
         }
     }
 
     componentWillReceiveProps(nextProps) {
         this.setState({
 			bio: nextProps.mentor.bio,
-			courses: nextProps.mentor.courses.map(function(obj) {
-				return obj.name
-			}),
+			courses: nextProps.mentor.courses.map(obj => obj.name)
 		});
     }
+
 
     openField = field => {
         this.setState({
@@ -142,6 +135,10 @@ class Mentorship extends React.Component {
 
     renderClasses = () => {
         if (!this.props.mentor.courses) {
+            return null;
+        }
+
+        if (!this.props.mentor.courses.length) {
             if (!this.state.classesOpen) {
                 return (
                     <p onClick={() => this.openField("classesOpen")}>

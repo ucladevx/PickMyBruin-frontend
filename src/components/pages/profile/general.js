@@ -49,6 +49,7 @@ const styles = {
 };
 
 var isActive = true
+let changed = false
 
 class General extends React.Component {
 
@@ -63,9 +64,21 @@ class General extends React.Component {
 
 	onBlur(event) {
 		const newEmail = event.target.value
-		if (newEmail!=this.state.oldEmail) {
+		if (newEmail!=this.state.oldEmail && !changed) {
 			this.setState({oldEmail: newEmail})
 			this.props.updateProfile("email", newEmail);
+			changed = true
+		}
+	};
+
+	onKeyUp(event) {
+		if (event.key === 'Enter' && !changed) {
+			const newEmail = event.target.value
+			if (newEmail!=this.state.oldEmail) {
+				this.setState({oldEmail: newEmail})
+				this.props.updateProfile("email", newEmail);
+				changed = true
+			}
 		}
 	};
 
@@ -75,7 +88,7 @@ class General extends React.Component {
 
     render() {
         const notifications = this.props.notifications || 'ON';
-
+		changed = false
         return(
 			<MuiThemeProvider>
             	<div className="general">
@@ -96,7 +109,7 @@ class General extends React.Component {
                     	</div>*/}
                     	<div className="preferred-email">
                         	<h2>Preferred Email:</h2>
-							<TextField id="email-field" defaultValue={this.props.user.email} style={styles.textfield} inputStyle = {styles.textfield_input} onBlur={this.onBlur.bind(this)}/>
+							<TextField id="email-field" defaultValue={this.props.user.email} style={styles.textfield} inputStyle = {styles.textfield_input} onBlur={this.onBlur.bind(this)} onKeyUp={this.onKeyUp.bind(this)}/>
                     	</div>
 
 						<div className="info">
