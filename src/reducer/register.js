@@ -1,5 +1,6 @@
 import Immutable from 'immutable';
 import { addNotification as notify } from 'reapop';
+import { replace } from 'react-router-redux';
 
 import { setProfile } from './profile';
 import { login } from './login';
@@ -87,15 +88,20 @@ const sendVerificationLink = (email, password) => {
 }
 
 const confirmCode = (verification_code) => {
-    return async dispatch => {
+    return async (dispatch, getState) => {
         try {
+            if (!Storage.get("token")) {
+                const state = getState();
+                const redirect = state.router.location.pathname + state.router.location.search;
+                return dispatch(replace(`/login?redirect=${redirect}`));
+            }
+
             dispatch({type: VERIFY_CODE_START});
 
             const response = await fetch(Config.API_URL + '/verify/', {
                 method: 'POST',
                 headers: new Headers({
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${Storage.get("token")}`
                 }),
                 body: JSON.stringify({
                     verification_code

@@ -2,19 +2,22 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push, replace, goBack } from 'react-router-redux';
+import { parse } from 'qs';
+
 import { Actions } from '../reducer';
 import Login from '../components/pages/login';
 
 class LoginContainer extends React.Component {
     componentWillMount() {
         if (this.props.loginSuccess && !this.props.error){
-            this.props.redirect()
+            this.props.redirect();
         };
     }
 
     componentWillReceiveProps(nextProps){
         if (nextProps.loginSuccess && nextProps.profileFetched && !nextProps.error){
-            nextProps.redirect()
+            const parsed = parse(nextProps.location.search.substr(1));
+            return this.props.redirect(parsed.redirect);
         };
     }
 
@@ -45,8 +48,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         login: (email, password) => {
         	dispatch(Actions.loginActions.login(email, password));
         },
-        redirect: () => {
-            dispatch(replace("/profile"));      
+        redirect: (path) => {
+            if (!path) {
+                dispatch(replace("/profile"));
+            } else {
+                dispatch(replace(path));
+            }
         }
     };
 };
