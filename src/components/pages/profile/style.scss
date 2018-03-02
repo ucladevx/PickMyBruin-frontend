@@ -270,3 +270,7 @@
     @extend .profile-pic;
     cursor: pointer;
 }
+
+.editable:hover {
+  opacity: 0.7;
+}
