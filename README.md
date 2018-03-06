@@ -20,17 +20,12 @@ built with:
 ## Project Organization
 ```
 .
-├── images
+├── images  
 │   ├── landingPage
-│   │   └── profile
 │   └── profile
-├── lib
-│   ├── build
-│   └── images
-│       └── landingPage
-├── pages
+├── pages  // the index.html and any static assets it references
 └── src
-    ├── components
+    ├── components  // contains all the "dummy" UI components
     │   ├── loading
     │   ├── navbar
     │   ├── pages
@@ -47,8 +42,19 @@ built with:
     │   └── util
     │       ├── Button
     │       └── divider
-    ├── container
-    ├── reducer
-    ├── selectors
-    └── style
+    ├── container  // contains all the "smart" components that hook into redux
+    ├── reducer  // contains files that each hold a reducer and action thunks
+    ├── selectors  // used to select parts of state to memoize. See https://github.com/reactjs/reselect
+    └── style  // style variables
+    ├── main.js  // ENTRY POINT for our application's javascript
+    ├── main.scss  // ENTRY POINT for our application's CSS
 ```
+
+## Helpful links to check out
+* [React.js documentation](https://reactjs.org/docs/hello-world.html)
+* [Redux documentation](https://redux.js.org/introduction)
+* [Guide to reselect](https://github.com/reactjs/reselect)
+* [Immutable.js Documentation + introduction](https://facebook.github.io/immutable-js/)
+* [Base project upon which ours is built](https://github.com/xorkevin/reactant)
+    * Building and understanding this project will help you understand ours
+    
