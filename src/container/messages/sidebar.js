@@ -2,20 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Actions } from 'reducer';
+import Sidebar from 'components/pages/messages/sidebar';
 
-class Sidebar extends React.Component {
+class SidebarContainer extends React.Component {
     render() {
-        return ();
+        return (
+            <Sidebar />
+        );
     }
 }
 
 const mapStateToProps = state => {
-
+    return {};
 }
 
 const mapDispatchToProps = dispatch => {
-
+    return {};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export default connect(mapStateToProps, mapDispatchToProps)(SidebarContainer);
 

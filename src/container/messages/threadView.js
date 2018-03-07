@@ -2,20 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Actions } from 'reducer';
+import ThreadView from 'components/pages/messages/threadView';
 
-class ThreadView extends React.Component {
+class ThreadViewContainer extends React.Component {
     render() {
-        return ();
+        return (
+            <ThreadView />
+        );
     }
 }
 
 const mapStateToProps = state => {
-
+    return {};
 }
 
 const mapDispatchToProps = dispatch => {
-
+    return {};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ThreadView);
+export default connect(mapStateToProps, mapDispatchToProps)(ThreadViewContainer);
 
