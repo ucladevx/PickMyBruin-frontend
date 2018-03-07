@@ -2,20 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Actions } from 'reducer';
+import Input from 'components/pages/messages/input';
 
-class Input extends React.Component {
+class InputContainer extends React.Component {
     render() {
-        return ();
+        return (
+            <Input />
+        );
     }
 }
 
 const mapStateToProps = state => {
-
+    return {};
 }
 
 const mapDispatchToProps = dispatch => {
-
+    return {};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Input);
+export default connect(mapStateToProps, mapDispatchToProps)(InputContainer);
 

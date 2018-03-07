@@ -31,9 +31,9 @@ class NavBar extends React.Component {
                         <i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
                         <p>My Profile</p>
                     </div>
-                    <div className={classNames("navigation-item", {selected: location == "requests"})} onClick={() => this.navigate("requests")}>
+                    <div className={classNames("navigation-item", {selected: location == "messages"})} onClick={() => this.navigate("messages")}>
                         <i className="fa fa-comment-o" aria-hidden="true"></i>
-                        <p>Requests</p>
+                        <p>Messages</p>
                     </div>
                 </div>
             </div>
