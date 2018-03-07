@@ -13,6 +13,9 @@ const config = {
     path: path.resolve(__dirname, 'lib'), // Path of output file
     filename: 'build/[name].js', // Name of output file
   },
+  resolve: {
+    modules: [path.resolve(__dirname, "src"), "node_modules"]
+  },
   plugins: [
     // Define production build to allow React to strip out unnecessary checks
     new webpack.DefinePlugin({

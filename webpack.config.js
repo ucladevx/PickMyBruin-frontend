@@ -15,6 +15,9 @@ module.exports = {
     path: path.resolve(__dirname, 'lib'),
     filename: 'build/[name].js',
   },
+  resolve: {
+    modules: [path.resolve(__dirname, "src"), "node_modules"]
+  },
   module: {
     rules: [
       {
