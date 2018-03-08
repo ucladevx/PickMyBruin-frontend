@@ -22,9 +22,9 @@ const FETCH_ALL_MESSAGES_ERROR = 'fetch_all_messages_error';
 const defaultState = Immutable.fromJS({
     profileViewing: {  // the current user we are talking to in the thread view
         profileID: -1,  // ID of the user who we are currently talking to
-        messages: []
+        messages: [],
     },
-    threads: []  // all the threads that this user is part of
+    threads: [],  // all the threads that this user is part of
 });
 
 const Messages = (state = defaultState, action) => {
@@ -34,4 +34,8 @@ const Messages = (state = defaultState, action) => {
             return state;
         }
     }
+}
+
+export { 
+    Messages,
 }
