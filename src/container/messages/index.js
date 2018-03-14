@@ -13,10 +13,12 @@ class MessagesContainer extends React.Component {
         return (
             <div className="messages-container">
                 <NavBar />
-                <Sidebar />
-                <div className="threadview-input-container">
-                    <ThreadView />
-                    <Input />
+                <div className="messages-wrapper">
+                    <Sidebar />
+                    <div className="threadview-input-container">
+                        <ThreadView />
+                        <Input />
+                    </div>
                 </div>
             </div>
         );

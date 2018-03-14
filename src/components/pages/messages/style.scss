@@ -1,0 +1,16 @@
+@import "style/vars.scss";
+
+.messages-container {
+    display: flex;
+    flex-flow: column;
+
+    .navbar-container {
+        order: 0;
+    }
+
+    .messages-wrapper {
+        flex: 1;
+    }
+    
+    height: 100%;
+}
