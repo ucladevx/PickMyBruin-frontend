@@ -1,0 +1,17 @@
+@import "style/vars";
+
+
+.thread-view {
+	background-color: #F8F8F8;
+	position: absolute;
+	right: 0;
+	width: 75%;
+
+	.beginningText {
+		text-align: center;
+		color: #5C6370;
+	}
+	.messageHistory {
+		background-color: #F8F8F8;
+	}
+}

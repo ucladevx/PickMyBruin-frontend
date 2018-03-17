@@ -1,12 +1,17 @@
 @import "style/vars";
 
+.messageHistory {
+	background-color: gray;
+}
+
 .input {
 	display: flex;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 75%;
 
 	.inputText {
-		// -webkit-box-shadow: -2px 2px 10px 0px rgba(50, 50, 50, 0.22);
-		// -moz-box-shadow:    -2px 2px 10px 0px rgba(50, 50, 50, 0.22);
-		// box-shadow:         -2px 2px 10px 0px rgba(50, 50, 50, 0.22);
 	    border: 0;
 	    padding: 10px;
 	    flex: 1;
@@ -19,6 +24,7 @@
 		width: 70px;
 		height: 70px;
 		padding: 10px;
-		padding-right: 30px;		
+		padding-right: 30px;	
+		background-color: white;	
 	}
 }
