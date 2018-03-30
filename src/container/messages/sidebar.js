@@ -7,13 +7,17 @@ import Sidebar from 'components/pages/messages/sidebar';
 class SidebarContainer extends React.Component {
     render() {
         return (
-            <Sidebar />
+            <Sidebar 
+                profile={this.props.profile}
+            />
         );
     }
 }
 
 const mapStateToProps = state => {
-    return {};
+    return {
+        profile: state.Profile
+    };
 }
 
 const mapDispatchToProps = dispatch => {

@@ -5,9 +5,13 @@ class ProfilePic extends React.Component {
 
     _renderPic = () => {
         const url = this.props.profile.getIn(['user','picture'])
+        let classes = ['profile-pic'];
+        if (this.props.small) {
+            classes.push('pic-small');
+        }
 
         return (
-            <div className="profile-pic" style={{backgroundImage: 'url('+url+')'}}></div>
+            <div className={classes.join(' ')} style={{backgroundImage: 'url('+url+')'}}></div>
         );
     }
 

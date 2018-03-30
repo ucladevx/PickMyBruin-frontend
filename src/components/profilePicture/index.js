@@ -3,6 +3,15 @@ import React from 'react';
 import ProfilePicture from './profilePicture';
 import ProfilePictureEditable from './profilePictureEditable';
 
-export default ({editable, profile, setProfilePic}) => {
-    return editable ? <ProfilePictureEditable profile={profile} setProfilePic={setProfilePic}/> : <ProfilePicture profile={profile} />;
+export default (props) => {
+    return (props.editable ?
+        <ProfilePictureEditable 
+            profile={props.profile} 
+            setProfilePic={props.setProfilePic}
+        /> : 
+        <ProfilePicture 
+            profile={props.profile} 
+            small={props.small}
+        />
+    );
 }
