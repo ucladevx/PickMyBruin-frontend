@@ -7,7 +7,7 @@ class ProfileTop extends React.Component {
     _profilePic = () => {
         return (
             <ProfilePicture
-                profile={this.props.profile}
+                picture={this.props.profile.getIn(['user', 'picture'])}
                 editable={this.props.editable}
                 setProfilePic={this.props.setProfilePic}
             />

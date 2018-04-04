@@ -4,7 +4,7 @@ import React from 'react';
 class ProfilePic extends React.Component {
 
     _renderPic = () => {
-        const url = this.props.profile.getIn(['user','picture'])
+        const url = this.props.picture;
         let classes = ['profile-pic'];
         if (this.props.small) {
             classes.push('pic-small');
@@ -16,12 +16,7 @@ class ProfilePic extends React.Component {
     }
 
     render() {
-
-        return( 
-            <div>       	
-                {this._renderPic()}	   
-            </div>     
-        )
+        return this._renderPic();
     }
 }
 

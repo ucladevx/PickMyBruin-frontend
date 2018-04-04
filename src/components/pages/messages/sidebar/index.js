@@ -8,13 +8,18 @@ class Sidebar extends React.Component {
         return (
             <div className="sidebar">
                 <Header 
-                    numMessages={10}
+                    numMessages={this.props.count}
                     numUnread={5}
                 />
                 <div className="thread-previews">
-                    <ThreadPreview 
-                        profile={this.props.profile}
-                    />
+                    {this.props.threads.map(thread => {
+                        return (
+                            <ThreadPreview 
+                                self={this.props.profile}
+                                thread={thread}
+                            />
+                        );
+                    })}
                 </div>
             </div>
         );

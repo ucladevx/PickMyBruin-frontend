@@ -7,9 +7,8 @@
     min-width: 256px;
     width: 25%;
     background-color: $white;
-    border-right: 1px solid $divider-color;
     color: $subheading-text-color;
-    overflow: scroll;
+    overflow: auto;
 
     .header {
         width: 100%;
@@ -40,9 +39,34 @@
             height: 70px;
             display: flex;
             flex-flow: row;
-            align-items: center;
             padding: 5px;
             border: 1px solid $divider-color;
+            overflow: hidden;
+
+            .message-preview {
+                display: flex;
+                flex-flow: column;
+                justify-content: flex-start;
+                padding: 2px;
+            }
+
+            h1 {
+                font-size: 1em;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+            p {
+                font-size: 0.8em;
+                color: $instruction-text-color;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+
+            &:hover {
+                background-color: $message-active-background;
+            }
         }
     }
 

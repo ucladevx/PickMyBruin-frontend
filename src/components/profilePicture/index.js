@@ -6,11 +6,11 @@ import ProfilePictureEditable from './profilePictureEditable';
 export default (props) => {
     return (props.editable ?
         <ProfilePictureEditable 
-            profile={props.profile} 
+            picture={props.picture} 
             setProfilePic={props.setProfilePic}
         /> : 
         <ProfilePicture 
-            profile={props.profile} 
+            picture={props.picture} 
             small={props.small}
         />
     );
