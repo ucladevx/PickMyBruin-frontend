@@ -24,7 +24,9 @@ class Input extends React.Component {
         return (
         	<form className="input" onSubmit={this.handleSubmit}>
     			<input className="inputText" type="text" value={this.state.value} onChange={this.handleChange} />
-        		<input type="image" src={paperplane} className="send" alt="Submit Form" />
+    			<div className="send" onClick={this.handleSubmit}>
+    				<i className="fa fa-paper-plane"></i>
+    			</div>
         	</form>
         );
     }

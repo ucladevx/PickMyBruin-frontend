@@ -1,19 +1,18 @@
 import React from 'react';
 
 import Search from '../../searchBar';
-import ProfilePicEditable from './profilePictureEditable';
-import ProfilePic from './profilePicture';
+import ProfilePicture from 'components/profilePicture';
 
 class ProfileTop extends React.Component {
     _profilePic = () => {
-        return this.props.editable ? <ProfilePicEditable 
-                                    profile={this.props.profile}
-                                    setProfilePic = {this.props.setProfilePic}
-                                /> : 
-                                <ProfilePic 
-                                    profile={this.props.profile}
-                                />
-                        }
+        return (
+            <ProfilePicture
+                picture={this.props.profile.getIn(['user', 'picture'])}
+                editable={this.props.editable}
+                setProfilePic={this.props.setProfilePic}
+            />
+        );
+    }
 
     render() {
         return(

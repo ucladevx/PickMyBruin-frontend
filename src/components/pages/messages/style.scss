@@ -11,6 +11,8 @@
 
     .messages-wrapper {
         flex: 1;
+        display: flex;
+        flex-flow: row;
     }
     
     height: 100%;

@@ -8,7 +8,7 @@ class ProfilePicEditable extends React.Component {
 	}	
 
 	_renderPic = () => {
- 		const url = this.props.profile.getIn(['user','picture'])
+ 		const url = this.props.picture;
         return (
             <div className="profile-pic editable" style={{backgroundImage: 'url('+url+')'}}></div>
         );

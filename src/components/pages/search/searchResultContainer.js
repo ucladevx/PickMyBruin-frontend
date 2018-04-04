@@ -2,7 +2,7 @@ import React from 'react';
 import Shave from 'react-shave';
 import { Link } from 'react-router-dom';
 
-import ProfilePic from '../profile/profilePicture';
+import ProfilePicture from 'components/profilePicture';
 import { join } from 'path';
 
 class SearchResultContainer extends React.Component {
@@ -37,8 +37,8 @@ class SearchResultContainer extends React.Component {
             <Link to={`/mentors/${this.props.mentorProfile.getIn(['mentor','id'])}`}>
                 <div className="search-result-container">
                     <div className="profile-pic-container">
-                        <ProfilePic 
-                            profile={mentorProfile}
+                        <ProfilePicture
+                            picture={mentorProfile.getIn(['user', 'picture'])}
                         />
                     </div>                
                     <div className="mentor-details">

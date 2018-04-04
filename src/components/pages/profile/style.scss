@@ -233,6 +233,14 @@
         align-items: flex-end;
         padding-left: 20px;
 
+        .profile-pic {
+            top: 50px;
+
+            @media (min-width: 440px) {
+                top: 75px;  
+            }
+        }
+
 
         h1 {
             margin-left: 10px;
@@ -244,33 +252,4 @@
             padding-left: 30px;
         }
     }
-}
-
-.profile-pic {
-    width: 100px;
-    height: 100px;
-    position: relative;
-    top: 50px;
-    background-color: $white;
-    border-radius: 50%;
-    border: 2px solid $white;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-
-
-    @media (min-width: 440px) {
-        width: 150px;
-        height: 150px;
-        top: 75px;
-    }
-}
-
-.editable {
-    @extend .profile-pic;
-    cursor: pointer;
-}
-
-.editable:hover {
-  opacity: 0.7;
 }

@@ -8,7 +8,6 @@ import {ConnectedRouter} from 'react-router-redux';
 import NotificationsSystem from 'reapop';
 import theme from 'reapop-theme-wybo';
 import {render} from 'react-dom';
-
 import {store, history} from './reducer';
 
 import HomeContainer from './container/home';

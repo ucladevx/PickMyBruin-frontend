@@ -114,7 +114,7 @@ const confirmCode = (verification_code) => {
             if (status > 299 || status < 200) {
                 throw new Error(data.error);
             } else {
-                dispatch(verifyCodeSuccess(data.user_id));
+                dispatch(verifyCodeSuccess(data.profile_id));
             }
         } catch (error) {
             dispatch(notify({title: "Error!", status: 'error', message: "Please try again... :(", position: 'tc'}));
