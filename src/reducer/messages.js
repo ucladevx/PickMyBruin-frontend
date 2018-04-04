@@ -36,6 +36,44 @@ const Messages = (state = defaultState, action) => {
     }
 }
 
+const sendMessages = (message, mentorId) => {
+    return async (dispatch, getState) => {
+        try {
+            const profile = getState().Profile
+
+            dispatch({type: SEND_REQUEST_START});
+
+            const response = await fetch(Config.API_URL + `/requests/${mentorId}/`, {
+                method: 'POST',
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${Storage.get("token")}`
+                }),
+                body: JSON.stringify({
+                    phone: '', // FOR NOW
+                    preferred_mentee_email: profile.getIn(['user', 'email']),
+                    message
+                })
+            });
+
+            const status = await response.status;
+            const data = await response.json();
+
+            if (status > 299 || status < 200) {
+                throw new Error(data.error);
+            } else {
+                dispatch(notify({title: "Success!", status: 'success', message: "Your message is on the way", position: "tc"}));
+                dispatch({type: SEND_REQUEST_SUCCESS, request: data});
+            }
+        }
+        catch (err) {
+            const message = "We couldn't send your request :( Try again or contact us";
+            dispatch(notify({title: 'Error!', status: 'error', message, position: 'tc'}));
+            dispatch({type: SEND_REQUEST_ERROR, error: err.message});
+        }
+    }
+}
+
 export { 
     Messages,
 }
