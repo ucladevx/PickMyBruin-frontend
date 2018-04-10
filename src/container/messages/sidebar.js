@@ -15,6 +15,7 @@ class SidebarContainer extends React.Component {
                 profile={this.props.profile}
                 threads={this.props.threads}
                 count={this.props.count}
+                changeProfileViewing={this.props.changeProfileViewing}
             />
         );
     }
@@ -33,6 +34,9 @@ const mapDispatchToProps = dispatch => {
         fetchThreads: () => {
             dispatch(Actions.messagesActions.fetchThreads());
         },
+        changeProfileViewing: id => {
+            dispatch(Actions.messagesActions.changeProfileViewing(id));
+        }
     };
 }
 

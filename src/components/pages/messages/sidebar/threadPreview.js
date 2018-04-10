@@ -5,11 +5,10 @@ import { getName } from 'common';
 
 class ThreadPreview extends React.Component {
     render() {
-        console.log(this.props);
         const profile = this.props.thread.get('other_profile');
         const message = this.props.thread.get('recent_message');
         return (
-            <div className="thread-preview-container">
+            <div className="thread-preview-container" onClick={() => this.props.onClick(profile.get('id'))}>
                 <ProfilePicture picture={profile.get('picture')} small/>
                 <div className="message-preview">
                     <h1>{getName(profile)}</h1>

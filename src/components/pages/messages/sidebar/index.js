@@ -16,6 +16,7 @@ class Sidebar extends React.Component {
                     {this.props.threads.map(thread => {
                         return (
                             <ThreadPreview 
+                                onClick={this.props.changeProfileViewing}
                                 self={this.props.profile}
                                 thread={thread}
                             />
