@@ -10,7 +10,7 @@ import { Register, sendVerificationLink, confirmCode, completeRegistration } fro
 import { Profile, fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile, setProfilePic } from './profile';
 import { SearchMentors, handleSearch } from './searchMentors'
 import { Requests, getRequests, sendRequest } from './requests'
-import { Messages, fetchThreads, changeProfileViewing } from './messages';
+import { Messages, fetchThreads, setProfileViewing } from './messages';
 
 const history = createHistory();
 const reactRouterMiddleware = routerMiddleware(history);
@@ -54,7 +54,7 @@ const Actions = {
         getRequests, sendRequest
     },
     messagesActions: {
-        fetchThreads, changeProfileViewing
+        fetchThreads, setProfileViewing
     }
 }
 

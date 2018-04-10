@@ -15,13 +15,13 @@ const SEND_MESSAGE_ERROR = 'send_message_error';
 const FETCH_ALL_THREADS_START = 'fetch_all_threads_start';
 const FETCH_ALL_THREADS_SUCCESS = 'fetch_all_threads_success';
 const FETCH_ALL_THREADS_ERROR = 'fetch_all_threads_error';
-const CHANGE_THREAD_VIEWING = 'change_thread_viewing';
+const SET_THREAD_VIEWING = 'change_thread_viewing';
 
 const FETCH_ALL_MESSAGES_START = 'fetch_all_messages_start';
 const FETCH_ALL_MESSAGES_SUCCESS = 'fetch_all_messages_success';
 const FETCH_ALL_MESSAGES_ERROR = 'fetch_all_messages_error';
 
-const changeProfileViewing = id => {
+const setProfileViewing = id => {
     return {
         type: CHANGE_THREAD_VIEWING,
         id
@@ -84,7 +84,7 @@ const Messages = (state = defaultState, action) => {
                 val.set('threads', fromJS(action.data.results));
             });
         }
-        case CHANGE_THREAD_VIEWING: {
+        case SET_THREAD_VIEWING: {
             return state.withMutations(val => {
                 val.setIn(['profileViewing', 'profileID'], action.id);
             })
@@ -98,5 +98,5 @@ const Messages = (state = defaultState, action) => {
 export { 
     Messages,
     fetchThreads,
-    changeProfileViewing
+    setProfileViewing,
 }

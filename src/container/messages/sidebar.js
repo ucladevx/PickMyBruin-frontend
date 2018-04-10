@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import { Actions } from 'reducer';
 import Sidebar from 'components/pages/messages/sidebar';
@@ -35,7 +36,7 @@ const mapDispatchToProps = dispatch => {
             dispatch(Actions.messagesActions.fetchThreads());
         },
         changeProfileViewing: id => {
-            dispatch(Actions.messagesActions.changeProfileViewing(id));
+            dispatch(push(`/messages/${id}`));
         }
     };
 }
