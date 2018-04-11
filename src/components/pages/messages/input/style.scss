@@ -20,22 +20,18 @@
 		border: none;
 		height: 30px;
 	}
-	.noMessage {
-		width: 70px;
-		height: 70px;
-		padding: 10px;
-		padding-right: 30px;	
-		background-color: white;	
-		color: gray;
-		font-size: 2.5em;
-	}
 	.send {
 		width: 70px;
 		height: 70px;
 		padding: 10px;
 		padding-right: 30px;	
-		background-color: white;	
-		color: $primary-color;
+		background-color: white;
+		.message {
+			color: $primary-color;
+		}	
+		.noMessage {
+			color: gray;
+		}
 		font-size: 2.5em;
 	}
 
