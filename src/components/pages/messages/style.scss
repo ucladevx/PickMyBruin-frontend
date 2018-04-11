@@ -13,7 +13,13 @@
         flex: 1;
         display: flex;
         flex-flow: row;
+
+        .threadview-input-container {
+          display: flex;
+          flex-flow: column;
+          flex: 1;
+        }
     }
-    
+
     height: 100%;
 }

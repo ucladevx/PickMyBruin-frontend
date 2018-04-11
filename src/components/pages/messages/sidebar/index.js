@@ -8,14 +8,14 @@ class Sidebar extends React.Component {
     render() {
         return (
             <div className="sidebar">
-                <Header 
+                <Header
                     numMessages={this.props.count}
                     numUnread={5}
                 />
                 <div className="thread-previews">
                     {this.props.threads.map(thread => {
                         return (
-                            <ThreadPreview 
+                            <ThreadPreview
                                 onClick={this.props.changeProfileViewing}
                                 self={this.props.profile}
                                 thread={thread}

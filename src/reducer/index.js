@@ -11,6 +11,7 @@ import { Profile, fetchProfile, updateMentorStatus, updateUserProfile, updateMen
 import { SearchMentors, handleSearch } from './searchMentors'
 import { Requests, getRequests, sendRequest } from './requests'
 import { Messages, fetchThreads, setProfileViewing } from './messages';
+import { Message, fetchThread } from './message';
 
 const history = createHistory();
 const reactRouterMiddleware = routerMiddleware(history);
@@ -29,6 +30,7 @@ const store = createStore(
         SearchMentors,
         Requests,
         Messages,
+		Message,
         router: routerReducer,
         notifications: notificationsReducer()
     }),
@@ -54,7 +56,14 @@ const Actions = {
         getRequests, sendRequest
     },
     messagesActions: {
+<<<<<<< HEAD
         fetchThreads, setProfileViewing
+=======
+        fetchThreads
+    },
+	messageActions: {
+        fetchThread
+>>>>>>> threadview
     }
 }
 
