@@ -7,7 +7,9 @@ import Sidebar from 'components/pages/messages/sidebar';
 
 class SidebarContainer extends React.Component {
     componentDidMount() {
-        this.props.fetchThreads()
+        if (!this.props.threads.size) {
+            this.props.fetchThreads()
+        } 
     }
     
     render() {
