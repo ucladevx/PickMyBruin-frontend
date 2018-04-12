@@ -17,9 +17,9 @@ const FETCH_ALL_THREADS_SUCCESS = 'fetch_all_threads_success';
 const FETCH_ALL_THREADS_ERROR = 'fetch_all_threads_error';
 const SET_THREAD_VIEWING = 'change_thread_viewing';
 
-const FETCH_ALL_MESSAGES_START = 'fetch_all_messages_start';
-const FETCH_ALL_MESSAGES_SUCCESS = 'fetch_all_messages_success';
-const FETCH_ALL_MESSAGES_ERROR = 'fetch_all_messages_error';
+const FETCH_MESSAGES_START = 'fetch_all_messages_start';
+const FETCH_MESSAGES_SUCCESS = 'fetch_all_messages_success';
+const FETCH_MESSAGES_ERROR = 'fetch_all_messages_error';
 
 const setProfileViewing = id => {
     return {
@@ -45,10 +45,7 @@ const fetchThreads = () => {
             const data = await response.json();
 
             if (status >= 400) {
-                return dispatch({
-                    type: FETCH_ALL_MESSAGES_ERROR,
-                    message: "Could not fetch your messages at this time"
-                });
+                throw new Error("Could not fetch your messages at this time");
             }
 
             dispatch({
@@ -63,6 +60,69 @@ const fetchThreads = () => {
         }
     }
 }
+
+const fetchMessages = id => {
+    return async dispatch => {
+        const token = Storage.get('token');
+        
+        try {
+            const response = await fetch(`${Config.API_URL}/messaging/${id}/`, {
+                method: 'GET',
+                headers: new Headers({
+                    "Authorization": `Bearer ${token}`
+                })
+            });
+            const status = await response.status;
+            const data = await response.json();
+
+            if (status >= 400) {
+                throw new Error("Error getting all messages for this thread");
+            }
+
+            return dispatch({
+                type: FETCH_MESSAGES_SUCCESS,
+                id,
+                data
+            });
+        } catch (err) {
+            dispatch({
+                type: FETCH_MESSAGES_ERROR,
+                error: err.message
+            });
+        }
+    }
+}
+
+const fetchMessagesIfThreadExists = id => {
+    return async dispatch  => {
+        const token = Storage.get('token');
+
+        try {
+            const response = await fetch(`${Config.API_URL}/messaging/check/${id}/`, {
+                method: 'GET',
+                headers: new Headers({
+                    "Authorization": `Bearer ${token}`
+                })
+            });
+            const status = await response.status;
+            const data = await response.json();
+
+            if (status >= 400) {
+                throw new Error("Error checking if thread exists for this user");
+            }
+    
+            if (data.exists) {
+                return dispatch(fetchMessages(id));
+            }
+        } catch (err) {
+            dispatch({
+                type: FETCH_MESSAGES_ERROR,
+                error: err.message
+            })
+        }
+    }
+}
+
 
 const defaultState = Immutable.fromJS({
     profileViewing: {  // the current user we are talking to in the thread view
@@ -82,8 +142,20 @@ const Messages = (state = defaultState, action) => {
         case FETCH_ALL_THREADS_SUCCESS: {
             return state.withMutations(val => {
                 val.set('count', action.data.count);
+                val.set('error', null);
                 val.set('threads', fromJS(action.data.results));
             });
+        }
+        case FETCH_ALL_THREADS_ERROR: {
+            return state.withMutations(val => {
+                val.set('error', action.error);
+            })
+        }
+        case FETCH_MESSAGES_SUCCESS: {
+            return state.withMutations(val => {
+                val.setIn(['profileViewing', 'profileID'], action.id);
+                val.setIn(['profileViewing', 'messages'], fromJS(action.data.results));
+            })
         }
         case SET_THREAD_VIEWING: {
             return state.withMutations(val => {
@@ -100,5 +172,6 @@ const Messages = (state = defaultState, action) => {
 export {
     Messages,
     fetchThreads,
+    fetchMessagesIfThreadExists,
     setProfileViewing,
 }
