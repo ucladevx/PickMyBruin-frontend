@@ -30,7 +30,7 @@
 			color: $primary-color;
 		}	
 		.noMessage {
-			color: gray;
+			color: $send-message-disabled;
 		}
 		font-size: 2.5em;
 	}
