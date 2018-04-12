@@ -59,7 +59,6 @@
             }
             p {
                 font-size: 0.8em;
-                color: $instruction-text-color;
                 text-overflow: ellipsis;
                 overflow: hidden;
                 white-space: nowrap;
@@ -69,6 +68,11 @@
                 background-color: $message-active-background;
                 cursor: pointer;
             }
+        }
+
+        .bold {
+            color: $black;
+            font-weight: bold;
         }
     }
 
