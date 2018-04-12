@@ -16,7 +16,9 @@ class MessagesContainer extends React.Component {
                 <div className="messages-wrapper">
                     <Sidebar />
                     <div className="threadview-input-container">
-                        <ThreadView />
+                        <ThreadView 
+                            profileId={this.props.match.params.profileId}
+                        />
                         <Input />
                     </div>
                 </div>
