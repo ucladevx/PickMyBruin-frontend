@@ -3,15 +3,29 @@
 
 .thread-view {
 	background-color: #F8F8F8;
-	position: absolute;
-	right: 0;
-	width: 75%;
+	display: flex;
+	flex-flow: column;
+	flex: 1;
 
 	.beginningText {
 		text-align: center;
 		color: #5C6370;
 	}
-	.messageHistory {
-		background-color: #F8F8F8;
+	.all_messages {
+		flex-flow: column;
+		align-items: flex-start;
+		flex: 1;
+
+		.bubble-right {
+			display: flex;
+			flex-flow: row;
+			justify-content: flex-end;
+		}
+
+		.bubble-left {
+			display: flex;
+			flex-flow: row;
+			justify-content: flex-start;
+		}
 	}
 }

@@ -29,6 +29,7 @@ const store = createStore(
         SearchMentors,
         Requests,
         Messages,
+		Message,
         router: routerReducer,
         notifications: notificationsReducer()
     }),

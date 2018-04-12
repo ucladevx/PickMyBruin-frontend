@@ -70,7 +70,7 @@ const sendMessage = (message) => {
 
 const fetchThreads = () => {
     return async dispatch => {
-        
+
         const token = Storage.get('token');
 
         try {
@@ -78,7 +78,7 @@ const fetchThreads = () => {
                 method: 'GET',
                 headers: new Headers({
                     'Content-Type': 'application/json',
-                    "Authorization": `Bearer ${token}`                    
+                    "Authorization": `Bearer ${token}`
                 })
             });
 
@@ -95,7 +95,7 @@ const fetchThreads = () => {
             dispatch({
                 type:FETCH_ALL_THREADS_SUCCESS,
                 data,
-            });            
+            });
         } catch (err) {
             dispatch({
                 type: FETCH_ALL_THREADS_ERROR,
@@ -120,6 +120,7 @@ const defaultState = Immutable.fromJS({
     count: null,
     error: null,
 });
+
 
 const Messages = (state = defaultState, action) => {
     switch(action.type) {
@@ -173,7 +174,8 @@ const Messages = (state = defaultState, action) => {
     }
 }
 
-export { 
+
+export {
     Messages,
     fetchThreads,
     setProfileViewing,
