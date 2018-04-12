@@ -54,7 +54,7 @@ const Actions = {
         getRequests, sendRequest
     },
     messagesActions: {
-        fetchThreads, setProfileViewing, fetchMessagesIfThreadExists
+        fetchThreads, setProfileViewing, fetchMessagesIfThreadExists, sendMessage,
     }
 }
 
