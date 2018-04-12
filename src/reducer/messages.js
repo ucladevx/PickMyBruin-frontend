@@ -40,14 +40,14 @@ const sendMessage = (message) => {
         try {
             const profileID = getState().Messages.getIn(['profileViewing','profileID']);
 
-            const response = await fetch(Config.API_URL + `/requests/${profileID}/`, {
+            const response = await fetch(Config.API_URL + `/messaging/${profileID}/`, {
                 method: 'POST',
                 headers: new Headers({
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${Storage.get("token")}`
                 }),
                 body: JSON.stringify({
-                    message
+                    body: message
                 })
             });
 

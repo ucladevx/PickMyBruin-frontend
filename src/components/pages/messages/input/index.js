@@ -8,7 +8,11 @@ class Input extends React.Component {
 	}
 
 	handleSubmit = (event) => {
-		this.props.sendMessage(this.state.value);
+		if (this.state.value != '') {
+			this.props.sendMessage(this.state.value);
+			this.setState({value: ''});
+		} 
+		event.preventDefault();
 	}
 
     render() {
@@ -16,7 +20,7 @@ class Input extends React.Component {
         	<div>
 	        	<form className="input" onSubmit={this.handleSubmit}>
 	    			<input className="inputText" type="text" value={this.state.value} onChange={this.handleChange} />
-	    			<div className="send" onClick={this.handleSubmit}>
+	    			<div className={this.state.value ? "send" : "noMessage"} onClick={this.handleSubmit}>
 	    				<i className="fa fa-paper-plane"></i>
 	    			</div>
 	        	</form>
