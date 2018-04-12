@@ -17,21 +17,22 @@ class NavBar extends React.Component {
 
     render() {
         const { location } = this.props
+        console.log(location);
         return(
             <div className="navbar-container">
                 <div className="logo">
                     <img src={logo} id="logo" alt="logo" /> 
                 </div>
                 <div className="buttons">
-                    <div className={classNames("navigation-item", {selected: location == "search"})} onClick={() => this.navigate("search")}>
+                    <div className={classNames("navigation-item", {selected: location.startsWith("search")})} onClick={() => this.navigate("search")}>
                         <i className="fa fa-search fa-lg" aria-hidden="true"></i>
                         <p>Search</p>
                     </div>
-                    <div className={classNames("navigation-item", {selected: location == "profile"})} onClick={() => this.navigate("profile")}>
+                    <div className={classNames("navigation-item", {selected: location.startsWith("profile")})} onClick={() => this.navigate("profile")}>
                         <i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
                         <p>My Profile</p>
                     </div>
-                    <div className={classNames("navigation-item", {selected: location == "messages"})} onClick={() => this.navigate("messages")}>
+                    <div className={classNames("navigation-item", {selected: location.startsWith("messages")})} onClick={() => this.navigate("messages")}>
                         <i className="fa fa-comment-o" aria-hidden="true"></i>
                         <p>Messages</p>
                     </div>
