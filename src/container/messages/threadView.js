@@ -20,7 +20,6 @@ class ThreadViewContainer extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
         if (nextProps.profileId !== this.props.profileId) {
             this.props.fetchMessagesIfThreadExists(nextProps.profileId);
             return this.setState({

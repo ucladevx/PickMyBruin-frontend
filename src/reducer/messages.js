@@ -28,10 +28,10 @@ const setProfileViewing = id => {
     }
 }
 
-const sendMessageSuccess = (messages) => {
+const sendMessageSuccess = message => {
     return {
         type: SEND_MESSAGE_SUCCESS,
-        messages
+        message
     }
 }
 
@@ -61,6 +61,7 @@ const sendMessage = (message) => {
             }
         }
         catch (err) {
+            console.error(err);
             const message = "We couldn't send your message :( Try again later";
             dispatch(notify({title: 'Error!', status: 'error', message, position: 'tc'}));
             dispatch({type: SEND_MESSAGE_ERROR});
@@ -183,28 +184,9 @@ const Messages = (state = defaultState, action) => {
         case SEND_MESSAGE_SUCCESS: {
             return state.withMutations(val => {
                 const messages = val.getIn(['profileViewing', 'messages']);
-                const newMessages = messages.push(fromJS(action.message));
+                // push to beginning of list
+                const newMessages = messages.insert(0, fromJS(action.message));
                 val.setIn(['profileViewing', 'messages'], newMessages);
-            })
-        }
-        case FETCH_ALL_MESSAGES_START: {
-            return state.withMutations(val => {
-
-            })
-        }
-        case FETCH_ALL_MESSAGES_SUCCESS: {
-            return state.withMutations(val => {
-
-            })
-        }
-        case FETCH_ALL_MESSAGES_ERROR: {
-            return state.withMutations(val => {
-
-            })
-        }
-        case FETCH_ALL_THREADS_START: {
-            return state.withMutations(val => {
-
             })
         }
         case FETCH_ALL_THREADS_SUCCESS: {
@@ -212,11 +194,6 @@ const Messages = (state = defaultState, action) => {
                 val.set('count', action.data.count);
                 val.set('error', null);
                 val.set('threads', fromJS(action.data.results));
-            })
-        }
-        case FETCH_ALL_THREADS_ERROR: {
-            return state.withMutation(val => {
-
             })
         }
         case FETCH_ALL_THREADS_ERROR: {
