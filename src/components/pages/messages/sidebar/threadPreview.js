@@ -12,7 +12,6 @@ class ThreadPreview extends React.Component {
         if (this.props.isProfileViewing) {
             classes.push("bold");
         }
-        console.log(this.props);
         return (
             <div className={classes.join(" ")} onClick={() => this.props.onClick(profile.get('id'))}>
                 <ProfilePicture picture={profile.get('picture')} small/>
