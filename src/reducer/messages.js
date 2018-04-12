@@ -86,14 +86,7 @@ const fetchThreads = () => {
             const data = await response.json();
 
             if (status >= 400) {
-<<<<<<< HEAD
-                return dispatch({
-                    type: FETCH_ALL_THREADS_ERROR,
-                    message: "Could not fetch your messages at this time"
-                });
-=======
                 throw new Error("Could not fetch your messages at this time");
->>>>>>> redo messaging, fetch messages if exist correctly
             }
 
             dispatch({
@@ -109,12 +102,6 @@ const fetchThreads = () => {
     }
 }
 
-<<<<<<< HEAD
-
-///////////
-// STATE //
-///////////
-=======
 const fetchMessages = id => {
     return async dispatch => {
         const token = Storage.get('token');
@@ -177,11 +164,10 @@ const fetchMessagesIfThreadExists = id => {
     }
 }
 
->>>>>>> redo messaging, fetch messages if exist correctly
 
 const defaultState = Immutable.fromJS({
     profileViewing: {  // the current user we are talking to in the thread view
-        profileID: 1,  // ID of the user who we are currently talking to
+        profileID: null,  // ID of the user who we are currently talking to
         messages: [],
     },
     threads: [],  // all the threads that this user is part of
