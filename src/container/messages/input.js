@@ -7,7 +7,7 @@ import Input from 'components/pages/messages/input';
 class InputContainer extends React.Component {
     render() {
         return (
-            <Input />
+            <Input sendMessage={this.props.sendMessage} />
         );
     }
 }
@@ -17,7 +17,11 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-    return {};
+    return {
+    	sendMessage: (message) => {
+    		dispatch(Actions.messagesActions.sendMessage(message));
+    	}
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InputContainer);

@@ -1,4 +1,5 @@
 import Immutable, { fromJS } from 'immutable';
+import { addNotification as notify } from 'reapop';
 
 import Storage from 'storage';
 import Config from 'config';
@@ -8,7 +9,6 @@ import { logout } from './login';
 // ACTIONS //
 /////////////
 
-const SEND_MESSAGE_START = 'send_message_start';
 const SEND_MESSAGE_SUCCESS = 'send_message_success';
 const SEND_MESSAGE_ERROR = 'send_message_error';
 
@@ -27,6 +27,47 @@ const setProfileViewing = id => {
         id
     }
 }
+
+const sendMessageSuccess = (messages) => {
+    return {
+        type: SEND_MESSAGE_SUCCESS,
+        messages
+    }
+}
+
+const sendMessage = (message) => {
+    return async (dispatch, getState) => {
+        try {
+            const profileID = getState().Messages.getIn(['profileViewing','profileID']);
+
+            const response = await fetch(Config.API_URL + `/requests/${profileID}/`, {
+                method: 'POST',
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${Storage.get("token")}`
+                }),
+                body: JSON.stringify({
+                    message
+                })
+            });
+
+            const status = await response.status;
+            const data = await response.json();
+
+            if (status > 299 || status < 200) {
+                throw new Error();
+            } else {
+                dispatch(sendMessageSuccess(data));
+            }
+        }
+        catch (err) {
+            const message = "We couldn't send your message :( Try again later";
+            dispatch(notify({title: 'Error!', status: 'error', message, position: 'tc'}));
+            dispatch({type: SEND_MESSAGE_ERROR});
+        }
+    }
+}
+
 const fetchThreads = () => {
     return async dispatch => {
 
@@ -139,12 +180,44 @@ const defaultState = Immutable.fromJS({
 const Messages = (state = defaultState, action) => {
     switch(action.type) {
         // Add your action types here
+        case SEND_MESSAGE_SUCCESS: {
+            return state.withMutations(val => {
+                const messages = val.getIn(['profileViewing', 'messages']);
+                const newMessages = messages.push(fromJS(action.message));
+                val.setIn(['profileViewing', 'messages'], newMessages);
+            })
+        }
+        case FETCH_ALL_MESSAGES_START: {
+            return state.withMutations(val => {
+
+            })
+        }
+        case FETCH_ALL_MESSAGES_SUCCESS: {
+            return state.withMutations(val => {
+
+            })
+        }
+        case FETCH_ALL_MESSAGES_ERROR: {
+            return state.withMutations(val => {
+
+            })
+        }
+        case FETCH_ALL_THREADS_START: {
+            return state.withMutations(val => {
+
+            })
+        }
         case FETCH_ALL_THREADS_SUCCESS: {
             return state.withMutations(val => {
                 val.set('count', action.data.count);
                 val.set('error', null);
                 val.set('threads', fromJS(action.data.results));
-            });
+            })
+        }
+        case FETCH_ALL_THREADS_ERROR: {
+            return state.withMutation(val => {
+
+            })
         }
         case FETCH_ALL_THREADS_ERROR: {
             return state.withMutations(val => {
@@ -174,4 +247,5 @@ export {
     fetchThreads,
     fetchMessagesIfThreadExists,
     setProfileViewing,
+    sendMessage
 }
