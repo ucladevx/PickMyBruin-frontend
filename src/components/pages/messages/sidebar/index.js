@@ -14,11 +14,13 @@ class Sidebar extends React.Component {
                 />
                 <div className="thread-previews">
                     {this.props.threads.map(thread => {
+                        const isProfileViewing = this.props.profileViewing.get('profileID') == thread.getIn(['other_profile', 'id']);
                         return (
                             <ThreadPreview
                                 onClick={this.props.changeProfileViewing}
                                 self={this.props.profile}
                                 thread={thread}
+                                isProfileViewing={isProfileViewing}
                             />
                         );
                     })}

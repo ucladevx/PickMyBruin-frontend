@@ -17,6 +17,7 @@ class SidebarContainer extends React.Component {
                 threads={this.props.threads}
                 count={this.props.count}
                 changeProfileViewing={this.props.changeProfileViewing}
+                profileViewing={this.props.profileViewing}
             />
         );
     }
@@ -27,6 +28,7 @@ const mapStateToProps = state => {
         profile: state.Profile,
         threads: state.Messages.get('threads'),
         count: state.Messages.get('count'),
+        profileViewing: state.Messages.get('profileViewing'),
     };
 }
 
