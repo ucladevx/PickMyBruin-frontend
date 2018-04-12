@@ -126,7 +126,7 @@ const fetchMessagesIfThreadExists = id => {
 
 const defaultState = Immutable.fromJS({
     profileViewing: {  // the current user we are talking to in the thread view
-        profileID: -1,  // ID of the user who we are currently talking to
+        profileID: null,  // ID of the user who we are currently talking to
         messages: [],
     },
     threads: [],  // all the threads that this user is part of
