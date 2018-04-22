@@ -20,8 +20,21 @@
         flex-flow: column;
         align-items: center;
         overflow: scroll;
-        @media(min-width: 440px) {
-            padding: 30px 300px 30px 300px;
+
+        @media (max-width: 700px) and (min-width: 440px) {
+            padding: 30px 50px;
+        }
+
+        @media (max-width: 900px) and (min-width: 700px) {
+            padding: 30px 100px;
+        }
+
+        @media (max-width: 1100px) and (min-width: 900px) {
+            padding: 30px 200px;
+        }
+
+        @media(min-width: 1100px) {
+            padding: 30px 300px;
         }
 
         h1 {
@@ -32,12 +45,14 @@
         .request-container {
             flex-flow: column;
             width: 95%;
-            height: 150px;
+            min-height: 150px; // make the card height adaptive
             margin: 10px;
             padding: 20px 40px 30px 40px;
             background-color: $white;
             border-radius: 8px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+
+            overflow: auto; // make outrageously long body scrollable
 
             .heading {
                 display: flex;
@@ -61,6 +76,7 @@
 
             .body {
                 margin-top: 20px;
+                word-wrap: break-word; // Fix wrap issue under long body
             }
 
             h1 {

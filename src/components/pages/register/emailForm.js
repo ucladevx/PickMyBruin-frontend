@@ -8,6 +8,22 @@ class EmailForm extends React.Component {
         password: ''
     }
 
+	handleKeyDown = (event) => {
+		let key = event.key || event.keyIdentifier || event.keyCode;
+		if (key.toString().toLowerCase() === 'enter' || +key === 13) {
+			this.sendVerificationLink();
+			event.preventDefault();
+		}
+	}
+
+    componentDidMount() {
+    	document.addEventListener('keydown', this.handleKeyDown)
+	}
+
+	componentWillUnmount() {
+    	document.removeEventListener('keydown', this.handleKeyDown);
+	}
+
     handleChange = e => {
         this.setState({[e.target.name]: e.target.value})
     }
