@@ -10,7 +10,6 @@ class Sidebar extends React.Component {
             <div className="sidebar">
                 <Header
                     numMessages={this.props.count}
-                    numUnread={5}
                 />
                 <div className="thread-previews">
                     {this.props.threads.map(thread => {
