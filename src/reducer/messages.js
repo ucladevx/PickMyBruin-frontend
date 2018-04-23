@@ -35,10 +35,14 @@ const sendMessageSuccess = message => {
     }
 }
 
-const sendMessage = (message) => {
+const sendMessage = (message, profileID) => {
     return async (dispatch, getState) => {
         try {
-            const profileID = getState().Messages.getIn(['profileViewing','profileID']);
+            let shouldNotify = true;
+            if (!profileID) {
+                profileID = getState().Messages.getIn(['profileViewing','profileID']);
+                shouldNotify = false;
+            }
 
             const response = await fetch(Config.API_URL + `/messaging/${profileID}/`, {
                 method: 'POST',
@@ -58,6 +62,9 @@ const sendMessage = (message) => {
                 throw new Error();
             } else {
                 dispatch(sendMessageSuccess(data));
+                if (shouldNotify) {
+                    dispatch(notify({status: 'success', message: 'Your message has been sent!', position: 'tc'}));
+                }
             }
         }
         catch (err) {
