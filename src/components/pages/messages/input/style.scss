@@ -6,16 +6,12 @@
 
 .input {
 	display: flex;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	width: 75%;
 	height: 70px;
 
 	.inputText {
-	    border: 0;
-	    padding: 10px;
-	    flex: 1;
+		border: 0;
+		padding: 10px;
+		flex: 1;
 	}
 	.inputBorder {
 		border: none;

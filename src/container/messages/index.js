@@ -12,21 +12,27 @@ import NavBar from 'components/navbar';
 class MessagesContainer extends React.Component {
     componentDidMount() {
         const socketId = this.props.profile.getIn(['user', 'id']);
-        const threadViewingId = this.props.match.params.profileId || -1;
+        const threadViewingId = this.props.match.params.profileId;
 
         try {
             this.socket = new WebSocket(`ws://${Config.WS_URL}/${socketId}`);
-            this.socket.onmessage = event => {
-                const message = JSON.parse(event.data);
-                if (message.TYPE == 'MESSAGE_UPDATE') {
-                    this.props.fetchThreads();
-                    console.log(threadViewingId);
-                    this.props.fetchMessagesIfThreadExists(threadViewingId);
-                }
-            }
         } catch (err) {
             console.info(err);
         }
+        this.socket.onmessage = event => {
+            const message = JSON.parse(event.data);
+            if (message.TYPE == 'MESSAGE_UPDATE') {
+                this.props.fetchThreads();
+                if (threadViewingId) {
+                    this.props.fetchMessagesIfThreadExists(threadViewingId);
+                }
+            }
+        }
+    }
+
+    componentWillUnmount() {
+        this.socket.close();
+        this.socket = null;
     }
 
     render() {
