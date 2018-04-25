@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import { Actions } from 'reducer';
+import Config from 'config';
 import Sidebar from 'components/pages/messages/sidebar';
 
 class SidebarContainer extends React.Component {
@@ -10,6 +11,19 @@ class SidebarContainer extends React.Component {
         if (!this.props.threads.size) {
             this.props.fetchThreads()
         } 
+        const socketId = this.props.profile.getIn(['user', 'id']);
+
+        try {
+            this.socket = new WebSocket(`ws://${Config.WS_URL}/${socketId}`);
+            this.socket.onmessage = event => {
+                const message = JSON.parse(event.data);
+                if (message.TYPE == 'MESSAGE_UPDATE') {
+                    this.props.fetchThreads();
+                }
+            }
+        } catch (err) {
+            console.info(err);
+        }
     }
     
     render() {

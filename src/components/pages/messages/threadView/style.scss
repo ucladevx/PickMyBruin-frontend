@@ -6,6 +6,8 @@
 	display: flex;
 	flex-flow: column;
 	flex: 1;
+	max-height: calc(100% - 70px);
+	overflow: auto;
 
 	.beginningText {
 		text-align: center;

@@ -17,16 +17,14 @@ class Input extends React.Component {
 
     render() {
         return (
-        	<div>
-	        	<form className="input" onSubmit={this.handleSubmit}>
-	    			<input className="inputText" type="text" value={this.state.value} onChange={this.handleChange} />
-	    			<div className="send">
-		    			<div className={this.state.value ? "message" : "noMessage"} onClick={this.handleSubmit}>
-		    				<i className="fa fa-paper-plane"></i>
-		    			</div>
-		    		</div>
-	        	</form>
-	        </div>
+			<form className="input" onSubmit={this.handleSubmit}>
+				<input className="inputText" type="text" value={this.state.value} onChange={this.handleChange} />
+				<div className="send">
+					<div className={this.state.value ? "message" : "noMessage"} onClick={this.handleSubmit}>
+						<i className="fa fa-paper-plane"></i>
+					</div>
+				</div>
+			</form>
         );
     }
 }
