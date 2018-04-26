@@ -43,7 +43,6 @@ class MessagesContainer extends React.Component {
     render() {
         return (
             <div className="messages-container">
-                <NavBar />
                 <div className="messages-wrapper">
                     <Sidebar />
                     <div className="threadview-input-container">
@@ -53,6 +52,7 @@ class MessagesContainer extends React.Component {
                         <Input />
                     </div>
                 </div>
+                <NavBar />
             </div>
         );
     }
