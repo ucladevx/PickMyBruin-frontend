@@ -1,14 +1,23 @@
 import React from 'react';
 import Message from './message'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class ThreadView extends React.Component {
+    componentDidMount() {
+        // scroll the messages div to the bottom
+        const view = document.getElementById('messages');
+        view.scrollTop = view.scrollHeight;
+	}
+
+    componentDidUpdate() {
+        // scroll the messages div to the bottom
+        const view = document.getElementById('messages');
+        view.scrollTop = view.scrollHeight;
+    }
+
     render() {
 		const messages = this.props.messages;
-		console.log(this.props);
         return (
-			<MuiThemeProvider>
-            <div className="thread-view">
+            <div id="messages" className="thread-view">
 				<div className="all-messages">
 					{messages ? messages.reverse().map(message => {
 						return (
@@ -22,7 +31,6 @@ class ThreadView extends React.Component {
 					}) : null}
 				</div>
 			</div>
-			</MuiThemeProvider>
         );
     }
 }

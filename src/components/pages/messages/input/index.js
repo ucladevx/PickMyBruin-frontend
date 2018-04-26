@@ -8,11 +8,11 @@ class Input extends React.Component {
 	}
 
 	handleSubmit = (event) => {
+		event.preventDefault();
 		if (this.state.value != '') {
 			this.props.sendMessage(this.state.value);
 			this.setState({value: ''});
 		} 
-		event.preventDefault();
 	}
 
     render() {
