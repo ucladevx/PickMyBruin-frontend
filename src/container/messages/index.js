@@ -12,6 +12,9 @@ import NavBar from 'components/navbar';
 class MessagesContainer extends React.Component {
     componentDidMount() {
         const socketId = this.props.profile.getIn(['user', 'id']);
+        if (!socketId) {
+            return;
+        }
         const threadViewingId = this.props.match.params.profileId;
 
         try {
@@ -31,8 +34,10 @@ class MessagesContainer extends React.Component {
     }
 
     componentWillUnmount() {
-        this.socket.close();
-        this.socket = null;
+        if (this.socket) {
+            this.socket.close();
+            this.socket = null;
+        }
     }
 
     render() {

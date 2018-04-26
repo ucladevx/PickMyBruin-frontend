@@ -16,6 +16,7 @@ class Sidebar extends React.Component {
                         const isProfileViewing = this.props.profileViewing.get('profileID') == thread.getIn(['other_profile', 'id']);
                         return (
                             <ThreadPreview
+                                key={thread.get('id')}
                                 onClick={this.props.changeProfileViewing}
                                 self={this.props.profile}
                                 thread={thread}

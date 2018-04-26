@@ -40,7 +40,7 @@ class ThreadViewContainer extends React.Component {
         return (
             <ThreadView
 				messages={this.props.messages}
-				curr_user={this.props.profile.get('user').get('id')}
+				currentUser={this.props.profile.get('user').get('id')}
 			/>
         );
     }

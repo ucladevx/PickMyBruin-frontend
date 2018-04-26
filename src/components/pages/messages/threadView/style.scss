@@ -6,6 +6,7 @@
 	display: flex;
 	flex-flow: column;
 	flex: 1;
+	padding: 10px;
 	max-height: calc(100% - 70px);
 	overflow: auto;
 
@@ -13,21 +14,38 @@
 		text-align: center;
 		color: #5C6370;
 	}
-	.all_messages {
+	.all-messages {
 		flex-flow: column;
 		align-items: flex-start;
 		flex: 1;
 
-		.bubble-right {
+		.message {
+			width: 100%;
 			display: flex;
 			flex-flow: row;
+		}
+
+		.bubble {
+			display: flex;
+			flex-flow: row;
+			margin: 5px;
+			padding: 10px;
+			max-width: 50%;
+			background-color: $message-bubble-background-color;
+			border-radius: 20px;
+		}
+
+		.right {
 			justify-content: flex-end;
 		}
 
-		.bubble-left {
-			display: flex;
-			flex-flow: row;
+		.left {
 			justify-content: flex-start;
+		}
+
+		p {
+			overflow-wrap: break-word;
+			width: 100%;
 		}
 	}
 }
