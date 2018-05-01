@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, InputGroupAddon, InputGroup } from 'reactstrap';
+import { Input, InputGroupAddon, InputGroup, FormGroup, Label } from 'reactstrap';
 import Button from '../../util/Button';
 
 class LoginForm extends React.Component {
@@ -39,13 +39,22 @@ class LoginForm extends React.Component {
         return(
             <div>
                 <div className="login-form">
-                    <InputGroup>
-                        <Input type="text" placeholder="email" name="email" onChange={this.handleChange}/>
-                        <InputGroupAddon>@g.ucla.edu</InputGroupAddon>
-                    </InputGroup>
-                    <Input type="password" name="password" id="password" placeholder="password" onChange={this.handleChange} />
+					<FormGroup className="form-group">
+						<Label className="label">Email</Label>
+						<div className="flex-group">
+							<Input className="inline-input" type="text" placeholder="email" name="email" onChange={this.handleChange}/>
+							<span>@g.ucla.edu</span>
+						</div>
+					</FormGroup>
+
+					<FormGroup className="form-group">
+						<Label className="label">Password</Label>
+						<Input type="password" name="password" id="password" placeholder="password" onChange={this.handleChange} />
+					</FormGroup>
+
+					<p className="forget-password"><a href="#">Forgot password?</a></p>
                 </div>
-                <Button color="primary" onClick={this._login} block>Login</Button>
+                <Button className="login-button" onClick={this._login} block>LOG IN</Button>
             </div>
         );
     }

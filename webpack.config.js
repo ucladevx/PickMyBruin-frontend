@@ -25,14 +25,14 @@ module.exports = {
           loader: 'css-loader'
         }, {
           loader: 'sass-loader'
-        }] 
+        }]
       },
       {
         test: /\.js$/,
         use: [{loader: "babel-loader"}],
       },
       {
-        test: /\.(pdf|jpg|png|gif|svg|ico)$/,
+        test: /\.(pdf|jpg|png|gif|ico|svg)$/,
         use: [
             {
                 loader: 'url-loader',
@@ -42,6 +42,22 @@ module.exports = {
             },
         ]
       },
+		{
+			test: /\.(otf)$/,
+			use: [
+				{
+					loader: 'file-loader',
+				}
+			]
+		},
+		{
+			test: /\.svg\.inline$/,
+			use: [
+				{
+					loader: 'svg-inline-loader',
+				}
+			]
+		}
     ],
   },
   devtool: 'eval-source-map',
