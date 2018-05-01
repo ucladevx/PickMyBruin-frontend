@@ -49,7 +49,7 @@ class LoginForm extends React.Component {
 
 					<FormGroup className="form-group">
 						<Label className="label">Password</Label>
-						<Input type="password" name="password" id="password" placeholder="password" onChange={this.handleChange} />
+						<Input className="inline-input" type="password" name="password" id="password" placeholder="password" onChange={this.handleChange} />
 					</FormGroup>
 
 					<p className="forget-password"><a href="#">Forgot password?</a></p>
