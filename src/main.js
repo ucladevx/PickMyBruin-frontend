@@ -22,14 +22,46 @@ import LoginContainer from './container/login';
 import MessagesContainer from 'container/messages';
 import Authentication from './container/requireAuthentication';
 import RegisterPendingContainer from './components/pages/register/registerPending';
-import ReactGA from 'react-ga';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './main.scss';
 
 // google analytics
-ReactGA.initialize('UA-000000-01');
-ReactGA.pageview(window.location.pathname + window.location.search);
+import GoogleAnalytics from 'react-ga';
+
+GoogleAnalytics.initialize('UA-118469639-1');
+
+const withTracker = (WrappedComponent, options = {}) => {
+  const trackPage = page => {
+    GoogleAnalytics.set({
+      page,
+      ...options,
+    });
+    GoogleAnalytics.pageview(page);
+  };
+
+  const HOC = class extends Component {
+    componentDidMount() {
+      const page = this.props.location.pathname;
+      trackPage(page);
+    }
+
+    componentWillReceiveProps(nextProps) {
+      const currentPage = this.props.location.pathname;
+      const nextPage = nextProps.location.pathname;
+
+      if (currentPage !== nextPage) {
+        trackPage(nextPage);
+      }
+    }
+
+    render() {
+      return <WrappedComponent {...this.props} />;
+    }
+  };
+
+  return HOC;
+};
 
 if (module.hot) {
     module.hot.accept();
@@ -64,8 +96,9 @@ class App extends React.Component {
     }
 }
 
+const TrackedApp = withTracker(App);
 
 render(
-    <App/>,
+    <TrackedApp />,
     document.getElementById('mount')
 );
