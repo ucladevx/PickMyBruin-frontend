@@ -22,9 +22,14 @@ import LoginContainer from './container/login';
 import MessagesContainer from 'container/messages';
 import Authentication from './container/requireAuthentication';
 import RegisterPendingContainer from './components/pages/register/registerPending';
+import ReactGA from 'react-ga';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './main.scss';
+
+// google analytics
+ReactGA.initialize('UA-000000-01');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 if (module.hot) {
     module.hot.accept();
