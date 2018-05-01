@@ -35,7 +35,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(pdf|jpg|png|gif|svg|ico)$/,
+        test: /\.(pdf|jpg|png|gif|svg|ico|otf)$/,
         use: [
           {
             loader: 'file-loader',
@@ -45,6 +45,12 @@ const config = {
           }
         ]
       },
+		{
+			test: /\.svg\.inline$/,
+			use: {
+				loader: 'svg-inline-loader',
+			},
+		},
       {
         test: /\.s?css$/,
         use: ExtractTextPlugin.extract({
