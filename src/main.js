@@ -40,7 +40,7 @@ const withTracker = (WrappedComponent, options = {}) => {
     GoogleAnalytics.pageview(page);
   };
 
-  const HOC = class extends Component {
+  const HOC = class extends React.Component {
     componentDidMount() {
       const page = this.props.location.pathname;
       trackPage(page);
@@ -62,6 +62,10 @@ const withTracker = (WrappedComponent, options = {}) => {
 
   return HOC;
 };
+
+class PageTracker extends React.Component {
+    render() { return null; }
+}
 
 if (module.hot) {
     module.hot.accept();
@@ -89,6 +93,7 @@ class App extends React.Component {
                             <Route exact path="/mentors/:mentorId" component={Authentication(MentorDetailContainer)} />
                             <Redirect to="/"/>
                         </Switch>
+                        <Route path="/" component={withTracker(PageTracker)} />
                     </div>
                 </ConnectedRouter>
             </Provider>
@@ -96,9 +101,7 @@ class App extends React.Component {
     }
 }
 
-const TrackedApp = withTracker(App);
-
 render(
-    <TrackedApp />,
+    <App />,
     document.getElementById('mount')
 );
