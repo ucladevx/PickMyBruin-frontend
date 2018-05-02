@@ -2,12 +2,12 @@
   font-family: 'GinoraSans-Bold';
   // Should relative to main.scss
   // See: https://github.com/webpack-contrib/sass-loader#problems-with-url
-  src: url(../fonts/ginora_sans/Ginora-Sans-Bold.otf) format('opentype');
+  src: url(/assets/fonts/Ginora-Sans-Bold.otf) format('opentype');
 }
 
 @font-face {
   font-family: 'Ginora Sans';
   // Should relative to main.scss
   // See: https://github.com/webpack-contrib/sass-loader#problems-with-url
-  src: url(../fonts/ginora_sans/Ginora-Sans-Regular.otf) format('opentype');
+  src: url(/assets/fonts/Ginora-Sans-Regular.otf) format('opentype');
 }
