@@ -47,6 +47,10 @@
         letter-spacing: 30px;
       }
     }
+
+    @media (max-width: 767px) {
+      display: none;
+    }
   }
 
   .register-form {
@@ -60,6 +64,10 @@
 
     h1 {
       color: $white;
+    }
+
+    @media (max-width: 767px) {
+      width: 100%;
     }
   }
 }
