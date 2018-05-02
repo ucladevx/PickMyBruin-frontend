@@ -1,12 +1,12 @@
 import React from 'react';
 import { Input, FormGroup, Label } from 'reactstrap';
-import Button from '../../util/Button';
+import Button from 'components/util/Button';
 
 class LoginForm extends React.Component {
     handleKeyDown = (event) => {
         let key = event.key || event.keyIdentifier || event.keyCode;
         if (key.toString().toLowerCase() === 'enter' || +key === 13) {
-            this._login();
+            this._action();
             event.preventDefault();
         }
     }
@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
 
     state = {
         email: '',
-        password: ''
+        password: '',
     }
 
     handleChange = e => {
@@ -30,11 +30,14 @@ class LoginForm extends React.Component {
         });
     }
 
-    _login = () => {
-        this.props.login(this.state.email, this.state.password);
+    _action = () => {
+        if (this.state.email && this.state.password) {
+            this.props.action(this.state.email, this.state.password);
+        }
     }
 
     render() {
+        const disabled = !this.state.email || !this.state.password;
         return(
             <div>
                 <div className="login-form">
@@ -50,10 +53,8 @@ class LoginForm extends React.Component {
                         <Label className="label">Password</Label>
                         <Input className="inline-input" type="password" name="password" id="password" placeholder="password" onChange={this.handleChange} />
                     </FormGroup>
-
-                    <p className="forget-password"><a href="#">Forgot password?</a></p>
                 </div>
-                <Button className="login-button" onClick={this._login} block>LOG IN</Button>
+                <Button className="login-button" onClick={this._action} disabled={disabled} block>{this.props.buttonText}</Button>
             </div>
         );
     }

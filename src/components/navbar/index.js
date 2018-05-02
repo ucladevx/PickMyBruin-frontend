@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import logo from '../../../images/landingPage/logo.png';
-console.log(logo);
 import SearchBar from '../searchBar';
 
 

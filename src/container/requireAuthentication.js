@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { push, replace } from 'react-router-redux';
 
-import { Actions } from '../reducer';
+import { Actions } from 'reducer';
 
 import Loading from '../components/loading';
 
@@ -18,6 +18,9 @@ export default function(ComposedComponent) {
         }
 
         componentWillMount() {
+            if (this.props.isProfileFetched && !this.props.isProfileVerified) {
+                return this.props.redirectToPending();
+            }
             if (!this.props.isLoggedIn) {
                 return this.props.login(this.props.path);
             }
@@ -74,6 +77,7 @@ export default function(ComposedComponent) {
                 dispatch(Actions.profileActions.fetchProfile());
             },
             redirectToPending: () => {
+                dispatch(Actions.loginActions.logout());
                 dispatch(replace("/register/pending"));
             },
         };

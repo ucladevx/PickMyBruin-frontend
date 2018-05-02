@@ -8,7 +8,7 @@ class RegisterPending extends React.Component {
         return(
             <div className="container-pending">
                 <div className="pending-text">
-                    A verification link has been sent to <strong>{this.props.email}</strong>,
+                    A verification link has been sent to your email,
                     please click on the link in your mailbox to continue the registration
                 </div>
                 {/*
