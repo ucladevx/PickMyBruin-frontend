@@ -1,111 +1,111 @@
 @import "../../../style/vars";
 
 .search-container {
-    width: 100%;
-    height: 100%;
-    background-color: $profile-canvas-color;
+  width: 100%;
+  height: 100%;
+  background-color: $profile-canvas-color;
 
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+
+  @media (min-width: 440px) {
+    justify-content: flex-start;
+
+  }
+
+  .search {
+    @media (min-width: 440px) {
+      order: 0;
+    }
+  }
+
+  .search-results-container {
+    flex-grow: 2;
+    flex-shrink: 100;
     display: flex;
     flex-flow: column;
-    justify-content: space-between;
+    overflow: scroll;
 
-    @media (min-width: 440px) {
-        justify-content: flex-start;
-
+    @media(min-width: 440px) {
+      padding: 20px 300px 20px 300px;
     }
 
-    .search {
-        @media (min-width: 440px) {
-            order: 0;
-        }
+  }
+
+  .instructions {
+    flex: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    h1 {
+      font-size: 1.5em;
+      align-self: center;
+      color: $instruction-text-color;
+      text-align: center;
     }
-
-    .search-results-container {
-        flex-grow: 2;
-        flex-shrink: 100;
-        display: flex;
-        flex-flow: column;
-        overflow: scroll;
-
-        @media(min-width: 440px) {
-            padding: 20px 300px 20px 300px;
-        }
-
-    }
-
-    .instructions {
-        flex: 5;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-        h1 {
-            font-size: 1.5em;
-            align-self: center;
-            color: $instruction-text-color;
-            text-align: center;
-        }
-    }
+  }
 
 }
 .search-result-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 200px;
+  margin: 10px;
+  padding: 20px;
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+
+  .profile-pic-container {
+    flex-grow: 1;
     display: flex;
     flex-flow: row;
-    justify-content: space-between;
-    align-items: center;
-
-    min-height: 200px;
-    margin: 10px;
-    padding: 20px;
-    background-color: $white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-
-    .profile-pic-container {
-        flex-grow: 1;
-        display: flex;
-        flex-flow: row;
-
-        @media(min-width: 440px) {
-            justify-content: center;
-        }
-        .profile-pic {
-            top: 0;
-        }
-    }
-
-    .mentor-details {
-        display: flex;
-        flex-flow: column;
-        width: 60%;
-
-        @media(min-width: 440px) {
-            width: 70%;
-            padding: 5px;
-            overflow: hidden;
-        }
-
-        .mentor-name {
-            font-size: 1.3em;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-            margin-bottom: 5px;
-        }
-        .mentor-major {
-            color: $mentor-bio-color;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-            margin-bottom: 5px;
-        }
-        .mentor-bio > p {
-            // target the p inside our shaved-off mentor bio
-            line-height: 1.3;
-        }
-    }
 
     @media(min-width: 440px) {
-        margin: 5px 2px 5px 2px;
+      justify-content: center;
     }
+    .profile-pic {
+      top: 0;
+    }
+  }
+
+  .mentor-details {
+    display: flex;
+    flex-flow: column;
+    width: 60%;
+
+    @media(min-width: 440px) {
+      width: 70%;
+      padding: 5px;
+      overflow: hidden;
+    }
+
+    .mentor-name {
+      font-size: 1.3em;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      margin-bottom: 5px;
+    }
+    .mentor-major {
+      color: $mentor-bio-color;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      margin-bottom: 5px;
+    }
+    .mentor-bio > p {
+      // target the p inside our shaved-off mentor bio
+      line-height: 1.3;
+    }
+  }
+
+  @media(min-width: 440px) {
+    margin: 5px 2px 5px 2px;
+  }
 }

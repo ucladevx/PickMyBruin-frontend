@@ -1,26 +1,26 @@
 @import "../../../style/vars";
 
 .container-complete-registration {
-    width: 100%;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .verify-card {
     height: 100%;
 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: center; 
 
-    .verify-card {
-        height: 100%;
-
-        display: flex;
-        flex-flow: column;
-        align-items: flex-start;
-        justify-content: center; 
-
-        .welcome {
-            font-size: 1em;
-            margin-bottom: 20px;
-        }
+    .welcome {
+      font-size: 1em;
+      margin-bottom: 20px;
     }
+  }
 
 }

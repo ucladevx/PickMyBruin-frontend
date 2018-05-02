@@ -1,46 +1,46 @@
 .login-form {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .form-group {
+    width: 100%;
+  }
+
+  .label {
+    color: white;
+  }
+
+  .inline-input {
+    display: inline;
+    border-width: 0;
+  }
+
+  .flex-group {
     display: flex;
-    flex-direction: column;
+    align-items: center;
 
-    margin-top: 20px;
-    margin-bottom: 20px;
-
-    .form-group {
-        width: 100%;
+    input {
+      margin-right: 0.7em;
     }
 
-    .label {
+    span {
+      font-size: 1.3em;
+      color: white;
+    }
+  }
+
+  .forget-password {
+    text-align: right;
+    color: white;
+
+    a {
+      color: white;
+      &:hover {
         color: white;
+      }
     }
-
-    .inline-input {
-        display: inline;
-        border-width: 0;
-    }
-
-    .flex-group {
-        display: flex;
-        align-items: center;
-
-        input {
-            margin-right: 0.7em;
-        }
-
-        span {
-            font-size: 1.3em;
-            color: white;
-        }
-    }
-
-    .forget-password {
-        text-align: right;
-        color: white;
-
-        a {
-            color: white;
-            &:hover {
-                color: white;
-            }
-        }
-    }
+  }
 }

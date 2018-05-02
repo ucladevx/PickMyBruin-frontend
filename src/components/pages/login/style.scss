@@ -1,133 +1,133 @@
 @import "../../../style/vars";
 
 .container-login {
-    min-height: 100vh;
-    padding: 20px;
-    margin: 0 auto;
+  min-height: 100vh;
+  padding: 20px;
+  margin: 0 auto;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $login-bg-color;
+
+  .logo {
+    position: absolute;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    top: 1.5em;
+    left: 2.5em;
 
-    background-color: $login-bg-color;
+    justify-content: left;
 
-    .logo {
-        position: absolute;
-        display: flex;
-        top: 1.5em;
-        left: 2.5em;
-
-        justify-content: left;
-
-        .logo-logo {
-            width: 2em;
-            margin-right: 1em;
-        }
-
-        .logo-text {
-            width: 8em;
-
-            text {
-                font-size: 5em;
-            }
-        }
+    .logo-logo {
+      width: 2em;
+      margin-right: 1em;
     }
 
-    h1 {
-        color: $main-text;
-        font-size: 2em;
-    }
+    .logo-text {
+      width: 8em;
 
-    .info {
-        width: 250px;
-        margin: 0 auto;
+      text {
+        font-size: 5em;
+      }
     }
+  }
 
-    .register-color{
-        color: $primary-color;
-    }
+  h1 {
+    color: $main-text;
+    font-size: 2em;
+  }
+
+  .info {
+    width: 250px;
+    margin: 0 auto;
+  }
+
+  .register-color{
+    color: $primary-color;
+  }
 }
 
 .container-loginform {
 
-    width: 350px;
+  width: 350px;
 
-    @media (max-width: 800px) {
-        width: 90%;
-    }
+  @media (max-width: 800px) {
+    width: 90%;
+  }
 
-    .loginform-title {
-        color: white;
-        margin-bottom: 1em;
-    }
+  .loginform-title {
+    color: white;
+    margin-bottom: 1em;
+  }
 }
 
 .login-form {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .form-group {
+    width: 100%;
+  }
+
+  .label {
+    color: white;
+  }
+
+  .inline-input {
+    display: inline;
+    border-width: 0;
+  }
+
+  .flex-group {
     display: flex;
-    flex-direction: column;
+    align-items: center;
 
-    margin-top: 20px;
-    margin-bottom: 20px;
-
-    .form-group {
-        width: 100%;
+    input {
+      margin-right: 0.7em;
     }
 
-    .label {
+    span {
+      font-size: 1.3em;
+      color: white;
+    }
+  }
+
+  .forget-password {
+    text-align: right;
+    color: white;
+
+    a {
+      color: white;
+      &:hover {
         color: white;
+      }
     }
-
-    .inline-input {
-        display: inline;
-        border-width: 0;
-    }
-
-    .flex-group {
-        display: flex;
-        align-items: center;
-
-        input {
-            margin-right: 0.7em;
-        }
-
-        span {
-            font-size: 1.3em;
-            color: white;
-        }
-    }
-
-    .forget-password {
-        text-align: right;
-        color: white;
-
-        a {
-            color: white;
-            &:hover {
-                color: white;
-            }
-        }
-    }
+  }
 }
 
 // .container-pending {
-//     min-height: 100vh;
+//   min-height: 100vh;
 
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+
+//   .pending-text {
+//     margin: 20px;
+//   }
+
+//   .pending-registration-btns {
 //     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
+//     flex-direction: row;
 
-//     .pending-text {
-//         margin: 20px;
+//     * {
+//       margin: 5px;
 //     }
-
-//     .pending-registration-btns {
-//         display: flex;
-//         flex-direction: row;
-
-//         * {
-//             margin: 5px;
-//         }
-//     }
+//   }
 // }

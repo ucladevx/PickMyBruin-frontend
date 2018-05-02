@@ -7,25 +7,25 @@
   flex-flow: row;
 
   .logo {
-      position: absolute;
-      display: flex;
-      top: 1.5em;
-      left: 2.5em;
+    position: absolute;
+    display: flex;
+    top: 1.5em;
+    left: 2.5em;
 
-      justify-content: left;
+    justify-content: left;
 
-      .logo-logo {
-          width: 2em;
-          margin-right: 1em;
+    .logo-logo {
+      width: 2em;
+      margin-right: 1em;
+    }
+
+    .logo-text {
+      width: 8em;
+
+      text {
+        font-size: 5em;
       }
-
-      .logo-text {
-          width: 8em;
-
-          text {
-              font-size: 5em;
-          }
-      }
+    }
   }
 
   .register-splash {
@@ -40,11 +40,11 @@
       width: 60%;
 
       h1 {
-        font-size: 4em;
-        text-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
-        font-weight: bold;
-        line-height: 1.33;
-        letter-spacing: 30px;
+      font-size: 4em;
+      text-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+      font-weight: bold;
+      line-height: 1.33;
+      letter-spacing: 30px;
       }
     }
 

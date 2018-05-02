@@ -1,96 +1,96 @@
 @import "../../../style/vars";
 
 .requests-container {
-    width: 100%;
-    height: 100%;
-    background-color: $profile-canvas-color;
+  width: 100%;
+  height: 100%;
+  background-color: $profile-canvas-color;
 
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+
+  @media (min-width: 440px) {
+    justify-content: flex-start;
+  }
+
+
+  .requests-results-container {
     display: flex;
+    flex: 1;
     flex-flow: column;
-    justify-content: space-between;
+    align-items: center;
+    overflow: scroll;
 
-    @media (min-width: 440px) {
-        justify-content: flex-start;
+    @media (max-width: 700px) and (min-width: 440px) {
+      padding: 30px 50px;
     }
 
+    @media (max-width: 900px) and (min-width: 700px) {
+      padding: 30px 100px;
+    }
 
-    .requests-results-container {
+    @media (max-width: 1100px) and (min-width: 900px) {
+      padding: 30px 200px;
+    }
+
+    @media(min-width: 1100px) {
+      padding: 30px 300px;
+    }
+
+    h1 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    .request-container {
+      flex-flow: column;
+      width: 95%;
+      min-height: 150px; // make the card height adaptive
+      margin: 10px;
+      padding: 20px 40px 30px 40px;
+      background-color: $white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+
+      overflow: auto; // make outrageously long body scrollable
+
+      .heading {
         display: flex;
-        flex: 1;
-        flex-flow: column;
-        align-items: center;
-        overflow: scroll;
+        flex-flow: row;
+        justify-content: space-between;
 
-        @media (max-width: 700px) and (min-width: 440px) {
-            padding: 30px 50px;
-        }
-
-        @media (max-width: 900px) and (min-width: 700px) {
-            padding: 30px 100px;
-        }
-
-        @media (max-width: 1100px) and (min-width: 900px) {
-            padding: 30px 200px;
-        }
-
-        @media(min-width: 1100px) {
-            padding: 30px 300px;
+        #date {
+          text-align: center;
+          font-size: 1em;
         }
 
         h1 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
+          font-size: 1.3em;
         }
 
-        .request-container {
-            flex-flow: column;
-            width: 95%;
-            min-height: 150px; // make the card height adaptive
-            margin: 10px;
-            padding: 20px 40px 30px 40px;
-            background-color: $white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-
-            overflow: auto; // make outrageously long body scrollable
-
-            .heading {
-                display: flex;
-                flex-flow: row;
-                justify-content: space-between;
-
-                #date {
-                    text-align: center;
-                    font-size: 1em;
-                }
-
-                h1 {
-                    font-size: 1.3em;
-                }
-
-                & > * {
-                    margin-bottom: 5px;
-                }
-
-            }
-
-            .body {
-                margin-top: 20px;
-                word-wrap: break-word; // Fix wrap issue under long body
-            }
-
-            h1 {
-                font-size: 1em;
-            }
-
-            h2 {
-                font-size: .8em;
-                color: $subheading-text-color;
-            }
-
-            span {
-                font-weight: bold;
-            }
+        & > * {
+          margin-bottom: 5px;
         }
+
+      }
+
+      .body {
+        margin-top: 20px;
+        word-wrap: break-word; // Fix wrap issue under long body
+      }
+
+      h1 {
+        font-size: 1em;
+      }
+
+      h2 {
+        font-size: .8em;
+        color: $subheading-text-color;
+      }
+
+      span {
+        font-weight: bold;
+      }
     }
+  }
 }
