@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginForm from './loginForm';
+import Form from 'components/util/LoginRegisterForm';
 import newBquest from '../../../../images/loginPage/white-bquest.svg.inline'
 import newBquestLogo from '../../../../images/loginPage/white-bquest-logo.svg.inline'
 
@@ -14,7 +14,7 @@ class Login extends React.Component {
                 </div>
                 <div className="container-loginform">
                     <h1 className="loginform-title">Login</h1>
-                    <LoginForm login={this.props.login}/>
+                    <Form action={this.props.login} buttonText="Log In"/>
                 </div>
             </div>
         )

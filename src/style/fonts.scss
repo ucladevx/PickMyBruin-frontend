@@ -11,3 +11,18 @@
   // See: https://github.com/webpack-contrib/sass-loader#problems-with-url
   src: url(/assets/fonts/Ginora-Sans-Regular.otf) format('opentype');
 }
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url(/assets/fonts/OpenSans-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'OpenSans-Bold';
+  src: url(/assets/fonts/OpenSans-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'OpenSans-Italic';
+  src: url(/assets/fonts/OpenSans-Italic.ttf) format('truetype');
+}

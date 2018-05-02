@@ -7,8 +7,8 @@ const styles = {
 	boxShadow: "0 4px 10px 0 rgba(0, 0, 0, 0.1)",
 }
 
-const PrimaryButton = ({onClick, block, children}) => {
-    return <Button style={styles} onClick={onClick} block>{children}</Button>;
+const PrimaryButton = ({onClick, block, children, disabled}) => {
+    return <Button style={styles} onClick={onClick} disabled={disabled} block>{children}</Button>;
 }
 
 export default PrimaryButton;

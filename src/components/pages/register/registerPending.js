@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
 import { replace,push } from 'react-router-redux';
+import { Actios } from 'reducer';
 
 class RegisterPending extends React.Component {
     render() {
         return(
             <div className="container-pending">
                 <div className="pending-text">
-                    A verification link has been sent to <strong>{this.props.email}</strong>,
+                    A verification link has been sent to your email,
                     please click on the link in your mailbox to continue the registration
                 </div>
                 {/*

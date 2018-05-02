@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import EmailForm from './emailForm';
-import logo from '../../../../images/landingPage/logo.png';
+import Form from 'components/util/LoginRegisterForm';
+import newBquest from '../../../../images/loginPage/white-bquest.svg.inline'
+import newBquestLogo from '../../../../images/loginPage/white-bquest-logo.svg.inline'
 
 import Loader from '../../loading';
 
@@ -16,15 +17,22 @@ class Register extends React.Component {
         return (
             <div className="container-register">
                 <div className="logo">
-                    <img src={logo} id="logo" alt="logo" />
-                </div>  
-                {this.props.sendingEmail ? <Loader /> : 
-                    <div className="container-emailform">
-                        Create an account with your <span className="email-color">official UCLA email</span>
-                        <EmailForm sendVerificationLink={this.props.sendVerificationLink}/> 
-                        <p>Already have an account? Login <Link to="/login">here</Link></p>
+                    <div className="logo-logo" dangerouslySetInnerHTML={{__html: newBquestLogo}} />
+                    <div className="logo-text" dangerouslySetInnerHTML={{__html: newBquest}} />
+                </div>
+                <section className="register-splash">
+                    <div className="register-text">
+                        <h1>ALL THE HELP YOU'LL EVER NEED</h1>
                     </div>
-                }
+                </section>  
+                <div className="register-form">
+                    {this.props.sendingEmail ? <Loader /> :
+                    <div className="container-emailform">
+                        <h1>Create an account</h1>
+                        <Form action={this.props.sendVerificationLink} buttonText="Send Verification Link" />
+                    </div>
+                    }
+                </div>
             </div>
         )
     }
