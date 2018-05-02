@@ -10,6 +10,7 @@ import { Register, sendVerificationLink, confirmCode, completeRegistration } fro
 import { Profile, fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile, setProfilePic } from './profile';
 import { SearchMentors, handleSearch } from './searchMentors'
 import { Requests, getRequests, sendRequest } from './requests'
+import { Messages, fetchThreads, fetchMessagesIfThreadExists, setProfileViewing, sendMessage } from './messages';
 
 const history = createHistory();
 const reactRouterMiddleware = routerMiddleware(history);
@@ -27,6 +28,7 @@ const store = createStore(
         Profile,
         SearchMentors,
         Requests,
+        Messages,
         router: routerReducer,
         notifications: notificationsReducer()
     }),
@@ -50,6 +52,9 @@ const Actions = {
     },
     requestsActions: {
         getRequests, sendRequest
+    },
+    messagesActions: {
+        fetchThreads, setProfileViewing, fetchMessagesIfThreadExists, sendMessage,
     }
 }
 

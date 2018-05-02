@@ -39,7 +39,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         sendRequest: (message, mentorId) => {
-            dispatch(Actions.requestsActions.sendRequest(message, mentorId));
+            console.log(mentorId);
+            dispatch(Actions.messagesActions.sendMessage(message, mentorId));
         },
         redirectToSearch: () => {
             dispatch(replace('/search'));

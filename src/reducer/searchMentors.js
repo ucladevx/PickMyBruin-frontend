@@ -159,6 +159,9 @@ const SearchMentors = (state=defaultState, action) => {
                     let formattedMentor = {};
                     formattedMentor.user = mentor.profile;
 
+                    const mentorProfile = mentor.profile;
+                    formattedMentor.profile = mentorProfile;
+
                     delete mentor.profile;
                     formattedMentor.mentor = mentor;
                     return formattedMentor;

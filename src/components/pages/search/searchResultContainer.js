@@ -38,7 +38,7 @@ class SearchResultContainer extends React.Component {
                 <div className="search-result-container">
                     <div className="profile-pic-container">
                         <ProfilePicture
-                            profile={mentorProfile}
+                            picture={mentorProfile.getIn(['user', 'picture'])}
                         />
                     </div>                
                     <div className="mentor-details">

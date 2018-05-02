@@ -14,7 +14,7 @@ const config = {
     filename: 'build/[name].js', // Name of output file
   },
   resolve: {
-    modules: [path.resolve(__dirname, "src"), "node_modules"],
+    modules: [path.resolve(__dirname, "src"), "node_modules"]
   },
   plugins: [
     // Define production build to allow React to strip out unnecessary checks

@@ -8,7 +8,6 @@ import {ConnectedRouter} from 'react-router-redux';
 import NotificationsSystem from 'reapop';
 import theme from 'reapop-theme-wybo';
 import {render} from 'react-dom';
-
 import {store, history} from './reducer';
 
 import HomeContainer from './container/home';
@@ -19,7 +18,8 @@ import SearchContainer from './container/search';
 import MentorDetailContainer from './container/mentorDetail';
 import CompleteRegistrationContainer from './container/completeRegistration';
 import LoginContainer from './container/login';
-import RequestsContainer from './container/requests';
+//import RequestsContainer from './container/requests';
+import MessagesContainer from 'container/messages';
 import Authentication from './container/requireAuthentication';
 import RegisterPendingContainer from './components/pages/register/registerPending';
 
@@ -47,7 +47,8 @@ class App extends React.Component {
 
                             <Route exact path="/profile" component={Authentication(ProfileContainer)} />
                             <Route exact path="/search" component={Authentication(SearchContainer)} />
-                            <Route exact path="/requests" component={Authentication(RequestsContainer)}/>
+                            <Route exact path="/messages" component={Authentication(MessagesContainer)}/>
+                            <Route exact path="/messages/:profileId" component={Authentication(MessagesContainer)} />
                             <Route exact path="/mentors/:mentorId" component={Authentication(MentorDetailContainer)} />
                             <Redirect to="/"/>
                         </Switch>

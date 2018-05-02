@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import logo from '../../../images/landingPage/logo.png';
+console.log(logo);
 import SearchBar from '../searchBar';
 
 
@@ -23,17 +24,17 @@ class NavBar extends React.Component {
                     <img src={logo} id="logo" alt="logo" /> 
                 </div>
                 <div className="buttons">
-                    <div className={classNames("navigation-item", {selected: location == "search"})} onClick={() => this.navigate("search")}>
+                    <div className={classNames("navigation-item", {selected: location.startsWith("search")})} onClick={() => this.navigate("search")}>
                         <i className="fa fa-search fa-lg" aria-hidden="true"></i>
                         <p>Search</p>
                     </div>
-                    <div className={classNames("navigation-item", {selected: location == "profile"})} onClick={() => this.navigate("profile")}>
+                    <div className={classNames("navigation-item", {selected: location.startsWith("profile")})} onClick={() => this.navigate("profile")}>
                         <i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
                         <p>My Profile</p>
                     </div>
-                    <div className={classNames("navigation-item", {selected: location == "requests"})} onClick={() => this.navigate("requests")}>
+                    <div className={classNames("navigation-item", {selected: location.startsWith("messages")})} onClick={() => this.navigate("messages")}>
                         <i className="fa fa-comment-o" aria-hidden="true"></i>
-                        <p>Requests</p>
+                        <p>Messages</p>
                     </div>
                 </div>
             </div>

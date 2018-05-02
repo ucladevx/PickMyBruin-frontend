@@ -15,11 +15,14 @@ const styles = {
 
 class NewRequestField extends React.Component {
     state = {
-        text: ''
+        text: '',
     }
 
     _sendRequest = () => {
-        this.props.sendRequest(this.state.text);        
+        this.setState({
+            text: ''
+        });
+        this.props.sendRequest(this.state.text);
     }
 
     handleChange = e => {
@@ -50,8 +53,7 @@ class NewRequestField extends React.Component {
                     />
                 </MuiThemeProvider>
                 <div className="buttons">
-                    <Button color="success" onClick={this._sendRequest} block>Send Request</Button>
-                    <Button color="secondary" onClick={this.props.cancel} block>Cancel</Button>
+                    <Button color="success" disabled={this.state.text==""} onClick={this._sendRequest}>Send Message</Button>
                 </div>
             </div>
         );

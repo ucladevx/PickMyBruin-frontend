@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Alert } from 'reactstrap';
 
+import { getName } from 'common';
 import ProfileTop from '../profile/profileTop';
 import NewRequestField from './newRequestField';
 import Results from '../search/results';
@@ -8,22 +9,6 @@ import Results from '../search/results';
 import Navbar from '../../navbar';
 
 class MentorDetail extends React.Component {
-    state = {
-        renderTextField: false
-    }
-
-    handleOpen = () => {
-        this.setState({
-            renderTextField: true
-        });
-    }
-
-    handleClose = () => {
-        this.setState({
-            renderTextField: false
-        });
-    }
-
     _renderForm = () => {
         // checks that we have not already tried to request this mentor
         if (this.props.mentor.canNotRequest) {
@@ -31,32 +16,23 @@ class MentorDetail extends React.Component {
                 <Alert color="warning">You have already requested this ambassador</Alert>
             );
         } 
-        if (this.state.renderTextField) {
-            return (
-                <NewRequestField 
-                    mentorName={this.props.mentor.profile.get('name')}
-                    cancel={this.handleClose}
-                    sendRequest={this._sendRequest}
-                />
-            );
-        } else {
-            return <Button color="primary" onClick={this.handleOpen}>Request</Button>;
-        }
+        return (
+            <NewRequestField 
+                mentorName={getName(this.props.mentor.profile.get('user'))}
+                sendRequest={this._sendRequest}
+            />
+        );
     }
 
     _sendRequest = (message) => {
         //TODO: fix this shit this ugly
-        this.props.sendRequest(message, this.props.mentor.profile.getIn(['mentor', 'id']));
+        this.props.sendRequest(message, this.props.mentor.profile.getIn(['profile', 'id']));
     }
 
     render() {
         const {
             profile,
         } = this.props.mentor;
-
-        const {
-            renderTextField
-        } = this.state;
 
         let key = 1;
 

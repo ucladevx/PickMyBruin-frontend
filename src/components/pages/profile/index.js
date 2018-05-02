@@ -53,6 +53,7 @@ class Profile extends React.Component {
                 <div className="container-profile">
                     <div className="profile-wrapper">
                         <ProfileTop
+                            editable={true}
                             name={name}
                             profile={this.props.profile}
                             setProfilePic = {this.props.setProfilePic}

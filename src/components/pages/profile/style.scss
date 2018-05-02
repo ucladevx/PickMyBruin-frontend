@@ -233,6 +233,14 @@
         align-items: flex-end;
         padding-left: 20px;
 
+        .profile-pic {
+            top: 50px;
+
+            @media (min-width: 440px) {
+                top: 75px;  
+            }
+        }
+
 
         h1 {
             margin-left: 10px;
