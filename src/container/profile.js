@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { replace } from 'react-router-dom';
 
 import { Actions } from '../reducer';
 import Profile from '../components/pages/profile';
@@ -54,6 +55,7 @@ const mapDispatchToProps = dispatch => {
         },
         logout: () => {
             dispatch(Actions.loginActions.logout());
+            dispatch(replace("/"));
         },
     }
 }

@@ -3,7 +3,7 @@ import { addNotification as notify } from 'reapop';
 import { replace } from 'react-router-redux';
 
 import { setProfile } from './profile';
-import { login } from './login';
+import { login, logout } from './login';
 import Storage from '../storage';
 import Config from '../config';
 
@@ -112,6 +112,14 @@ const confirmCode = (verification_code) => {
 
             const status = await response.status;
             const data = await response.json();
+
+            if (status == 401) {
+                dispatch(logout());
+                const state = getState();
+                const redirect = state.router.location.pathname + state.router.location.search;
+                dispatch(notify({status: "info", message: "Please enter the credentials you used to create your account", position: "tc"}));
+                return dispatch(replace(`/login?redirect=${redirect}`));
+            }
 
             if (status > 299 || status < 200) {
                 throw new Error(data.error);
