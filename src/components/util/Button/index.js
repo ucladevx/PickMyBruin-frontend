@@ -2,8 +2,9 @@ import React from 'react';
 import { Button } from 'reactstrap';
 
 const styles = {
-    backgroundColor: "#6284ea",
-    borderColor: "#6284ea"
+    backgroundColor: "#c3d887",
+    borderColor: "#c3d887",
+	boxShadow: "0 4px 10px 0 rgba(0, 0, 0, 0.1)",
 }
 
 const PrimaryButton = ({onClick, block, children}) => {

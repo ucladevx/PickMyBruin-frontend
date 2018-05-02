@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import LoginForm from './loginForm';
-import logo from '../../../../images/landingPage/logo.png';
+import newBquest from '../../../../images/loginPage/white-bquest.svg.inline'
+import newBquestLogo from '../../../../images/loginPage/white-bquest-logo.svg.inline'
 
 class Login extends React.Component {
 
@@ -9,10 +9,11 @@ class Login extends React.Component {
         return(
             <div className="container-login">
                 <div className="logo">
-                    <img src={logo} id="logo" alt="logo" />
+                    <div className="logo-logo" dangerouslySetInnerHTML={{__html: newBquestLogo}} />
+                    <div className="logo-text" dangerouslySetInnerHTML={{__html: newBquest}} />
                 </div>
                 <div className="container-loginform">
-                    Create an account <Link className="register-color" to="/register">here</Link> if you do not have one
+                    <h1 className="loginform-title">Login</h1>
                     <LoginForm login={this.props.login}/>
                 </div>
             </div>

@@ -5,11 +5,34 @@
     padding: 20px;
     margin: 0 auto;
 
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    background-color: $login-bg-color;
+
+    .logo {
+        position: absolute;
+        display: flex;
+        top: 1.5em;
+        left: 2.5em;
+
+        justify-content: left;
+
+        .logo-logo {
+            width: 2em;
+            margin-right: 1em;
+        }
+
+        .logo-text {
+            width: 8em;
+
+            text {
+                font-size: 5em;
+            }
+        }
+    }
 
     h1 {
         color: $main-text;
@@ -26,6 +49,20 @@
     }
 }
 
+.container-loginform {
+
+    width: 350px;
+
+    @media (max-width: 800px) {
+        width: 90%;
+    }
+
+    .loginform-title {
+        color: white;
+        margin-bottom: 1em;
+    }
+}
+
 .login-form {
     display: flex;
     flex-direction: column;
@@ -33,6 +70,44 @@
     margin-top: 20px;
     margin-bottom: 20px;
 
+    .form-group {
+        width: 100%;
+    }
+
+    .label {
+        color: white;
+    }
+
+    .inline-input {
+        display: inline;
+        border-width: 0;
+    }
+
+    .flex-group {
+        display: flex;
+        align-items: center;
+
+        input {
+            margin-right: 0.7em;
+        }
+
+        span {
+            font-size: 1.3em;
+            color: white;
+        }
+    }
+
+    .forget-password {
+        text-align: right;
+        color: white;
+
+        a {
+            color: white;
+            &:hover {
+                color: white;
+            }
+        }
+    }
 }
 
 // .container-pending {

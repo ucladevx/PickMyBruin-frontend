@@ -27,7 +27,7 @@ class LoginContainer extends React.Component {
                 login={this.props.login}
                 loginSuccess={this.props.loginSuccess}
             />
-        ) 
+        )
     }
 }
 
