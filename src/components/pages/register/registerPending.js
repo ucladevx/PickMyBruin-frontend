@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
 import { replace,push } from 'react-router-redux';
-import { Actios } from 'reducer';
 
 class RegisterPending extends React.Component {
     render() {
