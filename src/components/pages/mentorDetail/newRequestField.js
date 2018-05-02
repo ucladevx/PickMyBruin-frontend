@@ -53,7 +53,7 @@ class NewRequestField extends React.Component {
                     />
                 </MuiThemeProvider>
                 <div className="buttons">
-                    <Button color="success" onClick={this._sendRequest}>Send Message</Button>
+                    <Button color="success" disabled={this.state.text==""} onClick={this._sendRequest}>Send Message</Button>
                 </div>
             </div>
         );

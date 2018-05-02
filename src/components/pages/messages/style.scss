@@ -1,21 +1,32 @@
 @import "style/vars.scss";
 
 .messages-container {
+  display: flex;
+  flex-flow: column;
+  background-color: #F8F8F8;
+  height: 100%;
+
+  .messages-wrapper {
+    flex: 1;
     display: flex;
-    flex-flow: column;
-    background-color: #F8F8F8;
+    flex-flow: row;
 
-    .messages-wrapper {
-        flex: 1;
-        display: flex;
-        flex-flow: row;
-
-        .threadview-input-container {
-          display: flex;
-          flex-flow: column;
-          flex: 1;
-        }
+    .sidebar {
+      display: flex;
+      flex-flow: column;
+      height: 100%;
+      width: 25%;
+      background-color: $white;
+      color: $subheading-text-color;
+      overflow: auto;
+      min-width: 256px;
     }
 
-    height: 100%;
+    .threadview-input-container {
+      display: flex;
+      flex-flow: column;
+      width: 75%;
+      max-width: calc(100% - 256px);
+    }
+  }
 }

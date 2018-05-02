@@ -1,51 +1,46 @@
 @import "style/vars";
 
-
 .thread-view {
-	background-color: #F8F8F8;
-	display: flex;
-	flex-flow: column;
-	flex: 1;
-	padding: 10px;
-	max-height: calc(100% - 70px);
-	overflow: auto;
+  background-color: #F8F8F8;
+  display: flex;
+  flex-flow: column;
+  flex: 1;
+  padding: 10px;
+  max-height: calc(100% - 70px);
+  overflow: auto;
 
-	.beginningText {
-		text-align: center;
-		color: #5C6370;
-	}
-	.all-messages {
-		flex-flow: column;
-		align-items: flex-start;
-		flex: 1;
+  .all-messages {
+    flex-flow: column;
+    align-items: flex-start;
+    flex: 1;
 
-		.message {
-			width: 100%;
-			display: flex;
-			flex-flow: row;
-		}
+    .message {
+      width: 100%;
+      display: flex;
+      flex-flow: row;
+    }
 
-		.bubble {
-			display: flex;
-			flex-flow: row;
-			margin: 5px;
-			padding: 10px;
-			max-width: 50%;
-			background-color: $message-bubble-background-color;
-			border-radius: 20px;
-		}
+    .bubble {
+      display: flex;
+      flex-flow: row;
+      margin: 5px;
+      padding: 10px;
+      max-width: 50%;
+      background-color: $message-bubble-background-color;
+      border-radius: 20px;
+    }
 
-		.right {
-			justify-content: flex-end;
-		}
+    .right {
+      justify-content: flex-end;
+    }
 
-		.left {
-			justify-content: flex-start;
-		}
+    .left {
+      justify-content: flex-start;
+    }
 
-		p {
-			overflow-wrap: break-word;
-			width: 100%;
-		}
-	}
+    p {
+      overflow-wrap: break-word;
+      width: 100%;
+    }
+  }
 }
