@@ -1,10 +1,7 @@
 import React from 'react';
 
-import TextField from 'material-ui/TextField';
-import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import RaisedButton from 'material-ui/RaisedButton';
-
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import TopBar from './topbar';
+import Button from 'components/util/Button';
 
 const styles = {
     radioStyles: {
@@ -22,17 +19,16 @@ const styles = {
 class CompleteRegistration extends React.Component {
 
     state = {
-        fullName: null,
         year: null
     }
-    onClick = e => {
+    handleSubmit = e => {
         e.preventDefault();
-        this.props.completeRegistration(this.state.fullName, this.state.year);
+        this.props.completeRegistration(this.state.year);
     }
     
-    onChange = (e, v) => {
+    onChange = e => {
         this.setState({
-            [e.target.name]: v
+            year: e.target.value
         });
     }
 
@@ -40,52 +36,51 @@ class CompleteRegistration extends React.Component {
         const buttonDisabled = !!this.state.fullName && !!this.state.year;
         return(
             <div className="container-complete-registration">
+                <TopBar />
                 <div className="verify-card">
-                    <h1 className="welcome">Thanks for verifying! Let's get you set up.</h1>
-                    <MuiThemeProvider>
-                        <TextField
-                            name="fullName"
-                            hintText="Full name"
-                            value={this.state.fullName}
-                            onChange={this.onChange}
-                            fullWidth={true}
-                            underlineFocusStyle={styles.fieldStyles}
-                        />
-                    </MuiThemeProvider>
-                    <MuiThemeProvider>
-                        <RadioButtonGroup name="year" onChange={this.onChange}>
-                            <RadioButton
-                                value="1st"
-                                label="freshman"
-                                iconStyle={styles.radioStyles}
-                            />
-                            <RadioButton
-                                value="2nd"
-                                label="sophomore"
-                                iconStyle={styles.radioStyles}
-                            />
-                            <RadioButton
-                                value="3rd"
-                                label="junior"
-                                iconStyle={styles.radioStyles}
-                            />
-                            <RadioButton
-                                value="4th"
-                                label="senior"
-                                iconStyle={styles.radioStyles}
-                            />
-                        </RadioButtonGroup>
-                    </MuiThemeProvider>
-                    <MuiThemeProvider>
-                        <RaisedButton 
-                            label="Continue"
-                            fullWidth={true} 
-                            disabled={!buttonDisabled} 
-                            backgroundColor={styles.buttonStyles.color} 
-                            labelColor={styles.buttonStyles.labelColor} 
-                            onClick={this.onClick} 
-                        />
-                    </MuiThemeProvider>
+                    <h1 className="welcome">Last step: What year are you?</h1>
+                    <h2>If you're a transfer student, use the number of years studied at UCLA + the number of years at your previous school</h2>
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="options">
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="1st"
+                                    checked={this.state.year === "1st"}
+                                    onChange={this.onChange}
+                                />
+                                1st
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="2nd"
+                                    checked={this.state.year === "2nd"}
+                                    onChange={this.onChange}
+                                />
+                                2nd
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="3rd"
+                                    checked={this.state.year === "3rd"}
+                                    onChange={this.onChange}
+                                />
+                                3rd 
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    value="4th"
+                                    checked={this.state.year === "4th"}
+                                    onChange={this.onChange}
+                                />
+                                4th 
+                            </label>
+                        </div>
+                        <Button onClick={this.handleSubmit} block disabled={!this.state.year}>I'm ready</Button>
+                    </form>
                 </div>
             </div>
         );

@@ -40,7 +40,6 @@ const logout = () => {
         dispatch({
             type: LOGOUT
         });
-        dispatch(replace("/"));
     }
 }
 

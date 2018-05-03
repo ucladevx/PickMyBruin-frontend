@@ -9,18 +9,62 @@
   justify-content: center;
   align-items: center;
 
-  .verify-card {
-    height: 100%;
+  .registration--top-bar {
+    height: 60px;
+    width: 100%;
+    background-color: $pale-teal;
 
-    display: flex;
-    flex-flow: column;
-    align-items: flex-start;
-    justify-content: center; 
+    .logo {
+      position: absolute;
+      display: flex;
+      top: .8em;
+      left: 2.5em;
 
-    .welcome {
-      font-size: 1em;
-      margin-bottom: 20px;
+      justify-content: left;
+
+      .logo-logo {
+        width: 2em;
+        margin-right: 1em;
+      }
     }
   }
 
+  .verify-card {
+    text-align: center;
+    height: 100%;
+    width: 40%;
+    min-width: 300px;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center; 
+
+    h1 {
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      width: 100%;
+
+      .options {
+        display: flex;
+        flex-flow: column;
+        align-items: flex-start;
+
+        input[type="radio"] {
+          margin: 10px;
+        }
+      }
+    }
+  }
 }

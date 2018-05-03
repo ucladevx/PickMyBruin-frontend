@@ -3,7 +3,7 @@ import { addNotification as notify } from 'reapop';
 import { replace } from 'react-router-redux';
 
 import { setProfile } from './profile';
-import { login } from './login';
+import { login, logout } from './login';
 import Storage from '../storage';
 import Config from '../config';
 
@@ -93,6 +93,7 @@ const confirmCode = (verification_code) => {
             if (!Storage.get("token")) {
                 const state = getState();
                 const redirect = state.router.location.pathname + state.router.location.search;
+                dispatch(notify({status: "info", message: "Please enter the credentials you used to create your account", position: "tc"}));
                 return dispatch(replace(`/login?redirect=${redirect}`));
             }
 
@@ -102,6 +103,7 @@ const confirmCode = (verification_code) => {
                 method: 'POST',
                 headers: new Headers({
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${Storage.get('token')}`
                 }),
                 body: JSON.stringify({
                     verification_code
@@ -110,6 +112,14 @@ const confirmCode = (verification_code) => {
 
             const status = await response.status;
             const data = await response.json();
+
+            if (status == 401) {
+                dispatch(logout());
+                const state = getState();
+                const redirect = state.router.location.pathname + state.router.location.search;
+                dispatch(notify({status: "info", message: "Please enter the credentials you used to create your account", position: "tc"}));
+                return dispatch(replace(`/login?redirect=${redirect}`));
+            }
 
             if (status > 299 || status < 200) {
                 throw new Error(data.error);
@@ -122,12 +132,10 @@ const confirmCode = (verification_code) => {
     }
 }
 
-const completeRegistration = (fullName, year) => {
+const completeRegistration = year => {
     return async dispatch => {
         try {
             dispatch({type: COMPLETE_REGISTRATION_START});
-
-            const nameArray = fullName.split(' ');
 
             const response = await fetch(Config.API_URL + '/users/me/', {
                 method: 'PATCH',
@@ -137,8 +145,6 @@ const completeRegistration = (fullName, year) => {
                 }),
                 body: JSON.stringify({
                     year,
-                    first_name: nameArray.slice(0, nameArray.length-1).join(' '),
-                    last_name: nameArray[nameArray.length-1]  // last name
                 })
             })
 
