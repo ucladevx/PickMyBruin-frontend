@@ -4,6 +4,7 @@
 @import "./components/pages/home/style";
 @import "./components/pages/register/style";
 @import "./components/pages/completeRegistration/style";
+@import "components/pages/chooseRole/style";
 @import "./components/pages/profile/style";
 @import "./components/pages/search/style";
 @import "./components/pages/requests/style";
@@ -19,6 +20,7 @@
 @import "components/profilePicture/style";
 @import "./components/util/divider/style";
 @import "components/util/LoginRegisterForm/style";
+@import "components/util/TopBar/style";
 
 *, *:before, *:after {
   box-sizing: border-box;

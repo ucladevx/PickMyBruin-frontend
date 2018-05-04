@@ -17,6 +17,7 @@ import ProfileContainer from './container/profile';
 import SearchContainer from './container/search';
 import MentorDetailContainer from './container/mentorDetail';
 import CompleteRegistrationContainer from './container/completeRegistration';
+import ChooseRoleContainer from 'container/ChooseRole';
 import LoginContainer from './container/login';
 //import RequestsContainer from './container/requests';
 import MessagesContainer from 'container/messages';
@@ -42,9 +43,10 @@ class App extends React.Component {
                             <Route exact path="/login" component={LoginContainer}/>
                             <Route exact path="/register" component={RegisterContainer}/>
                             <Route path="/register/pending" component={RegisterPendingContainer} />
-                            <Route path="/completeRegistration" component={CompleteRegistrationContainer} />
                             <Route path="/verify" component={VerifyUserContainer} />
+                            <Route path="/completeRegistration" component={CompleteRegistrationContainer} />
 
+                            <Route exact path="/chooseRole" component={Authentication(ChooseRoleContainer)} />
                             <Route exact path="/profile" component={Authentication(ProfileContainer)} />
                             <Route exact path="/search" component={Authentication(SearchContainer)} />
                             <Route exact path="/messages" component={Authentication(MessagesContainer)}/>

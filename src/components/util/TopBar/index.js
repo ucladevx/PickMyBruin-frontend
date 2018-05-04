@@ -3,7 +3,7 @@ import newBquestLogo from '../../../../images/loginPage/white-bquest-logo.svg.in
 
 export default () => {
     return (
-        <div className="registration--top-bar">
+        <div className="top-bar">
             <div className="logo">
                 <div className="logo-logo" dangerouslySetInnerHTML={{__html: newBquestLogo}} />
             </div>
