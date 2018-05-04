@@ -3,9 +3,7 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-import logo from '../../../images/landingPage/logo.png';
-import SearchBar from '../searchBar';
-
+import BquestLogo from '../../../images/loginPage/white-bquest-logo.svg.inline';
 
 class NavBar extends React.Component {
 
@@ -20,20 +18,17 @@ class NavBar extends React.Component {
         return(
             <div className="navbar-container">
                 <div className="logo">
-                    <img src={logo} id="logo" alt="logo" /> 
+                    <div className="logo-logo" dangerouslySetInnerHTML={{__html: BquestLogo}} />
                 </div>
                 <div className="buttons">
-                    <div className={classNames("navigation-item", {selected: location.startsWith("search")})} onClick={() => this.navigate("search")}>
-                        <i className="fa fa-search fa-lg" aria-hidden="true"></i>
-                        <p>Search</p>
+                    <div className="navigation-item">
+                        <p onClick={() => this.navigate("search")} className={classNames({selected: location.startsWith("search")})}>Ambassadors</p>
                     </div>
-                    <div className={classNames("navigation-item", {selected: location.startsWith("profile")})} onClick={() => this.navigate("profile")}>
-                        <i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
-                        <p>My Profile</p>
+                    <div className="navigation-item">
+                        <p onClick={() => this.navigate("messages")} className={classNames({selected: location.startsWith("messages")})}>Messages</p>
                     </div>
-                    <div className={classNames("navigation-item", {selected: location.startsWith("messages")})} onClick={() => this.navigate("messages")}>
-                        <i className="fa fa-comment-o" aria-hidden="true"></i>
-                        <p>Messages</p>
+                    <div className="navigation-item">
+                        <p onClick={() => this.navigate("profile")} className={classNames({selected: location.startsWith("profile")})}>Settings</p>
                     </div>
                 </div>
             </div>
