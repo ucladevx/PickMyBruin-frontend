@@ -10,6 +10,8 @@
     flex: 1;
     display: flex;
     flex-flow: row;
+    overflow-x: auto;
+    overflow-y: auto;
 
     .sidebar {
       display: flex;
