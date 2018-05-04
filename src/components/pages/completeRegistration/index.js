@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TopBar from './topbar';
+import TopBar from 'components/util/TopBar';
 import Button from 'components/util/Button';
 
 const styles = {

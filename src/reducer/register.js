@@ -127,7 +127,9 @@ const confirmCode = (verification_code) => {
                 dispatch(verifyCodeSuccess(data.profile_id));
             }
         } catch (error) {
-            dispatch(notify({title: "Error!", status: 'error', message: "Please try again... :(", position: 'tc'}));
+            dispatch(logout());
+            dispatch(replace("/"));
+            dispatch(notify({title: "Error!", status: 'error', message: "Could not verify this account", position: 'tc'}));
         }
     }
 }

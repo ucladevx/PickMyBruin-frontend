@@ -15,8 +15,8 @@ class VerifyUserContainer extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.verifiedEmail) {
-            this.props.finishRegistration();
-        }   
+            return this.props.finishRegistration();
+        }
     }
 
     render() {
@@ -29,10 +29,12 @@ class VerifyUserContainer extends React.Component {
 const mapStateToProps = state => {
     const Register = state.Register;
     const Login = state.Login;
+    const Profile = state.Profile;
 
     return {
         verifiedEmail: Register.get('verifiedEmail'),
-        authenticated: Login.get('authenticated')
+        authenticated: Login.get('authenticated'),
+        user: Profile.get('user'),
     };
 }
 
@@ -43,6 +45,9 @@ const mapDispatchToProps = dispatch => {
         },
         redirectToLogin: () => {
             dispatch(push("/login", {redirect: "/verify"}))
+        },
+        redirectToProfile: () => {
+            dispatch(push("/profile"));
         },
         finishRegistration: () => {
             dispatch(replace('/completeRegistration'));

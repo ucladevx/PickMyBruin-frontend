@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
+import { replace } from 'react-router-redux';
 
 import { Actions } from '../reducer';
 import CompleteRegistration from '../components/pages/completeRegistration';
@@ -8,7 +8,7 @@ import CompleteRegistration from '../components/pages/completeRegistration';
 class CompleteRegistrationContainer extends React.Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.registerSuccess) {
-            this.props.redirectToProfile();
+            this.props.redirectToChooseRole();
         }
     }
     render() {
@@ -32,8 +32,8 @@ const mapDispatchToProps = dispatch => {
         completeRegistration: (fullName, year) => {
             dispatch(Actions.registerActions.completeRegistration(fullName, year));
         },
-        redirectToProfile: () => {
-            dispatch(push("/profile"));
+        redirectToChooseRole: () => {
+            dispatch(replace("/chooseRole"));
         }
     };
 }
