@@ -21,7 +21,7 @@ class Input extends React.Component {
 				<input className="inputText" type="text" value={this.state.value} onChange={this.handleChange} />
 				<div className="send">
 					<div className={this.state.value ? "message" : "noMessage"} onClick={this.handleSubmit}>
-						<i className="fa fa-paper-plane"></i>
+						<span>SEND</span>
 					</div>
 				</div>
 			</form>

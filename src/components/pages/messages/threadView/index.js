@@ -24,7 +24,7 @@ class ThreadView extends React.Component {
 							<Message
 								key={message.get('id')}
 								messageText={message.get('body')}
-								messageSender={message.get('sender').get('id')}
+								messageSender={message.getIn(['sender', 'id'])}
 								currentUser={this.props.currentUser}
 							/>
 						);
