@@ -14,6 +14,16 @@
     width: 150px;
     height: 150px;
   }
+
+  &.small {
+    width: 60px;
+    height: 60px;
+  }
+
+  &.xsmall {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .editable {
@@ -23,9 +33,4 @@
   &:hover {
     opacity: 0.7;
   }
-}
-
-.pic-small {
-  width: 60px;
-  height: 60px;
 }
