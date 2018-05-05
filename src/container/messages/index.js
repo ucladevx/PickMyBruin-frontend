@@ -109,7 +109,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchThreads: () => {
-            dispatch(Actions.messagesActions.fetchThreads);
+            dispatch(Actions.messagesActions.fetchThreads());
         },
         fetchMessages: id => {
             dispatch(Actions.messagesActions.fetchMessages(id));

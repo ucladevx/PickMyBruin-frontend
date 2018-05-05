@@ -57,6 +57,7 @@ const sendMessage = (message, profileID) => {
                 throw new Error();
             } else {
                 dispatch(sendMessageSuccess(data));
+                dispatch(fetchThreads());
                 if (shouldNotify) {
                     dispatch(notify({status: 'success', message: 'Your message has been sent!', position: 'tc'}));
                 }
