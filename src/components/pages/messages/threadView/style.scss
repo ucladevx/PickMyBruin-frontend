@@ -1,7 +1,6 @@
 @import "style/vars";
 
 .thread-view {
-  background-color: #F8F8F8;
   display: flex;
   flex-flow: column;
   flex: 1;
@@ -9,8 +8,9 @@
   overflow: auto;
 
   .all-messages {
+    display: flex;
     flex-flow: column;
-    align-items: flex-start;
+    justify-content: flex-end;
     flex: 1;
 
     .message {
@@ -21,7 +21,7 @@
       padding-left: 10px;
 
       &.self {
-        background-color: $message-from-self-background;
+        background-color: $pale-grey;
       }
 
       .bubble {
@@ -29,7 +29,6 @@
         flex-flow: row;
         margin: 5px;
         padding: 10px;
-        max-width: 50%;
         color: $message-text-color;
       }
 

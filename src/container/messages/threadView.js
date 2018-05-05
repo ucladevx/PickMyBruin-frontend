@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import { Actions } from 'reducer';
 import ThreadView from 'components/pages/messages/threadView';
-import Loading from 'components/loading';
 
 class ThreadViewContainer extends React.Component {
     state = {
@@ -11,17 +10,18 @@ class ThreadViewContainer extends React.Component {
     }
 
     componentDidMount() {
+        console.log('threadview')
         if (this.props.profileId) {
             this.setState({
                 loading: true
             });
-            this.props.fetchMessagesIfThreadExists(this.props.profileId);
+            this.props.fetchMessages(this.props.profileId);
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.profileId !== this.props.profileId) {
-            this.props.fetchMessagesIfThreadExists(nextProps.profileId);
+            this.props.fetchMessages(nextProps.profileId);
             return this.setState({
                 loading: true
             })
@@ -33,12 +33,9 @@ class ThreadViewContainer extends React.Component {
     }
     
     render() {
-        if (this.state.loading) {
-            return <Loading />;
-        }
-
         return (
             <ThreadView
+                loading={this.state.loading}
 				messages={this.props.messages}
 				currentUser={this.props.profile.get('user').get('id')}
 			/>
@@ -57,8 +54,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchMessagesIfThreadExists: id => {
-            dispatch(Actions.messagesActions.fetchMessagesIfThreadExists(id));
+        fetchMessages: id => {
+            dispatch(Actions.messagesActions.fetchMessages(id));
         }
 	};
 }
