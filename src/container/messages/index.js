@@ -28,6 +28,12 @@ class MessagesContainer extends React.Component {
             this.props.checkIfThreadExists(profileViewing);
         }
 
+        const socketId = this.props.profile.getIn(['user', 'id']);
+        if (!socketId) {
+            return;
+        }
+        const threadViewingId = this.props.match.params.profileId;
+
         try {
             this.socket = new WebSocket(`ws://${Config.WS_URL}/${socketId}`);
             this.socket.onmessage = event => {
@@ -45,17 +51,15 @@ class MessagesContainer extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (!this.props.messages.getIn(['profileViewing', 'profileID']) && nextProps.messages.getIn(['profileViewing', 'profileID'])) {
+        if (nextProps.messages.getIn(['profileViewing', 'profileID'])) {
             this.setState({
                 fetching: false,
                 showThread: true
             });
+        }
 
-            const socketId = this.props.profile.getIn(['user', 'id']);
-            if (!socketId) {
-                return;
-            }
-            const threadViewingId = this.props.match.params.profileId;
+        if (nextProps.messages.get('error') === "NO_THREAD") {
+            return this.props.redirectToMessages();
         }
     }
 
