@@ -10,7 +10,6 @@ class ThreadViewContainer extends React.Component {
     }
 
     componentDidMount() {
-        console.log('threadview')
         if (this.props.profileId) {
             this.setState({
                 loading: true
