@@ -15,16 +15,11 @@ class MessagesContainer extends React.Component {
         super(props);
 
         this.state = {
-            fetching: false,
             showThread: false
         }
 
         const profileViewing = props.match.params.profileId;
         if (profileViewing) {
-            this.state = {
-                ...this.state,
-                fetching: true
-            }            
             this.props.checkIfThreadExists(profileViewing);
         }
 
@@ -53,7 +48,6 @@ class MessagesContainer extends React.Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.messages.getIn(['profileViewing', 'profileID'])) {
             this.setState({
-                fetching: false,
                 showThread: true
             });
         }

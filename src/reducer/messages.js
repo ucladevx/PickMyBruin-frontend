@@ -148,11 +148,11 @@ const checkIfThreadExists = id => {
                 })
             });
             const status = await response.status;
-            const data = await response.json();
-
             if (status >= 400) {
                 throw new Error("NO_THREAD");
             }     
+
+            const data = await response.json();
             if (!data.exists) {
                 throw new Error("NO_THREAD");
             }
