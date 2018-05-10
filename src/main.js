@@ -27,6 +27,13 @@ import RegisterPendingContainer from './components/pages/register/registerPendin
 import 'bootstrap/dist/css/bootstrap.css';
 import './main.scss';
 
+// google analytics
+import withTracker from './container/analytics.js';
+
+class PageTracker extends React.Component {
+    render() { return null; }
+}
+
 if (module.hot) {
     module.hot.accept();
 }
@@ -54,6 +61,7 @@ class App extends React.Component {
                             <Route exact path="/mentors/:mentorId" component={Authentication(MentorDetailContainer)} />
                             <Redirect to="/"/>
                         </Switch>
+                        <Route path="/" component={withTracker(PageTracker)} />
                     </div>
                 </ConnectedRouter>
             </Provider>
@@ -61,8 +69,7 @@ class App extends React.Component {
     }
 }
 
-
 render(
-    <App/>,
+    <App />,
     document.getElementById('mount')
 );
