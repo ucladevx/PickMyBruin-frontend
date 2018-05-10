@@ -18,20 +18,19 @@ export default function(ComposedComponent) {
         }
 
         componentWillMount() {
-            if (this.props.isProfileFetched && !this.props.isProfileVerified) {
-                return this.props.redirectToPending();
-            }
             if (!this.props.isLoggedIn) {
                 return this.props.login(this.props.path);
             }
-        }
 
-        componentDidMount() {
-            if (this.props.isLoggedIn && !this.props.isProfileFetched) {
+            if (!this.props.isProfileFetched) {
                 this.setState({
                     fetching: true
-                });
-                this.props.fetchProfile();
+                })
+                return this.props.fetchProfile();
+            }
+
+            if (this.props.isProfileFetched && !this.props.isProfileVerified) {
+                return this.props.redirectToPending();
             }
         }
 
@@ -39,9 +38,12 @@ export default function(ComposedComponent) {
             if (!nextProps.isLoggedIn) {
                 return this.props.login();
             }
-            this.setState({
-                fetching: false
-            })
+
+            if (nextProps.isProfileFetched) {
+                this.setState({
+                    fetching: false
+                })
+            }
 
             if (!nextProps.isProfileVerified) {
                 return this.props.redirectToPending();

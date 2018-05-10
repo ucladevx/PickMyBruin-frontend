@@ -11,7 +11,7 @@ export default (props) => {
         /> : 
         <ProfilePicture 
             picture={props.picture} 
-            small={props.small}
+            size={props.size}
         />
     );
 }

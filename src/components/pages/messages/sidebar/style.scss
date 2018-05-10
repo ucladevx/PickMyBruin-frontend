@@ -32,11 +32,12 @@
       display: flex;
       flex-flow: row;
       padding: 5px;
-      border: 1px solid $divider-color;
       overflow: hidden;
+      border-bottom: 1px solid $pale-grey;
 
       .message-preview {
         display: flex;
+        margin-left: 3px;
         flex-flow: column;
         justify-content: center;
         padding: 2px;
@@ -57,14 +58,12 @@
       }
 
       &:hover {
-        background-color: $message-active-background;
         cursor: pointer;
     }
   }
 
     .bold {
-      color: $black;
-      font-weight: bold;
+      background-color: $pale-grey;
     }
   }
 }

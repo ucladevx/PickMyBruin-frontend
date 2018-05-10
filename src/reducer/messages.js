@@ -15,18 +15,13 @@ const SEND_MESSAGE_ERROR = 'send_message_error';
 const FETCH_ALL_THREADS_START = 'fetch_all_threads_start';
 const FETCH_ALL_THREADS_SUCCESS = 'fetch_all_threads_success';
 const FETCH_ALL_THREADS_ERROR = 'fetch_all_threads_error';
-const SET_THREAD_VIEWING = 'change_thread_viewing';
 
+const THREAD_EXISTS = 'thread_exists'; 
 const FETCH_MESSAGES_START = 'fetch_all_messages_start';
 const FETCH_MESSAGES_SUCCESS = 'fetch_all_messages_success';
 const FETCH_MESSAGES_ERROR = 'fetch_all_messages_error';
 
-const setProfileViewing = id => {
-    return {
-        type: CHANGE_THREAD_VIEWING,
-        id
-    }
-}
+const REMOVE_PROFILE_VIEWING = 'remove_profile_viewing';
 
 const sendMessageSuccess = message => {
     return {
@@ -62,13 +57,13 @@ const sendMessage = (message, profileID) => {
                 throw new Error();
             } else {
                 dispatch(sendMessageSuccess(data));
+                dispatch(fetchThreads());
                 if (shouldNotify) {
                     dispatch(notify({status: 'success', message: 'Your message has been sent!', position: 'tc'}));
                 }
             }
         }
         catch (err) {
-            console.error(err);
             const message = "We couldn't send your message :( Try again later";
             dispatch(notify({title: 'Error!', status: 'error', message, position: 'tc'}));
             dispatch({type: SEND_MESSAGE_ERROR});
@@ -78,7 +73,6 @@ const sendMessage = (message, profileID) => {
 
 const fetchThreads = () => {
     return async dispatch => {
-
         const token = Storage.get('token');
 
         try {
@@ -142,7 +136,7 @@ const fetchMessages = id => {
     }
 }
 
-const fetchMessagesIfThreadExists = id => {
+const checkIfThreadExists = id => {
     return async dispatch  => {
         const token = Storage.get('token');
 
@@ -154,15 +148,19 @@ const fetchMessagesIfThreadExists = id => {
                 })
             });
             const status = await response.status;
-            const data = await response.json();
-
             if (status >= 400) {
-                throw new Error("Error checking if thread exists for this user");
+                throw new Error("NO_THREAD");
+            }     
+
+            const data = await response.json();
+            if (!data.exists) {
+                throw new Error("NO_THREAD");
             }
-    
-            if (data.exists) {
-                return dispatch(fetchMessages(id));
-            }
+
+            dispatch({
+                id,
+                type: THREAD_EXISTS
+            })
         } catch (err) {
             dispatch({
                 type: FETCH_MESSAGES_ERROR,
@@ -172,6 +170,11 @@ const fetchMessagesIfThreadExists = id => {
     }
 }
 
+const removeProfileViewing = () => {
+    return {
+        type: REMOVE_PROFILE_VIEWING
+    }
+}
 
 const defaultState = Immutable.fromJS({
     profileViewing: {  // the current user we are talking to in the thread view
@@ -179,7 +182,6 @@ const defaultState = Immutable.fromJS({
         messages: [],
     },
     threads: [],  // all the threads that this user is part of
-
     count: null,
     error: null,
 });
@@ -187,7 +189,11 @@ const defaultState = Immutable.fromJS({
 
 const Messages = (state = defaultState, action) => {
     switch(action.type) {
-        // Add your action types here
+        case THREAD_EXISTS: {
+            return state.withMutations(val => {
+                val.setIn(['profileViewing', 'profileID'], action.id);
+            });
+        }
         case SEND_MESSAGE_SUCCESS: {
             return state.withMutations(val => {
                 const messages = val.getIn(['profileViewing', 'messages']);
@@ -214,9 +220,17 @@ const Messages = (state = defaultState, action) => {
                 val.setIn(['profileViewing', 'messages'], fromJS(action.data.results));
             })
         }
-        case SET_THREAD_VIEWING: {
+        case FETCH_MESSAGES_ERROR: {
             return state.withMutations(val => {
-                val.setIn(['profileViewing', 'profileID'], action.id);
+                val.set('error', action.error);
+            });
+        }
+        case REMOVE_PROFILE_VIEWING: {
+            return state.withMutations(val => {
+                val.set('profileViewing', fromJS({
+                    profileID: null,
+                    messages: []
+                }));
             })
         }
         default: {
@@ -225,11 +239,11 @@ const Messages = (state = defaultState, action) => {
     }
 }
 
-
 export {
     Messages,
     fetchThreads,
-    fetchMessagesIfThreadExists,
-    setProfileViewing,
-    sendMessage
+    fetchMessages,
+    checkIfThreadExists,
+    sendMessage,
+    removeProfileViewing
 }

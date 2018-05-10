@@ -14,7 +14,7 @@ class ThreadPreview extends React.Component {
         }
         return (
             <div className={classes.join(" ")} onClick={() => this.props.onClick(profile.get('id'))}>
-                <ProfilePicture picture={profile.get('picture')} small/>
+                <ProfilePicture picture={profile.get('picture')} size="small"/>
                 <div className="message-preview">
                     <h1>{getName(profile)}</h1>
                     <p>{message.get('body')}</p>

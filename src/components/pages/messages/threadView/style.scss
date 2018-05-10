@@ -1,46 +1,48 @@
 @import "style/vars";
 
 .thread-view {
-  background-color: #F8F8F8;
   display: flex;
   flex-flow: column;
   flex: 1;
-  padding: 10px;
   max-height: calc(100% - 70px);
-  overflow: auto;
+  flex-direction: column-reverse;
+  overflow-y: scroll;
 
   .all-messages {
-    flex-flow: column;
-    align-items: flex-start;
-    flex: 1;
-
     .message {
       width: 100%;
       display: flex;
       flex-flow: row;
-    }
+      align-items: center;
+      padding-left: 10px;
 
-    .bubble {
-      display: flex;
-      flex-flow: row;
-      margin: 5px;
-      padding: 10px;
-      max-width: 50%;
-      background-color: $message-bubble-background-color;
-      border-radius: 20px;
-    }
+      &.self {
+        background-color: $pale-grey;
+      }
 
-    .right {
-      justify-content: flex-end;
-    }
+      .bubble {
+        display: flex;
+        flex-flow: row;
+        margin: 5px;
+        padding: 10px;
+        color: $message-text-color;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-all;
+      }
 
-    .left {
-      justify-content: flex-start;
-    }
+      .messages--profile-pic {
+        width: 32px;
+        height: 32px;
+        border-radius: 4px;
+        background-color: $light-teal;
+        flex-shrink: 0;
+      }
 
-    p {
-      overflow-wrap: break-word;
-      width: 100%;
+      p {
+        overflow-wrap: break-word;
+        width: 100%;
+      }
     }
   }
 }
