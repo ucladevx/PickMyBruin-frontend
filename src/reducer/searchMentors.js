@@ -117,7 +117,6 @@ const handleSearch = (searchTerm) => {
 
 const defaultState = Immutable.fromJS({
     error: null,
-    loading: false,
     searchedMajor: '',
     _internal: {
         searched: false,
@@ -129,20 +128,17 @@ const SearchMentors = (state=defaultState, action) => {
     switch(action.type) {
         case SEARCH_MAJOR_START: {
             return state.withMutations(val => {
-                val.set('loading', true);
                 val.set('searchedMajor', action.major);
             })
         }
         case SEARCH_MAJOR_ERROR: {
             return state.withMutations(val => {
-                val.set('loading', false);
                 val.set('error', action.error);
                 val.setIn(['_internal', 'searched'], true);
             })
         }
         case SEARCH_MAJOR_SUCCESS: {
             return state.withMutations(val => {
-                val.set('loading', false);
                 val.set('error', null);
                 val.setIn(['_internal', 'searched'], true);
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import NavBar from '../../navbar';
-import SearchBar from '../../searchBar';
+import NavBar from 'components/navbar';
+import SearchBar from './searchBar';
 
 import SearchResultContainer from './searchResultContainer';
 import Results from './results';

@@ -30,7 +30,7 @@ class MessagesContainer extends React.Component {
         const threadViewingId = this.props.match.params.profileId;
 
         try {
-            this.socket = new WebSocket(`ws://${Config.WS_URL}/${socketId}`);
+            this.socket = new WebSocket(`${Config.WS_URL}/${socketId}`);
             this.socket.onmessage = event => {
                 const message = JSON.parse(event.data);
                 if (message.TYPE == 'MESSAGE_UPDATE') {
