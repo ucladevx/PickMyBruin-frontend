@@ -8,24 +8,24 @@ RUN apk add -U nginx make nodejs
 # Create directories
 #   /working is the build directory
 #   /static is the directory linked to nginx (serves static content)
-RUN mkdir -p /var/www/pickmybruin/working && \
-    mkdir -p /var/www/pickmybruin/static && \
-    mkdir -p /var/www/pickmybruin/static/build && \
-    mkdir -p /var/www/pickmybruin/static/images
+RUN mkdir -p /var/www/BQuest/working && \
+    mkdir -p /var/www/BQuest/static && \
+    mkdir -p /var/www/BQuest/static/build && \
+    mkdir -p /var/www/BQuest/static/images
 
 # Install the required packages to build the frontend
-WORKDIR /var/www/pickmybruin/working
-COPY *.json /var/www/pickmybruin/working/
+WORKDIR /var/www/BQuest/working
+COPY *.json /var/www/BQuest/working/
 RUN /usr/bin/node --max_semi_space_size=8 \
                   --max_old_space_size=298 \
                   --max_executable_size=248 \
                   /usr/bin/npm install
 
 # Copy the source files
-COPY pages/ /var/www/pickmybruin/working/pages/
-COPY src/ /var/www/pickmybruin/working/src/
-COPY images/ /var/www/pickmybruin/working/images/
-COPY .babelrc *.js Makefile /var/www/pickmybruin/working/
+COPY pages/ /var/www/BQuest/working/pages/
+COPY src/ /var/www/BQuest/working/src/
+COPY images/ /var/www/BQuest/working/images/
+COPY .babelrc *.js Makefile /var/www/BQuest/working/
 
 # build and copy files to server root
 RUN make build && \
@@ -36,7 +36,7 @@ RUN make build && \
 # Copy the configuration file
 RUN mkdir -p /run/nginx
 COPY nginx.conf /etc/nginx/
-WORKDIR /var/www/pickmybruin/static
+WORKDIR /var/www/BQuest/static
 
 # Run the server
 EXPOSE 80

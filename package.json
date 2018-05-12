@@ -1,5 +1,5 @@
 {
-  "name": "pickmybruin",
+  "name": "BQuest",
   "version": "0.1.0",
   "description": "DevX Fall 2017 - PickMyBruin",
   "private": true,
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ucladevx/pickmybruin-frontend.git"
+    "url": "git+https://github.com/ucladevx/BQuest-Frontend.git"
   },
   "author": "ramsgoli",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/ucladevx/pickmybruin-frontend/issues"
+    "url": "https://github.com/ucladevx/BQuest-Frontend/issues"
   },
-  "homepage": "https://github.com/ucladevx/pickmybruin-front-end#readme",
+  "homepage": "https://github.com/ucladevx/BQuest-Frontend#readme",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.1",

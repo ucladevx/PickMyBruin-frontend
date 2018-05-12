@@ -7,10 +7,10 @@ dev:
 	WEBPACK=1 NODE_ENV=development npm run build-dev
 
 build_image:
-	docker build -t pickmybruin/frontend .
+	docker build -t BQuest/frontend .
 
 run: build_image
-	docker run --rm -p 8080:80 pickmybruin/frontend
+	docker run --rm -p 8080:80 BQuest/frontend
 
 gen: build
 	mkdir -p public
