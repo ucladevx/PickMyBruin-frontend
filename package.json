@@ -1,7 +1,7 @@
 {
   "name": "BQuest",
   "version": "0.1.0",
-  "description": "DevX Fall 2017 - PickMyBruin",
+  "description": "DevX Fall 2017 - BQuest",
   "private": true,
   "main": "index.js",
   "scripts": {
