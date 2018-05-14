@@ -4,7 +4,7 @@ services:
   db:
     image: postgres:10.1-alpine
   web:
-    image: BQuest/backend:latest
+    image: bquest/backend:latest
     environment:
       - PYTHONUNBUFFERED=1
     ports:
@@ -12,7 +12,7 @@ services:
     depends_on:
       - db
   frontend:
-    image: BQuest/frontend:latest
+    image: bquest/frontend:latest
     ports:
       - "80:80"
     depends_on:
