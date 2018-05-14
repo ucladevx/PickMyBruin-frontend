@@ -9,8 +9,9 @@ class SearchContainer extends React.Component {
         return (
             <Search 
                 mentors={this.props.mentors}
-                _internal={this.props._internal}
                 handleSearch={this.props.handleSearch}
+                count={this.props.count}
+                _internal={this.props._internal}
             />
         );
     }
@@ -20,6 +21,7 @@ const mapStateToProps = state => {
     const SearchMentors = state.SearchMentors;
     return {
         mentors: SearchMentors.get('mentors'),
+        count: SearchMentors.get('count'),
         _internal: SearchMentors.get('_internal'),
     };
 }

@@ -4,3 +4,7 @@
 export const getName = profile => {
     return `${profile.get('first_name')} ${profile.get('last_name')}`
 }
+
+export const pluralize = (count, word) => {
+  return count === 1 ? word : `${word}s`;
+}

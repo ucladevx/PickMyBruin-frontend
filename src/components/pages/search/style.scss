@@ -3,7 +3,6 @@
 .search-container {
   width: 100%;
   height: 100%;
-  background-color: $profile-canvas-color;
 
   display: flex;
   flex-flow: column;
@@ -21,16 +20,28 @@
   }
 
   .search-results-container {
-    flex-grow: 2;
-    flex-shrink: 100;
     display: flex;
     flex-flow: column;
+    align-items: center;
     overflow: scroll;
 
-    @media(min-width: 440px) {
-      padding: 20px 300px 20px 300px;
-    }
+    .results-wrapper {
+      display: flex;
+      flex-flow: column;
+      width: 70%;
+      align-items: center;
 
+      .header {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        color: $pale-teal;
+        border-bottom: 1px solid $pale-teal;
+        height: 50px;
+        width: 100%;
+      }
+    }
   }
 
   .instructions {

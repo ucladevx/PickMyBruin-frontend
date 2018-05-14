@@ -18,7 +18,8 @@ class Search extends React.Component {
                 </div>
                 <Results
                     mentors={this.props.mentors}
-                    _internal={this.props._internal}
+                    count={this.props.count}
+                    _internal={this.props._internal} 
                 />
             </div>
         );

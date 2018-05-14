@@ -2,7 +2,8 @@ import React from 'react';
 
 class SearchBar extends React.Component {
     state = {
-        value: ''
+        value: '',
+        searched: false
     }
 
     submit = e => {
@@ -10,7 +11,7 @@ class SearchBar extends React.Component {
 
         this.props.handleSearch(this.state.value);
         this.setState({
-            value: ''
+            searched: true
         });
     }
 
@@ -18,6 +19,10 @@ class SearchBar extends React.Component {
         this.setState({
             value: e.target.value
         })
+    }
+
+    renderSearchTerm = () => {
+        
     }
 
     render() {

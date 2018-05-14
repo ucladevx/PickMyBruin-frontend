@@ -66,10 +66,10 @@ const dummyMentors = Immutable.fromJS([
     }
 ])
 
-const searchMajorSuccess = (mentors) => {
+const searchMajorSuccess = data => {
     return {
         type: SEARCH_MAJOR_SUCCESS,
-        mentors,
+        data,
     };
 }
 
@@ -101,7 +101,7 @@ const handleSearch = (searchTerm) => {
             if (status > 299 || status < 200) {
                 throw new Error("Error fetching mentors");
             } else {
-                dispatch(searchMajorSuccess(data.results));
+                dispatch(searchMajorSuccess(data));
             }
         } catch (e) {
             dispatch(searchMajorFailure(e));
@@ -122,6 +122,7 @@ const defaultState = Immutable.fromJS({
         searched: false,
     },
     mentors: [],
+    count: null
 });
 
 const SearchMentors = (state=defaultState, action) => {
@@ -139,8 +140,10 @@ const SearchMentors = (state=defaultState, action) => {
         }
         case SEARCH_MAJOR_SUCCESS: {
             return state.withMutations(val => {
+                console.log(action);
                 val.set('error', null);
                 val.setIn(['_internal', 'searched'], true);
+                val.set('count', action.data.count)
 
                 
                 /* 
@@ -151,7 +154,7 @@ const SearchMentors = (state=defaultState, action) => {
                  * }
                  *
                  */
-                val.set('mentors', fromJS(action.mentors.map(mentor => {
+                val.set('mentors', fromJS(action.data.results.map(mentor => {
                     let formattedMentor = {};
                     formattedMentor.user = mentor.profile;
 
