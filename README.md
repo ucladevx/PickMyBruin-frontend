@@ -1,4 +1,4 @@
-# PickMyBruin - Front end
+# BQuest - Front end
 
 built with:
 * React.js + Redux

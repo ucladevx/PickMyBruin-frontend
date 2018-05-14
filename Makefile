@@ -7,10 +7,10 @@ dev:
 	WEBPACK=1 NODE_ENV=development npm run build-dev
 
 build_image:
-	docker build -t BQuest/frontend .
+	docker build -t bquest/frontend .
 
 run: build_image
-	docker run --rm -p 8080:80 BQuest/frontend
+	docker run --rm -p 8080:80 bquest/frontend
 
 gen: build
 	mkdir -p public
