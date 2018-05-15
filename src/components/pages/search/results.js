@@ -8,7 +8,7 @@ class Results extends React.Component {
     content = () => {
         if (this.props.count !== 0) {
             return (
-                <div className="search-results-container">
+                <div className="results-container">
                     {this.props.mentors.map(mentorProfile => 
                         <SearchResultContainer 
                             key={mentorProfile.getIn(['mentor', 'id'])} 

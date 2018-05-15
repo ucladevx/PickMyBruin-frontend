@@ -140,7 +140,6 @@ const SearchMentors = (state=defaultState, action) => {
         }
         case SEARCH_MAJOR_SUCCESS: {
             return state.withMutations(val => {
-                console.log(action);
                 val.set('error', null);
                 val.setIn(['_internal', 'searched'], true);
                 val.set('count', action.data.count)

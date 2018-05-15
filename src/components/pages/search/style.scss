@@ -41,6 +41,10 @@
         height: 50px;
         width: 100%;
       }
+
+      .results-container {
+        margin-top: 10px;
+      }
     }
   }
 
@@ -97,10 +101,8 @@
 
   min-height: 200px;
   margin: 10px;
-  padding: 20px;
   background-color: $white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid $pale-teal;
 
   .profile-pic-container {
     flex-grow: 1;
@@ -126,12 +128,27 @@
       overflow: hidden;
     }
 
-    .mentor-name {
+    .mentor-heading {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
       font-size: 1.3em;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
       margin-bottom: 5px;
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $white;
+        background-color: $pale-teal;
+        border-radius: 5px;
+        font-size: .7em;
+        height: 30px;
+        width: 100px;
+      }
     }
     .mentor-major {
       color: $mentor-bio-color;
