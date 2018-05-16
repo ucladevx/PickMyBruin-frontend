@@ -1,0 +1,85 @@
+@import '../../../style/vars';
+
+.ambassador-detail-container {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+
+  .navbar-container {
+    display: none;
+    @media(min-width: 440px) {
+      display: inherit;
+    }
+  }
+
+  .ambassador-detail-wrapper {
+    display: flex;
+    flex-flow: row;
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: auto;
+
+    .sidebar {
+      .header {
+        background-color: $pale-teal;
+        color: $white;
+        padding: 10px;
+        align-items: center;
+
+        font-size: 1.5em;
+      }
+
+      .search-result-container {
+        padding: 10px;
+      }
+    }
+
+    .ambassador-detail {
+      display: flex;
+      flex-flow: column;
+      flex: 1;
+
+      .top-bar {
+        margin: 10px;
+        color: $pale-teal;
+      }
+
+      .content {
+        display: flex;
+        flex-flow: row;
+        flex: 1;
+
+        .column-left {
+          flex: 2;
+        }
+
+        .column-right {
+          flex: 3;
+        }
+      }
+    }
+  }
+}
+
+.new-request-input {
+  color: $subheading-text-color;
+  margin-top: 15px;
+
+  & > {
+    margin-top: 10px;
+  }
+
+  p {
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-size: 1.3em;
+  }
+
+  .buttons {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+  }
+}

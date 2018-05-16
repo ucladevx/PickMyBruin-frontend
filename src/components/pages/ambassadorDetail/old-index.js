@@ -8,7 +8,7 @@ import Results from '../search/results';
 
 import Navbar from '../../navbar';
 
-class MentorDetail extends React.Component {
+class ambassadorDetail extends React.Component {
     _renderForm = () => {
         // checks that we have not already tried to request this mentor
         if (this.props.mentor.canNotRequest) {
@@ -30,6 +30,13 @@ class MentorDetail extends React.Component {
     }
 
     render() {
+        return (
+            <div className="mentor-detail-container">
+            </div>
+        );
+    }
+
+    old_render() {
         const {
             profile,
         } = this.props.mentor;
@@ -40,13 +47,6 @@ class MentorDetail extends React.Component {
             <div className="mentor-detail-container">
                 <Navbar />
                 <div className="content">
-                    <div className="results">
-                        <Results 
-                            mentors={this.props.mentors.filter((mentorProfile) => {
-                                return mentorProfile.getIn(['mentor', 'id']) != profile.getIn(['mentor', 'id'])
-                            })} 
-                        />
-                    </div>
                     <div className="profile">
                         <ProfileTop 
                             name={`${profile.getIn(['user', 'first_name'])} ${profile.getIn(['user', 'last_name'])}`}
@@ -83,4 +83,4 @@ class MentorDetail extends React.Component {
     }
 }
 
-export default MentorDetail;
+export default ambassadorDetail;

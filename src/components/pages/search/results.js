@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchResultContainer from './searchResultContainer';
+import SearchResultContainer from 'components/common/searchResultContainer';
 
 import Divider from 'components/util/divider';
 import { pluralize } from 'common';
@@ -15,6 +15,12 @@ class Results extends React.Component {
                             mentorProfile={mentorProfile} 
                         />
                     )}
+                </div>
+            );
+        } else {
+            return (
+                <div className="instructions">
+                    <h1>We don't have ambassadors in that major at the moment. Check back soon!</h1>
                 </div>
             );
         }
@@ -39,29 +45,6 @@ class Results extends React.Component {
                 </div>
             </div>
         );
-
-        if (!this.props.mentors) {
-            return null;
-        }
-        
-        if (this.props._internal && this.props._internal.get('searched') && this.props.count === 0) {
-            return (
-                <div className="instructions">
-                    <h1>We don't have ambassadors in that major at the moment. Check back soon!</h1>
-                </div>
-            );
-        }
-
-        if (this.props.count !== 0) {
-        } else if (this.props._internal && !this.props._internal.get('searched')) {
-            return(
-                <div className="instructions">
-                    <h1>&#x1F446; Try typing in the search bar above to find ambassadors in majors you're interested in</h1>
-                </div>
-            ); 
-        } else {
-            return null;
-        }
     }
 }
 
