@@ -16,21 +16,24 @@ class NavBar extends React.Component {
     render() {
         const { location } = this.props
         return(
-            <div className="navbar-container">
-                <div className="logo">
-                    <div className="logo-logo" dangerouslySetInnerHTML={{__html: BquestLogo}} />
+            <div>
+                <div className="navbar-container">
+                    <div className="logo">
+                        <div className="logo-logo" dangerouslySetInnerHTML={{__html: BquestLogo}} />
+                    </div>
+                    <div className="buttons">
+                        <div className="navigation-item">
+                            <p onClick={() => this.navigate("search")} className={classNames({selected: location.startsWith("search")})}>Ambassadors</p>
+                        </div>
+                        <div className="navigation-item">
+                            <p onClick={() => this.navigate("messages")} className={classNames({selected: location.startsWith("messages")})}>Messages</p>
+                        </div>
+                        <div className="navigation-item">
+                            <p onClick={() => this.navigate("profile/1")} className={classNames({selected: location.startsWith("profile")})}>Settings</p>
+                        </div>
+                    </div>
                 </div>
-                <div className="buttons">
-                    <div className="navigation-item">
-                        <p onClick={() => this.navigate("search")} className={classNames({selected: location.startsWith("search")})}>Ambassadors</p>
-                    </div>
-                    <div className="navigation-item">
-                        <p onClick={() => this.navigate("messages")} className={classNames({selected: location.startsWith("messages")})}>Messages</p>
-                    </div>
-                    <div className="navigation-item">
-                        <p onClick={() => this.navigate("profile")} className={classNames({selected: location.startsWith("profile")})}>Settings</p>
-                    </div>
-                </div>
+                <div className="navbar-spaceholder"/>
             </div>
         );
     }

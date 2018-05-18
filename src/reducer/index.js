@@ -21,6 +21,9 @@ if (process.env.NODE_ENV !== 'production') {
     middleware = [...middleware, createLogger({collapsed: true})];
 }
 
+// Install redux-devtools-extension to get a nice full view of what current state is
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
     combineReducers({
         Register,
@@ -32,9 +35,9 @@ const store = createStore(
         router: routerReducer,
         notifications: notificationsReducer()
     }),
-    applyMiddleware(
+    composeEnhancers(applyMiddleware(
         ...middleware
-    )
+    ))
 );
 
 const Actions = {

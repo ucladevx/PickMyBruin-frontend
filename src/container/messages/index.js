@@ -72,7 +72,7 @@ class MessagesContainer extends React.Component {
 
         return (
             <div className="threadview-input-container">
-                <ThreadView 
+                <ThreadView
                     profileId={this.props.match.params.profileId}
                 />
                 <Input />
@@ -83,11 +83,11 @@ class MessagesContainer extends React.Component {
     render() {
         return (
             <div className="messages-container">
+                <NavBar />
                 <div className="messages-wrapper">
                     <Sidebar />
                     {this._render()}
                 </div>
-                <NavBar />
             </div>
         );
     }
