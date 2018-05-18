@@ -299,8 +299,8 @@ class AmbassadorProfile extends React.Component {
 
     renderSingleMajor = (majorName, index) => {
         return (
-            <div className="select-entry">
-                <InputGroup key={index}>
+            <div className="select-entry" key={index}>
+                <InputGroup>
                     <Input type="select"
                            value={majorName || ''}
                            onChange={({ target }) => {
@@ -364,8 +364,8 @@ class AmbassadorProfile extends React.Component {
 
     renderSingleMinor = (minorName, index) => {
         return (
-            <div className="select-entry">
-                <InputGroup key={index}>
+            <div className="select-entry" key={index}>
+                <InputGroup>
                     <Input type="select"
                            value={minorName || ''}
                            onChange={({ target }) => {
