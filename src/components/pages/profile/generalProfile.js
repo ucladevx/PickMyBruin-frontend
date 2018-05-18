@@ -55,14 +55,17 @@ class GeneralProfile extends React.Component {
                                             }
                                         }}
                                         onBlur={({ target }) => {
-                                            let name = target.value.toString();
+                                            let name = target.value.toString().trim();
                                             let nameArr = name.split(/\ +/);
                                             let firstName = '';
                                             let lastName = '';
-                                            if (nameArr.length >= 1) {
+                                            if (nameArr.length === 0) {
+                                                return; // does nothing
+                                            } else if (nameArr.length === 1) {
                                                 firstName = nameArr[0];
-                                            }
-                                            if (nameArr.length >= 2) {
+                                                lastName = ''; // in case someone does not have a last name (rare but occurs)
+                                            } else {
+                                                firstName = nameArr.slice(0, nameArr.length-1).join(' ');
                                                 lastName = nameArr[nameArr.length-1];
                                             }
                                             this.props.updateMultipleProfile(['first_name', firstName], ['last_name', lastName]);
