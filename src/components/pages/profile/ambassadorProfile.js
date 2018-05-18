@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ChipInput from 'material-ui-chip-input';
 import Chip from 'material-ui/Chip';
 
-import { Button, Input, Alert, FormGroup, Label, InputGroup, InputGroupAddon, InputGroupButton } from 'reactstrap';
+import { Button, Input, FormGroup, Label, InputGroup } from 'reactstrap';
 
 import majors from '../../../majors.json';
 
@@ -36,7 +36,7 @@ const styles = {
         textAlign: "center",
     },
     textfield_input: {
-        borderColor: '#007bff'
+        borderColor: '#c3d887'
     },
     blurb: {
         paddingLeft:"4%",
@@ -52,6 +52,42 @@ const styles = {
         flexWrap: 'wrap',
     },
 
+};
+
+// sort newArr based on sequence of origArr and merge them, using f as key function and g for reconstruction
+// Idea is: sort first based on origArr seq; if there are more entries added in newArr,
+// concat only after going through the sorting of origArr for 1 round;
+// eventually, concat entries in origArr but not in newArr to the very end
+// O(M+N) LOL
+const relativeSortAndMerge = (origArr, newArr, f, g) => {
+    let newArrMap = new Map();
+    for (const a of newArr) {
+        const key = f(a);
+        newArrMap.set(key, (newArrMap.get(key) || 0) + 1);
+    }
+
+    let sortedNewArr = [];
+    let surplusOrigArr = [];
+    for (const b of origArr) {
+        const key = f(b);
+        if (newArrMap.has(key)) {
+            sortedNewArr.push(g(key));
+            newArrMap.set(key, newArrMap.get(key) - 1);
+            if (newArrMap.get(key) <= 0) {
+                newArrMap.delete(key);
+            }
+        } else {
+            surplusOrigArr.push(g(key));
+        }
+    }
+
+    for (const [key, value] of newArrMap) {
+        for (let i = 0; i < value; i++) {
+            sortedNewArr.push(g(key));
+        }
+    }
+
+    return sortedNewArr.concat(surplusOrigArr);
 };
 
 class AmbassadorProfile extends React.Component {
@@ -93,12 +129,15 @@ class AmbassadorProfile extends React.Component {
             nextMinor.push({ name: '' });
         }
 
+        // conduct relative sort of new data based on old data to avoid confusion
+
+
         this.setState({
             bio: nextProps.mentor.bio,
             // major: nextProps.mentor.major,
             // minor: nextProps.mentor.minor || {name: ''},
-            major: nextMajor,
-            minor: nextMinor,
+            major: relativeSortAndMerge(currMajor, nextMajor, e => e.name, n => { return { name: n }; }),
+            minor: relativeSortAndMerge(currMinor, nextMinor, e => e.name, n => { return { name: n }; }),
             courses: nextProps.mentor.courses.map(obj => obj.name)
         });
     }
@@ -170,12 +209,10 @@ class AmbassadorProfile extends React.Component {
             }
         } else {
             if (!this.state.classesOpen) {
-                let key = 0;
                 return (
                     <div className="text-and-edit">
                         <div className="courses">
-                            {this.props.mentor.courses.map(course => {
-                                key += 1;
+                            {this.props.mentor.courses.map((course, key) => {
                                 return (
                                     <Chip style={styles.chip} key={key}>{course.name}</Chip>
                                 );
@@ -229,7 +266,8 @@ class AmbassadorProfile extends React.Component {
         }
 
         currMajor[index].name = majorName;
-        this.props.updateProfile("major", currMajor); // no setState, wait for receiving new props
+        // remove unexpected empty major
+        this.props.updateProfile("major", currMajor.filter(e => !!e.name)); // no setState, wait for receiving new props
     }
 
     _updateMinor = (minorName, index) => {
@@ -251,7 +289,8 @@ class AmbassadorProfile extends React.Component {
         }
 
         currMinor[index].name = minorName;
-        this.props.updateProfile("minor", currMinor); // no setState, wait for receiving new props
+        // remove unexpected empty minor
+        this.props.updateProfile("minor", currMinor.filter(e => !!e.name)); // no setState, wait for receiving new props
     }
 
     renderSingleMajor = (majorName, index) => {
@@ -264,7 +303,9 @@ class AmbassadorProfile extends React.Component {
                                this._updateMajor(target.value, index);
                            }}>
                         <option key={-1} value="" disabled>SELECT A MAJOR</option>
-                        {majors.sort().map((major, i) => { // assuming possibility of minors are same as that of majors
+                        {majors.sort()
+                            .filter((major) => (!(this.state.major.map(e => e.name).includes(major)) || major === majorName)) // either selectable (not selected by other entries), or is currently selected value
+                            .map((major, i) => { // assuming possibility of minors are same as that of majors
                             return <option key={i} value={major}>{major}</option>;
                         })}
                     </Input>
@@ -327,7 +368,9 @@ class AmbassadorProfile extends React.Component {
                                this._updateMinor(target.value, index);
                            }}>
                         <option key={-1} value="" disabled>SELECT A MINOR</option>
-                        {majors.sort().map((major, i) => { // assuming possibility of minors are same as that of majors
+                        {majors.sort()
+                            .filter((major) => (!(this.state.minor.map(e => e.name)).includes(major) || major === minorName)) // either selectable (not selected by other entries), or is currently selected value
+                            .map((major, i) => { // assuming possibility of minors are same as that of majors
                             return <option key={i} value={major}>{major}</option>;
                         })}
                     </Input>
