@@ -448,7 +448,7 @@ class AmbassadorProfile extends React.Component {
                                 {this.renderBio()}
                             </FormGroup>
                             <FormGroup className="classes-taken">
-                                <Label>Classes Taken:</Label>
+                                <Label>Classes Taken</Label>
                                 {this.renderClasses()}
                             </FormGroup>
                             <div>
