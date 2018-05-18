@@ -47,7 +47,7 @@ const mapDispatchToProps = dispatch => {
             dispatch(push("/login", {redirect: "/verify"}))
         },
         redirectToProfile: () => {
-            dispatch(push("/profile"));
+            dispatch(push("/profile/1"));
         },
         finishRegistration: () => {
             dispatch(replace('/completeRegistration'));

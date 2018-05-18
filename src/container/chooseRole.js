@@ -8,7 +8,7 @@ import ChooseRole from 'components/pages/chooseRole';
 class ChooseRoleContainer extends React.Component {
     render() {
         return(
-            <ChooseRole 
+            <ChooseRole
                 beAmbassador={this.props.beAmbassador}
                 redirectToProfile={this.props.redirectToProfile}
             />
@@ -24,10 +24,10 @@ const mapDispatchToProps = dispatch => {
     return {
         beAmbassador: () => {
             dispatch(Actions.profileActions.updateMentorStatus(true));
-            dispatch(replace("/profile"));
+            dispatch(replace("/profile/2"));
         },
         redirectToProfile: () => {
-            dispatch(replace("/profile"));
+            dispatch(replace("/profile/1"));
         }
     };
 }

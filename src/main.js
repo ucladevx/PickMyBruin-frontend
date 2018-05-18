@@ -56,7 +56,7 @@ class App extends React.Component {
 
                             <Route exact path="/chooseRole" component={Authentication(ChooseRoleContainer)} />
                             <Route exact path="/profile/:page" component={Authentication(MultipleProfileContainer)} />
-                            <Route exact path="/profile" component={Authentication(ProfileContainer)} />
+                            {/*<Route exact path="/profile" component={Authentication(ProfileContainer)} />*/}
                             <Route exact path="/search" component={Authentication(SearchContainer)} />
                             <Route exact path="/messages" component={Authentication(MessagesContainer)}/>
                             <Route exact path="/messages/:profileId" component={Authentication(MessagesContainer)} />
