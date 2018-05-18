@@ -46,6 +46,7 @@ const styles = {
     },
     chip: {
         margin: 4,
+        display: 'inline-block',
     },
     wrapper: {
         display: 'flex',
@@ -199,10 +200,13 @@ class AmbassadorProfile extends React.Component {
         if (!this.props.mentor.courses.length) {
             if (!this.state.classesOpen) {
                 return (
-                    <p onClick={() => this.openField("classesOpen")}>
-                        <i className="fa fa-plus" aria-hidden="true"></i>
-                        &nbsp;Add Classes
-                    </p>
+                    <div>
+                        <Button size="sm" className="edit-class-btn" onClick={() => this.openField("classesOpen")}>Add Classes</Button>
+                    </div>
+                    // <p onClick={() => this.openField("classesOpen")}>
+                    //     <i className="fa fa-plus" aria-hidden="true"></i>
+                    //     &nbsp;Add Classes
+                    // </p>
                 );
             } else {
                 return this.renderEditClasses();

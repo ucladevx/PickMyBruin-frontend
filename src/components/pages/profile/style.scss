@@ -266,23 +266,54 @@
     width: 100%;
     height: 100%;
 
-    .profile-select {
-      width: 33.3%;
-      background-color: #7ec3b4;
+    @media (max-width: 800px) {
+      position: static;
+      //flex-direction: column;
 
-      bottom: 0;
+      .profile-select {
+        z-index: 5;
+        position: fixed;
+        width: 100%;
+        background-color: #7ec3b4;
 
-      .entry {
-        margin-top: 1em;
-        margin-right: 1em;
-        text-align: right;
-        right: 1em;
-        color: white;
-        cursor: pointer;
+        bottom: 0;
+
+        display: flex;
+
+        justify-content: space-around;
+
+        .entry {
+          //display: inline-block;
+          margin-top: 1em;
+          margin-bottom: 1em;
+          //margin-right: 1em;
+          text-align: center;
+          //right: 1em;
+          color: white;
+          cursor: pointer;
+        }
       }
+    }
 
-      .first-entry {
-        margin-top: 3em;
+    @media (min-width: 800px) {
+      .profile-select {
+        width: 33.3%;
+        background-color: #7ec3b4;
+
+        bottom: 0;
+
+        .entry {
+          margin-top: 1em;
+          margin-right: 1em;
+          text-align: right;
+          right: 1em;
+          color: white;
+          cursor: pointer;
+        }
+
+        .first-entry {
+          margin-top: 3em;
+        }
       }
     }
 
@@ -313,12 +344,14 @@
           }
         }
 
-        @media (min-width: 800px) {
-          flex-direction: row;
+        @media (max-width: 800px) {
+          flex-direction: column;
 
-          //.right {
-          //  flex-grow: 1;
-          //}
+          .general-profile-image {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+          }
         }
 
         label {
@@ -346,9 +379,25 @@
             width: 50vw; // FXXK this, the flexbox seems having some trouble with li!
           }
         }
+
+        @media (max-width: 800px) {
+          ul {
+            li {
+              word-wrap: break-word;
+              width: 100%;
+            }
+          }
+        }
       }
 
       .ambassador-profile {
+        .courses, .add-classes {
+          max-width: 55vw;
+          @media (max-width: 800px) {
+            max-width: 100%;
+          }
+        }
+
         label {
           font-weight: bold;
         }
@@ -381,6 +430,7 @@
         .cancel {
           cursor: pointer;
           color: #7ec3b4;
+          margin-bottom: 3em;
         }
 
         .activate {
@@ -421,6 +471,7 @@
           border: 0;
           background-color: #c3d887;
           box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+          margin-top: 0.5em;
         }
       }
     }
