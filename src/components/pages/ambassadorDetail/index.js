@@ -5,12 +5,11 @@ import ColumnLeft from './columnLeft';
 
 class AmbassadorDetail extends React.Component {
     render() {
-        console.log(this.props);
         const ambassador = this.props.ambassador;
         return (
             <div className="ambassador-detail">
                 <div className="top-bar">
-                    <span><i className="fa fa-arrow-left"></i> Search</span>
+                    <span onClick={this.props.goBack}><i className="fa fa-arrow-left"></i> Search</span>
                 </div>
                 <div className="content">
                     <ColumnLeft

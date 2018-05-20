@@ -42,6 +42,10 @@
       .top-bar {
         margin: 10px;
         color: $pale-teal;
+
+        span {
+          cursor: pointer;
+        }
       }
 
       .content {

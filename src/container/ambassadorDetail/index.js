@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { replace } from 'react-router-redux';
+import { replace, goBack } from 'react-router-redux';
 
 import { Actions } from 'reducer';
 import { getAmbassadorState } from 'selectors/ambassadors';
@@ -17,6 +17,7 @@ class AmbassadorDetailContainer extends React.Component {
                     <Sidebar />
                     <AmbassadorDetail 
                         ambassador={this.props.ambassador}
+                        goBack={this.props.goBack}
                     />
                 </div>
                 <NavBar />
@@ -27,8 +28,16 @@ class AmbassadorDetailContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        ambassador: getAmbassadorState(state, ownProps)
+        ambassador: getAmbassadorState(state, ownProps),
     };
 }
 
-export default connect(mapStateToProps)(AmbassadorDetailContainer);
+const mapDispatchToProps = dispatch => {
+    return {
+        goBack: () => {
+            dispatch(goBack());
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AmbassadorDetailContainer);
