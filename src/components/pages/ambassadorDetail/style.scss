@@ -96,6 +96,25 @@
           & > div {
             margin-bottom: 30px;
           }
+
+          .courses {
+            display: flex;
+            flex-flow: row;
+            flex-wrap: wrap;
+
+            span {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: $white;
+              background-color: $pale-teal;
+              border-radius: 5px;
+              font-size: .7em;
+              padding: 0 5px 0 5px;
+              height: 30px;
+              margin: 5px;
+            }
+          }
         }
       }
     }

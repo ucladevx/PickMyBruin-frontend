@@ -18,7 +18,7 @@ class AmbassadorDetail extends React.Component {
                         mentor={ambassador.get('mentor')}
                     />
                     <ColumnRight 
-                        bio={ambassador.getIn(['mentor', 'bio'])}
+                        mentor={ambassador.get('mentor')}
                     />
                 </div>
             </div>
