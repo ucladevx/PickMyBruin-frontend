@@ -3,7 +3,7 @@ import Header from './header';
 
 import SearchResultContainer from 'components/common/searchResultContainer';
 
-class ambassadorDetailSidebar extends React.Component {
+class AmbassadorDetailSidebar extends React.Component {
     render() {
         return (
             <div className="sidebar">
@@ -23,4 +23,4 @@ class ambassadorDetailSidebar extends React.Component {
     }
 }
 
-export default ambassadorDetailSidebar;
+export default AmbassadorDetailSidebar;
