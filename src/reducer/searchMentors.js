@@ -143,7 +143,6 @@ const SearchMentors = (state=defaultState, action) => {
                 val.set('error', null);
                 val.setIn(['_internal', 'searched'], true);
                 val.set('count', action.data.count)
-
                 
                 /* 
                  * turn the results from the API into our preferred object format:

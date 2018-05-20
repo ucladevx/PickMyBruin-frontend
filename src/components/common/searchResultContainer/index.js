@@ -3,6 +3,7 @@ import Shave from 'react-shave';
 import { Link } from 'react-router-dom';
 
 import ProfilePicture from 'components/profilePicture';
+import { getName } from 'common';
 
 class SearchResultContainer extends React.Component {
     state = {
@@ -30,7 +31,7 @@ class SearchResultContainer extends React.Component {
             mentorProfile
         } = this.props;
 
-        const name = `${mentorProfile.getIn(['user', 'first_name'])} ${mentorProfile.getIn(['user', 'last_name'])}`
+        const name = getName(mentorProfile.get('user'));
         
         return (
             <Link to={`/ambassadors/${this.props.mentorProfile.getIn(['mentor','id'])}`}>

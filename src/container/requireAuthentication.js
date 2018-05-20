@@ -40,13 +40,13 @@ export default function(ComposedComponent) {
             }
 
             if (nextProps.isProfileFetched) {
+                if (!nextProps.isProfileVerified) {
+                    return this.props.redirectToPending();
+                }
+                
                 this.setState({
                     fetching: false
-                })
-            }
-
-            if (!nextProps.isProfileVerified) {
-                return this.props.redirectToPending();
+                });
             }
         }
 
