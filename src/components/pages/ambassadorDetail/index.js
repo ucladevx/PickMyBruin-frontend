@@ -26,7 +26,10 @@ class AmbassadorDetail extends React.Component {
     sendMessage = e => {
         e.preventDefault();
         this.closeModal()
-        this.props.sendMessage(this.state.messageText, this.props.ambassador.getIn(['user', 'id']));
+        
+        if (this.state.messageText !== '') {
+            this.props.sendMessage(this.state.messageText, this.props.ambassador.getIn(['user', 'id']));
+        }
     }
 
     onChange = e => {
@@ -37,6 +40,8 @@ class AmbassadorDetail extends React.Component {
 
     render() {
         const ambassador = this.props.ambassador;
+        const disabled = this.state.messageText === '';
+
         return (
             <div className="ambassador-detail">
                 {this.state.showModal ? 
@@ -47,7 +52,7 @@ class AmbassadorDetail extends React.Component {
                         <p>Request a meetup!</p>
                         <form onSubmit={e => e.preventDefault()}>
                             <input value={this.state.messageText} type="text" placeholder="write something.." onChange={this.onChange}/>
-                            <Button onClick={this.sendMessage} color="green">Send</Button>
+                            <Button onClick={this.sendMessage} color="green" disabled={disabled}>Send</Button>
                         </form>
                     </Modal>     : null}
                 <div className="top-bar">
