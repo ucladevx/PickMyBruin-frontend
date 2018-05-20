@@ -18,6 +18,7 @@ class AmbassadorDetailContainer extends React.Component {
                     <AmbassadorDetail 
                         ambassador={this.props.ambassador}
                         goBack={this.props.goBack}
+                        sendMessage={this.props.sendMessage}
                     />
                 </div>
                 <NavBar />
@@ -36,6 +37,9 @@ const mapDispatchToProps = dispatch => {
     return {
         goBack: () => {
             dispatch(goBack());
+        },
+        sendMessage: (messageText, profileId) => {
+            dispatch(Actions.messagesActions.sendMessage(messageText, profileId));
         }
     }
 }

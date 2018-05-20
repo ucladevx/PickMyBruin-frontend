@@ -17,7 +17,7 @@ class ColumnLeft extends React.Component {
                     <p>{this.props.mentor.getIn(['major', 'name'])}</p>
                 </div>
                 <div className="button-container">
-                    <Button color="orange">Send a Message</Button>
+                    <Button color="orange" onClick={this.props.onClick}>Send a Message</Button>
                 </div>
             </div>
         );
