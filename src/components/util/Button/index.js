@@ -11,6 +11,9 @@ const PrimaryButton = ({onClick, block, children, disabled, color}) => {
         case "green": 
             colorCode="#c3d887"
             break;
+        case "red":
+            colorCode="#f74e4e"
+            break;
         default:
             colorCode="#c3d887"
     }
