@@ -47,11 +47,11 @@ class AmbassadorDetail extends React.Component {
                 {this.state.showModal ? 
                     <Modal 
                         closeModal={this.closeModal}>
-                        <p>Introduce yourself...</p>
-                        <p>Ask them a question...</p>
+                        <p>Introduce yourself.</p>
+                        <p>Ask them a question.</p>
                         <p>Request a meetup!</p>
                         <form onSubmit={e => e.preventDefault()}>
-                            <input value={this.state.messageText} type="text" placeholder="write something.." onChange={this.onChange}/>
+                            <input value={this.state.messageText} type="text" placeholder="Write something.." onChange={this.onChange}/>
                             <Button onClick={this.sendMessage} color="green" disabled={disabled}>Send</Button>
                         </form>
                     </Modal>     : null}

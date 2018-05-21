@@ -41,6 +41,15 @@
       font-size: 1.3em;
       margin-bottom: 5px;
 
+      &.small {
+        flex-flow: column;
+
+        span {
+          width: 70px;
+          height: 20px;
+        }
+      }
+
       p {
         text-overflow: ellipsis;
         overflow: hidden;

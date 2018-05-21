@@ -44,6 +44,10 @@ class SearchResultContainer extends React.Component {
         } = this.props;
 
         const name = getName(mentorProfile.get('user'));
+        let classes = ["mentor-heading"];
+        if (this.props.size === "small") {
+            classes.push(this.props.size);
+        }
         
         return (
             <Link to={`/ambassadors/${this.props.mentorProfile.getIn(['mentor','id'])}`}>
@@ -55,14 +59,15 @@ class SearchResultContainer extends React.Component {
                         />
                     </div>                
                     <div className="mentor-details">
-                        <div className="mentor-heading">
+                        <div className={classes.join(' ')}>
                             <p>{name}</p>
                             <span>{mentorProfile.getIn(['user', 'year'])} year</span>
                         </div>
                         <div className="mentor-major">{this.renderMajor()}</div>
+                        {this.props.size !== "small" && 
                         <div className="mentor-bio">
                             <Shave maxHeight={maxHeight}>{this.props.mentorProfile.getIn(['mentor','bio'])}</Shave>
-                        </div>
+                        </div>}
                     </div>
                 </div>
             </Link>   

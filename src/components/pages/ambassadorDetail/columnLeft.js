@@ -8,13 +8,10 @@ class ColumnLeft extends React.Component {
     renderMajors = () => {
         const majors = this.props.mentor.get('major');
         return majors.reduce((str, major, idx) => {
-            if (idx === majors.size - 1) {
-                return str += `${major.get('name')}`;
-            } else {
-                return str += `${major.get('name')}, `;
-            }
+            return idx === majors.size - 1 ? str += `${major.get('name')}` : str += `${major.get('name')}, `;
         }, '');
     }
+
     render() {
         return (
             <div className="column-left">
