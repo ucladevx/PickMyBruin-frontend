@@ -10,16 +10,16 @@ class Search extends React.Component {
     render() {
         return(
             <div className="search-container">
+                <NavBar />
                 <div className="search">
-                    <SearchBar 
+                    <SearchBar
                         handleSearch={this.props.handleSearch}
                     />
                 </div>
-                <Results 
+                <Results
                     mentors={this.props.mentors}
-                    _internal={this.props._internal} 
+                    _internal={this.props._internal}
                 />
-                <NavBar />
             </div>
         );
     }

@@ -39,7 +39,7 @@ class HomeContainer extends React.Component {
         }
 
         return(
-            <Home 
+            <Home
                 signUp={this.props.signUp}
             />
         );
@@ -62,7 +62,7 @@ const mapDispatchToProps = (dispatch)=>{
             dispatch(push('/register'));
         },
         redirectToProfile: () => {
-            dispatch(replace('/profile'));
+            dispatch(replace('/profile/1'));
         },
         fetchProfile: () => {
             dispatch(Actions.profileActions.fetchProfile());
@@ -71,4 +71,4 @@ const mapDispatchToProps = (dispatch)=>{
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer); 
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

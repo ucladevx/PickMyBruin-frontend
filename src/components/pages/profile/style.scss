@@ -1,255 +1,483 @@
 @import '../../../style/vars';
 
-#mount {
-  width: auto;
-  height: auto;
-}
-
+//#mount {
+//  width: auto;
+//  height: auto;
+//}
+//
+//.container-profile {
+//  background-color: $profile-canvas-color;
+//  width: auto;
+//  height: auto;
+//  min-height: 100%;
+//
+//  display: flex;
+//  flex-direction: column;
+//
+//  justify-content: flex-start; /* align items in Main Axis */
+//  align-items: stretch; /* align items in Cross Axis */
+//  align-content: stretch; /* Extra space in Cross Axis */
+//
+//  .profile-wrapper {
+//    display: flex;
+//    flex: 1;
+//    flex-direction: column;
+//    overflow: scroll;
+//    overflow-x:auto;
+//    overflow-y:auto;
+//
+//    h1 {
+//      font-size: 1.3em;
+//    }
+//    h2 {
+//      font-size: 1em;
+//      color: $subheading-text-color;
+//    }
+//    p {
+//      color: $subheading-text-color;
+//    }
+//
+//    .profile-detail-container {
+//      flex: 4;
+//
+//      display: flex;
+//      flex-flow: column;
+//      width: 100%;
+//
+//      .general {
+//        flex: 1;
+//        background-color: $white;
+//        padding: 20px;
+//
+//        & > * {
+//          margin-bottom: 20px;
+//        }
+//
+//        .heading {
+//          display: flex;
+//          flex-flow: row;
+//          justify-content: space-between;
+//          margin-top: 50px;
+//
+//          .icon-and-title{
+//            display: flex;
+//            flex-flow: row;
+//
+//            i {
+//              margin-right: 5px;
+//            }
+//          }
+//
+//          h1 {
+//            font-size: 1.7em
+//          }
+//        }
+//
+//        .body {
+//          display: flex;
+//          flex-flow: column;
+//
+//          & > * {
+//            margin-bottom: 20px;
+//          }
+//
+//          .notifications {
+//            display: flex;
+//            flex-flow: row;
+//            justify-content: space-between;
+//          }
+//
+//          .preferred-email {
+//            display: flex;
+//            flex-flow: row;
+//            justify-content: space-between;
+//          }
+//
+//          @media (min-width: 440px) {
+//            * {
+//              margin-bottom: 5px;
+//            }
+//          }
+//        }
+//
+//        @media (min-width: 440px) {
+//          padding: 30px;
+//        }
+//
+//      }
+//
+//      .mentorship {
+//        flex: 2;
+//        background-color: $mentorship-off-color;
+//        padding: 20px;
+//
+//        .heading {
+//          display: flex;
+//          flex-flow: row;
+//          align-items: center;
+//          * {
+//            margin: 0 5px 10px 0;
+//          }
+//
+//          @media (min-width: 440px) {
+//            margin-top: 50px;
+//          }
+//        }
+//
+//        .body {
+//          display: flex;
+//          flex-flow: column;
+//
+//          .mentorship-status {
+//            display: flex;
+//            flex-flow: row;
+//            justify-content: space-between;
+//            margin-bottom: 30px;
+//          }
+//
+//          .mentor-fields {
+//
+//            & > div > p {
+//              color: $primary-color;
+//              cursor: pointer;
+//              margin-top: 10px;
+//            }
+//
+//            & > div > div > i:before {
+//              /* edit icon */
+//              cursor: pointer;
+//            }
+//
+//            & > * {
+//              margin-bottom: 30px;
+//            }
+//
+//            .text-and-edit {
+//              display: flex;
+//              flex-flow: row;
+//              justify-content: space-between;
+//              margin-top: 10px;
+//
+//              .courses {
+//                display: flex;
+//                flex-wrap: wrap;
+//              }
+//            }
+//
+//            .bio {
+//
+//              .add-bio {
+//                & > * {
+//                  margin-top: 10px;
+//                }
+//
+//                textarea {
+//                  height: 100px;
+//                }
+//              }
+//
+//            }
+//
+//            .gpa {
+//              display: flex;
+//              flex-flow: row;
+//              justify-content: space-between;
+//            }
+//          }
+//        }
+//
+//        @media (min-width: 440px) {
+//          flex: 0 0 50%;
+//          padding: 30px;
+//
+//          & > * {
+//            margin-bottom: 20px;
+//          }
+//        }
+//      }
+//
+//      @media (min-width: 440px) {
+//        flex-flow: row;
+//      }
+//    }
+//
+//    @media (min-width: 440px) {
+//      margin: 30px 35px 0 35px;
+//      border-radius: 15px 15px 0px 0px;
+//      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+//
+//      h1 {
+//        font-size: 2em;
+//      }
+//      h2 {
+//        font-size: 1.3em;
+//        color: $subheading-text-color;
+//      }
+//    }
+//  }
+//}
+//
+//.top {
+//  width: 100%;
+//  background-color: $primary-color;
+//  max-height: 20%;
+//
+//  display: flex;
+//  flex-direction: column;
+//  justify-content: flex-end;
+//
+//
+//  .user-info {
+//    display: flex;
+//    flex-flow: row;
+//    align-items: flex-end;
+//    padding-left: 20px;
+//
+//    .profile-pic {
+//      top: 50px;
+//
+//      @media (min-width: 440px) {
+//        top: 75px;
+//      }
+//    }
+//
+//
+//    h1 {
+//      margin-left: 10px;
+//      color: $white;
+//      font-size: 1.5em;
+//    }
+//
+//    @media (min-width: 440px) {
+//      padding-left: 30px;
+//    }
+//  }
+//}
 .container-profile {
-  background-color: $profile-canvas-color;
-  width: auto;
-  height: auto;
   min-height: 100%;
 
   display: flex;
   flex-direction: column;
 
-  justify-content: flex-start; /* align items in Main Axis */
-  align-items: stretch; /* align items in Cross Axis */
-  align-content: stretch; /* Extra space in Cross Axis */
+  .multiple-profile-wrapper {
+    flex-grow: 1;
 
-  .profile-wrapper {
     display: flex;
-    flex: 1;
-    flex-direction: column;
-    overflow: scroll;
-    overflow-x:auto;
-    overflow-y:auto;
+    width: 100%;
+    height: 100%;
 
-    h1 {
-      font-size: 1.3em;
+    @media (max-width: 800px) {
+      position: static;
+      //flex-direction: column;
+
+      .profile-select {
+        z-index: 5;
+        position: fixed;
+        width: 100%;
+        background-color: #7ec3b4;
+
+        bottom: 0;
+
+        display: flex;
+
+        justify-content: space-around;
+
+        .entry {
+          //display: inline-block;
+          margin-top: 1em;
+          margin-bottom: 1em;
+          //margin-right: 1em;
+          text-align: center;
+          //right: 1em;
+          color: white;
+          cursor: pointer;
+        }
+      }
     }
-    h2 {
-      font-size: 1em;
-      color: $subheading-text-color;
+
+    @media (min-width: 800px) {
+      .profile-select {
+        width: 33.3%;
+        background-color: #7ec3b4;
+
+        bottom: 0;
+
+        .entry {
+          margin-top: 1em;
+          margin-right: 1em;
+          text-align: right;
+          right: 1em;
+          color: white;
+          cursor: pointer;
+        }
+
+        .first-entry {
+          margin-top: 3em;
+        }
+      }
     }
-    p {
-      color: $subheading-text-color;
-    }
 
-    .profile-detail-container {
-      flex: 4;
+    .profile {
+      flex-grow: 1;
+      bottom: 0;
+      min-height: min-content;
+      overflow: auto;
 
-      display: flex;
-      flex-flow: column;
-      width: 100%;
+      padding: 3em;
 
-      .general {
-        flex: 1;
-        background-color: $white;
-        padding: 20px;
+      .general-profile-vsplit {
+        display: flex;
 
-        & > * {
-          margin-bottom: 20px;
-        }
+        @media (min-width: 800px) {
+          .left {
+            width: 33.3%;
+          }
 
-        .heading {
-          display: flex;
-          flex-flow: row;
-          justify-content: space-between;
-          margin-top: 50px;
+          .right {
+            flex-grow: 1;
+          }
 
-          .icon-and-title{
+          .general-profile-image {
             display: flex;
-            flex-flow: row;
-
-            i {
-              margin-right: 5px;
-            }
-          }
-
-          h1 {
-            font-size: 1.7em
+            justify-content: center;
+            align-items: center;
           }
         }
 
-        .body {
-          display: flex;
-          flex-flow: column;
+        @media (max-width: 800px) {
+          flex-direction: column;
 
-          & > * {
-            margin-bottom: 20px;
-          }
-
-          .notifications {
+          .general-profile-image {
             display: flex;
-            flex-flow: row;
-            justify-content: space-between;
-          }
-
-          .preferred-email {
-            display: flex;
-            flex-flow: row;
-            justify-content: space-between;
-          }
-
-          @media (min-width: 440px) {
-            * {
-              margin-bottom: 5px;
-            }
+            justify-content: space-around;
+            align-items: center;
           }
         }
 
-        @media (min-width: 440px) {
-          padding: 30px;
+        label {
+          font-weight: bold;
         }
 
+        .hint {
+          color: black;
+          margin-left: 0.1em;
+          font-size: 0.6em;
+        }
+
+        input, select {
+          background-color: rgba(74, 74, 74, 0.05)
+        }
       }
 
-      .mentorship {
-        flex: 2;
-        background-color: $mentorship-off-color;
-        padding: 20px;
-
-        .heading {
-          display: flex;
-          flex-flow: row;
-          align-items: center;
-          * {
-            margin: 0 5px 10px 0;
-          }
-
-          @media (min-width: 440px) {
-            margin-top: 50px;
+      .guide {
+        h4 {
+          margin-top: 1em;
+        }
+        ul {
+          li {
+            margin: 0.7em 0;
+            word-wrap: break-word;
+            width: 50vw; // FXXK this, the flexbox seems having some trouble with li!
           }
         }
 
-        .body {
-          display: flex;
-          flex-flow: column;
-
-          .mentorship-status {
-            display: flex;
-            flex-flow: row;
-            justify-content: space-between;
-            margin-bottom: 30px;
-          }
-
-          .mentor-fields {
-
-            & > div > p {
-              color: $primary-color;
-              cursor: pointer;
-              margin-top: 10px;
+        @media (max-width: 800px) {
+          ul {
+            li {
+              word-wrap: break-word;
+              width: 100%;
             }
-
-            & > div > div > i:before {
-              /* edit icon */
-              cursor: pointer;
-            }
-
-            & > * {
-              margin-bottom: 30px;
-            }
-
-            .text-and-edit {
-              display: flex;
-              flex-flow: row;
-              justify-content: space-between;
-              margin-top: 10px;
-
-              .courses {
-                display: flex;
-                flex-wrap: wrap;
-              }
-            }
-
-            .bio {
-
-              .add-bio {
-                & > * {
-                  margin-top: 10px;
-                }
-
-                textarea {
-                  height: 100px;
-                }
-              }
-
-            }
-
-            .gpa {
-              display: flex;
-              flex-flow: row;
-              justify-content: space-between;
-            }
-          }
-        }
-
-        @media (min-width: 440px) {
-          flex: 0 0 50%;
-          padding: 30px;
-
-          & > * {
-            margin-bottom: 20px;
           }
         }
       }
 
-      @media (min-width: 440px) {
-        flex-flow: row;
-      }
-    }
+      .ambassador-profile {
+        .courses, .add-classes {
+          max-width: 55vw;
+          @media (max-width: 800px) {
+            max-width: 100%;
+          }
+        }
 
-    @media (min-width: 440px) {
-      margin: 30px 35px 0 35px;
-      border-radius: 15px 15px 0px 0px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+        label {
+          font-weight: bold;
+        }
 
-      h1 {
-        font-size: 2em;
-      }
-      h2 {
-        font-size: 1.3em;
-        color: $subheading-text-color;
+        .select-entry {
+          margin-bottom: 1em;
+        }
+
+        input, select {
+          background-color: rgba(74, 74, 74, 0.05);
+        }
+
+        .remove {
+          cursor: pointer;
+          margin-left: 1em;
+          border-radius: 3px;
+          border: 0;
+          background-color: #ffa688;
+          box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .add {
+          cursor: pointer;
+          border-radius: 3px;
+          border: 0;
+          background-color: #c3d887;
+          box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .cancel {
+          cursor: pointer;
+          color: #7ec3b4;
+          margin-bottom: 3em;
+        }
+
+        .activate {
+          cursor: pointer;
+          border-radius: 3px;
+          border: 0;
+          background-color: #ffa688;
+          box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+          margin-bottom: 2em;
+        }
+
+        ul {
+          li {
+            word-wrap: break-word;
+            width: 50vw; // FXXK this, the flexbox seems having some trouble with li!
+          }
+        }
+
+        .add-class-btn {
+          cursor: pointer;
+          border-radius: 3px;
+          border: 0;
+          background-color: #c3d887;
+          box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+          margin-right: 1em;
+        }
+
+        .cancel-class-btn {
+          cursor: pointer;
+          border-radius: 3px;
+          border: 0;
+          background-color: #ffa688;
+          box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .edit-class-btn {
+          cursor: pointer;
+          border-radius: 3px;
+          border: 0;
+          background-color: #c3d887;
+          box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+          margin-top: 0.5em;
+        }
       }
     }
   }
 }
 
-.top {
-  width: 100%;
-  background-color: $primary-color;
-  max-height: 20%;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
-
-  .user-info {
-    display: flex;
-    flex-flow: row;
-    align-items: flex-end;
-    padding-left: 20px;
-
-    .profile-pic {
-      top: 50px;
-
-      @media (min-width: 440px) {
-        top: 75px;  
-      }
-    }
-
-
-    h1 {
-      margin-left: 10px;
-      color: $white;
-      font-size: 1.5em;
-    }
-
-    @media (min-width: 440px) {
-      padding-left: 30px;
-    }
-  }
-}

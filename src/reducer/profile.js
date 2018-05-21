@@ -47,7 +47,7 @@ const setProfilePic = pic => {
                 headers: new Headers({
                     "Authorization": `Bearer ${token}`,
                 }),
-                body: formData                
+                body: formData
             })
 
             const status = await response.status;
@@ -220,6 +220,7 @@ const fetchProfile = () => {
             // if mentorStatus is 404, they have no mentor profile
         } catch (error) {
             // handle errors here
+            console.log(error)
             dispatch(logout());
         }
     }

@@ -10,6 +10,7 @@ class Requests extends React.Component {
 
         return(
             <div className="requests-container">
+                <NavBar />
 	            <div className="requests-results-container">
                     <h1>Request History</h1>
 					{ !this.props.requests.size
@@ -24,7 +25,6 @@ class Requests extends React.Component {
 	                    })
 					}
 	            </div>
-                <NavBar />
 	        </div>
         );
     }

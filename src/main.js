@@ -13,6 +13,7 @@ import {store, history} from './reducer';
 import HomeContainer from './container/home';
 import VerifyUserContainer from './container/verify';
 import RegisterContainer from './container/register';
+import MultipleProfileContainer from './container/multipleProfile';
 import ProfileContainer from './container/profile';
 import SearchContainer from './container/search';
 import MentorDetailContainer from './container/mentorDetail';
@@ -54,7 +55,8 @@ class App extends React.Component {
                             <Route path="/completeRegistration" component={CompleteRegistrationContainer} />
 
                             <Route exact path="/chooseRole" component={Authentication(ChooseRoleContainer)} />
-                            <Route exact path="/profile" component={Authentication(ProfileContainer)} />
+                            <Route exact path="/profile/:page" component={Authentication(MultipleProfileContainer)} />
+                            {/*<Route exact path="/profile" component={Authentication(ProfileContainer)} />*/}
                             <Route exact path="/search" component={Authentication(SearchContainer)} />
                             <Route exact path="/messages" component={Authentication(MessagesContainer)}/>
                             <Route exact path="/messages/:profileId" component={Authentication(MessagesContainer)} />

@@ -50,7 +50,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         redirect: (path) => {
             if (!path) {
-                dispatch(replace("/profile"));
+                dispatch(replace("/profile/1"));
             } else {
                 dispatch(replace(path));
             }

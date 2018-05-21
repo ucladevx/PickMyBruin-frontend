@@ -51,13 +51,13 @@ class Profile extends React.Component {
             const name = `${this.state.newUser.first_name} ${this.state.newUser.last_name}`;
             return (
                 <div className="container-profile">
+                    <NavBar />
                     <div className="profile-wrapper">
                         <ProfileTop
                             editable={true}
                             name={name}
                             profile={this.props.profile}
                             setProfilePic = {this.props.setProfilePic}
-                            editable={true}
                         />
                         <div className="profile-detail-container">
                             <General
@@ -74,7 +74,6 @@ class Profile extends React.Component {
                             />
                         </div>
                     </div>
-                    <NavBar />
                 </div>
             );
         }
