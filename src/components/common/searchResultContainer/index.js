@@ -22,6 +22,18 @@ class SearchResultContainer extends React.Component {
         })
     }
 
+    renderMajor = () => {
+        // an ambassador can have multiple majors
+        const majors = this.props.mentorProfile.getIn(['mentor', 'major']);
+        return majors.reduce((str, major, idx) => {
+            if (idx === majors.size - 1) {
+                return str += `${major.get('name')}`;
+            } else {
+                return str += `${major.get('name')}, `;
+            }
+        }, '');
+    }
+
     render() {
         const {
             maxHeight
@@ -47,7 +59,7 @@ class SearchResultContainer extends React.Component {
                             <p>{name}</p>
                             <span>{mentorProfile.getIn(['user', 'year'])} year</span>
                         </div>
-                        <div className="mentor-major">{this.props.mentorProfile.getIn(['mentor', 'major', 'name'])}</div>
+                        <div className="mentor-major">{this.renderMajor()}</div>
                         <div className="mentor-bio">
                             <Shave maxHeight={maxHeight}>{this.props.mentorProfile.getIn(['mentor','bio'])}</Shave>
                         </div>

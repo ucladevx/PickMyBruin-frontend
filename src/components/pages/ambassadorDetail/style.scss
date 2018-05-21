@@ -5,21 +5,20 @@
   flex-flow: column;
   height: 100%;
 
-  .navbar-container {
-    display: none;
-    @media(min-width: 440px) {
-      display: inherit;
-    }
-  }
-
   .ambassador-detail-wrapper {
     display: flex;
     flex-flow: row;
     flex: 1;
     overflow-x: auto;
     overflow-y: auto;
+    min-height: min-content;
 
     .sidebar {
+
+      @media (max-width: 800px) {
+        display: none;
+      }
+
       .header {
         background-color: $pale-teal;
         color: $white;
@@ -54,19 +53,24 @@
         flex: 1;
         margin-top: 15px;
         padding: 0 30px 30px 30px;
-        min-width: 1000px;
+
+        @media (max-width: 800px) {
+          flex-flow: column;
+        }
 
         .column-left {
           flex: 2;
           display: flex;
           flex-flow: column;
           align-items: center;
+          min-height: min-content;
 
           .info {
             display: flex;
             flex-flow: column;
             align-items: center;
             margin-top: 40px;
+            text-align: center;
 
             p {
               margin-top: 10px;
@@ -81,6 +85,10 @@
             align-items: center;
             justify-content: center;
             flex: 1;
+
+            @media (max-width: 800px) {
+              margin-top: 10px;
+            }
           }
         }
 

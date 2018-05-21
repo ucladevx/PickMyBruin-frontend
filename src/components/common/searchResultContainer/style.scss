@@ -37,11 +37,15 @@
       display: flex;
       flex-flow: row;
       justify-content: space-between;
+      min-width: 0;
       font-size: 1.3em;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
       margin-bottom: 5px;
+
+      p {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
 
       span {
         display: flex;
@@ -53,6 +57,10 @@
         font-size: .7em;
         height: 30px;
         width: 100px;
+
+        @media (max-width: 400px) {
+          display: none;
+        }
       }
     }
     .mentor-major {

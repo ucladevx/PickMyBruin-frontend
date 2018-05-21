@@ -21,6 +21,7 @@ class AmbassadorDetailContainer extends React.Component {
         if (this.props.ambassador) {
             return (
                 <div className="ambassador-detail-container">
+                    <NavBar />
                     <div className="ambassador-detail-wrapper">
                         <Sidebar />
                         <AmbassadorDetail 
@@ -29,7 +30,6 @@ class AmbassadorDetailContainer extends React.Component {
                             sendMessage={this.props.sendMessage}
                         />
                     </div>
-                    <NavBar />
                 </div>
             );
         } else {
@@ -47,7 +47,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         goBack: () => {
-            dispatch(goBack());
+            dispatch(replace("/search"));
         },
         sendMessage: (messageText, profileId) => {
             dispatch(Actions.messagesActions.sendMessage(messageText, profileId));
