@@ -23,9 +23,7 @@ class ColumnLeft extends React.Component {
                     <h1>{getName(this.props.profile)}</h1>
                     <p>{this.renderMajors()}</p>
                 </div>
-                <div className="button-container">
-                    <Button color="orange" onClick={this.props.onClick}>Send a Message</Button>
-                </div>
+                <Button color="orange" onClick={this.props.onClick}>Send a Message</Button>
             </div>
         );
     }

@@ -71,23 +71,12 @@
             align-items: center;
             margin-top: 40px;
             text-align: center;
+            margin-bottom: 20px;
 
             p {
               margin-top: 10px;
               font-weight: bold;
               font-size: 1.1em;
-            }
-          }
-
-          .button-container {
-            display: flex;
-            flex-flow: column;
-            align-items: center;
-            justify-content: center;
-            flex: 1;
-
-            @media (max-width: 800px) {
-              margin-top: 10px;
             }
           }
         }
