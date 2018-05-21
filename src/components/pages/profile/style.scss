@@ -375,6 +375,7 @@
         }
         ul {
           li {
+            margin: 0.7em 0;
             word-wrap: break-word;
             width: 50vw; // FXXK this, the flexbox seems having some trouble with li!
           }

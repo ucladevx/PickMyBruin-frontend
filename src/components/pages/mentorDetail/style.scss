@@ -5,12 +5,12 @@
   flex-flow: column;
   background-color: $mentor-detail-canvas-color;
 
-  .navbar-container {
-    display: none;
-    @media(min-width: 440px) {
-      display: inherit;
-    }
-  }
+  //.navbar-container {
+  //  display: none;
+  //  @media(min-width: 440px) {
+  //    display: inherit;
+  //  }
+  //}
 
   .content {
     display: flex;
