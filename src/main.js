@@ -16,7 +16,7 @@ import RegisterContainer from './container/register';
 import MultipleProfileContainer from './container/multipleProfile';
 import ProfileContainer from './container/profile';
 import SearchContainer from './container/search';
-import MentorDetailContainer from './container/mentorDetail';
+import ambassadorDetailContainer from 'container/ambassadorDetail';
 import CompleteRegistrationContainer from './container/completeRegistration';
 import ChooseRoleContainer from 'container/ChooseRole';
 import LoginContainer from './container/login';
@@ -60,7 +60,7 @@ class App extends React.Component {
                             <Route exact path="/search" component={Authentication(SearchContainer)} />
                             <Route exact path="/messages" component={Authentication(MessagesContainer)}/>
                             <Route exact path="/messages/:profileId" component={Authentication(MessagesContainer)} />
-                            <Route exact path="/mentors/:mentorId" component={Authentication(MentorDetailContainer)} />
+                            <Route exact path="/ambassadors/:mentorId" component={Authentication(ambassadorDetailContainer)} />
                             <Redirect to="/"/>
                         </Switch>
                         <Route path="/" component={withTracker(PageTracker)} />

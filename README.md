@@ -33,7 +33,7 @@ built with:
     │   │   ├── home
     │   │   │   └── topBar
     │   │   ├── login
-    │   │   ├── mentorDetail
+    │   │   ├── ambassadorDetail
     │   │   ├── profile
     │   │   ├── register
     │   │   ├── requests

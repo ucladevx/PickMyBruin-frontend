@@ -1,0 +1,10 @@
+.sidebar {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  width: 25%;
+  color: $subheading-text-color;
+  border-right: 1px solid $pale-grey;
+  overflow: auto;
+  min-width: 256px;
+}

@@ -5,9 +5,9 @@ import { replace } from 'react-router-redux';
 import { Actions } from '../reducer';
 import { getMentorAndIfRequested } from '../selectors/requests';
 
-import MentorDetail from '../components/pages/mentorDetail';
+import ambassadorDetail from '../components/pages/ambassadorDetail';
 
-class MentorDetailContainer extends React.Component {
+class ambassadorDetailContainer extends React.Component {
     componentWillMount() {
         if (!this.props.mentor) {
             return this.props.redirectToSearch();
@@ -16,7 +16,7 @@ class MentorDetailContainer extends React.Component {
 
     render() {
         return (
-            <MentorDetail 
+            <ambassadorDetail 
                 mentor={this.props.mentor}
                 mentors = {this.props.mentors}
                 sendRequest={this.props.sendRequest}
@@ -47,4 +47,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MentorDetailContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ambassadorDetailContainer);

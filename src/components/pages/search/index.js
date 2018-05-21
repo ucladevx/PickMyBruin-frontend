@@ -1,7 +1,7 @@
 import React from 'react';
 
-import NavBar from '../../navbar';
-import SearchBar from '../../searchBar';
+import NavBar from 'components/navbar';
+import SearchBar from './searchBar';
 
 import SearchResultContainer from './searchResultContainer';
 import Results from './results';
@@ -18,7 +18,8 @@ class Search extends React.Component {
                 </div>
                 <Results
                     mentors={this.props.mentors}
-                    _internal={this.props._internal}
+                    count={this.props.count}
+                    _internal={this.props._internal} 
                 />
             </div>
         );

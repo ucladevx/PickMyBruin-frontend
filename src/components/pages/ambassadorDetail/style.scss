@@ -1,0 +1,146 @@
+@import '../../../style/vars';
+
+.ambassador-detail-container {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+
+  .ambassador-detail-wrapper {
+    display: flex;
+    flex-flow: row;
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: auto;
+    min-height: min-content;
+
+    .sidebar {
+
+      @media (max-width: 800px) {
+        display: none;
+      }
+
+      .header {
+        background-color: $pale-teal;
+        color: $white;
+        padding: 10px;
+        align-items: center;
+
+        font-size: 1.5em;
+      }
+
+      .search-result-container {
+        padding: 10px;
+      }
+    }
+
+    .ambassador-detail {
+      display: flex;
+      flex-flow: column;
+      flex: 1;
+
+      .top-bar {
+        margin: 10px;
+        color: $pale-teal;
+
+        span {
+          cursor: pointer;
+        }
+      }
+
+      .content {
+        display: flex;
+        flex-flow: row;
+        flex: 1;
+        margin-top: 15px;
+        padding: 0 30px 30px 30px;
+
+        @media (max-width: 800px) {
+          flex-flow: column;
+        }
+
+        .column-left {
+          flex: 2;
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          min-height: min-content;
+
+          .info {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            margin-top: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+
+            p {
+              margin-top: 10px;
+              font-weight: bold;
+              font-size: 1.1em;
+            }
+          }
+        }
+
+        .column-right {
+          flex: 3;
+
+          h2 {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+          }
+          
+          p {
+            line-height: 1.75;
+          }
+
+          & > div {
+            margin-bottom: 30px;
+          }
+
+          .courses {
+            display: flex;
+            flex-flow: row;
+            flex-wrap: wrap;
+
+            span {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: $white;
+              background-color: $pale-teal;
+              border-radius: 5px;
+              font-size: .9em;
+              padding: 0 5px 0 5px;
+              height: 30px;
+              margin: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.new-request-input {
+  color: $subheading-text-color;
+  margin-top: 15px;
+
+  & > {
+    margin-top: 10px;
+  }
+
+  p {
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-size: 1.3em;
+  }
+
+  .buttons {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+  }
+}

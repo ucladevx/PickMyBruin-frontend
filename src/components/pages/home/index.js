@@ -18,7 +18,7 @@ class Home extends React.Component {
                     <div className="splash">
                         <div className="main-prompt">
                             <h1>Connect with your fellow Bruins about major-related questions.</h1>
-                            <Button onClick={this.props.signUp}>Sign Up</Button>
+                            <Button onClick={this.props.signUp} color="green">Sign Up</Button>
                             <p>Already have an account? <Link className="login-link" to="/login">Log in here</Link></p>
                             
                         </div>

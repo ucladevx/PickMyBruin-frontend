@@ -66,10 +66,10 @@ const dummyMentors = Immutable.fromJS([
     }
 ])
 
-const searchMajorSuccess = (mentors) => {
+const searchMajorSuccess = data => {
     return {
         type: SEARCH_MAJOR_SUCCESS,
-        mentors,
+        data,
     };
 }
 
@@ -101,7 +101,7 @@ const handleSearch = (searchTerm) => {
             if (status > 299 || status < 200) {
                 throw new Error("Error fetching mentors");
             } else {
-                dispatch(searchMajorSuccess(data.results));
+                dispatch(searchMajorSuccess(data));
             }
         } catch (e) {
             dispatch(searchMajorFailure(e));
@@ -117,35 +117,32 @@ const handleSearch = (searchTerm) => {
 
 const defaultState = Immutable.fromJS({
     error: null,
-    loading: false,
     searchedMajor: '',
     _internal: {
         searched: false,
     },
     mentors: [],
+    count: null
 });
 
 const SearchMentors = (state=defaultState, action) => {
     switch(action.type) {
         case SEARCH_MAJOR_START: {
             return state.withMutations(val => {
-                val.set('loading', true);
                 val.set('searchedMajor', action.major);
             })
         }
         case SEARCH_MAJOR_ERROR: {
             return state.withMutations(val => {
-                val.set('loading', false);
                 val.set('error', action.error);
                 val.setIn(['_internal', 'searched'], true);
             })
         }
         case SEARCH_MAJOR_SUCCESS: {
             return state.withMutations(val => {
-                val.set('loading', false);
                 val.set('error', null);
                 val.setIn(['_internal', 'searched'], true);
-
+                val.set('count', action.data.count)
                 
                 /* 
                  * turn the results from the API into our preferred object format:
@@ -155,12 +152,9 @@ const SearchMentors = (state=defaultState, action) => {
                  * }
                  *
                  */
-                val.set('mentors', fromJS(action.mentors.map(mentor => {
+                val.set('mentors', fromJS(action.data.results.map(mentor => {
                     let formattedMentor = {};
                     formattedMentor.user = mentor.profile;
-
-                    const mentorProfile = mentor.profile;
-                    formattedMentor.profile = mentorProfile;
 
                     delete mentor.profile;
                     formattedMentor.mentor = mentor;
