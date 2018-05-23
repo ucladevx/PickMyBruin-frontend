@@ -252,12 +252,16 @@
                 <tspan x="107" y="1843">and we hope that you will find Bquest </tspan>
                 <tspan x="107" y="1865">helpful.</tspan>
             </text>
-            <text id="Bquest-is-made-for-U" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="1.60000002" fill="#000000">
-                <tspan x="98" y="1233">Bquest is made for UCLA students, by </tspan>
-                <tspan x="98" y="1255">UCLA students. Our team consists of </tspan>
-                <tspan x="98" y="1277">talented developers and designers, </tspan>
-                <tspan x="98" y="1299">and we hope that you will find Bquest </tspan>
-                <tspan x="98" y="1321">helpful.</tspan>
+            <text id="As-an-ambassador,-yo" font-family="Helvetica" font-size="18" font-weight="normal" letter-spacing="1.60000002" fill="#000000">
+                <tspan x="98" y="1233">As an ambassador, you will help </tspan>
+                <tspan x="98" y="1255">students who haven’t declared their </tspan>
+                <tspan x="98" y="1277">major, or are looking to change their </tspan>
+                <tspan x="98" y="1299">major. Help them out by meeting with </tspan>
+                <tspan x="98" y="1321">them, and answer their questions </tspan>
+                <tspan x="98" y="1343">about your major. Share your </tspan>
+                <tspan x="98" y="1365">experience, and give them an insight </tspan>
+                <tspan x="98" y="1387">that can help them make a good </tspan>
+                <tspan x="98" y="1409">decision.</tspan>
             </text>
             <text id="Looking-for-your-maj" font-family="Helvetica-Bold, Helvetica" font-size="24" font-weight="bold" letter-spacing="1.60000002" fill="#000000">
                 <tspan x="98" y="668">Looking for your major</tspan>
