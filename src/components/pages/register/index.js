@@ -22,7 +22,7 @@ class Register extends React.Component {
                 </div>
                 <section className="register-splash">
                     <div className="register-text">
-                        <h1>ALL THE HELP YOU'LL EVER NEED</h1>
+                        <h1>Connect with students on all your major-related questions.</h1>
                     </div>
                 </section>  
                 <div className="register-form">
