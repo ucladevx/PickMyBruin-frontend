@@ -2,6 +2,20 @@
 
 .home-container {
 
+  .heading-text {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 60%;
+    color: $white;  
+
+    h1 {
+      line-height: 1.5;
+      letter-spacing: 20px;
+      font-weight: bold;
+    }
+  }
+
   .landing-screen {
     min-height: 100vh;
     display: flex;
