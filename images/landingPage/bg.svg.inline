@@ -273,10 +273,8 @@
             <text id="Who-we-are" font-family="Helvetica-Bold, Helvetica" font-size="24" font-weight="bold" letter-spacing="1.60000002" fill="#000000">
                 <tspan x="107" y="1741">Who we are</tspan>
             </text>
-            <text id="LET’s-TALK-ABOUT-XXX" font-family="Helvetica-Bold, Helvetica" font-size="64" font-weight="bold" letter-spacing="4.0999999" fill="#FFFFFF">
-                <tspan x="93" y="237">LET’s TALK </tspan>
-                <tspan x="93" y="314">ABOUT XXX </tspan>
-                <tspan x="93" y="391">XXX</tspan>
+            <text id="LET’S-TALK" font-family="Helvetica-Bold, Helvetica" font-size="64" font-weight="bold" letter-spacing="4.0999999" fill="#FFFFFF">
+                <tspan x="119" y="280">LET’S TALK</tspan>
             </text>
         </g>
     </g>
