@@ -8,35 +8,34 @@ RUN apk add -U nginx make nodejs
 # Create directories
 #   /working is the build directory
 #   /static is the directory linked to nginx (serves static content)
-RUN mkdir -p /var/www/BQuest/working && \
-    mkdir -p /var/www/BQuest/static && \
-    mkdir -p /var/www/BQuest/static/build && \
-    mkdir -p /var/www/BQuest/static/images
+RUN mkdir -p /var/www/bquest/working && \
+    mkdir -p /var/www/bquest/static && \
+    mkdir -p /var/www/bquest/static/build && \
+    mkdir -p /var/www/bquest/static/images
 
 # Install the required packages to build the frontend
-WORKDIR /var/www/BQuest/working
-COPY *.json /var/www/BQuest/working/
+WORKDIR /var/www/bquest/working
+COPY *.json /var/www/bquest/working/
 RUN /usr/bin/node --max_semi_space_size=8 \
                   --max_old_space_size=298 \
                   --max_executable_size=248 \
                   /usr/bin/npm install
 
 # Copy the source files
-COPY pages/ /var/www/BQuest/working/pages/
-COPY src/ /var/www/BQuest/working/src/
-COPY images/ /var/www/BQuest/working/images/
-COPY .babelrc *.js Makefile /var/www/BQuest/working/
+COPY pages/ /var/www/bquest/working/pages/
+COPY src/ /var/www/bquest/working/src/
+COPY images/ /var/www/bquest/working/images/
+COPY .babelrc *.js Makefile /var/www/bquest/working/
 
 # build and copy files to server root
 RUN make build && \
     cp -rv pages/* ../static/ && \
-    cp -rv lib/build/* ../static/build/ && \
-    cp -rv lib/images/* ../static/images/
+    cp -rv lib/build/* ../static/build/
 
 # Copy the configuration file
 RUN mkdir -p /run/nginx
 COPY nginx.conf /etc/nginx/
-WORKDIR /var/www/BQuest/static
+WORKDIR /var/www/bquest/static
 
 # Run the server
 EXPOSE 80

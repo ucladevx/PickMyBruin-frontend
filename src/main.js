@@ -18,7 +18,7 @@ import ProfileContainer from './container/profile';
 import SearchContainer from './container/search';
 import ambassadorDetailContainer from 'container/ambassadorDetail';
 import CompleteRegistrationContainer from './container/completeRegistration';
-import ChooseRoleContainer from 'container/ChooseRole';
+import ChooseRoleContainer from 'container/chooseRole';
 import LoginContainer from './container/login';
 //import RequestsContainer from './container/requests';
 import MessagesContainer from 'container/messages';
