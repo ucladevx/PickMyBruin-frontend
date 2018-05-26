@@ -32,7 +32,6 @@
       flex-flow: column;
       width: 650px;
       align-items: center;
-      min-height: min-content;
 
       @media (max-width: 800px) {
         width: 90%;
@@ -46,6 +45,7 @@
         color: $pale-teal;
         border-bottom: 1px solid $pale-teal;
         height: 50px;
+        min-height: 50px;
         width: 100%;
       }
 
