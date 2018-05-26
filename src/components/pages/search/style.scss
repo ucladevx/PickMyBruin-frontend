@@ -45,12 +45,14 @@
         color: $pale-teal;
         border-bottom: 1px solid $pale-teal;
         height: 50px;
+        min-height: 50px;
         width: 100%;
       }
 
       .results-container {
         margin-top: 10px;
         max-width: 100%;
+        width: 100%;
       }
     }
   }
