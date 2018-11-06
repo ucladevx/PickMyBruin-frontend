@@ -112,7 +112,7 @@ class GeneralProfile extends React.Component {
                                             }
                                         }}
                                     />
-                                    <p className="hint">You will received email notifications when you have a new contact, or a message long-awaiting your response.</p>
+                                    <p className="hint">You will receive email notifications when you have a new contact.</p>
                                 </FormGroup>
                             </div>
                         </div>
