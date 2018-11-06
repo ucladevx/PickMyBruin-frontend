@@ -43,7 +43,7 @@ class GeneralProfile extends React.Component {
                         <div className="right">
                             <div>
                                 <FormGroup>
-                                    <Label for="name-field">Name</Label>
+                                    <Label for="name-field">Full Name</Label>
                                     <Input
                                         id="name-field"
                                         name="name-field"
