@@ -20,6 +20,7 @@ import ambassadorDetailContainer from 'container/ambassadorDetail';
 import CompleteRegistrationContainer from './container/completeRegistration';
 import ChooseRoleContainer from 'container/chooseRole';
 import LoginContainer from './container/login';
+import Logout from "./components/pages/logout";
 //import RequestsContainer from './container/requests';
 import MessagesContainer from 'container/messages';
 import Authentication from './container/requireAuthentication';
@@ -49,6 +50,7 @@ class App extends React.Component {
                         <Switch>
                             <Route exact path="/" component={HomeContainer}/>
                             <Route exact path="/login" component={LoginContainer}/>
+                            <Route exact path="/logout" component={Logout}/>
                             <Route exact path="/register" component={RegisterContainer}/>
                             <Route path="/register/pending" component={RegisterPendingContainer} />
                             <Route path="/verify" component={VerifyUserContainer} />

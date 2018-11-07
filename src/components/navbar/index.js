@@ -31,6 +31,9 @@ class NavBar extends React.Component {
                         <div className="navigation-item">
                             <p onClick={() => this.navigate("profile/1")} className={classNames({selected: location.startsWith("profile")})}>Settings</p>
                         </div>
+                        <div className="navigation-item">
+                            <p onClick={() => this.navigate("logout")} className={classNames({selected: location.startsWith("logout")})}>Logout</p>
+                        </div>
                     </div>
                 </div>
                 <div className="navbar-spaceholder"/>
