@@ -72,10 +72,13 @@ class Mentorship extends React.Component {
             bioOpen: false,
 						prosOpen: false,
 						consOpen: false,
-						activitiesOpen: false,
+						clubsOpen: false,
             classesOpen: false,
             majorOpen: false,
             bio: props.mentor.bio,
+						pros: props.mentor.pros,
+						cons: props.mentor.cons,
+						clubs: props.mentor.clubs,
             courses: props.mentor.courses ? props.mentor.courses.map(obj => obj.name) : []
         }
     }
@@ -85,7 +88,7 @@ class Mentorship extends React.Component {
 			bio: nextProps.mentor.bio,
 			pros: nextProps.mentor.pros,
 			cons: nextProps.mentor.cons,
-			activities: nextProps.mentor.activities,
+			clubs: nextProps.mentor.clubs,
 			courses: nextProps.mentor.courses.map(obj => obj.name)
 		});
     }
@@ -192,9 +195,9 @@ class Mentorship extends React.Component {
 				this.props.updateProfile("cons", this.state.cons);
 		}
 
-		_updateActivities = () => {
-				this.openField("activitiesOpen");
-				this.props.updateProfile("activities", this.state.activities);
+		_updateClubs = () => {
+				this.openField("clubsOpen");
+				this.props.updateProfile("clubs", this.state.clubs);
 		}
 
 	_updateClasses = () => {
@@ -356,21 +359,21 @@ class Mentorship extends React.Component {
 				}
 		}
 
-		renderEditActivities = () => {
+		renderEditClubs = () => {
 				return (
-						<div className="add-activities">
-								<Input type="textarea" onChange={e => this.setState({activities: e.target.value})} value={this.state.activities} name="activities" id="activities" />
+						<div className="add-clubs">
+								<Input type="textarea" onChange={e => this.setState({clubs: e.target.value})} value={this.state.clubs} name="clubs" id="clubs" />
 								<div className="buttons">
 										<Button
 												color="primary"
-												onClick={() => this._updateActivities()}
+												onClick={() => this._updateClubs()}
 												size="sm"
 										>
 												Save
 										</Button>
 										<Button
 												color="secondary"
-												onClick={() => this.openField("activitiesOpen")}
+												onClick={() => this.openField("clubsOpen")}
 												size="sm"
 										>
 												Cancel
@@ -380,32 +383,33 @@ class Mentorship extends React.Component {
 				);
 		}
 
-		renderActivities = () => {
-				if (!this.props.mentor.activities) {
-						if (!this.state.activitiesOpen) {
+		renderClubs = () => {
+				if (!this.props.mentor.clubs) {
+						if (!this.state.clubsOpen) {
 								return (
-										<p onClick={() => this.openField("activitiesOpen")}>
+										<p onClick={() => this.openField("clubsOpen")}>
 												<i className="fa fa-plus" aria-hidden="true"></i>
-												&nbsp;Add activities
+												&nbsp;Add clubs
 										</p>
 								);
 						} else {
-								return this.renderEditActivities();
+								return this.renderEditClubs();
 						}
 				} else {
-						if (!this.state.activitiesOpen) {
+						if (!this.state.clubsOpen) {
 								return (
 										<div className="text-and-edit">
-												<p>{this.props.mentor.activities}</p>
-												<i className="fa fa-pencil-square-o" onClick={() => this.openField("activitiesOpen")}></i>
+												<p>{this.props.mentor.clubs}</p>
+												<i className="fa fa-pencil-square-o" onClick={() => this.openField("clubsOpen")}></i>
 										</div>
 								);
 						} else {
-								return this.renderEditActivities();
+								return this.renderEditClubs();
 						}
 				}
 		}
-		
+
+
     _updateMajor = major => {
         this.openField("majorOpen");
         this.props.updateProfile("major", {name: major})

@@ -99,7 +99,7 @@ class AmbassadorProfile extends React.Component {
             bio: props.mentor.bio,
             pros: props.mentor.pros,
             cons: props.mentor.cons,
-            activities: props.mentor.activities,
+            clubs: props.mentor.clubs,
             // major: props.mentor.major || {name: ''},
             // minor: props.mentor.minor || {name: ''},
             major: props.mentor.major || [],
@@ -140,7 +140,7 @@ class AmbassadorProfile extends React.Component {
             bio: nextProps.mentor.bio,
             pros: nextProps.mentor.pros,
             cons: nextProps.mentor.cons,
-            activities: nextProps.mentor.activities,
+            clubs: nextProps.mentor.clubs,
             // major: nextProps.mentor.major,
             // minor: nextProps.mentor.minor || {name: ''},
             major: relativeSortAndMerge(currMajor, nextMajor, e => e.name, n => { return { name: n }; }),
@@ -250,8 +250,8 @@ class AmbassadorProfile extends React.Component {
         this.props.updateProfile("cons", this.state.cons);
     }
 
-    _updateActivities = () => {
-        this.props.updateProfile("activities", this.state.activities);
+    _updateClubs = () => {
+        this.props.updateProfile("clubs", this.state.clubs);
     }
 
     _updateClasses = () => {
@@ -285,10 +285,10 @@ class AmbassadorProfile extends React.Component {
         );
     }
 
-    renderActivities = () => {
+    renderClubs = () => {
         return (
-            <div className="add-activities">
-                <Input type="textarea" onBlur={() => this._updateActivities()}  onChange={e => this.setState({activities: e.target.value})} value={this.state.activities} name="activities" id="activities" />
+            <div className="add-clubs">
+                <Input type="textarea" onBlur={() => this._updateClubs()}  onChange={e => this.setState({clubs: e.target.value})} value={this.state.clubs} name="clubs" id="clubs" />
             </div>
         );
     }
@@ -493,17 +493,17 @@ class AmbassadorProfile extends React.Component {
                                 <Label>Classes Taken</Label>
                                 {this.renderClasses()}
                             </FormGroup>
-                            <FormGroup className="bio">
+                            <FormGroup className="pros">
                                 <Label>Pros</Label>
                                 {this.renderPros()}
                             </FormGroup>
-                            <FormGroup className="bio">
+                            <FormGroup className="cons">
                                 <Label>Cons</Label>
                                 {this.renderCons()}
                             </FormGroup>
-                            <FormGroup className="activities">
-                                <Label>Activities</Label>
-                                {this.renderActivities()}
+                            <FormGroup className="clubs">
+                                <Label>Clubs</Label>
+                                {this.renderClubs()}
                             </FormGroup>
                             <div>
                                 <div className="cancel" onClick={() => this.props.updateMentorStatus(false)}>I am no longer available</div>
