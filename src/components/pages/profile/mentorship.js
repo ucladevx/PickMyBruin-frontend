@@ -70,6 +70,9 @@ class Mentorship extends React.Component {
         super(props);
         this.state = {
             bioOpen: false,
+						prosOpen: false,
+						consOpen: false,
+						activitiesOpen: false,
             classesOpen: false,
             majorOpen: false,
             bio: props.mentor.bio,
@@ -80,6 +83,9 @@ class Mentorship extends React.Component {
     componentWillReceiveProps(nextProps) {
         this.setState({
 			bio: nextProps.mentor.bio,
+			pros: nextProps.mentor.pros,
+			cons: nextProps.mentor.cons,
+			activities: nextProps.mentor.activities,
 			courses: nextProps.mentor.courses.map(obj => obj.name)
 		});
     }
@@ -176,12 +182,28 @@ class Mentorship extends React.Component {
         this.props.updateProfile("bio", this.state.bio);
     }
 
+		_updatePros = () => {
+				this.openField("prosOpen");
+				this.props.updateProfile("pro", this.state.pros);
+		}
+
+		_updateCons = () => {
+				this.openField("consOpen");
+				this.props.updateProfile("cons", this.state.cons);
+		}
+
+		_updateActivities = () => {
+				this.openField("activitiesOpen");
+				this.props.updateProfile("activities", this.state.activities);
+		}
+
 	_updateClasses = () => {
         this.openField("classesOpen");
         this.props.updateProfile("courses", this.state.courses.map(function(str){
 			return ({name: str})
 		}));
     }
+
 
     renderEditBio = () => {
         return (
@@ -233,6 +255,157 @@ class Mentorship extends React.Component {
         }
     }
 
+
+		renderEditPros = () => {
+        return (
+            <div className="add-pros">
+                <Input type="textarea" onChange={e => this.setState({pros: e.target.value})} value={this.state.pros} name="pros" id="pros" />
+                <div className="buttons">
+                    <Button
+                        color="primary"
+                        onClick={() => this._updatePros()}
+                        size="sm"
+                    >
+                        Save
+                    </Button>
+                    <Button
+                        color="secondary"
+                        onClick={() => this.openField("prosOpen")}
+                        size="sm"
+                    >
+                        Cancel
+                    </Button>
+                </div>
+            </div>
+        );
+    }
+
+    renderPros = () => {
+        if (!this.props.mentor.pros) {
+            if (!this.state.prosOpen) {
+                return (
+                    <p onClick={() => this.openField("prosOpen")}>
+                        <i className="fa fa-plus" aria-hidden="true"></i>
+                        &nbsp;Add pros
+                    </p>
+                );
+            } else {
+                return this.renderEditPros();
+            }
+        } else {
+            if (!this.state.prosOpen) {
+                return (
+                    <div className="text-and-edit">
+                        <p>{this.props.mentor.pros}</p>
+                        <i className="fa fa-pencil-square-o" onClick={() => this.openField("prosOpen")}></i>
+                    </div>
+                );
+            } else {
+                return this.renderEditPros();
+            }
+        }
+    }
+
+		renderEditCons = () => {
+				return (
+						<div className="add-cons">
+								<Input type="textarea" onChange={e => this.setState({cons: e.target.value})} value={this.state.cons} name="cons" id="cons" />
+								<div className="buttons">
+										<Button
+												color="primary"
+												onClick={() => this._updateCons()}
+												size="sm"
+										>
+												Save
+										</Button>
+										<Button
+												color="secondary"
+												onClick={() => this.openField("consOpen")}
+												size="sm"
+										>
+												Cancel
+										</Button>
+								</div>
+						</div>
+				);
+		}
+
+		renderCons = () => {
+				if (!this.props.mentor.cons) {
+						if (!this.state.consOpen) {
+								return (
+										<p onClick={() => this.openField("consOpen")}>
+												<i className="fa fa-plus" aria-hidden="true"></i>
+												&nbsp;Add cons
+										</p>
+								);
+						} else {
+								return this.renderEditCons();
+						}
+				} else {
+						if (!this.state.consOpen) {
+								return (
+										<div className="text-and-edit">
+												<p>{this.props.mentor.cons}</p>
+												<i className="fa fa-pencil-square-o" onClick={() => this.openField("consOpen")}></i>
+										</div>
+								);
+						} else {
+								return this.renderEditCons();
+						}
+				}
+		}
+
+		renderEditActivities = () => {
+				return (
+						<div className="add-activities">
+								<Input type="textarea" onChange={e => this.setState({activities: e.target.value})} value={this.state.activities} name="activities" id="activities" />
+								<div className="buttons">
+										<Button
+												color="primary"
+												onClick={() => this._updateActivities()}
+												size="sm"
+										>
+												Save
+										</Button>
+										<Button
+												color="secondary"
+												onClick={() => this.openField("activitiesOpen")}
+												size="sm"
+										>
+												Cancel
+										</Button>
+								</div>
+						</div>
+				);
+		}
+
+		renderActivities = () => {
+				if (!this.props.mentor.activities) {
+						if (!this.state.activitiesOpen) {
+								return (
+										<p onClick={() => this.openField("activitiesOpen")}>
+												<i className="fa fa-plus" aria-hidden="true"></i>
+												&nbsp;Add activities
+										</p>
+								);
+						} else {
+								return this.renderEditActivities();
+						}
+				} else {
+						if (!this.state.activitiesOpen) {
+								return (
+										<div className="text-and-edit">
+												<p>{this.props.mentor.activities}</p>
+												<i className="fa fa-pencil-square-o" onClick={() => this.openField("activitiesOpen")}></i>
+										</div>
+								);
+						} else {
+								return this.renderEditActivities();
+						}
+				}
+		}
+		
     _updateMajor = major => {
         this.openField("majorOpen");
         this.props.updateProfile("major", {name: major})

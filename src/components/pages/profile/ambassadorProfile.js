@@ -97,6 +97,9 @@ class AmbassadorProfile extends React.Component {
         this.state = {
             classesOpen: false,
             bio: props.mentor.bio,
+            pros: props.mentor.pros,
+            cons: props.mentor.cons,
+            activities: props.mentor.activities,
             // major: props.mentor.major || {name: ''},
             // minor: props.mentor.minor || {name: ''},
             major: props.mentor.major || [],
@@ -135,6 +138,9 @@ class AmbassadorProfile extends React.Component {
 
         this.setState({
             bio: nextProps.mentor.bio,
+            pros: nextProps.mentor.pros,
+            cons: nextProps.mentor.cons,
+            activities: nextProps.mentor.activities,
             // major: nextProps.mentor.major,
             // minor: nextProps.mentor.minor || {name: ''},
             major: relativeSortAndMerge(currMajor, nextMajor, e => e.name, n => { return { name: n }; }),
@@ -236,6 +242,18 @@ class AmbassadorProfile extends React.Component {
         this.props.updateProfile("bio", this.state.bio);
     }
 
+    _updatePros = () => {
+        this.props.updateProfile("pros", this.state.pros);
+    }
+
+    _updateCons = () => {
+        this.props.updateProfile("cons", this.state.cons);
+    }
+
+    _updateActivities = () => {
+        this.props.updateProfile("activities", this.state.activities);
+    }
+
     _updateClasses = () => {
         this.openField("classesOpen");
         this.props.updateProfile("courses", this.state.courses.map(function(str){
@@ -247,6 +265,30 @@ class AmbassadorProfile extends React.Component {
         return (
             <div className="add-bio">
                 <Input type="textarea" onBlur={() => this._updateBio()}  onChange={e => this.setState({bio: e.target.value})} value={this.state.bio} name="bio" id="bio" />
+            </div>
+        );
+    }
+
+    renderPros = () => {
+        return (
+            <div className="add-pros">
+                <Input type="textarea" onBlur={() => this._updatePros()}  onChange={e => this.setState({pros: e.target.value})} value={this.state.pros} name="pros" id="pros" />
+            </div>
+        );
+    }
+
+    renderCons = () => {
+        return (
+            <div className="add-cons">
+                <Input type="textarea" onBlur={() => this._updateCons()}  onChange={e => this.setState({cons: e.target.value})} value={this.state.cons} name="cons" id="cons" />
+            </div>
+        );
+    }
+
+    renderActivities = () => {
+        return (
+            <div className="add-activities">
+                <Input type="textarea" onBlur={() => this._updateActivities()}  onChange={e => this.setState({activities: e.target.value})} value={this.state.activities} name="activities" id="activities" />
             </div>
         );
     }
@@ -435,6 +477,10 @@ class AmbassadorProfile extends React.Component {
                 <MuiThemeProvider>
                     <div className="profile">
                         <div className="ambassador-profile">
+                            <FormGroup className="bio">
+                                <Label>Bio</Label>
+                                {this.renderBio()}
+                            </FormGroup>
                             <FormGroup className="major">
                                 <Label>Major</Label>
                                 {this.renderMajor()}
@@ -443,13 +489,21 @@ class AmbassadorProfile extends React.Component {
                                 <Label>Minor</Label>
                                 {this.renderMinor()}
                             </FormGroup>
-                            <FormGroup className="bio">
-                                <Label>Bio</Label>
-                                {this.renderBio()}
-                            </FormGroup>
                             <FormGroup className="classes-taken">
                                 <Label>Classes Taken</Label>
                                 {this.renderClasses()}
+                            </FormGroup>
+                            <FormGroup className="bio">
+                                <Label>Pros</Label>
+                                {this.renderPros()}
+                            </FormGroup>
+                            <FormGroup className="bio">
+                                <Label>Cons</Label>
+                                {this.renderCons()}
+                            </FormGroup>
+                            <FormGroup className="activities">
+                                <Label>Activities</Label>
+                                {this.renderActivities()}
                             </FormGroup>
                             <div>
                                 <div className="cancel" onClick={() => this.props.updateMentorStatus(false)}>I am no longer available</div>
