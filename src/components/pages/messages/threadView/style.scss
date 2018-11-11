@@ -40,8 +40,12 @@
       }
 
       p {
-        overflow-wrap: break-word;
+        word-break: break-word;
         width: 100%;
+      }
+
+      .message-content {
+        word-break: break-word;
       }
     }
   }
