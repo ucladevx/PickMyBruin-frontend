@@ -2,6 +2,7 @@ import React from 'react';
 import { toJS } from 'immutable';
 
 import NavBar from '../../navbar';
+import Footer from '../../footer';
 
 import GeneralProfile from './generalProfile';
 import AmbassadorProfile from './ambassadorProfile';
@@ -86,6 +87,7 @@ class MultipleProfile extends React.Component {
                         />
                         {this._choosePage(whichPage)}
                     </div>
+                    <Footer />
                 </div>
             );
         }
