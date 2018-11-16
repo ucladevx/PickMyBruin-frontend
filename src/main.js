@@ -25,6 +25,8 @@ import Logout from "./components/pages/logout";
 import MessagesContainer from 'container/messages';
 import Authentication from './container/requireAuthentication';
 import RegisterPendingContainer from './components/pages/register/registerPending';
+import PrivacyPolicy from './components/pages/privacy';
+import AboutUs from './components/pages/about';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './main.scss';
@@ -52,6 +54,8 @@ class App extends React.Component {
                             <Route exact path="/login" component={LoginContainer}/>
                             <Route exact path="/logout" component={Logout}/>
                             <Route exact path="/register" component={RegisterContainer}/>
+                            <Route exact path="/privacy" component={PrivacyPolicy}/>
+                            <Route exact path="/about" component={AboutUs}/>
                             <Route path="/register/pending" component={RegisterPendingContainer} />
                             <Route path="/verify" component={VerifyUserContainer} />
                             <Route path="/completeRegistration" component={CompleteRegistrationContainer} />
