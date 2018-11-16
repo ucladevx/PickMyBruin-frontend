@@ -2,6 +2,7 @@ import React from 'react';
 import Form from 'components/util/LoginRegisterForm';
 import newBquest from '../../../../images/loginPage/white-bquest.svg.inline'
 import newBquestLogo from '../../../../images/loginPage/white-bquest-logo.svg.inline'
+import Footer from '../../../components/footer';
 
 class Login extends React.Component {
 
@@ -16,6 +17,7 @@ class Login extends React.Component {
                     <h1 className="loginform-title">Login</h1>
                     <Form action={this.props.login} buttonText="Log In"/>
                 </div>
+                <Footer />
             </div>
         )
     }
@@ -23,4 +25,3 @@ class Login extends React.Component {
 
 
 export default Login;
-
