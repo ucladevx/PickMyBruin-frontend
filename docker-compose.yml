@@ -3,18 +3,36 @@ version: '3.3'
 services:
   db:
     image: postgres:10.1-alpine
-  web:
-    image: pickmybruin/backend:latest
+    volumes:
+      - data:/var/lib/postgresql/data
+  websockets:
+    image: bquest/websockets:latest
+    build: ../BQuest-Backend/websockets
+    ports:
+      - "8001:80"
+  backend:
+    image: bquest/backend:latest
+    build: ../BQuest-Backend
     environment:
       - PYTHONUNBUFFERED=1
     ports:
       - "8000:8000"
+    volumes:
+      - backend-static:/code/src/static
     depends_on:
       - db
+      - websockets
   frontend:
     image: bquest/frontend:latest
+    build: .
+    volumes:
+      - /etc/letsencrypt/archive/bquest.ucladevx.com:/etc/certs
+      - backend-static:/static
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
-      - web
-
+      - backend
+volumes:
+  data:
+  backend-static:
