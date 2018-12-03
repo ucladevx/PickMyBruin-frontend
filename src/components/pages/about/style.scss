@@ -1,0 +1,106 @@
+.about-title {
+    text-align: center;
+    padding: 40px 0;
+    color: white;
+    background-color: #7ec3b4;
+    font-size: 58px;
+    font-weight: bold;
+    white-space: pre;
+    font-family: Arial, Verdana, sans-serif;
+}
+
+.about-content {
+    text-align: left;
+    padding: 58px 370px;
+    font-size: 20px;
+    font-family: Arial, Verdana, sans-serif;
+
+    a {
+      color: #0000EE;
+      text-decoration: underline;
+    }
+}
+
+.bar-container {
+    .top-bar {
+        height: 80px;
+        padding: 0 20px 0 20px;
+        position: fixed;
+        width: 100%;
+        opacity: .96;
+        top: 0;
+        background-color: $white;
+        color: $pale-teal;
+  
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+  
+        img#logo {
+          width: 200px;
+        }
+  
+        .logo {
+            display: flex;
+            justify-content: left;
+        
+            .logo-logo {
+              width: 2em;
+              margin-right: 1em;
+            }
+        
+            .logo-text {
+              width: 8em;
+        
+              text {
+                font-size: 5em;
+              }
+            }
+        }
+
+        .nav-buttons {
+          display: flex;
+          flex-flow: row;
+  
+          * {
+            padding: 8px 20px 8px 20px;
+            
+            @media (max-width: 440px) {
+              padding: 6px 10px 6px 10px;
+            }
+          }
+  
+  
+          #login {
+            transition: box-shadow .2s ease;
+            border-radius: 10px;
+            margin-right: 20px;
+  
+            &:hover {
+              cursor: pointer;
+            }
+          }
+  
+          #signup {
+            border-radius: 10px;
+            background-color: $light-orange;
+            transition: background-color .2s ease;
+            box-shadow: 0 4px 10px 0 rgba(74, 74, 74, 0.1);
+            color: $white;
+  
+            &:hover {
+              background-color: $white;
+              color: $pale-teal;
+              cursor: pointer;
+            }
+          }
+        }
+    }
+}
+
+.topbar-spaceholder {
+    position: static;
+    top: 0;
+    width: 100%;
+    height: 80px;
+}

@@ -20,10 +20,14 @@ import ambassadorDetailContainer from 'container/ambassadorDetail';
 import CompleteRegistrationContainer from './container/completeRegistration';
 import ChooseRoleContainer from 'container/chooseRole';
 import LoginContainer from './container/login';
+import Logout from "./components/pages/logout";
 //import RequestsContainer from './container/requests';
 import MessagesContainer from 'container/messages';
 import Authentication from './container/requireAuthentication';
 import RegisterPendingContainer from './components/pages/register/registerPending';
+import PrivacyPolicy from './components/pages/privacy';
+import AboutUs from './components/pages/about';
+import MainPage from './components/pages/main';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './main.scss';
@@ -49,11 +53,15 @@ class App extends React.Component {
                         <Switch>
                             <Route exact path="/" component={HomeContainer}/>
                             <Route exact path="/login" component={LoginContainer}/>
+                            <Route exact path="/logout" component={Logout}/>
                             <Route exact path="/register" component={RegisterContainer}/>
+                            <Route exact path="/privacy" component={PrivacyPolicy}/>
+                            <Route exact path="/about" component={AboutUs}/>
                             <Route path="/register/pending" component={RegisterPendingContainer} />
                             <Route path="/verify" component={VerifyUserContainer} />
                             <Route path="/completeRegistration" component={CompleteRegistrationContainer} />
 
+                            <Route exact path="/home" component={Authentication(MainPage)} />
                             <Route exact path="/chooseRole" component={Authentication(ChooseRoleContainer)} />
                             <Route exact path="/profile/:page" component={Authentication(MultipleProfileContainer)} />
                             {/*<Route exact path="/profile" component={Authentication(ProfileContainer)} />*/}

@@ -29,7 +29,7 @@ class HomeContainer extends React.Component {
         });
 
         if (nextProps.verified) {
-            this.props.redirectToProfile();
+            this.props.redirectToHome();
         }
     }
 
@@ -61,8 +61,8 @@ const mapDispatchToProps = (dispatch)=>{
         signUp: () => {
             dispatch(push('/register'));
         },
-        redirectToProfile: () => {
-            dispatch(replace('/profile/1'));
+        redirectToHome: () => {
+            dispatch(replace('/home'));
         },
         fetchProfile: () => {
             dispatch(Actions.profileActions.fetchProfile());

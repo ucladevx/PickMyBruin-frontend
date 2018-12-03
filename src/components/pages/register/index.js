@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Form from 'components/util/LoginRegisterForm';
 import newBquest from '../../../../images/loginPage/white-bquest.svg.inline'
 import newBquestLogo from '../../../../images/loginPage/white-bquest-logo.svg.inline'
+import Footer from '../../footer';
 
 import Loader from '../../loading';
 
@@ -33,6 +34,7 @@ class Register extends React.Component {
                     </div>
                     }
                 </div>
+                <Footer />
             </div>
         )
     }

@@ -2,6 +2,7 @@ import React from 'react';
 
 import NavBar from 'components/navbar';
 import SearchBar from './searchBar';
+import Footer from '../../footer';
 
 import SearchResultContainer from './searchResultContainer';
 import Results from './results';
@@ -21,6 +22,7 @@ class Search extends React.Component {
                     count={this.props.count}
                     _internal={this.props._internal} 
                 />
+                <Footer />
             </div>
         );
     }
