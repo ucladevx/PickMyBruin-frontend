@@ -28,6 +28,9 @@ import RegisterPendingContainer from './components/pages/register/registerPendin
 import PrivacyPolicy from './components/pages/privacy';
 import AboutUs from './components/pages/about';
 import MainPage from './components/pages/main';
+import ForgetPasswordContainer from './container/forget-password';
+import ForgetPasswordPending from './components/pages/forget-password/email-pending';
+import ResetPasswordContainer from './container/reset';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './main.scss';
@@ -54,11 +57,14 @@ class App extends React.Component {
                             <Route exact path="/" component={HomeContainer}/>
                             <Route exact path="/login" component={LoginContainer}/>
                             <Route exact path="/logout" component={Logout}/>
+                            <Route exact path="/forget-password" component={ForgetPasswordContainer}/>
+                            <Route exact path="/forget-password/pending" component={ForgetPasswordPending} />
                             <Route exact path="/register" component={RegisterContainer}/>
                             <Route exact path="/privacy" component={PrivacyPolicy}/>
                             <Route exact path="/about" component={AboutUs}/>
                             <Route path="/register/pending" component={RegisterPendingContainer} />
                             <Route path="/verify" component={VerifyUserContainer} />
+                            <Route path="/password" component={ResetPasswordContainer} />
                             <Route path="/completeRegistration" component={CompleteRegistrationContainer} />
 
                             <Route exact path="/home" component={Authentication(MainPage)} />
