@@ -53,6 +53,68 @@ const loginAndRedirect = redirect => {
     }
 }
 
+const sendResetEmail = (email) => {
+    return async (dispatch) => {
+        try {
+            const fullEmail = email + '@g.ucla.edu';
+
+            const response = await fetch(Config.API_URL + '/password_link/', {
+                method: 'POST',
+                headers: new Headers({
+                "Content-Type": "application/json",
+                }),
+                body: JSON.stringify({
+                    username: fullEmail
+                })
+            });
+
+            dispatch(push("/forget-password/pending"));
+
+            // const status = await response.status;
+            // const data = await response.json();
+            
+            // if (status > 299 || status < 200) {
+            //     throw new Error(data.error);
+            // } else {
+            //     dispatch(push("/forget-password/pending"));
+            // }
+        } catch (error) {
+            dispatch(notify({title: 'Error!', status: 'error', message: 'There was an error sending the email', position: 'tc'}));
+        }
+    }
+}
+
+const resetPassword = (password, passwordCode, userId) => {
+    return async (dispatch) => {
+        try {
+            const response = await fetch(Config.API_URL + '/password/', {
+                method: 'POST',
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                }),
+                body: JSON.stringify({
+                    userid: userId,
+                    code: passwordCode,
+                    password
+                })
+            });
+
+            dispatch(push("/login"));
+
+            // const status = await response.status;
+            // const data = await response.json();
+            
+            // if (status > 299 || status < 200) {
+            //     throw new Error(data.error);
+            // } else {
+            //     dispatch(push("/login"));
+            // }
+        } catch (error) {
+            dispatch(notify({title: 'Error!', status: 'error', message: 'There was an error changing the password', position: 'tc'}));
+        }
+    }
+}
+
 const login = (email, password) => {
     return async (dispatch) => {
         try {
@@ -143,5 +205,5 @@ const Login = (state = defaultState(), action) => {
 }
 
 export {
-    Login, login, logout, loginAndRedirect
+    Login, login, logout, loginAndRedirect, sendResetEmail, resetPassword
 };

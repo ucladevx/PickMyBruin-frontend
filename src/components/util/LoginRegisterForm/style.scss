@@ -31,16 +31,22 @@
       color: white;
     }
   }
+}
 
+.forget-block {
+  margin-top: 16px;
+  
   .forget-password {
-    text-align: right;
+    text-align: center;
     color: white;
-
+  
     a {
       color: white;
       &:hover {
         color: white;
       }
     }
+
+    cursor: pointer;
   }
 }

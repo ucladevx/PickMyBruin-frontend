@@ -3,7 +3,7 @@ import { Input, FormGroup, Label } from 'reactstrap';
 import Button from 'components/util/Button';
 import { withRouter } from "react-router-dom";
 
-class LoginForm extends React.Component {
+class ForgetPasswordForm extends React.Component {
     handleKeyDown = (event) => {
         let key = event.key || event.keyIdentifier || event.keyCode;
         if (key.toString().toLowerCase() === 'enter' || +key === 13) {
@@ -22,7 +22,6 @@ class LoginForm extends React.Component {
 
     state = {
         email: '',
-        password: '',
     }
 
     handleChange = e => {
@@ -32,13 +31,13 @@ class LoginForm extends React.Component {
     }
 
     _action = () => {
-        if (this.state.email && this.state.password) {
-            this.props.action(this.state.email, this.state.password);
+        if (this.state.email) {
+            this.props.action(this.state.email);
         }
     }
 
     render() {
-        const disabled = !this.state.email || !this.state.password;
+        const disabled = !this.state.email;
         return(
             <div>
                 <div className="login-form">
@@ -49,19 +48,11 @@ class LoginForm extends React.Component {
                             <span>@g.ucla.edu</span>
                         </div>
                     </FormGroup>
-
-                    <FormGroup className="form-group">
-                        <Label className="label">Password</Label>
-                        <Input className="inline-input" type="password" name="password" id="password" placeholder="password" onChange={this.handleChange} />
-                    </FormGroup>
                 </div>
                 <Button className="login-button" onClick={this._action} disabled={disabled} block>{this.props.buttonText}</Button>
-                <div className="forget-block">
-                    <p className="forget-password" onClick={() => this.props.history.push("/forget-password")}>I forgot my password!</p>
-                </div>
             </div>
         );
     }
 }
 
-export default withRouter(LoginForm);
+export default withRouter(ForgetPasswordForm);
