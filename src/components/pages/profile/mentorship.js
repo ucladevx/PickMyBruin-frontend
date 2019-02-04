@@ -70,9 +70,15 @@ class Mentorship extends React.Component {
         super(props);
         this.state = {
             bioOpen: false,
+						prosOpen: false,
+						consOpen: false,
+						clubsOpen: false,
             classesOpen: false,
             majorOpen: false,
             bio: props.mentor.bio,
+						pros: props.mentor.pros,
+						cons: props.mentor.cons,
+						clubs: props.mentor.clubs,
             courses: props.mentor.courses ? props.mentor.courses.map(obj => obj.name) : []
         }
     }
@@ -80,6 +86,9 @@ class Mentorship extends React.Component {
     componentWillReceiveProps(nextProps) {
         this.setState({
 			bio: nextProps.mentor.bio,
+			pros: nextProps.mentor.pros,
+			cons: nextProps.mentor.cons,
+			clubs: nextProps.mentor.clubs,
 			courses: nextProps.mentor.courses.map(obj => obj.name)
 		});
     }
@@ -176,12 +185,28 @@ class Mentorship extends React.Component {
         this.props.updateProfile("bio", this.state.bio);
     }
 
+		_updatePros = () => {
+				this.openField("prosOpen");
+				this.props.updateProfile("pro", this.state.pros);
+		}
+
+		_updateCons = () => {
+				this.openField("consOpen");
+				this.props.updateProfile("cons", this.state.cons);
+		}
+
+		_updateClubs = () => {
+				this.openField("clubsOpen");
+				this.props.updateProfile("clubs", this.state.clubs);
+		}
+
 	_updateClasses = () => {
         this.openField("classesOpen");
         this.props.updateProfile("courses", this.state.courses.map(function(str){
 			return ({name: str})
 		}));
     }
+
 
     renderEditBio = () => {
         return (
@@ -232,6 +257,158 @@ class Mentorship extends React.Component {
             }
         }
     }
+
+
+		renderEditPros = () => {
+        return (
+            <div className="add-pros">
+                <Input type="textarea" onChange={e => this.setState({pros: e.target.value})} value={this.state.pros} name="pros" id="pros" />
+                <div className="buttons">
+                    <Button
+                        color="primary"
+                        onClick={() => this._updatePros()}
+                        size="sm"
+                    >
+                        Save
+                    </Button>
+                    <Button
+                        color="secondary"
+                        onClick={() => this.openField("prosOpen")}
+                        size="sm"
+                    >
+                        Cancel
+                    </Button>
+                </div>
+            </div>
+        );
+    }
+
+    renderPros = () => {
+        if (!this.props.mentor.pros) {
+            if (!this.state.prosOpen) {
+                return (
+                    <p onClick={() => this.openField("prosOpen")}>
+                        <i className="fa fa-plus" aria-hidden="true"></i>
+                        &nbsp;Add pros
+                    </p>
+                );
+            } else {
+                return this.renderEditPros();
+            }
+        } else {
+            if (!this.state.prosOpen) {
+                return (
+                    <div className="text-and-edit">
+                        <p>{this.props.mentor.pros}</p>
+                        <i className="fa fa-pencil-square-o" onClick={() => this.openField("prosOpen")}></i>
+                    </div>
+                );
+            } else {
+                return this.renderEditPros();
+            }
+        }
+    }
+
+		renderEditCons = () => {
+				return (
+						<div className="add-cons">
+								<Input type="textarea" onChange={e => this.setState({cons: e.target.value})} value={this.state.cons} name="cons" id="cons" />
+								<div className="buttons">
+										<Button
+												color="primary"
+												onClick={() => this._updateCons()}
+												size="sm"
+										>
+												Save
+										</Button>
+										<Button
+												color="secondary"
+												onClick={() => this.openField("consOpen")}
+												size="sm"
+										>
+												Cancel
+										</Button>
+								</div>
+						</div>
+				);
+		}
+
+		renderCons = () => {
+				if (!this.props.mentor.cons) {
+						if (!this.state.consOpen) {
+								return (
+										<p onClick={() => this.openField("consOpen")}>
+												<i className="fa fa-plus" aria-hidden="true"></i>
+												&nbsp;Add cons
+										</p>
+								);
+						} else {
+								return this.renderEditCons();
+						}
+				} else {
+						if (!this.state.consOpen) {
+								return (
+										<div className="text-and-edit">
+												<p>{this.props.mentor.cons}</p>
+												<i className="fa fa-pencil-square-o" onClick={() => this.openField("consOpen")}></i>
+										</div>
+								);
+						} else {
+								return this.renderEditCons();
+						}
+				}
+		}
+
+		renderEditClubs = () => {
+				return (
+						<div className="add-clubs">
+								<Input type="textarea" onChange={e => this.setState({clubs: e.target.value})} value={this.state.clubs} name="clubs" id="clubs" />
+								<div className="buttons">
+										<Button
+												color="primary"
+												onClick={() => this._updateClubs()}
+												size="sm"
+										>
+												Save
+										</Button>
+										<Button
+												color="secondary"
+												onClick={() => this.openField("clubsOpen")}
+												size="sm"
+										>
+												Cancel
+										</Button>
+								</div>
+						</div>
+				);
+		}
+
+		renderClubs = () => {
+				if (!this.props.mentor.clubs) {
+						if (!this.state.clubsOpen) {
+								return (
+										<p onClick={() => this.openField("clubsOpen")}>
+												<i className="fa fa-plus" aria-hidden="true"></i>
+												&nbsp;Add clubs
+										</p>
+								);
+						} else {
+								return this.renderEditClubs();
+						}
+				} else {
+						if (!this.state.clubsOpen) {
+								return (
+										<div className="text-and-edit">
+												<p>{this.props.mentor.clubs}</p>
+												<i className="fa fa-pencil-square-o" onClick={() => this.openField("clubsOpen")}></i>
+										</div>
+								);
+						} else {
+								return this.renderEditClubs();
+						}
+				}
+		}
+
 
     _updateMajor = major => {
         this.openField("majorOpen");
