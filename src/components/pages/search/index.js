@@ -22,7 +22,9 @@ class Search extends React.Component {
                     count={this.props.count}
                     _internal={this.props._internal} 
                 />
-                <Footer />
+                <div className="results-footer">
+                    <Footer />
+                </div>
             </div>
         );
     }
