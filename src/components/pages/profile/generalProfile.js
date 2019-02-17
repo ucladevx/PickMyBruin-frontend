@@ -12,6 +12,7 @@ class GeneralProfile extends React.Component {
             email: this.props.user.email,
             name: `${this.props.user.first_name} ${this.props.user.last_name}`,
             year: this.props.user.year,
+            phone: this.props.user.phone
         };
     };
 
@@ -20,6 +21,7 @@ class GeneralProfile extends React.Component {
             email: props.user.email,
             name: `${props.user.first_name} ${props.user.last_name}`,
             year: props.user.year,
+            phone: props.user.phone
         });
     }
 
@@ -113,6 +115,33 @@ class GeneralProfile extends React.Component {
                                         }}
                                     />
                                     <p className="hint">You will received email notifications when you have a new contact, or a message long-awaiting your response.</p>
+                                </FormGroup>
+                            </div>
+                            <div>
+
+                                <FormGroup // added phone number field
+                                >
+                                    <Label for="phone-field">Phone Number</Label>
+                                    <Input
+                                        type="phone"
+                                        id="phone-field"
+                                        name="phone-field"
+                                        value={this.state.phone}
+                                        onChange={({ target}) => this.setState({phone: target.value})}
+                                        onKeyUp={(event) => {
+                                            if (event.key === 'Enter') {
+                                                event.target.blur();
+                                            }
+                                        }}
+
+                                        onBlur={({ target }) => {
+                                            //potential TODO: add validate phone number function?
+                                            this.props.updateProfile('phone', target.value);
+                  
+                                        }}
+
+                                        />
+
                                 </FormGroup>
                             </div>
                         </div>
