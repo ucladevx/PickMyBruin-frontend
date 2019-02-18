@@ -9,7 +9,7 @@ import Register from '../components/pages/register';
 class RegisterContainer extends React.Component {
     render() {
         return(
-            <Register 
+            <Register
                 sendingEmail={this.props.sendingEmail}
                 sentEmail={this.props.sentEmail}
                 sendVerificationLink={this.props.sendVerificationLink}
@@ -36,7 +36,7 @@ const mapDispatchToProps = dispatch => {
         sendVerificationLink: (email, password) => {
             dispatch(Actions.registerActions.sendVerificationLink(email, password));
         },
-        
+
         // bindActionCreators(Actions.registerActions.sendVerificationLink, dispatch),
         redirectToPending: () => {
             dispatch(push('/register/pending'));

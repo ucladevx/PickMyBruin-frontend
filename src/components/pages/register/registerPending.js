@@ -11,12 +11,6 @@ class RegisterPending extends React.Component {
                     A verification link has been sent to your email,
                     please click on the link in your mailbox to continue the registration
                 </div>
-                {/*
-                <div className="pending-registration-btns">
-                    <div className="pending-btn"><Button color="primary" block>Back</Button></div>
-                    <div className="pending-btn"><Button color="primary" block>Resend Link</Button></div>
-                </div>
-                */}
             </div>
         )
     }

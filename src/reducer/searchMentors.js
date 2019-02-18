@@ -23,7 +23,7 @@ const SEND_REQUEST_ERROR = 'send_request_error';
 
 const dummyMentors = Immutable.fromJS([
     {
-        user: { 
+        user: {
             id: 1,
             first_name: 'Mary',
             last_name: 'Smith',
@@ -40,12 +40,12 @@ const dummyMentors = Immutable.fromJS([
                 I LOVE MY MAJOR SO MUCH! It's the best thing in the world and I have learned so much \
                 and I can't wat to share that info with others come talk to me!!",
             gpa: "0.00",
-            clubs: null,
+            clubs: "DevX",
             classes: ['cs111', 'cs31', 'cs32', 'cs333']
         }
     },
     {
-        user: { 
+        user: {
             id: 2,
             first_name: 'Mark',
             last_name: 'Tai',
@@ -60,7 +60,7 @@ const dummyMentors = Immutable.fromJS([
             bio: "I LOVE MY MAJOR SO MUCH! It's the best thing in the world and I have learned so much \
                 and I can't wat to share that info with others come talk to me!!",
             gpa: "0.00",
-            clubs: null,
+            clubs: "ACM",
             classes: ['cs111', 'cs31', 'cs32', 'cs333', 'cs111']
         }
     }
@@ -143,10 +143,10 @@ const SearchMentors = (state=defaultState, action) => {
                 val.set('error', null);
                 val.setIn(['_internal', 'searched'], true);
                 val.set('count', action.data.count)
-                
-                /* 
+
+                /*
                  * turn the results from the API into our preferred object format:
-                 * { 
+                 * {
                  *      user: {}
                  *      mentor: {}
                  * }

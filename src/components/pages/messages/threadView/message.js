@@ -10,7 +10,7 @@ export default ({messageText, messageSender, currentUser}) => {
 		<div className={classNames.join(' ')}>
 			<ProfilePicture picture={messageSender.get('picture')} size="xsmall"/>
 			<div className="bubble">
-				<p>{messageText}</p>
+				<p className="message-content">{messageText}</p>
 			</div>
 		</div>
 	);
