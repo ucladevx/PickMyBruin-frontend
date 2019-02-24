@@ -226,6 +226,28 @@ const fetchProfile = () => {
     }
 }
 
+const reportMentor = (reported_id, reason) => {
+    return async dispatch => {
+        try {
+            const response = await fetch(Config.API_URL + '/report_user/', {
+                method: 'POST',
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                }),
+                body: JSON.stringify({
+                    reported_id: reported_id,
+                    reason: reason
+                })
+            });
+
+            dispatch(notify({status: 'success', message: 'Your report has been submitted!', position: 'tc'}));
+
+        } catch (error) {
+            dispatch(notify({title: 'Error!', status: 'error', message: 'There was an error reporting the user.', position: 'tc'}));
+        }
+    }
+}
+
 const setProfile = profile => {
     return {
         type: SET_PROFILE,
@@ -304,4 +326,4 @@ const Profile = (state = defaultState(), action) => {
     }
 }
 
-export { Profile, fetchProfile, setProfile, removeProfileInfo, updateMentorStatus, updateMentorProfile, updateUserProfile, setProfilePic };
+export { Profile, fetchProfile, setProfile, removeProfileInfo, updateMentorStatus, updateMentorProfile, updateUserProfile, setProfilePic, reportMentor };

@@ -8,6 +8,7 @@ import Button from 'components/util/Button';
 class AmbassadorDetail extends React.Component {
     state = {
         showModal: false,
+        showReportModal: false,
         messageText: ''
     }
 
@@ -17,18 +18,34 @@ class AmbassadorDetail extends React.Component {
         }));
     }
 
+    onReport = () => {
+        this.setState(prev => ({
+            showReportModal: !prev.showReportModal
+        }));
+    }
+
     closeModal = () => {
         this.setState({
-            showModal: false
+            showModal: false,
+            showReportModal: false
         });
     }
 
     sendMessage = e => {
         e.preventDefault();
-        this.closeModal()
+        this.closeModal();
         
         if (this.state.messageText !== '') {
             this.props.sendMessage(this.state.messageText, this.props.ambassador.getIn(['user', 'id']));
+        }
+    }
+
+    sendReport = e => {
+        e.preventDefault();
+        this.closeModal();
+
+        if (this.state.messageText !== '') {
+            this.props.reportMentor(this.props.ambassador.getIn(['user', 'id']), this.state.messageText);
         }
     }
 
@@ -55,6 +72,15 @@ class AmbassadorDetail extends React.Component {
                             <Button onClick={this.sendMessage} color="green" disabled={disabled}>Send</Button>
                         </form>
                     </Modal>     : null}
+                {this.state.showReportModal ? 
+                    <Modal 
+                        closeModal={this.closeModal}>
+                        <p>Explain your reasoning for reporting this ambassador.</p>
+                        <form onSubmit={e => e.preventDefault()}>
+                            <input value={this.state.messageText} type="text" placeholder="My reason is.." onChange={this.onChange}/>
+                            <Button onClick={this.sendReport} color="green" disabled={disabled}>Submit</Button>
+                        </form>
+                    </Modal>     : null}
                 <div className="top-bar">
                     <span onClick={this.props.goBack}><i className="fa fa-arrow-left"></i> Search</span>
                 </div>
@@ -63,6 +89,7 @@ class AmbassadorDetail extends React.Component {
                         profile={ambassador.get('user')}
                         mentor={ambassador.get('mentor')}
                         onClick={this.onClick}
+                        onReport={this.onReport}
                     />
                     <ColumnRight 
                         mentor={ambassador.get('mentor')}
