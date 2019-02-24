@@ -45,7 +45,7 @@ class GeneralProfile extends React.Component {
                         <div className="right">
                             <div>
                                 <FormGroup>
-                                    <Label for="name-field">Name</Label>
+                                    <Label for="name-field">Full Name</Label>
                                     <Input
                                         id="name-field"
                                         name="name-field"
@@ -114,7 +114,7 @@ class GeneralProfile extends React.Component {
                                             }
                                         }}
                                     />
-                                    <p className="hint">You will received email notifications when you have a new contact, or a message long-awaiting your response.</p>
+                                    <p className="hint">You will receive email notifications when you have a new contact.</p>
                                 </FormGroup>
                             </div>
                             <div>
