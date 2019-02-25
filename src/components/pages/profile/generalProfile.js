@@ -30,10 +30,7 @@ class GeneralProfile extends React.Component {
         return re.test(String(email).toLowerCase());
     }
 
-    // validatePhoneNumber(phone_number) {
-    //     let re = ^([0-9]{3}\)[0-9]{3}-[0-9]{4}$;
-    //     return re.test(String(phone_number));
-    // }
+   
     render() {
         return(
             <MuiThemeProvider>
@@ -120,7 +117,7 @@ class GeneralProfile extends React.Component {
                             </div>
                             <div>
 
-                                <FormGroup // added phone number field
+                                <FormGroup 
                                 >
                                     <Label for="phone-field">Phone Number</Label>
                                     <p className="hint">Format as (xxx)xxx-xxxx.</p>
@@ -138,15 +135,10 @@ class GeneralProfile extends React.Component {
                                         }}
 
                                         onBlur={({ target }) => {
-                                            //potential TODO: add validate phone number function?
-                                            if (!this.validatePhoneNumber(target.value)) {
-                                                this.setState({phone_number: this.props.user.phone_number});
-
-
-                                            } else {
+                                             
                                                  this.props.updateProfile('phone_number', target.value);
 
-                                            }
+                                            
                   
                                         }}
 
