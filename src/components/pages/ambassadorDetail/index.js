@@ -9,7 +9,8 @@ class AmbassadorDetail extends React.Component {
     state = {
         showModal: false,
         showReportModal: false,
-        messageText: ''
+        messageText: '',
+        reportText: '',
     }
 
     onClick = () => {
@@ -45,13 +46,19 @@ class AmbassadorDetail extends React.Component {
         this.closeModal();
 
         if (this.state.messageText !== '') {
-            this.props.reportMentor(this.props.ambassador.getIn(['user', 'id']), this.state.messageText);
+            this.props.reportMentor(this.props.ambassador.getIn(['user', 'id']), this.state.reportText);
         }
     }
 
     onChange = e => {
         this.setState({
             messageText: e.target.value
+        })
+    }
+
+    onReportChange = e => {
+        this.setState({
+            reportText: e.target.value
         })
     }
 
@@ -77,7 +84,7 @@ class AmbassadorDetail extends React.Component {
                         closeModal={this.closeModal}>
                         <p>Explain your reasoning for reporting this ambassador.</p>
                         <form onSubmit={e => e.preventDefault()}>
-                            <input value={this.state.messageText} type="text" placeholder="My reason is.." onChange={this.onChange}/>
+                            <input value={this.state.reportText} type="text" placeholder="My reason is.." onChange={this.onReportChange}/>
                             <Button onClick={this.sendReport} color="green" disabled={disabled}>Submit</Button>
                         </form>
                     </Modal>     : null}

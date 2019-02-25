@@ -229,14 +229,16 @@ const fetchProfile = () => {
 const reportMentor = (reported_id, reason) => {
     return async dispatch => {
         try {
+            const token = Storage.get('token');
             const response = await fetch(Config.API_URL + '/report_user/', {
                 method: 'POST',
                 headers: new Headers({
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
                 }),
                 body: JSON.stringify({
                     reported_id: reported_id,
-                    reason: reason
+                    reason: reason,
                 })
             });
 
