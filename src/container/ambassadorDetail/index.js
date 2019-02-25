@@ -28,6 +28,7 @@ class AmbassadorDetailContainer extends React.Component {
                             ambassador={this.props.ambassador}
                             goBack={this.props.goBack}
                             sendMessage={this.props.sendMessage}
+                            reportMentor={this.props.reportMentor}
                         />
                     </div>
                 </div>
@@ -54,6 +55,9 @@ const mapDispatchToProps = dispatch => {
         },
         redirectHome: () => {
             dispatch(replace("/search"));
+        },
+        reportMentor: (reported_id, reason) => {
+            dispatch(Actions.profileActions.reportMentor(reported_id, reason));
         }
     }
 }
