@@ -108,8 +108,12 @@ class GeneralProfile extends React.Component {
                                         }}
                                         onBlur={({ target }) => {
                                            
+                                           if (!this.validateEmail(target.value)) {
+                                                this.setState({ email: this.props.user.email }); // discard user entered value
+                                                // TODO: add an alert here
+                                            } else {
                                                 this.props.updateProfile('email', target.value);
-                                            
+                                            }                                            
                                         }}
                                     />
                                     <p className="hint">You will receive email notifications when you have a new contact.</p>
