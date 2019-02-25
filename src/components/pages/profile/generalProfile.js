@@ -12,7 +12,7 @@ class GeneralProfile extends React.Component {
             email: this.props.user.email,
             name: `${this.props.user.first_name} ${this.props.user.last_name}`,
             year: this.props.user.year,
-            phone: this.props.user.phone
+            phone_number: this.props.user.phone_number
         };
     };
 
@@ -21,7 +21,7 @@ class GeneralProfile extends React.Component {
             email: props.user.email,
             name: `${props.user.first_name} ${props.user.last_name}`,
             year: props.user.year,
-            phone: props.user.phone
+            phone_number: props.user.phone_number
         });
     }
 
@@ -30,6 +30,10 @@ class GeneralProfile extends React.Component {
         return re.test(String(email).toLowerCase());
     }
 
+    // validatePhoneNumber(phone_number) {
+    //     let re = ^([0-9]{3}\)[0-9]{3}-[0-9]{4}$;
+    //     return re.test(String(phone_number));
+    // }
     render() {
         return(
             <MuiThemeProvider>
@@ -106,12 +110,9 @@ class GeneralProfile extends React.Component {
                                             }
                                         }}
                                         onBlur={({ target }) => {
-                                            if (!this.validateEmail(target.value)) {
-                                                this.setState({ email: this.props.user.email }); // discard user entered value
-                                                // TODO: add an alert here
-                                            } else {
+                                           
                                                 this.props.updateProfile('email', target.value);
-                                            }
+                                            
                                         }}
                                     />
                                     <p className="hint">You will receive email notifications when you have a new contact.</p>
@@ -122,12 +123,14 @@ class GeneralProfile extends React.Component {
                                 <FormGroup // added phone number field
                                 >
                                     <Label for="phone-field">Phone Number</Label>
+                                    <p className="hint">Format as (xxx)xxx-xxxx.</p>
+
                                     <Input
                                         type="phone"
                                         id="phone-field"
                                         name="phone-field"
-                                        value={this.state.phone}
-                                        onChange={({ target}) => this.setState({phone: target.value})}
+                                        value={this.state.phone_number}
+                                        onChange={({ target}) => this.setState({phone_number: target.value})}
                                         onKeyUp={(event) => {
                                             if (event.key === 'Enter') {
                                                 event.target.blur();
@@ -136,7 +139,14 @@ class GeneralProfile extends React.Component {
 
                                         onBlur={({ target }) => {
                                             //potential TODO: add validate phone number function?
-                                            this.props.updateProfile('phone', target.value);
+                                            if (!this.validatePhoneNumber(target.value)) {
+                                                this.setState({phone_number: this.props.user.phone_number});
+
+
+                                            } else {
+                                                 this.props.updateProfile('phone_number', target.value);
+
+                                            }
                   
                                         }}
 
