@@ -24,6 +24,8 @@ class ColumnLeft extends React.Component {
                     <p>{this.renderMajors()}</p>
                 </div>
                 <Button color="orange" onClick={this.props.onClick}>Send a Message</Button>
+                <br />
+                <Button color="red" onClick={this.props.onReport}>Report Ambassador</Button>
             </div>
         );
     }
