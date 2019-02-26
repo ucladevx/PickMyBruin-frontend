@@ -35,7 +35,7 @@
   }
 
   h1 {
-    color: $main-text;
+    color: white;
     font-size: 2em;
   }
 
@@ -110,24 +110,24 @@
   }
 }
 
-// .container-pending {
-//   min-height: 100vh;
+.container-pending {
+  min-height: 100vh;
 
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-//   .pending-text {
-//     margin: 20px;
-//   }
+  .pending-text {
+    margin: 20px;
+  }
 
-//   .pending-registration-btns {
-//     display: flex;
-//     flex-direction: row;
+  .pending-registration-btns {
+    display: flex;
+    flex-direction: row;
 
-//     * {
-//       margin: 5px;
-//     }
-//   }
-// }
+    * {
+      margin: 5px;
+    }
+  }
+}

@@ -5,9 +5,9 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { reducer as notificationsReducer } from 'reapop';
 
-import { Login, login, logout, loginAndRedirect } from './login';
+import { Login, login, logout, loginAndRedirect, sendResetEmail, resetPassword } from './login';
 import { Register, sendVerificationLink, confirmCode, completeRegistration } from './register';
-import { Profile, fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile, setProfilePic } from './profile';
+import { Profile, fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile, setProfilePic, reportMentor } from './profile';
 import { SearchMentors, handleSearch } from './searchMentors'
 import { Requests, getRequests, sendRequest } from './requests'
 import { Messages, fetchThreads, fetchMessages, checkIfThreadExists, sendMessage, removeProfileViewing } from './messages';
@@ -45,10 +45,10 @@ const Actions = {
         sendVerificationLink, completeRegistration, confirmCode
     },
     loginActions: {
-        login, logout, loginAndRedirect
+        login, logout, loginAndRedirect, sendResetEmail, resetPassword
     },
     profileActions: {
-        fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile, setProfilePic
+        fetchProfile, updateMentorStatus, updateUserProfile, updateMentorProfile, setProfilePic, reportMentor
     },
     searchMentorsActions: {
         handleSearch

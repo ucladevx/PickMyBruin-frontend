@@ -12,6 +12,7 @@ class GeneralProfile extends React.Component {
             email: this.props.user.email,
             name: `${this.props.user.first_name} ${this.props.user.last_name}`,
             year: this.props.user.year,
+            phone_number: this.props.user.phone_number
         };
     };
 
@@ -20,6 +21,7 @@ class GeneralProfile extends React.Component {
             email: props.user.email,
             name: `${props.user.first_name} ${props.user.last_name}`,
             year: props.user.year,
+            phone_number: props.user.phone_number
         });
     }
 
@@ -28,6 +30,7 @@ class GeneralProfile extends React.Component {
         return re.test(String(email).toLowerCase());
     }
 
+  
     render() {
         return(
             <MuiThemeProvider>
@@ -43,7 +46,7 @@ class GeneralProfile extends React.Component {
                         <div className="right">
                             <div>
                                 <FormGroup>
-                                    <Label for="name-field">Name</Label>
+                                    <Label for="name-field">Full Name</Label>
                                     <Input
                                         id="name-field"
                                         name="name-field"
@@ -104,15 +107,43 @@ class GeneralProfile extends React.Component {
                                             }
                                         }}
                                         onBlur={({ target }) => {
-                                            if (!this.validateEmail(target.value)) {
+                                           
+                                           if (!this.validateEmail(target.value)) {
                                                 this.setState({ email: this.props.user.email }); // discard user entered value
                                                 // TODO: add an alert here
                                             } else {
                                                 this.props.updateProfile('email', target.value);
-                                            }
+                                            }                                            
+
                                         }}
                                     />
-                                    <p className="hint">You will received email notifications when you have a new contact, or a message long-awaiting your response.</p>
+                                    <p className="hint">You will receive email notifications when you have a new contact.</p>
+                                </FormGroup>
+                            </div>
+                            <div>
+
+                                <FormGroup>
+                                    <Label for="phone-field">Phone Number</Label>
+                                    <p className="hint">Format as (xxx)xxx-xxxx.</p>
+
+                                    <Input
+                                        type="phone"
+                                        id="phone-field"
+                                        name="phone-field"
+                                        value={this.state.phone_number}
+                                        onChange={({ target}) => this.setState({phone_number: target.value})}
+                                        onKeyUp={(event) => {
+                                            if (event.key === 'Enter') {
+                                                event.target.blur();
+                                            }
+                                        }}
+
+                                        onBlur={({ target }) => {
+                                                 this.props.updateProfile('phone_number', target.value);
+                                        }}
+
+                                        />
+
                                 </FormGroup>
                             </div>
                         </div>

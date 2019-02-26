@@ -1,0 +1,30 @@
+.container-password-reset {
+   width: 350px;
+  
+   @media (max-width: 800px) {
+     width: 90%;
+   }
+ 
+   .password-reset-title {
+     color: white;
+     margin-bottom: 0.6em;
+   }
+
+   p {
+       color: white;
+       font-size: 12pt;
+   }
+}
+
+.container-pending {
+    width: 600px;
+    
+    @media (max-width: 800px) {
+      width: 90%;
+    }
+
+    h1 {
+      border: solid 4px #f9f9f9;
+      padding: 30px 40px;
+    }
+}
