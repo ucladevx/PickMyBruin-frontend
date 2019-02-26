@@ -65,6 +65,7 @@ class AmbassadorDetail extends React.Component {
     render() {
         const ambassador = this.props.ambassador;
         const disabled = this.state.messageText === '';
+        const reportDisabled = this.state.reportText === '';
 
         return (
             <div className="ambassador-detail">
@@ -85,7 +86,7 @@ class AmbassadorDetail extends React.Component {
                         <p>Explain your reasoning for reporting this ambassador.</p>
                         <form onSubmit={e => e.preventDefault()}>
                             <input value={this.state.reportText} type="text" placeholder="My reason is.." onChange={this.onReportChange}/>
-                            <Button onClick={this.sendReport} color="green" disabled={disabled}>Submit</Button>
+                            <Button onClick={this.sendReport} color="green" disabled={reportDisabled}>Submit</Button>
                         </form>
                     </Modal>     : null}
                 <div className="top-bar">
