@@ -45,7 +45,7 @@ class AmbassadorDetail extends React.Component {
         e.preventDefault();
         this.closeModal();
 
-        if (this.state.messageText !== '') {
+        if (this.state.reportText !== '') {
             this.props.reportMentor(this.props.ambassador.getIn(['user', 'id']), this.state.reportText);
         }
     }
