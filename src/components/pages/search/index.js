@@ -15,7 +15,8 @@ class Search extends React.Component {
                 <div className="search">
                     <SearchBar
                         handleSearch={this.props.handleSearch}
-                    />
+                        
+                                            />
                 </div>
                 <Results
                     mentors={this.props.mentors}

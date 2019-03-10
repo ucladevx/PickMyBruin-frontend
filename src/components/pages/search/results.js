@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchResultContainer from 'components/common/searchResultContainer';
+import SearchBar from './searchBar'
 
 import Divider from 'components/util/divider';
 import { pluralize } from 'common';
@@ -20,7 +21,9 @@ class Results extends React.Component {
         } else {
             return (
                 <div className="instructions">
-                    <h1>We don't have ambassadors in that major at the moment. Check back soon!</h1>
+                
+                    <h1>We don't have ambassadors in ${} at the moment. Check back soon!</h1>
+                
                 </div>
             );
         }

@@ -3,7 +3,9 @@ import React from 'react';
 class SearchBar extends React.Component {
     state = {
         value: '',
-        searched: false
+        searched: false,
+        query: ''
+       
     }
 
     submit = e => {
@@ -18,12 +20,19 @@ class SearchBar extends React.Component {
     handleChange = e => {
         this.setState({
             value: e.target.value
+            
+        })
+        this.setState({
+            query: e.target.value
+            
         })
     }
 
     renderSearchTerm = () => {
         
     }
+
+    getQuery = () => {this.state.query}
 
     render() {
         return (
@@ -32,8 +41,9 @@ class SearchBar extends React.Component {
                     <input 
                         className="field--input" 
                         type="text" 
-                        placeholder="Search for a major" 
+                        placeholder="Search name, major, ..." 
                         value={this.state.value}
+                        
                         onChange={this.handleChange}
                         required
                     />
