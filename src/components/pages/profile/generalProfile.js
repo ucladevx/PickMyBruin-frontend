@@ -30,7 +30,7 @@ class GeneralProfile extends React.Component {
         return re.test(String(email).toLowerCase());
     }
 
-   
+  
     render() {
         return(
             <MuiThemeProvider>
@@ -114,6 +114,7 @@ class GeneralProfile extends React.Component {
                                             } else {
                                                 this.props.updateProfile('email', target.value);
                                             }                                            
+
                                         }}
                                     />
                                     <p className="hint">You will receive email notifications when you have a new contact.</p>
@@ -121,8 +122,7 @@ class GeneralProfile extends React.Component {
                             </div>
                             <div>
 
-                                <FormGroup 
-                                >
+                                <FormGroup>
                                     <Label for="phone-field">Phone Number</Label>
                                     <p className="hint">Format as (xxx)xxx-xxxx.</p>
 
@@ -139,11 +139,7 @@ class GeneralProfile extends React.Component {
                                         }}
 
                                         onBlur={({ target }) => {
-                                             
                                                  this.props.updateProfile('phone_number', target.value);
-
-                                            
-                  
                                         }}
 
                                         />
