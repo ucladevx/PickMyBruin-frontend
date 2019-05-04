@@ -11,6 +11,7 @@ class ChooseRoleContainer extends React.Component {
             <ChooseRole
                 beAmbassador={this.props.beAmbassador}
                 redirectToProfile={this.props.redirectToProfile}
+                showOnboarding={this.props.showOnboarding}
             />
         );
     }
@@ -28,6 +29,9 @@ const mapDispatchToProps = dispatch => {
         },
         redirectToProfile: () => {
             dispatch(replace("/profile/1"));
+        },
+        showOnboarding: () => {
+            dispatch(replace("/onboarding"));
         }
     };
 }

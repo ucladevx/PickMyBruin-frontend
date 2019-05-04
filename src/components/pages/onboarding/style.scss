@@ -1,0 +1,51 @@
+.slide-container {
+    width: 70%;
+    margin: auto; 
+    margin-top: 100px;
+}
+  
+.each-slide > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    height: 300px;
+}
+  
+.each-slide span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    text-align: center;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.change {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 292px;
+    margin-top: 100px;
+}
+
+img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 300px;
+    margin-top: 100px;
+}
+
+.onboarding-button {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+}

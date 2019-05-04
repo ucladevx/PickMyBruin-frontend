@@ -20,7 +20,7 @@ class MainPage extends React.Component {
                             <p onClick={() => this.props.history.push("/search")}>Find an ambassador.</p>
                         </div>
                         <div className="main-onboarding">
-                            <p onClick={() => this.props.history.push("/profile/1")}>Need help using BQuest? We got you.</p>
+                            <p onClick={() => this.props.history.push("/onboarding")}>Need help using BQuest? <u>Click here</u>!</p>
                         </div>
                     </div>
                 </div>
