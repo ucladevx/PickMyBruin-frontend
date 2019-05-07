@@ -13,11 +13,7 @@ class ChooseRole extends React.Component {
     }
 
     submit = () => {
-        if (this.state.option === "find") {
-            return this.props.redirectToProfile();
-        } else if (this.state.option === "be") {
-            return this.props.beAmbassador();
-        }
+        return this.props.showOnboarding();
     }
     
     render() {
