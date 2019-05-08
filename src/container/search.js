@@ -12,6 +12,7 @@ class SearchContainer extends React.Component {
                 handleSearch={this.props.handleSearch}
                 count={this.props.count}
                 _internal={this.props._internal}
+                query={this.props.searchURL}
             />
         );
     }
@@ -28,8 +29,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        handleSearch: major => {
-            dispatch(Actions.searchMentorsActions.handleSearch(major));
+        handleSearch: (query) => {
+            dispatch(Actions.searchMentorsActions.handleSearch(query));
         }
     }
 }

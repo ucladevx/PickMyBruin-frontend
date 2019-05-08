@@ -8,16 +8,33 @@ import SearchResultContainer from './searchResultContainer';
 import Results from './results';
 
 class Search extends React.Component {
+
+    
+
+    
+    // getQuery(event) {
+    //     return search_query;
+        
+    // }
+
+    // handleSearch(e) {
+    //     this.setState({search_query: e.target.value})
+    // }
+
+    
     render() {
         return(
             <div className="search-container">
                 <NavBar />
                 <div className="search">
                     <SearchBar
-                        handleSearch={this.props.handleSearch}
+                        // handleSearch={this.props.handleSearch}
                         
-                                            />
+                        // const isSelected = this.state.platform ? true : false;     
+                    />
                 </div>
+
+                   
                 <Results
                     mentors={this.props.mentors}
                     count={this.props.count}
