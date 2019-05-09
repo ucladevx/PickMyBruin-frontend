@@ -27,11 +27,13 @@ import Authentication from './container/requireAuthentication';
 import RegisterPendingContainer from './components/pages/register/registerPending';
 import PrivacyPolicy from './components/pages/privacy';
 import AboutUs from './components/pages/about';
+
 import MainPage from './components/pages/main';
 import ForgetPasswordContainer from './container/forget-password';
 import ForgetPasswordPending from './components/pages/forget-password/email-pending';
 import ResetPasswordContainer from './container/reset';
 import Onboarding from './components/pages/onboarding';
+
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './main.scss';

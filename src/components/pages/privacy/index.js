@@ -29,6 +29,7 @@ class PrivacyPolicy extends React.Component {
                         <li className="policy-list-element">Email</li>
                         <li className="policy-list-element">Personal information regarding academics</li>
                     </ul>
+
                     <p>We only have access to information that you voluntarily give us through the sign-up process. 
                         We will only use this information to assist students in determining their academic path while at UCLA. 
                         This information can be edited by the user in the <b>General Settings and FAQs section</b>.

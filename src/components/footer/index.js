@@ -1,10 +1,12 @@
 import React from "react";
+
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import BquestLogo from '../../../images/loginPage/white-bquest-logo.svg.inline';
 
 class Footer extends React.Component {
+
     
     navigate = location => {
         if (location != this.props.location) {
@@ -17,6 +19,7 @@ class Footer extends React.Component {
             <div className="footer-container">
                 <div className="link-logo">
                     <div className="inner-logo" dangerouslySetInnerHTML={{__html: BquestLogo}} />
+
                     {this.props.isLoggedIn && <p onClick={() => this.navigate("home")}>BQUEST</p>}
                     {!this.props.isLoggedIn && <p onClick={() => this.navigate("")}>BQUEST</p>}
                 </div>
@@ -24,18 +27,21 @@ class Footer extends React.Component {
                     <p>/</p>
                 </div>
                 <div className="link-privacy">
+
                     <p onClick={() => this.navigate("privacy")}>Privacy Policy</p>
                 </div>
                 <div className="between-link">
                     <p>/</p>
                 </div>
                 <div className="link-about">
+
                     <p onClick={() => this.navigate("about")}>About Us</p>
                 </div>
             </div>
         );
     }
 }
+
 
 const mapStateToProps = state => {
     const Login = state.Login;
@@ -55,3 +61,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+
