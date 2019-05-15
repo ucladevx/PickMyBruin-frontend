@@ -28,6 +28,7 @@ class Search extends React.Component {
                 <NavBar />
                 <div className="search">
                     <SearchBar
+                        
                         // handleSearch={this.props.handleSearch}
                         
                         // const isSelected = this.state.platform ? true : false;     

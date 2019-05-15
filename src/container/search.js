@@ -5,6 +5,7 @@ import { Actions } from '../reducer';
 import Search from '../components/pages/search';
 
 class SearchContainer extends React.Component {
+    
     render() {
         return (
             <Search 
@@ -13,6 +14,7 @@ class SearchContainer extends React.Component {
                 count={this.props.count}
                 _internal={this.props._internal}
                 query={this.props.searchURL}
+                onSubmit={this.props.handleSearch(this.props.query)}
             />
         );
     }
@@ -24,6 +26,7 @@ const mapStateToProps = state => {
         mentors: SearchMentors.get('mentors'),
         count: SearchMentors.get('count'),
         _internal: SearchMentors.get('_internal'),
+        query: state.searchURL
     };
 }
 

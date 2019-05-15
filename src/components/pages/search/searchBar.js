@@ -1,12 +1,7 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-    // state = {
-    //     value: '',
-    //     searched: false,
-    //     query: ''
-       
-    // }
+   
     
     constructor(props) {
         super(props);
@@ -14,57 +9,44 @@ class SearchBar extends React.Component {
             // search_query : ""
             searchURL : ""
         }
-        // this.getQuery = this.getQuery.bind(this);
+    
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    submit = e => {
-        e.preventDefault();
+  
 
-        this.props.handleSearch(this.state.value);
-        this.setState({
-            searched: true
-        });
-    }
-
-    // handleChange = e => {
-    //     this.props.getQuery(e.target.value);
-    // }
+    
 
    handleChange(e) {
+
+        e.preventDefault
         const { name, value } = e.target;
 
-        this.setState({
-          [name]: value
-        });
-
-        updateURL();
-    }
-
-    updateURL() {
+        
+     
         const nameSelected = this.state.name ? true : false;
         const yearSelected = this.state.year ? true : false;
         const majorSelected = this.state.major ? true : false;
         const mentorSelected = this.state.mentor ? true : false;
 
-        const URL="/search/name=${nameSelected}year=${yearSelected}major=${majorSelected}mentor=${mentorSelected}";
+        const URL="${value}&name=${nameSelected}&year=${yearSelected}&major=${majorSelected}&mentor=${mentorSelected}";
         
         this.setState({ searchURL: URL});
 
-    }
     
-    // getQuery = () => {this.state.query}
+    }
 
     render() {
         return (
             <div className="search--search-container">
-                <form className="search--animated" onSubmit={this.submit}>
+                <form className="search--animated" onSubmit={this.handleChange}>
                     <input 
                         className="field--input" 
                         type="text" 
                         placeholder="Search name, major, ..." 
-                        value={this.props.searchQuery}
+                        value={this.searchURL}
                         
-                        onChange={(e) => this.props.getQuery(e.target.value)}
+                        onChange={(e) => this.handleChange(e)}
                         required
                     />
                                     
