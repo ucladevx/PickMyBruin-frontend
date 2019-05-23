@@ -29,7 +29,7 @@ class Search extends React.Component {
                 <div className="search">
                     <SearchBar
                         
-                        // handleSearch={this.props.handleSearch}
+                        handleSearch={this.props.handleSearch}
                         
                         // const isSelected = this.state.platform ? true : false;     
                     />

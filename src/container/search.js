@@ -10,11 +10,11 @@ class SearchContainer extends React.Component {
         return (
             <Search 
                 mentors={this.props.mentors}
-                handleSearch={this.props.handleSearch}
+                handleSearch={this.props.handleSearch(this.props.query)}
                 count={this.props.count}
                 _internal={this.props._internal}
                 query={this.props.searchURL}
-                onSubmit={this.props.handleSearch(this.props.query)}
+                
             />
         );
     }
