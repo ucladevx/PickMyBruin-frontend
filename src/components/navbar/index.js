@@ -26,6 +26,9 @@ class NavBar extends React.Component {
                             <p onClick={() => this.navigate("home")} className={classNames({selected: location.startsWith("home")})}>Home</p>
                         </div>
                         <div className="navigation-item">
+                            <p onClick={() => this.navigate("blog")} className={classNames({selected: location.startsWith("blog")})}>Blog</p>
+                        </div>
+                        <div className="navigation-item">
                             <p onClick={() => this.navigate("search")} className={classNames({selected: location.startsWith("search")})}>Ambassadors</p>
                         </div>
                         <div className="navigation-item">

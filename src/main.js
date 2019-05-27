@@ -32,6 +32,7 @@ import ForgetPasswordContainer from './container/forget-password';
 import ForgetPasswordPending from './components/pages/forget-password/email-pending';
 import ResetPasswordContainer from './container/reset';
 import Onboarding from './components/pages/onboarding';
+import BlogContainer from './container/blog';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './main.scss';
@@ -69,6 +70,7 @@ class App extends React.Component {
                             <Route path="/completeRegistration" component={CompleteRegistrationContainer} />
 
                             <Route exact path="/home" component={Authentication(MainPage)} />
+                            <Route exact path="/blog" component={Authentication(BlogContainer)} />
                             <Route exact path="/chooseRole" component={Authentication(ChooseRoleContainer)} />
                             <Route exact path="/onboarding" component={Authentication(Onboarding)} />
                             <Route exact path="/profile/:page" component={Authentication(MultipleProfileContainer)} />

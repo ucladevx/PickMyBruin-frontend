@@ -11,6 +11,7 @@ import { Profile, fetchProfile, updateMentorStatus, updateUserProfile, updateMen
 import { SearchMentors, handleSearch } from './searchMentors'
 import { Requests, getRequests, sendRequest } from './requests'
 import { Messages, fetchThreads, fetchMessages, checkIfThreadExists, sendMessage, removeProfileViewing } from './messages';
+import { Blog, createBlog, fetchBlog, updateBlog, deleteBlog, setBlogState } from './blog';
 
 const history = createHistory();
 const reactRouterMiddleware = routerMiddleware(history);
@@ -32,6 +33,7 @@ const store = createStore(
         SearchMentors,
         Requests,
         Messages,
+        Blog,
         router: routerReducer,
         notifications: notificationsReducer()
     }),
@@ -58,6 +60,9 @@ const Actions = {
     },
     messagesActions: {
         fetchThreads, fetchMessages, sendMessage, removeProfileViewing, checkIfThreadExists,
+    },
+    blogActions: {
+        createBlog, fetchBlog, updateBlog, deleteBlog, setBlogState
     }
 }
 
