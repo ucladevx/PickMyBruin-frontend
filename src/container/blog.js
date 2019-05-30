@@ -14,6 +14,7 @@ class BlogContainer extends React.Component {
                 fetchBlog = {this.props.fetchBlog}
                 updateBlog = {this.props.updateBlog}
                 deleteBlog = {this.props.deleteBlog}
+                searchBlogs = {this.props.searchBlogs}
             />
         )
     }
@@ -31,14 +32,17 @@ const mapDispatchToProps = (dispatch) => {
         createBlog: (username, title, body, anonymous, publish) => {
             dispatch(Actions.blogActions.createBlog(username, title, body, anonymous, publish));
         },
-        fetchBlog: (userid, blogid) => {
-            dispatch(Actions.blogActions.fetchBlog(userid, blogid));
+        fetchBlog: blogid => {
+            dispatch(Actions.blogActions.fetchBlog(blogid));
         },
-        updateBlog: (userid, blogid, title, body, anonymous, publish) => {
-            dispatch(Actions.blogActions.updateBlog(userid, blogid, title, body, anonymous, publish));
+        updateBlog: (blogid, title, body, anonymous, publish) => {
+            dispatch(Actions.blogActions.updateBlog(blogid, title, body, anonymous, publish));
         },
-        deleteBlog: (userid, blogid) => {
-            dispatch(Actions.blogActions.deleteBlog(userid, blogid));
+        deleteBlog: blogid => {
+            dispatch(Actions.blogActions.deleteBlog(blogid));
+        },
+        searchBlogs: query => {
+            dispatch(Actions.blogActions.searchBlogs(query));
         },
     };
 };

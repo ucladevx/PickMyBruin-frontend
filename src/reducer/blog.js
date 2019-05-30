@@ -1,12 +1,14 @@
 import Immutable, { fromJS } from 'immutable';
 import Config from '../config';
 import Storage from '../storage';
+import { addNotification as notify } from 'reapop';
 
 /////////////
 /// TYPES ///
 /////////////
 
 const SET_BLOG_STATE = 'set_blog_state';
+const BLOG_SEARCH_SUCCESS = 'blog_search_success';
 
 /////////////
 // ACTIONS //
@@ -38,12 +40,12 @@ const createBlog = (username, title, body, anonymous, publish) => {
     }
 };
 
-const fetchBlog = (userid, blogid) => {
+const fetchBlog = blogid => {
     return async dispatch => {
         try {
             const token = Storage.get('token');
 
-            const response = await fetch(Config.API_URL + `/blogs/${userid}/${blogid}`, {
+            const response = await fetch(Config.API_URL + `/blogs/id/${blogid}`, {
                 method: 'GET',
                 headers: new Headers({
                     "Authorization": `Bearer ${token}`,
@@ -61,12 +63,12 @@ const fetchBlog = (userid, blogid) => {
     }
 };
 
-const updateBlog = (userid, blogid, title, body, anonymous, publish) => {
+const updateBlog = (blogid, title, body, anonymous, publish) => {
     return async dispatch => {
         try {
             const token = Storage.get('token');
 
-            const response = await fetch(Config.API_URL + `/blogs/${userid}/${blogid}`, {
+            const response = await fetch(Config.API_URL + `/blogs/id/${blogid}`, {
                 method: 'PATCH',
                 headers: new Headers({
                     "Authorization": `Bearer ${token}`,
@@ -87,12 +89,12 @@ const updateBlog = (userid, blogid, title, body, anonymous, publish) => {
     }
 };
 
-const deleteBlog = (userid, blogid) => {
+const deleteBlog = blogid => {
     return async dispatch => {
         try {
             const token = Storage.get('token');
 
-            const response = await fetch(Config.API_URL + `/blogs/${userid}/${blogid}`, {
+            const response = await fetch(Config.API_URL + `/blogs/id/${blogid}`, {
                 method: 'DELETE',
                 headers: new Headers({
                     "Authorization": `Bearer ${token}`,
@@ -106,10 +108,40 @@ const deleteBlog = (userid, blogid) => {
     }
 };
 
+const searchBlogs = query => {
+    return async dispatch => {
+        try {
+            const token = Storage.get('token');
+
+            const response = await fetch(Config.API_URL + `/blogs?query=${query}`, {
+                method: 'GET',
+                headers: new Headers({
+                    "Authorization": `Bearer ${token}`,
+                    "content-type": "application/json"
+                })
+            })
+
+            const data = await response.json();
+
+            dispatch(searchResults(data));
+
+        } catch (error) {
+            dispatch(notify({title: 'Error!', status: 'error', message: error.message, position: 'tc'}));
+        }
+    }
+}
+
 const setBlogState = blog => {
     return {
         type: SET_BLOG_STATE,
         blog
+    }
+}
+
+const searchResults = data => {
+    return {
+        type: BLOG_SEARCH_SUCCESS,
+        data
     }
 }
 
@@ -126,18 +158,21 @@ const defaultState = () => {
 const Blog = (state = defaultState(), action) => {
     switch (action.type) {
         case SET_BLOG_STATE: {
-            
-            const newState =  state.withMutations(val => {
+            return state.withMutations(val => {
                 val.set('blogs', fromJS(action.blog));
             });
-            console.log("new state in reducer", newState.get('blogs').toObject());
-            return newState;
         }
-
+        case BLOG_SEARCH_SUCCESS: {
+            return state.withMutations(val => {
+                val.set('blogs', fromJS(action.data.results.map(blog => {
+                    return blog;
+                })));
+            })
+        }
         default: {
             return state;
         }
     }
 }
 
-export { Blog, createBlog, fetchBlog, updateBlog, deleteBlog, setBlogState };
+export { Blog, createBlog, fetchBlog, updateBlog, deleteBlog, searchBlogs, setBlogState, searchResults };

@@ -4,7 +4,13 @@ import NavBar from '../../navbar';
 import Footer from '../../footer';
 import Button from '../../util/Button';
 
+import BlogSearchResult from './blogSearchResult';
+
 class Blog extends React.Component {
+    state = {
+        searched: false,
+    }
+    
     createBlog = () => {
         const username = "jhan25";
         const title = "Testing 123";
@@ -16,20 +22,38 @@ class Blog extends React.Component {
     }
     
     deleteBlog = () => {
-        // const userid = this.props.blogs[1].getIn(['user']);
-        // const blogid = this.props.blogs[1].getIn(['id']);
+        const userid = this.props.blogs.getIn(['user']);
+        const blogid = this.props.blogs.getIn(['id']);
+        const title = this.props.blogs.getIn(['title']);
 
-        // console.log(userid);
-        // console.log(blogid);
+        console.log(userid);
+        console.log(blogid);
+        console.log(title);
 
         console.log(this.props.blogs);
+    }
+
+    searchBlogs = () => {
+        // this.props.searchBlogs('');
+        this.setState({
+            searched: true,
+        });
     }
 
     render() {
         return (
             <div className="blog-container">
                 <NavBar />
-                <Button onClick={this.deleteBlog} color="green">Click me!</Button>
+                <Button onClick={this.createBlog} color="green">Create!</Button>
+                <Button onClick={this.deleteBlog} color="green">Delete!</Button>
+                <Button onClick={this.searchBlogs} color="green">Search!</Button>
+                <br /><br />
+                {this.state.searched && this.props.blogs.map(blog => 
+                    <BlogSearchResult
+                        key = '1'
+                        blog = {blog}
+                    />
+                )}
                 <Footer />
             </div>
         )
