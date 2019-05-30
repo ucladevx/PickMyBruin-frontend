@@ -18,7 +18,7 @@ import image10 from '../../../../images/onboarding/10.png';
 import image11 from '../../../../images/onboarding/11.png';
 import image12 from '../../../../images/onboarding/12.png';
 import image13 from '../../../../images/onboarding/13.png';
-import image14 from '../../../../images/onboarding/14.png';
+import image14 from '../../../../images/onboarding/message1.svg';
 import image15 from '../../../../images/onboarding/15.png';
 import image16 from '../../../../images/onboarding/16.png';
 import image17 from '../../../../images/onboarding/17.png';
