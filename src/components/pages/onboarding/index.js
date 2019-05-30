@@ -18,7 +18,7 @@ import image10 from '../../../../images/onboarding/10.png';
 import image11 from '../../../../images/onboarding/11.png';
 import image12 from '../../../../images/onboarding/12.png';
 import image13 from '../../../../images/onboarding/13.png';
-import image14 from '../../../../images/onboarding/message1.svg';
+import image14 from '../../../../images/onboarding/message1.svg.inline';
 import image15 from '../../../../images/onboarding/15.png';
 import image16 from '../../../../images/onboarding/16.png';
 import image17 from '../../../../images/onboarding/17.png';
@@ -144,8 +144,7 @@ class Onboarding extends React.Component {
                         </div>
                         <div className="each-slide">
                             <div className="image-container">
-                                <img src={image14} />
-                                <img src={image15} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image14}} />
                             </div>
                             <br /><br /><br /><br /><br />
                             <span>Once you've sent your message, you'll arrive here.</span>
