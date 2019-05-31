@@ -34,7 +34,7 @@ class Blog extends React.Component {
     }
 
     searchBlogs = () => {
-        // this.props.searchBlogs('');
+        this.props.searchBlogs('');
         this.setState({
             searched: true,
         });
