@@ -87,7 +87,7 @@ const handleSearch = (searchTerm) => {
         try {
             const token = Storage.get("token");
 
-            const response = await fetch(Config.API_URL + `/mentors?query=${searchTerm}&random=`, {
+            const response = await fetch(Config.API_URL + `/mentors?query=${searchTerm}`, {
                 method: 'GET',
                 headers: new Headers({
                     "Authorization": `Bearer ${token}`,
