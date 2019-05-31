@@ -5,16 +5,13 @@ import { Actions } from '../reducer';
 import Search from '../components/pages/search';
 
 class SearchContainer extends React.Component {
-    
     render() {
         return (
             <Search 
                 mentors={this.props.mentors}
                 handleSearch={this.props.handleSearch}
                 count={this.props.count}
-                _internal={this.props._internal}
-                
-            />
+                _internal={this.props._internal}   />
         );
     }
 }
@@ -30,7 +27,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        handleSearch: (query) => {
+        handleSearch: query => {
             dispatch(Actions.searchMentorsActions.handleSearch(query));
         }
     }
