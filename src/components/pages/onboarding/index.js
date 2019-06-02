@@ -145,10 +145,7 @@ class Onboarding extends React.Component {
                         <div className="each-slide">
                             <div className="image-container">
                                 <div className="innerhtml" dangerouslySetInnerHTML={{__html: image14}} />
-<<<<<<< HEAD
-=======
                                 <div className="innerhtml" dangerouslySetInnerHTML={{__html: image15}} />
->>>>>>> 009b71a71193cbb5d9d76296c80c280fd14c1ba6
                             </div>
                             <br /><br /><br /><br /><br />
                             <span>Once you've sent your message, you'll arrive here.</span>
