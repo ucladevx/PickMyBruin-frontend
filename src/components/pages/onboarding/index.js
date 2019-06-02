@@ -5,24 +5,24 @@ import { Slide } from 'react-slideshow-image';
 import TopBar from '../../util/TopBar';
 import Button from 'components/util/Button';
 
-import image1 from '../../../../images/onboarding/1.png';
-import image2 from '../../../../images/onboarding/2.png';
-import image3 from '../../../../images/onboarding/3.png';
-import image4 from '../../../../images/onboarding/4.png';
-import image5 from '../../../../images/onboarding/5.png';
-import image6 from '../../../../images/onboarding/6.png';
-import image7 from '../../../../images/onboarding/7.png';
-import image8 from '../../../../images/onboarding/8.png';
-import image9 from '../../../../images/onboarding/9.png';
-import image10 from '../../../../images/onboarding/10.png';
-import image11 from '../../../../images/onboarding/11.png';
-import image12 from '../../../../images/onboarding/12.png';
-import image13 from '../../../../images/onboarding/13.png';
-import image14 from '../../../../images/onboarding/message1.svg.inline';
-import image15 from '../../../../images/onboarding/15.png';
-import image16 from '../../../../images/onboarding/16.png';
-import image17 from '../../../../images/onboarding/17.png';
-import image18 from '../../../../images/onboarding/18.png';
+import image1 from '../../../../images/onboarding/1.svg.inline';
+import image2 from '../../../../images/onboarding/2.svg.inline';
+import image3 from '../../../../images/onboarding/3.svg.inline';
+import image4 from '../../../../images/onboarding/4.svg.inline';
+import image5 from '../../../../images/onboarding/5.svg.inline';
+import image6 from '../../../../images/onboarding/6.svg.inline';
+import image7 from '../../../../images/onboarding/7.svg.inline';
+import image8 from '../../../../images/onboarding/8.svg.inline';
+import image9 from '../../../../images/onboarding/9.svg.inline';
+import image10 from '../../../../images/onboarding/10.svg.inline';
+import image11 from '../../../../images/onboarding/11.svg.inline';
+import image12 from '../../../../images/onboarding/12.svg.inline';
+import image13 from '../../../../images/onboarding/13.svg.inline';
+import image14 from '../../../../images/onboarding/14.svg.inline';
+import image15 from '../../../../images/onboarding/15.svg.inline';
+import image16 from '../../../../images/onboarding/16.svg.inline';
+import image17 from '../../../../images/onboarding/17.svg.inline';
+import image18 from '../../../../images/onboarding/18.svg.inline';
 
 const properties = {
     duration: 5000,
@@ -42,7 +42,7 @@ class Onboarding extends React.Component {
                     <Slide {...properties}>
                         <div className="each-slide">
                             <div className="image-container">
-                                <img src={image1} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image1}} />
                             </div>
                             <br /><br /><br /><br /><br />
                             <span>Welcome the BQUEST! We'll be showing you how to navigate our site.</span>
@@ -54,7 +54,7 @@ class Onboarding extends React.Component {
                         </div>
                         <div className="each-slide">
                             <div className="image-container">
-                                <img src={image2} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image2}} />
                             </div>
                             <br /><br /><br /><br /><br />
                             <span>This is BQUEST's homepage, and what all old users see upon logging in.</span>
@@ -64,8 +64,8 @@ class Onboarding extends React.Component {
                         </div>
                         <div className="each-slide">
                             <div className="image-container">
-                                <img className="change" src={image3} />
-                                <img src={image4} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image3}} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image4}} />
                             </div>
                             <br /><br /><br /><br /><br />
                             <span>Now the important part - finding an ambassador. You can look for an ambassador by</span>
@@ -77,8 +77,8 @@ class Onboarding extends React.Component {
                         </div>
                         <div className="each-slide">
                             <div className="image-container">
-                                <img src={image5} />
-                                <img src={image6} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image5}} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image6}} />
                             </div>
                             <br /><br /><br /><br /><br />
                             <span>Click on "Search for a major" and type away! Hit Enter to find</span>
@@ -88,7 +88,7 @@ class Onboarding extends React.Component {
                         </div>
                         <div className="each-slide">
                             <div className="image-container">
-                                <img src={image7} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image7}} />
                             </div>
                             <br /><br /><br /><br /><br />
                             <span>Ambassadors with the major or related ones will pop up below.</span>
@@ -98,7 +98,7 @@ class Onboarding extends React.Component {
                         </div>
                         <div className="each-slide">
                             <div className="image-container">
-                                <img src={image8} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image8}} />
                             </div>
                             <br /><br /><br /><br /><br />
                             <span>This is the Ambassador profile! It tells you a bit more</span>
@@ -110,8 +110,8 @@ class Onboarding extends React.Component {
                         </div>
                         <div className="each-slide">
                             <div className="image-container">
-                                <img src={image9} />
-                                <img className="change" src={image10} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image9}} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image10}} />
                             </div>
                             <br /><br /><br /><br /><br />
                             <span>Don't think they're quite the right one? You can return to search by clicking "Ambassadors"</span>
@@ -121,8 +121,8 @@ class Onboarding extends React.Component {
                         </div>
                         <div className="each-slide">
                             <div className="image-container">
-                                <img className="change" src={image11} />
-                                <img src={image12} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image11}} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image12}} />
                             </div>
                             <br /><br /><br /><br /><br />
                             <span>Think they're the right one? Hit the "Send a message" button to start chatting!</span>
@@ -134,7 +134,7 @@ class Onboarding extends React.Component {
                         </div>
                         <div className="each-slide">
                             <div className="image-container">
-                                <img src={image13} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image13}} />
                             </div>
                             <br /><br /><br /><br /><br />
                             <span>If any point there is any inappropriate behavior or something isn't</span>
@@ -145,6 +145,10 @@ class Onboarding extends React.Component {
                         <div className="each-slide">
                             <div className="image-container">
                                 <div className="innerhtml" dangerouslySetInnerHTML={{__html: image14}} />
+<<<<<<< HEAD
+=======
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image15}} />
+>>>>>>> 009b71a71193cbb5d9d76296c80c280fd14c1ba6
                             </div>
                             <br /><br /><br /><br /><br />
                             <span>Once you've sent your message, you'll arrive here.</span>
@@ -156,8 +160,8 @@ class Onboarding extends React.Component {
                         </div>
                         <div className="each-slide">
                             <div className="image-container">
-                                <img src={image16} />
-                                <img src={image17} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image16}} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image17}} />
                             </div>
                             <br /><br /><br /><br /><br />
                             <span>Finally, you can access Settings from the nav bar at the top. To edit any</span>
@@ -167,7 +171,7 @@ class Onboarding extends React.Component {
                         </div>
                         <div className="each-slide">
                             <div className="image-container">
-                                <img src={image18} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image18}} />
                             </div>
                             <br /><br /><br /><br /><br />
                             <span>You can logout from BQUEST anytime!</span>
@@ -177,7 +181,7 @@ class Onboarding extends React.Component {
                         </div>
                         <div className="each-slide">
                             <div className="image-container">
-                                <img src={image1} />
+                                <div className="innerhtml" dangerouslySetInnerHTML={{__html: image1}} />
                             </div>
                             <br /><br /><br /><br /><br />
                             <span>And that's BQUEST! If you forget this stuff, no worries. Just go to the Homepage and</span>
