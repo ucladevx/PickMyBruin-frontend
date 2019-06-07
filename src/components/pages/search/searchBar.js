@@ -1,14 +1,31 @@
 import React from 'react';
 import { PropTypes } from 'react';
+// import ToggleButton from 'react-bootstrap/ToggleButton';
+// import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
+import { Component } from 'react';
+import { Button, ButtonGroup } from 'reactstrap';
 
 class SearchBar extends React.Component {
-    state = {
-        value : "",
+
+    // constructor(props) {
+    //     super(props);
+    //     this.handleChange = this.handleChange.bind(this);
+    // }
+    constructor (props) {
+    super(props);
+
+    this.state = { cSelected: [],
+                    value : "",
         name: false,
         year: false,
         major: false,
-        mentor: false,
-    }
+        mentor: false
+
+     };
+
+    this.onCheckboxBtnClick = this.onCheckboxBtnClick.bind(this);
+     }
+    
   
     submit = e => {
         e.preventDefault();
@@ -37,54 +54,101 @@ class SearchBar extends React.Component {
         e.preventDefault();
 
         this.setState({
-            name: e.target.value,
+            name: true,
 
         })
+        this.setState({ cSelected: [...this.state.cSelected] });
+
     }
 
     handleChangeYear = e => {
         e.preventDefault();
 
         this.setState ({
-            year: e.target.value,
+            year: true,
         })
+        this.setState({ cSelected: [...this.state.cSelected] });
+
     }
 
     handleChangeMajor = e => {
         e.preventDefault();
 
         this.setState ({
-            major: e.target.value, 
+            major: true, 
         })
+        this.setState({ cSelected: [...this.state.cSelected] });
+
     }
 
     handleChangeMentor = e => {
         e.preventDefault();
 
         this.setState ({
-            mentor: e.target.value,
+            mentor: true,
         })
+        this.setState({ cSelected: [...this.state.cSelected] });
+
     }
+
+    onCheckboxBtnClick(selected) {
+        const index = this.state.cSelected.indexOf(selected);
+        if (index < 0) {
+          this.state.cSelected.push(selected);
+        } else {
+          this.state.cSelected.splice(index, 1);
+        }
+        this.setState({ cSelected: [...this.state.cSelected] });
+        switch (selected) {
+            case 1:
+                this.setState ({name: !this.state.name});
+                break;
+            case 2:
+                this.setState ({year: !this.state.year});
+                break;
+            case 3:
+                this.setState ({major: !this.state.major});
+                break;
+
+            case 4:
+                this.setState ({mentor: !this.state.mentor});
+                break;
+            default:
+                break;
+
+        }
+      }
 
     render() {
         return (
-            <div className="search--search-container">
-                <form className="search--animated" onSubmit={this.submit}>
-                    <input 
-                        className="field--input" 
-                        type="text" 
-                        placeholder="Search name, major, ..." 
-                        value={this.state.value}
-                        onChange={this.handleChange}
-                        required
-                    />                 
-                </form>
+            <div>
+                <div className="search--search-container">
+                    <form className="search--animated" onSubmit={this.submit}>
+                        <input 
+                            className="field--input" 
+                            type="text" 
+                            placeholder="Search name, major, ..." 
+                            value={this.state.value}
+                            onChange={this.handleChange}
+                            required
+                        />                 
+                    </form>  
+                </div>
+                <br></br>
+                <br></br>
+                <p style={{fontWeight: 'bold', display: 'flex', justifyContent: 'center'}}>Filter by: </p>
+                <br></br>
                 <div className="filter" style={{display: 'flex', justifyContent: 'center'}}>
-                    <input type="radio" value={this.state.name} name="name" onChange={this.handleChangeName}/> Name
-                    <input type="radio" value={this.state.year} name="year" onChange={this.handleChangeYear}/> Year
-                    <input type="radio" value={this.state.major} name="major" onChange={this.handleChangeMajor}/> Major
-                    <input type="radio" value={this.state.mentor} name="mentor" onChange={this.handleChangeMentor}/> Mentor
+                      
+                    <ButtonGroup>
+                      <Button outline color="info" onClick={() => this.onCheckboxBtnClick(1)} active={this.state.cSelected.includes(1)}>Name</Button>
+                      <Button outline color="info" onClick={() => this.onCheckboxBtnClick(2)} active={this.state.cSelected.includes(2)}>Year</Button>
+                      <Button outline color="info" onClick={() => this.onCheckboxBtnClick(3)} active={this.state.cSelected.includes(3)}> Major</Button>
+                      <Button outline color="info" onClick={() => this.onCheckboxBtnClick(4)} active={this.state.cSelected.includes(4)}>Mentor</Button>
+                    </ButtonGroup>
                 </div> 
+                
+
             </div>
         );
     }
