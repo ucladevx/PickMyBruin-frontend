@@ -76,9 +76,9 @@ class AmbassadorDetail extends React.Component {
                         <p>Ask them a question.</p>
                         <p>Request a meetup!</p>
                         <form onSubmit={e => e.preventDefault()}>
-                            <input value={this.state.messageText} type="text" placeholder="Write something.." onChange={this.onChange}/>
-                            <Button onClick={this.sendMessage} color="green" disabled={disabled}>Send</Button>
+                            <textarea style={{ width: '460px', height: '100px'}} value={this.state.messageText} type="text" placeholder="Write something..." onChange={this.onChange}/>
                         </form>
+                        <Button style={{ alignSelf: 'center' }} onClick={this.sendMessage} color="green" disabled={disabled}>Send</Button>
                     </Modal>     : null}
                 {this.state.showReportModal ? 
                     <Modal 
