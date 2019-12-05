@@ -3,8 +3,6 @@ import React from 'react';
 import NavBar from 'components/navbar';
 import SearchBar from './searchBar';
 import Footer from '../../footer';
-
-import SearchResultContainer from './searchResultContainer';
 import Results from './results';
 
 class Search extends React.Component {
@@ -14,7 +12,7 @@ class Search extends React.Component {
                 <NavBar />
                 <div className="search">
                     <SearchBar
-                        handleSearch={this.props.handleSearch}
+                        handleSearch={this.props.handleSearch}    
                     />
                 </div>
                 <Results
