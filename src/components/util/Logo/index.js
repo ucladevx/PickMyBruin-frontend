@@ -21,6 +21,11 @@ class Logo extends React.Component {
 		            <div className="logo-text" dangerouslySetInnerHTML={{__html: whiteBquest}} />
 		        </div>
 		    	}
+		    	{(this.props.color === "small-white") &&
+		    	<div className="logo" onClick={() => location.href=(this.props.LoggedIn ? "/home" : "/")} style={{cursor:'pointer'}}>
+		            <div className="logo-logo" dangerouslySetInnerHTML={{__html: whiteBquestLogo}} />
+		        </div>
+		    	}
 			</div>
 	    );
 	}
