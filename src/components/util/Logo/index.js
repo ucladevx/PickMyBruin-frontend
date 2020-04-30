@@ -1,5 +1,4 @@
 import React from 'react';
-import { push } from 'react-router-redux';
 import whiteBquest from '../../../../images/loginPage/white-bquest.svg.inline';
 import whiteBquestLogo from '../../../../images/loginPage/white-bquest-logo.svg.inline';
 import tealBquestLogo from '../../../../images/loginPage/teal-bquest-logo.svg.inline';
