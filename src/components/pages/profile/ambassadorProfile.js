@@ -97,6 +97,7 @@ class AmbassadorProfile extends React.Component {
         this.state = {
             classesOpen: false,
             bio: props.mentor.bio,
+            quarter: props.mentor.quarter || "Spring",
             // major: props.mentor.major || {name: ''},
             // minor: props.mentor.minor || {name: ''},
             major: props.mentor.major || [],
@@ -249,6 +250,26 @@ class AmbassadorProfile extends React.Component {
                 <Input type="textarea" onBlur={() => this._updateBio()}  onChange={e => this.setState({bio: e.target.value})} value={this.state.bio} name="bio" id="bio" />
             </div>
         );
+    }
+
+    renderGrad = () => {
+    	return (
+    		<InputGroup>
+    			<Input 
+    			addonType="prepend" 
+    			type="select" 
+    			name="quarter" 
+    			id="quarter" 
+    			className="roundedLeft"
+    			value={this.state.quarter}>
+	                <option value="Fall">Fall</option>
+	                <option value="Winter">Winter</option>
+	                <option value="Spring">Spring</option>
+	            </Input>
+	        	<Input name="grad-year" id="grad-year" placeholder="Year" />  
+    		</InputGroup>
+
+    	);
     }
 
     _updateMajor = (majorName, index) => {
@@ -442,6 +463,10 @@ class AmbassadorProfile extends React.Component {
                             <FormGroup className="minor">
                                 <Label>Minor</Label>
                                 {this.renderMinor()}
+                            </FormGroup>
+                            <FormGroup className="grad">
+                                <Label>Anticipated Graduation</Label>
+                                {this.renderGrad()}
                             </FormGroup>
                             <FormGroup className="bio">
                                 <Label>Bio</Label>
