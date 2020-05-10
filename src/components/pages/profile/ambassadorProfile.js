@@ -97,7 +97,8 @@ class AmbassadorProfile extends React.Component {
         this.state = {
             classesOpen: false,
             bio: props.mentor.bio,
-            quarter: props.mentor.quarter || "Spring",
+            grad: props.mentor.grad,
+            quarter: props.mentor.quarter,
             // major: props.mentor.major || {name: ''},
             // minor: props.mentor.minor || {name: ''},
             major: props.mentor.major || [],
@@ -138,6 +139,7 @@ class AmbassadorProfile extends React.Component {
             bio: nextProps.mentor.bio,
             // major: nextProps.mentor.major,
             // minor: nextProps.mentor.minor || {name: ''},
+            quarter: nextProps.mentor.quarter,
             major: relativeSortAndMerge(currMajor, nextMajor, e => e.name, n => { return { name: n }; }),
             minor: relativeSortAndMerge(currMinor, nextMinor, e => e.name, n => { return { name: n }; }),
             courses: nextProps.mentor.courses.map(obj => obj.name)
@@ -260,13 +262,14 @@ class AmbassadorProfile extends React.Component {
     			type="select" 
     			name="quarter" 
     			id="quarter" 
-    			className="roundedLeft"
-    			value={this.state.quarter}>
+    			className="rounded-left"
+    			value={this.state.quarter}
+                onChange={e => this.setState({quarter: e.target.value})}>
+                    <option value="Spring">Spring</option>
 	                <option value="Fall">Fall</option>
 	                <option value="Winter">Winter</option>
-	                <option value="Spring">Spring</option>
 	            </Input>
-	        	<Input name="grad-year" id="grad-year" placeholder="Year" />  
+	        	<Input name="grad-year" id="grad-year" placeholder="Year" onChange={e => this.setState({grad: e.target.value})} value={this.state.grad}/>  
     		</InputGroup>
 
     	);
