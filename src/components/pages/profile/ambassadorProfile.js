@@ -258,18 +258,18 @@ class AmbassadorProfile extends React.Component {
     	return (
     		<InputGroup>
     			<Input 
-    			addonType="prepend" 
     			type="select" 
     			name="quarter" 
     			id="quarter" 
-    			className="rounded-left"
+    			className="rounded"
+    			style={{marginRight: '20px'}}
     			value={this.state.quarter}
                 onChange={e => this.setState({quarter: e.target.value})}>
                     <option value="Spring">Spring</option>
 	                <option value="Fall">Fall</option>
 	                <option value="Winter">Winter</option>
 	            </Input>
-	        	<Input name="grad-year" id="grad-year" placeholder="Year" onChange={e => this.setState({grad: e.target.value})} value={this.state.grad}/>  
+	        	<Input name="grad-year" id="grad-year" className="rounded" placeholder="Enter Year" onChange={e => this.setState({grad: e.target.value})} value={this.state.grad}/>  
     		</InputGroup>
 
     	);
