@@ -49,7 +49,7 @@ class Onboarding extends React.Component {
                             <br /><br />
                             <span>Feel free to skip this and explore on your own if you wish by</span>
                             <br />
-                            <span>clicking on the green button at the bottom left corner.</span>
+                            <span>clicking on the green button below.</span>
                             <br />
                         </div>
                         <div className="each-slide">
@@ -189,9 +189,9 @@ class Onboarding extends React.Component {
                             <br />
                         </div>
                     </Slide>
-                </div>
-                <div className="onboarding-button">
-                    <Button onClick={() => this.props.history.push("/home")} color="green">I'm good, let me explore!</Button>
+                    <div className="onboarding-button">
+		                <Button onClick={() => this.props.history.push("/home")} color="green">I'm good, let me explore!</Button>
+		            </div>
                 </div>
             </div>
         );

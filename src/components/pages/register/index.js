@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Form from 'components/util/LoginRegisterForm';
-import newBquest from '../../../../images/loginPage/white-bquest.svg.inline'
-import newBquestLogo from '../../../../images/loginPage/white-bquest-logo.svg.inline'
+import Logo from '../../util/Logo';
 import Footer from '../../footer';
 
 import Loader from '../../loading';
@@ -17,10 +16,7 @@ class Register extends React.Component {
     render() {
         return (
             <div className="container-register">
-                <div className="logo">
-                    <div className="logo-logo" dangerouslySetInnerHTML={{__html: newBquestLogo}} />
-                    <div className="logo-text" dangerouslySetInnerHTML={{__html: newBquest}} />
-                </div>
+                <Logo color="white" LoggedIn={false} />
                 <section className="register-splash">
                     <div className="register-text">
                         <h1>Connect with students on all your major-related questions.</h1>

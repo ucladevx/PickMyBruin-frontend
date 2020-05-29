@@ -16,9 +16,8 @@ class Footer extends React.Component {
         return (
             <div className="footer-container">
                 <div className="link-logo">
-                    <div className="inner-logo" dangerouslySetInnerHTML={{__html: BquestLogo}} />
-                    {this.props.isLoggedIn && <p onClick={() => this.navigate("home")}>BQUEST</p>}
-                    {!this.props.isLoggedIn && <p onClick={() => this.navigate("")}>BQUEST</p>}
+                    <p onClick={() => this.navigate(this.props.isLoggedIn ? "home" : "")} className="inner-logo" dangerouslySetInnerHTML={{__html: BquestLogo}}></p>
+                    <p onClick={() => this.navigate(this.props.isLoggedIn ? "home" : "")}>BQUEST</p>
                 </div>
                 <div className="between-link">
                     <p>/</p>

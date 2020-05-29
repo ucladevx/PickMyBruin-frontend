@@ -2,8 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-
-import BquestLogo from '../../../images/loginPage/white-bquest-logo.svg.inline';
+import Logo from '../util/Logo';
 
 class NavBar extends React.Component {
 
@@ -18,9 +17,7 @@ class NavBar extends React.Component {
         return(
             <div>
                 <div className="navbar-container">
-                    <div className="logo">
-                        <div className="logo-logo" dangerouslySetInnerHTML={{__html: BquestLogo}} />
-                    </div>
+                    <Logo color="small-white" LoggedIn={true} />
                     <div className="buttons">
                         <div className="navigation-item">
                             <p onClick={() => this.navigate("home")} className={classNames({selected: location.startsWith("home")})}>Home</p>

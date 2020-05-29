@@ -97,13 +97,16 @@ class AmbassadorProfile extends React.Component {
         this.state = {
             classesOpen: false,
             bio: props.mentor.bio,
+            grad: props.mentor.grad,
+            quarter: props.mentor.quarter,
             // major: props.mentor.major || {name: ''},
             // minor: props.mentor.minor || {name: ''},
             major: props.mentor.major || [],
             minor: props.mentor.minor || [],
             majorDisplayLength: props.mentor.major ? props.mentor.major.length : 0,
             minorDisplayLength: props.mentor.minor ? props.mentor.minor.length : 0,
-            courses: props.mentor.courses ? props.mentor.courses.map(obj => obj.name) : []
+            courses: props.mentor.courses ? props.mentor.courses.map(obj => obj.name) : [],
+            work: props.mentor.work || []
         }
     }
 
@@ -111,14 +114,17 @@ class AmbassadorProfile extends React.Component {
         let {
             major: currMajor,
             minor: currMinor,
+            work: currWork,
         } = this.state;
 
         let {
             major: nextMajor,
             minor: nextMinor,
+            work: nextWork,
         } = nextProps.mentor;
         nextMajor = nextMajor || []; // avoid undefined
         nextMinor = nextMinor || []; // avoid undefined
+        nextWork = nextWork || [];
 
         // The following lines are considered a hack
         // (as it is based on the assumption: when currMajor.length > nextMajor.length, the user must be editing other fields while not selecting the yet to select major)
@@ -137,6 +143,7 @@ class AmbassadorProfile extends React.Component {
             bio: nextProps.mentor.bio,
             // major: nextProps.mentor.major,
             // minor: nextProps.mentor.minor || {name: ''},
+            quarter: nextProps.mentor.quarter,
             major: relativeSortAndMerge(currMajor, nextMajor, e => e.name, n => { return { name: n }; }),
             minor: relativeSortAndMerge(currMinor, nextMinor, e => e.name, n => { return { name: n }; }),
             courses: nextProps.mentor.courses.map(obj => obj.name)
@@ -249,6 +256,82 @@ class AmbassadorProfile extends React.Component {
                 <Input type="textarea" onBlur={() => this._updateBio()}  onChange={e => this.setState({bio: e.target.value})} value={this.state.bio} name="bio" id="bio" />
             </div>
         );
+    }
+
+    renderGrad = () => {
+    	return (
+    		<InputGroup>
+    			<Input 
+    			type="select" 
+    			name="quarter" 
+    			id="quarter" 
+    			className="rounded"
+    			style={{marginRight: '10px', flex: '0 0 7.5em'}}
+    			value={this.state.quarter}
+                onChange={e => this.setState({quarter: e.target.value})}>
+                    <option value="Spring">Spring</option>
+	                <option value="Fall">Fall</option>
+	                <option value="Winter">Winter</option>
+	            </Input>
+	        	<Input name="grad-year" id="grad-year" className="rounded" style={{flex: '0 0 10em'}} placeholder="Enter Year" onChange={e => this.setState({grad: e.target.value})} value={this.state.grad}/>  
+    		</InputGroup>
+
+    	);
+    }
+
+    renderSingleWork = (position, company, start, end, index) => {
+        return (
+            // Implement value storage and update for each field once backend finishes up
+            // Yes, I know the inline CSS is terrible. It will be cleaned in another commit I promise :)
+            <div style={{borderStyle: 'solid', borderWidth: '1px', borderRadius: '.25rem', borderColor: 'lightgray', marginTop: '10px', marginBottom: '10px'}}>
+                <InputGroup style={{margin: '10px', flexWrap: 'wrap'}}>    
+                    <Input name="work-position" id="work-position" className="rounded" style={{marginRight: '10px', flex: '0 0 15em'}} placeholder="Position" onChange={null}/>  
+                    <Input name="work-company" id="work-company" className="rounded" style={{marginLeft: '10px', flex: '0 0 20em'}} placeholder="Company" onChange={null}/>  
+                </InputGroup>
+                <InputGroup style={{margin: '10px', flexWrap: 'wrap'}}>
+                    <Input name="start-year" id="start-year" className="rounded" style={{marginRight: '10px', flex: '0 0 15em'}} placeholder="Start Year" onChange={null}/>  
+                    <Input name="end-year" id="end-year" className="rounded" style={{marginLeft: '10px', marginRight: '10px', flex: '0 0 10em'}} placeholder="End Year" onChange={null}/>
+                    <Label check style={{paddingTop: '5px'}}>
+                      <Input type="checkbox" />{' '}
+                      Check if current position
+                    </Label>
+                </InputGroup>
+                <InputGroup style={{margin: '10px'}}>
+                    <Button size="sm" className="add" style={{marginRight: '5px'}} onClick={null}>Save Experience</Button>
+                    <Button size="sm" className="remove" onClick={() => {this._deleteWork(index);}}>Delete Entry</Button>
+                </InputGroup>
+            </div>
+        );
+    }
+
+    renderWork = () => {
+
+        const {
+            work: currWork,
+        } = this.state;
+
+        let displayList = currWork.map((e, i) => this.renderSingleWork(e.position || '', e.company || '', e.start || '', e.end || '', i));
+
+        return (
+            <div>
+                {displayList}
+                <Button className="add" onClick={() => {
+                    let newWork = currWork.slice();
+                    newWork.push({position: '', company: '', start: '', end: ''});
+                    this.setState({ work: newWork });
+                }}>Add Work Experience</Button>
+            </div>
+        );
+    }
+
+    _deleteWork = (index) => {
+        const {
+            work: currWork,
+        } = this.state;
+
+        currWork.splice(index,1);
+        this.setState({ work: currWork });
+        // Make sure to implement update profile for backend
     }
 
     _updateMajor = (majorName, index) => {
@@ -443,6 +526,10 @@ class AmbassadorProfile extends React.Component {
                                 <Label>Minor</Label>
                                 {this.renderMinor()}
                             </FormGroup>
+                            <FormGroup className="grad">
+                                <Label>Anticipated Graduation</Label>
+                                {this.renderGrad()}
+                            </FormGroup>
                             <FormGroup className="bio">
                                 <Label>Bio</Label>
                                 {this.renderBio()}
@@ -450,6 +537,10 @@ class AmbassadorProfile extends React.Component {
                             <FormGroup className="classes-taken">
                                 <Label>Classes Taken</Label>
                                 {this.renderClasses()}
+                            </FormGroup>
+                            <FormGroup className="work">
+                                <Label>Work History</Label>
+                                {this.renderWork()}
                             </FormGroup>
                             <div>
                                 <div className="cancel" onClick={() => this.props.updateMentorStatus(false)}>I am no longer available</div>
